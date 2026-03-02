@@ -54,8 +54,12 @@ public class BoardScript : MonoBehaviour
     public bool TestOutsideBlock(int x, int y, int xUpdates = 0, int yUpdates = 0) {
         // test if left L block is outside of the game board
         for (int i = 0; i < leftLBlock.GetLength(0); i++) {
-            TestOutside(x + leftLBlock[i, 0], y + leftLBlock[i, 1], xUpdates, yUpdates);
+            // if any part of the block is outside of the bounds return true
+            if (TestOutside(x + leftLBlock[i, 0], y + leftLBlock[i, 1], xUpdates, yUpdates)) {
+                return true;
+            }
         }
+        //if the block is not out of bounds return false
         return false;
     }
 

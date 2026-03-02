@@ -54,9 +54,6 @@ public class MoveBlocks : MonoBehaviour
 
         // put the initial left L block game board
         boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
-
-        //print the board
-        boardScript.PrintBoard();
     }
 
     // Update is called once per frame

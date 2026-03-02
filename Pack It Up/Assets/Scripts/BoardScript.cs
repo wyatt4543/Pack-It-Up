@@ -57,11 +57,14 @@ public class BoardScript : MonoBehaviour
         TestOutside(x, y + 1, xUpdates, yUpdates);
         TestOutside(x + 1, y + 1, xUpdates, yUpdates);
         TestOutside(x + 2, y + 1, xUpdates, yUpdates);
+        return false;
     }
 
     // function for updating a block's position
     public void UpdateBlock(int x, int y, int value) {
         // left L block game board updates
+        print("length of array: " + leftLBlock.GetLength(1));
+        for (int i = 0; i < 10; i++) { print(i); }
         UpdateBoard(x, y, value);
         UpdateBoard(x, y + 1, value);
         UpdateBoard(x + 1, y + 1, value);

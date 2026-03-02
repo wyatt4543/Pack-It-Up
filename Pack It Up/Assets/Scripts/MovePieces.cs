@@ -144,14 +144,8 @@ public class MovePieces : MonoBehaviour
         // find the next player position
         Vector2 nextPos = new Vector2(parentObject.transform.position.x + moveInput.x, parentObject.transform.position.y + moveInput.y);
 
+        parentObject.transform.position = nextPos;
         // if the next player position is not off the board update the player position
-        if (Mathf.Abs(nextPos.x) <= edgeOfBoardX)
-        {
-            parentObject.transform.position = nextPos;
-        }
-        //if the block is turned sideways detection
-        else if (Mathf.Abs(nextPos.y) <= edgeOfBoardY && Mathf.Abs(transform.rotation.z) == 90) {
-            parentObject.transform.position = nextPos;
-        }
+        //rotation detection
     }
 }

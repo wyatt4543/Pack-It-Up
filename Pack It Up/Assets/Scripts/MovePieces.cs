@@ -11,8 +11,11 @@ public class MovePieces : MonoBehaviour
     public GameObject parentObject;
     private ClearScript clearScript;
     private GameObject gameBoard;
+    
+    // position variables
     public float defaultXPos;
     public float defaultYPos;
+    private float gameBoardX, gameBoardY = 0;
     private float edgeOfBoardX;
     private float edgeOfBoardY;
     
@@ -128,6 +131,7 @@ public class MovePieces : MonoBehaviour
         {
             parentObject.transform.position = nextPos;
         }
+        //if the block is turned sideways detection
         else if (Mathf.Abs(nextPos.y) <= edgeOfBoardY && Mathf.Abs(transform.rotation.z) == 90) {
             parentObject.transform.position = nextPos;
         }

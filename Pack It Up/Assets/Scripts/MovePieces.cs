@@ -7,21 +7,28 @@ using UnityEngine.InputSystem;
 
 public class MovePieces : MonoBehaviour
 {
+    // game object and script variables
     public GameObject parentObject;
     private ClearScript clearScript;
     private GameObject gameBoard;
+    public float defaultXPos;
+    public float defaultYPos;
     private float edgeOfBoardX;
     private float edgeOfBoardY;
     
+    // timer variables
     private float defaultFallTimer = 1.5f;
     private float defaultAutoMoveTimer = 0.1f;
     private float defaultAutoMoveCapTimer = 1.0f / 60.0f;
     private float fallTimer;
     private float autoMoveTimer;
     private float autoMoveCapTimer;
+
+    // input variables
     private Vector2 moveInput;
     private float rotateInput;
     private PlayerInput playerInput;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -81,7 +88,6 @@ public class MovePieces : MonoBehaviour
         {
             fallTimer = defaultFallTimer; // reset timer to 1 second
             parentObject.transform.Translate(Vector3.down);
-            clearScript.UpdateBoard(0,0);
         }
 
         // drop the block

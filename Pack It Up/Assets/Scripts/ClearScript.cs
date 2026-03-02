@@ -37,6 +37,12 @@ public class ClearScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    // function for updating the game board
+    public void UpdateBoard(int x, int y, int value) {
+        gameBoard[y, x] = value;
         // Get the number of rows and columns
         int rows = gameBoard.GetLength(0);
         int cols = gameBoard.GetLength(1);
@@ -55,10 +61,5 @@ public class ClearScript : MonoBehaviour
             combineString += "\n";
         }
         print(combineString);
-    }
-
-    // function for updating the game board
-    public void UpdateBoard(int x, int y, int value) {
-        gameBoard[x, y] = value;
     }
 }

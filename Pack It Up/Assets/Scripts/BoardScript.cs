@@ -62,7 +62,6 @@ public class BoardScript : MonoBehaviour
         }
     }
 
-
     // test if entire blocks are outside of the game board
     public bool TestOutsideBlock(int x, int y, int xUpdates = 0, int yUpdates = 0) {
         // test if left L block is outside of the game board

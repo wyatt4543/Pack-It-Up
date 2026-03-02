@@ -76,6 +76,22 @@ public class BoardScript : MonoBehaviour
         return false;
     }
 
+    // test if entire blocks are outside of the bottom of the game board
+    public bool TestOutsideBottomBlock(int x, int y, int xUpdates = 0, int yUpdates = 0)
+    {
+        // test if left L block is outside of the game board
+        for (int i = 0; i < leftLBlock.GetLength(0); i++)
+        {
+            // if any part of the block is outside of the bounds return true
+            if (TestOutsideBottom(x + leftLBlock[i, 0], y + leftLBlock[i, 1], xUpdates, yUpdates))
+            {
+                return true;
+            }
+        }
+        //if the block is not out of bounds return false
+        return false;
+    }
+
     // function for updating a block's position
     public void UpdateBlock(int x, int y, int value) {
         // left L block game board updates

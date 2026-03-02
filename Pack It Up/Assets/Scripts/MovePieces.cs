@@ -106,7 +106,7 @@ public class MovePieces : MonoBehaviour
             parentObject.transform.Translate(Vector2.down);
 
             // clear previous block position on the game board
-            boardScript.ClearBoard(gameBoardX, gameBoardY);
+            boardScript.ClearBlock(gameBoardX, gameBoardY);
 
             // update position on game board
             gameBoardY += 1;

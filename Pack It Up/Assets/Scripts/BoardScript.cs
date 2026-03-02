@@ -29,15 +29,18 @@ public class BoardScript : MonoBehaviour
 
 
     // function for clearing a previous block's position
-    public void ClearBoard(int x, int y) {
+    public void ClearBlock(int x, int y) {
         // clear previous L block on board
         UpdateBoard(x, y, 0);
         UpdateBoard(x, y + 1, 0);
         UpdateBoard(x + 1, y + 1, 0);
         UpdateBoard(x + 2, y + 1, 0);
     }
-    
+
     // function for updating a block's position
+    public void UpdateBlock(int x, int y, int newX, int newY) {
+
+    }
 
     // function for updating the game board
     public void UpdateBoard(int x, int y, int value) {

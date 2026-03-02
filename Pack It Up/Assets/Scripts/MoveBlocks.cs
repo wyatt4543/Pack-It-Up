@@ -18,8 +18,10 @@ public class MoveBlocks : MonoBehaviour
     public float defaultYPos;
     private int gameBoardX, gameBoardY = 0;
 
-    // rate of movement variables
+    // movement variables
     private int DropRate = 1;
+    private float movementX;
+    private float movementY;
 
     // timer variables
     private float defaultFallTimer = 1.5f;
@@ -143,11 +145,15 @@ public class MoveBlocks : MonoBehaviour
     // move the block based on player inputs
     public void Move()
     {
+        // make variables to keep player inputs rounded to 1
+        movementX = Mathf.Ceil(moveInput.x);
+        movementY = Mathf.Ceil(moveInput.y);
+
         // test if the next player postion is not off of the board
-        if (!boardScript.TestOutsideBlock(gameBoardX, gameBoardY, (int)moveInput.x, -(int)moveInput.y))
+        if (!boardScript.TestOutsideBlock(gameBoardX, gameBoardY, (int)movementX, -(int)movementY))
         {
             // find the next player position
-            Vector2 nextPos = new Vector2(parentObject.transform.position.x + moveInput.x, parentObject.transform.position.y + moveInput.y);
+            Vector2 nextPos = new Vector2(parentObject.transform.position.x + movementX, parentObject.transform.position.y + movementY);
 
             // update the player's visual position
             parentObject.transform.position = nextPos;
@@ -156,8 +162,8 @@ public class MoveBlocks : MonoBehaviour
             boardScript.UpdateBlock(gameBoardX, gameBoardY, 0);
 
             // update player's position on actual game board
-            gameBoardX += (int)moveInput.x;
-            gameBoardY -= (int)moveInput.y;
+            gameBoardX += (int)movementX;
+            gameBoardY -= (int)movementY;
             boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
 
             //rotation detection

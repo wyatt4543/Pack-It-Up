@@ -27,6 +27,18 @@ public class BoardScript : MonoBehaviour
         { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
 
+    // function for testing if the next block position will go out of bounds
+    // true means outside of bounds
+    public bool TestOutside(int x, int y, int xUpdates = 0, int yUpdates = 0) {
+        if ((x + xUpdates > 10) || (y + yUpdates > 20))
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     // function for updating a block's position
     public void UpdateBlock(int x, int y, int value) {
         // left L piece game board updates

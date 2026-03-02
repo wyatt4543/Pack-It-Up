@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -113,7 +114,7 @@ public class MoveBlocks : MonoBehaviour
         }
 
         // self destruct on hitting the bottom of the screen
-        if (parentObject.transform.position.y == -10f) {
+        if (boardScript.TestOutsideBottomBlock(gameBoardY, 1)) {
             Destroy(this);
         }
     }

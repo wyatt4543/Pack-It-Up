@@ -49,7 +49,7 @@ public class BoardScript : MonoBehaviour
     }
 
     // function for testing if the next block position will go out of bounds for the bottom
-    public bool TestOutsideBottom(int x, int y, int xUpdates = 0, int yUpdates = 0) {
+    public bool TestOutsideBottom(int y, int yUpdates) {
         // if it is outside of bounds of 10 x 20 box at the bottom return true
         if (y + yUpdates > 19)
         {
@@ -77,13 +77,13 @@ public class BoardScript : MonoBehaviour
     }
 
     // test if entire blocks are outside of the bottom of the game board
-    public bool TestOutsideBottomBlock(int x, int y, int xUpdates = 0, int yUpdates = 0)
+    public bool TestOutsideBottomBlock(int y, int yUpdates)
     {
         // test if left L block is outside of the game board
         for (int i = 0; i < leftLBlock.GetLength(0); i++)
         {
             // if any part of the block is outside of the bounds return true
-            if (TestOutsideBottom(x + leftLBlock[i, 0], y + leftLBlock[i, 1], xUpdates, yUpdates))
+            if (TestOutsideBottom(y + leftLBlock[i, 1], yUpdates))
             {
                 return true;
             }

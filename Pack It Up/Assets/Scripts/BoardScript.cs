@@ -103,14 +103,14 @@ public class BoardScript : MonoBehaviour
 
     // move the block to the lowest point & send data for visually moving the block
     public int DropBlock(int x, int y) {
-        print(gameBoard.GetLength(0));
+        print(heightOfGameBoard);
         print(y);
         print(heightOfGameBoard - (y + leftLBlockOffset));
         // clear previous block position on the game board
         UpdateBlock(x, y, 0);
 
         //get the bottom board y
-        y = gameBoard.GetLength(0) - (y + leftLBlockOffset);
+        y = heightOfGameBoard - (y + leftLBlockOffset);
 
         // update player's position on actual game board
         UpdateBlock(x, y, 1);

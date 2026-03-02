@@ -15,7 +15,7 @@ public class MovePieces : MonoBehaviour
     // position variables
     public float defaultXPos;
     public float defaultYPos;
-    private float gameBoardX, gameBoardY = 0;
+    private int gameBoardX, gameBoardY = 0;
     private float edgeOfBoardX;
     private float edgeOfBoardY;
     
@@ -45,7 +45,15 @@ public class MovePieces : MonoBehaviour
         autoMoveTimer = defaultAutoMoveTimer;
         autoMoveCapTimer = defaultAutoMoveCapTimer;
 
+        // Initialize postion on game board
         parentObject.transform.position = new Vector2(defaultXPos, defaultYPos);
+        
+        // left L piece game board
+        clearScript.UpdateBoard(0, 0, 1);
+        clearScript.UpdateBoard(0, 1, 1);
+        clearScript.UpdateBoard(1, 1, 1);
+        clearScript.UpdateBoard(2, 1, 1);
+
 
         edgeOfBoardX = Mathf.Abs(transform.position.x);
         edgeOfBoardY = Mathf.Abs(transform.position.y);
@@ -91,8 +99,18 @@ public class MovePieces : MonoBehaviour
         // move down 1 unit every second
         if ((fallTimer -= Time.deltaTime) < 0)
         {
+            // move down physically 1 unit every second
             fallTimer = defaultFallTimer; // reset timer to 1 second
             parentObject.transform.Translate(Vector2.down);
+
+            // update position on game board
+            gameBoardY += 1;
+            
+            // left L piece game board updates
+            clearScript.UpdateBoard(gameBoardX, gameBoardY, 1);
+            clearScript.UpdateBoard(gameBoardX, gameBoardY + 1, 1);
+            clearScript.UpdateBoard(gameBoardX + 1, gameBoardY + 1, 1);
+            clearScript.UpdateBoard(gameBoardX + 2, gameBoardY + 1, 1);
         }
 
         // drop the block

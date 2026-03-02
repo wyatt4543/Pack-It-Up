@@ -58,7 +58,7 @@ public class ClearScript : MonoBehaviour
     }
 
     // function for updating the game board
-    public void UpdateBoard(int x, int y) {
-        gameBoard[x, y] = 1;
+    public void UpdateBoard(int x, int y, int value) {
+        gameBoard[x, y] = value;
     }
 }

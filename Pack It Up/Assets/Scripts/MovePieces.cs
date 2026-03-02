@@ -47,12 +47,9 @@ public class MovePieces : MonoBehaviour
 
         // Initialize postion on game board
         parentObject.transform.position = new Vector2(defaultXPos, defaultYPos);
-        
-        // left L piece game board
-        boardScript.UpdateBoard(0, 0, 1);
-        boardScript.UpdateBoard(0, 1, 1);
-        boardScript.UpdateBoard(1, 1, 1);
-        boardScript.UpdateBoard(2, 1, 1);
+
+        // put the initial left L piece game board
+        boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
 
         //print the board
         boardScript.PrintBoard();
@@ -106,11 +103,11 @@ public class MovePieces : MonoBehaviour
             parentObject.transform.Translate(Vector2.down);
 
             // clear previous block position on the game board
-            boardScript.ClearBlock(gameBoardX, gameBoardY);
+            boardScript.UpdateBlock(gameBoardX, gameBoardY, 0);
 
             // update position on game board
             gameBoardY++;
-            boardScript.UpdateBlock(gameBoardX, gameBoardY);
+            boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
 
             //print the board
             boardScript.PrintBoard();

@@ -141,21 +141,24 @@ public class MovePieces : MonoBehaviour
     // move the block based on player inputs
     public void Move()
     {
-        // find the next player position
-        Vector2 nextPos = new Vector2(parentObject.transform.position.x + moveInput.x, parentObject.transform.position.y + moveInput.y);
+        // test if the next player postion is not off of the board
+        if (!boardScript.TestOutside(gameBoardX, gameBoardY, (int)moveInput.x, (int)moveInput.y))
+        {
+            // find the next player position
+            Vector2 nextPos = new Vector2(parentObject.transform.position.x + moveInput.x, parentObject.transform.position.y + moveInput.y);
 
-        // update the player's visual position
-        parentObject.transform.position = nextPos;
-        
-        // clear previous block position on the game board
-        boardScript.UpdateBlock(gameBoardX, gameBoardY, 0);
+            // update the player's visual position
+            parentObject.transform.position = nextPos;
 
-        // update player's position on actual game board
-        gameBoardX += (int)moveInput.x;
-        gameBoardY += (int)moveInput.y;
-        boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
+            // clear previous block position on the game board
+            boardScript.UpdateBlock(gameBoardX, gameBoardY, 0);
 
-        // if the next player position is not off the board update the player position
-        //rotation detection
+            // update player's position on actual game board
+            gameBoardX += (int)moveInput.x;
+            gameBoardY += (int)moveInput.y;
+            boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
+
+            //rotation detection
+        }
     }
 }

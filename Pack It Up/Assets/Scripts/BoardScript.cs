@@ -41,14 +41,21 @@ public class BoardScript : MonoBehaviour
         }
     }
 
-    // function for updating a block's position
-    public void UpdateBlock(int x, int y, int value) {
-        // left L piece game board updates
+    public bool TestOutsideBlock(int x, int y, int xUpdates = 0, int yUpdates = 0) {
+        // left L block game board updates
         UpdateBoard(x, y, value);
         UpdateBoard(x, y + 1, value);
         UpdateBoard(x + 1, y + 1, value);
         UpdateBoard(x + 2, y + 1, value);
+    }
 
+    // function for updating a block's position
+    public void UpdateBlock(int x, int y, int value) {
+        // left L block game board updates
+        UpdateBoard(x, y, value);
+        UpdateBoard(x, y + 1, value);
+        UpdateBoard(x + 1, y + 1, value);
+        UpdateBoard(x + 2, y + 1, value);
     }
 
     // function for updating the game board

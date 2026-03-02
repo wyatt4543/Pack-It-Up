@@ -109,13 +109,8 @@ public class MovePieces : MonoBehaviour
             boardScript.ClearBlock(gameBoardX, gameBoardY);
 
             // update position on game board
-            gameBoardY += 1;
-
-            // left L piece game board updates
-            boardScript.UpdateBoard(gameBoardX, gameBoardY, 1);
-            boardScript.UpdateBoard(gameBoardX, gameBoardY + 1, 1);
-            boardScript.UpdateBoard(gameBoardX + 1, gameBoardY + 1, 1);
-            boardScript.UpdateBoard(gameBoardX + 2, gameBoardY + 1, 1);
+            gameBoardY++;
+            boardScript.UpdateBlock(gameBoardX, gameBoardY);
 
             //print the board
             boardScript.PrintBoard();

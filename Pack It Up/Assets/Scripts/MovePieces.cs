@@ -98,7 +98,7 @@ public class MovePieces : MonoBehaviour
         // move down 1 unit every second
         if ((fallTimer -= Time.deltaTime) < 0)
         {
-            // move down physically 1 unit every second
+            // move down visually 1 unit every second
             fallTimer = defaultFallTimer; // reset timer to 1 second
             parentObject.transform.Translate(Vector2.down);
 
@@ -144,7 +144,12 @@ public class MovePieces : MonoBehaviour
         // find the next player position
         Vector2 nextPos = new Vector2(parentObject.transform.position.x + moveInput.x, parentObject.transform.position.y + moveInput.y);
 
+        // update the player's visual position
         parentObject.transform.position = nextPos;
+
+        // update player's position on actual game board
+        gameBoardX += (int)moveInput.x;
+        gameBoardY += (int)moveInput.y;
         // if the next player position is not off the board update the player position
         //rotation detection
     }

@@ -492,6 +492,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2429031589550174656, guid: 365a64ab14f599348bbf20cd129211a9, type: 3}
+      propertyPath: gameBoard
+      value: 
+      objectReference: {fileID: 1080628669}
     - target: {fileID: 7045423531148672006, guid: 365a64ab14f599348bbf20cd129211a9, type: 3}
       propertyPath: m_Name
       value: TallBlockParent
@@ -553,6 +557,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4335129609559860517, guid: 4b8e29bbd8ee7354da0795baeab0d6b5, type: 3}
+      propertyPath: gameBoard
+      value: 
+      objectReference: {fileID: 1080628669}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

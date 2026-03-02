@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovePieces
   parentObject: {fileID: 7045423531148672006}
+  gameBoard: {fileID: 0}
 --- !u!114 &6032526125617459808
 MonoBehaviour:
   m_ObjectHideFlags: 0

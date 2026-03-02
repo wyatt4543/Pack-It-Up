@@ -9,7 +9,7 @@ public class MovePieces : MonoBehaviour
 {
     public GameObject parentObject;
     private ClearScript clearScript;
-    public GameObject gameBoard;
+    private GameObject gameBoard;
     private float edgeOfBoardX;
     private float edgeOfBoardY;
     
@@ -27,6 +27,7 @@ public class MovePieces : MonoBehaviour
     {
         // Initialize object variables
         playerInput = GetComponent<PlayerInput>();
+        gameBoard = GameObject.Find("Background");
         clearScript = gameBoard.GetComponent<ClearScript>();
 
         // Initialize timers

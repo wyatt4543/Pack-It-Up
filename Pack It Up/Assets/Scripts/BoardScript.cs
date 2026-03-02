@@ -40,24 +40,18 @@ public class BoardScript : MonoBehaviour
     // true means outside of bounds
     public bool TestOutside(int x, int y, int xUpdates = 0, int yUpdates = 0) {
         // if it is outside of bounds of 10 x 20 box return true
-        print("block position: {" + x + ", " + y + "}");
-        print("yUpdates: " + yUpdates);
-        print("block position after update: {" + x + ", " + (y + yUpdates) + "}");
         if ((x + xUpdates > 9) || (x + xUpdates < 0) || (y + yUpdates > 19))
         {
-            print("block out of bounds");
             return true;
         }
         //otherwise return false
         else {
-            print("block in bounds");
             return false;
         }
     }
 
     // test if entire blocks are outside of the game board
     public bool TestOutsideBlock(int x, int y, int xUpdates = 0, int yUpdates = 0) {
-        print("~~new block test~~");
         // test if left L block is outside of the game board
         for (int i = 0; i < leftLBlock.GetLength(0); i++) {
             // if any part of the block is outside of the bounds return true

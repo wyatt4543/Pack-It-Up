@@ -105,11 +105,8 @@ public class MovePieces : MonoBehaviour
             fallTimer = defaultFallTimer; // reset timer to 1 second
             parentObject.transform.Translate(Vector2.down);
 
-            // clear previous stuff on board
-            boardScript.UpdateBoard(gameBoardX, gameBoardY, 0);
-            boardScript.UpdateBoard(gameBoardX, gameBoardY + 1, 0);
-            boardScript.UpdateBoard(gameBoardX + 1, gameBoardY + 1, 0);
-            boardScript.UpdateBoard(gameBoardX + 2, gameBoardY + 1, 0);
+            // clear previous block position on the game board
+            boardScript.ClearBoard(gameBoardX, gameBoardY);
 
             // update position on game board
             gameBoardY += 1;

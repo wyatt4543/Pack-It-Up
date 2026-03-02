@@ -28,17 +28,16 @@ public class BoardScript : MonoBehaviour
     };
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
+    // function for clearing a previous block's position
+    public void ClearBoard(int x, int y) {
+        // clear previous L block on board
+        UpdateBoard(x, y, 0);
+        UpdateBoard(x, y + 1, 0);
+        UpdateBoard(x + 1, y + 1, 0);
+        UpdateBoard(x + 2, y + 1, 0);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+    // function for updating a block's position
 
     // function for updating the game board
     public void UpdateBoard(int x, int y, int value) {

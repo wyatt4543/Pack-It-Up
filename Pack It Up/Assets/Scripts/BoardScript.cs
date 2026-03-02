@@ -41,6 +41,8 @@ public class BoardScript : MonoBehaviour
     public bool TestOutside(int x, int y, int xUpdates = 0, int yUpdates = 0) {
         // if it is outside of bounds of 10 x 20 box return true
         print("block position: {" + x + ", " + y + "}");
+        print("yUpdates: " + yUpdates);
+        print("block position after update: {" + x + ", " + (y + yUpdates) + "}");
         if ((x + xUpdates > 9) || (x + xUpdates < 0) || (y + yUpdates > 19))
         {
             print("block out of bounds");

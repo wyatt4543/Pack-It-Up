@@ -34,6 +34,8 @@ public class BoardScript : MonoBehaviour
         {0, 1}, {1, 1}, {2, 1}
     };
 
+    private int leftLBlockOffset = 1;
+
     // function for testing if the next block position will go out of bounds
     // true means outside of bounds
     public bool TestOutside(int x, int y, int xUpdates = 0, int yUpdates = 0) {
@@ -87,8 +89,22 @@ public class BoardScript : MonoBehaviour
                 return true;
             }
         }
-        //if the block is not out of bounds return false
+        // if the block is not out of bounds return false
         return false;
+    }
+
+    // move the block to the lowest point & send data for visually moving the block
+    public int DropBlock(int x, int y) {
+        // clear previous block position on the game board
+        UpdateBlock(x, y, 0);
+
+        //get the bottom board y
+        y = leftLBlock.GetLength(0) - (y + leftLBlockOffset);
+
+        // update player's position on actual game board
+        UpdateBlock(x, y, 1);
+        PrintBoard();
+        return y;
     }
 
     // function for updating a block's position

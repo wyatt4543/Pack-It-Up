@@ -109,7 +109,7 @@ public class MoveBlocks : MonoBehaviour
 
         // drop the block
         if (playerInput.actions["Drop"].WasPressedThisFrame()) {
-            parentObject.transform.position = new Vector2(parentObject.transform.position.x, -10f);
+            parentObject.transform.position = new Vector2(parentObject.transform.position.x, -boardScript.DropBlock(gameBoardX,gameBoardY));
             Destroy(this);
         }
 

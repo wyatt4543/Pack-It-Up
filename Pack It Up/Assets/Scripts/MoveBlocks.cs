@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
-public class MovePieces : MonoBehaviour
+public class MoveBlocks : MonoBehaviour
 {
     // game object and script variables
     public GameObject parentObject;
@@ -50,7 +50,7 @@ public class MovePieces : MonoBehaviour
         // Initialize postion on game board
         parentObject.transform.position = new Vector2(defaultXPos, defaultYPos);
 
-        // put the initial left L piece game board
+        // put the initial left L block game board
         boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
 
         //print the board

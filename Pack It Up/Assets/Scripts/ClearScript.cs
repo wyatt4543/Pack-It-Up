@@ -43,6 +43,10 @@ public class ClearScript : MonoBehaviour
     // function for updating the game board
     public void UpdateBoard(int x, int y, int value) {
         gameBoard[y, x] = value;
+    }
+
+    //function for printing the board
+    public void PrintBoard() {
         // Get the number of rows and columns
         int rows = gameBoard.GetLength(0);
         int cols = gameBoard.GetLength(1);

@@ -54,6 +54,8 @@ public class MovePieces : MonoBehaviour
         clearScript.UpdateBoard(1, 1, 1);
         clearScript.UpdateBoard(2, 1, 1);
 
+        //print the board
+        clearScript.PrintBoard();
 
         edgeOfBoardX = Mathf.Abs(transform.position.x);
         edgeOfBoardY = Mathf.Abs(transform.position.y);
@@ -103,14 +105,23 @@ public class MovePieces : MonoBehaviour
             fallTimer = defaultFallTimer; // reset timer to 1 second
             parentObject.transform.Translate(Vector2.down);
 
+            // clear previous stuff on board
+            clearScript.UpdateBoard(gameBoardX, gameBoardY, 0);
+            clearScript.UpdateBoard(gameBoardX, gameBoardY + 1, 0);
+            clearScript.UpdateBoard(gameBoardX + 1, gameBoardY + 1, 0);
+            clearScript.UpdateBoard(gameBoardX + 2, gameBoardY + 1, 0);
+
             // update position on game board
             gameBoardY += 1;
-            
+
             // left L piece game board updates
             clearScript.UpdateBoard(gameBoardX, gameBoardY, 1);
             clearScript.UpdateBoard(gameBoardX, gameBoardY + 1, 1);
             clearScript.UpdateBoard(gameBoardX + 1, gameBoardY + 1, 1);
             clearScript.UpdateBoard(gameBoardX + 2, gameBoardY + 1, 1);
+
+            //print the board
+            clearScript.PrintBoard();
         }
 
         // drop the block

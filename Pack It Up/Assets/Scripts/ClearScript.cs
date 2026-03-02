@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ClearScript : MonoBehaviour
 {
-    public int[,] gameGrid = new int[,]
+    public int[,] gameBoard = new int[,]
     {
         { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -38,8 +38,8 @@ public class ClearScript : MonoBehaviour
     void Update()
     {
         // Get the number of rows and columns
-        int rows = gameGrid.GetLength(0);
-        int cols = gameGrid.GetLength(1);
+        int rows = gameBoard.GetLength(0);
+        int cols = gameBoard.GetLength(1);
         string combineString = "";
 
         // Iterate through each row
@@ -49,11 +49,16 @@ public class ClearScript : MonoBehaviour
             for (int j = 0; j < cols; j++)
             {
                 // Append the element to the string using the concatenation operator +=
-                combineString += gameGrid[i, j] + " ";
+                combineString += gameBoard[i, j] + " ";
             }
             // Log the complete row string to the Unity console [1]
             combineString += "\n";
         }
         print(combineString);
+    }
+
+    // function for updating the game board
+    public void UpdateBoard(int x, int y) {
+        gameBoard[x, y] = 1;
     }
 }

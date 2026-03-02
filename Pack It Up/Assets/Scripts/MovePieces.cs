@@ -26,6 +26,7 @@ public class MovePieces : MonoBehaviour
     {
         // Initialize object variables
         playerInput = GetComponent<PlayerInput>();
+        clearScript = GetComponent<ClearScript>();
 
         // Initialize timers
         fallTimer = defaultFallTimer;
@@ -78,6 +79,7 @@ public class MovePieces : MonoBehaviour
         {
             fallTimer = defaultFallTimer; // reset timer to 1 second
             parentObject.transform.Translate(Vector3.down);
+            clearScript.UpdateBoard(0,0);
         }
 
         // drop the block

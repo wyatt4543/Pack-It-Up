@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class BoardScript : MonoBehaviour
 {
@@ -52,11 +53,9 @@ public class BoardScript : MonoBehaviour
 
     public bool TestOutsideBlock(int x, int y, int xUpdates = 0, int yUpdates = 0) {
         // test if left L block is outside of the game board
-
-        TestOutside(x, y, xUpdates, yUpdates);
-        TestOutside(x, y + 1, xUpdates, yUpdates);
-        TestOutside(x + 1, y + 1, xUpdates, yUpdates);
-        TestOutside(x + 2, y + 1, xUpdates, yUpdates);
+        for (int i = 0; i < leftLBlock.GetLength(0); i++) {
+            TestOutside(x + leftLBlock[i, 0], y + leftLBlock[i, 1], xUpdates, yUpdates);
+        }
         return false;
     }
 

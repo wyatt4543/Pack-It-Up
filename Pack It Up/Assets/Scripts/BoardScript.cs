@@ -28,11 +28,11 @@ public class BoardScript : MonoBehaviour
         { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
 
-    // make an array for the leftLBlock
+    // make an array for the left L block
     public int[,] leftLBlock = new int[,]
     {
         {0, 0},
-        {1, 0}, {1, 1}, {1, 2}
+        {0, 1}, {1, 1}, {2, 1}
     };
 
     // function for testing if the next block position will go out of bounds

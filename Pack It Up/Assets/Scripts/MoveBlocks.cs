@@ -92,7 +92,7 @@ public class MoveBlocks : MonoBehaviour
                 transform.Rotate(0, 0, -90);
             }
         }
-        /*
+        
         // move down 1 unit every second
         if ((fallTimer -= Time.deltaTime) < 0)
         {
@@ -112,7 +112,7 @@ public class MoveBlocks : MonoBehaviour
                 //print the board
                 boardScript.PrintBoard();
             }
-        }*/
+        }
 
         // drop the block
         if (playerInput.actions["Drop"].WasPressedThisFrame()) {

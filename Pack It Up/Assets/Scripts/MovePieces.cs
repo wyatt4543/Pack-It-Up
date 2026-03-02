@@ -1,4 +1,5 @@
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -16,8 +17,6 @@ public class MovePieces : MonoBehaviour
     public float defaultXPos;
     public float defaultYPos;
     private int gameBoardX, gameBoardY = 0;
-    private float edgeOfBoardX;
-    private float edgeOfBoardY;
     
     // timer variables
     private float defaultFallTimer = 1.5f;
@@ -53,9 +52,6 @@ public class MovePieces : MonoBehaviour
 
         //print the board
         boardScript.PrintBoard();
-
-        edgeOfBoardX = Mathf.Abs(transform.position.x);
-        edgeOfBoardY = Mathf.Abs(transform.position.y);
     }
 
     // Update is called once per frame
@@ -98,19 +94,22 @@ public class MovePieces : MonoBehaviour
         // move down 1 unit every second
         if ((fallTimer -= Time.deltaTime) < 0)
         {
-            // move down visually 1 unit every second
-            fallTimer = defaultFallTimer; // reset timer to 1 second
-            parentObject.transform.Translate(Vector2.down);
+            // test if the next player postion is not off of the board
+            if (!boardScript.TestOutside(gameBoardX, gameBoardY, 0, 1)) {
+                // move down visually 1 unit every second
+                fallTimer = defaultFallTimer; // reset timer to 1 second
+                parentObject.transform.Translate(Vector2.down);
 
-            // clear previous block position on the game board
-            boardScript.UpdateBlock(gameBoardX, gameBoardY, 0);
+                // clear previous block position on the game board
+                boardScript.UpdateBlock(gameBoardX, gameBoardY, 0);
 
-            // update position on game board
-            gameBoardY++;
-            boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
+                // update position on game board
+                gameBoardY++;
+                boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
 
-            //print the board
-            boardScript.PrintBoard();
+                //print the board
+                boardScript.PrintBoard();
+            }
         }
 
         // drop the block

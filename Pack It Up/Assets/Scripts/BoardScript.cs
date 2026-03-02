@@ -34,7 +34,15 @@ public class BoardScript : MonoBehaviour
         {0, 1}, {1, 1}, {2, 1}
     };
 
+    // lengths of things
+    private int heightOfGameBoard;
     private int leftLBlockOffset = 1;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        heightOfGameBoard = gameBoard.GetLength(0) - 1;
+    }
 
     // function for testing if the next block position will go out of bounds
     // true means outside of bounds
@@ -95,11 +103,14 @@ public class BoardScript : MonoBehaviour
 
     // move the block to the lowest point & send data for visually moving the block
     public int DropBlock(int x, int y) {
+        print(gameBoard.GetLength(0));
+        print(y);
+        print(heightOfGameBoard - (y + leftLBlockOffset));
         // clear previous block position on the game board
         UpdateBlock(x, y, 0);
 
         //get the bottom board y
-        y = leftLBlock.GetLength(0) - (y + leftLBlockOffset);
+        y = gameBoard.GetLength(0) - (y + leftLBlockOffset);
 
         // update player's position on actual game board
         UpdateBlock(x, y, 1);

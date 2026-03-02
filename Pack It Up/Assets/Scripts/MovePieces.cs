@@ -17,7 +17,10 @@ public class MovePieces : MonoBehaviour
     public float defaultXPos;
     public float defaultYPos;
     private int gameBoardX, gameBoardY = 0;
-    
+
+    // rate of movement variables
+    private int DropRate = 1;
+
     // timer variables
     private float defaultFallTimer = 1.5f;
     private float defaultAutoMoveTimer = 0.1f;
@@ -95,7 +98,7 @@ public class MovePieces : MonoBehaviour
         if ((fallTimer -= Time.deltaTime) < 0)
         {
             // test if the next player postion is not off of the board
-            if (!boardScript.TestOutside(gameBoardX, gameBoardY, 0, 1)) {
+            if (!boardScript.TestOutside(gameBoardX, gameBoardY, 0, DropRate)) {
                 // move down visually 1 unit every second
                 fallTimer = defaultFallTimer; // reset timer to 1 second
                 parentObject.transform.Translate(Vector2.down);
@@ -104,7 +107,7 @@ public class MovePieces : MonoBehaviour
                 boardScript.UpdateBlock(gameBoardX, gameBoardY, 0);
 
                 // update position on game board
-                gameBoardY++;
+                gameBoardY+= DropRate;
                 boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
 
                 //print the board

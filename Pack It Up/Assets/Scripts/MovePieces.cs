@@ -9,7 +9,7 @@ public class MovePieces : MonoBehaviour
 {
     // game object and script variables
     public GameObject parentObject;
-    private ClearScript clearScript;
+    private BoardScript boardScript;
     private GameObject gameBoard;
     
     // position variables
@@ -38,7 +38,7 @@ public class MovePieces : MonoBehaviour
         // Initialize object variables
         playerInput = GetComponent<PlayerInput>();
         gameBoard = GameObject.Find("Background");
-        clearScript = gameBoard.GetComponent<ClearScript>();
+        boardScript = gameBoard.GetComponent<BoardScript>();
 
         // Initialize timers
         fallTimer = defaultFallTimer;
@@ -49,13 +49,13 @@ public class MovePieces : MonoBehaviour
         parentObject.transform.position = new Vector2(defaultXPos, defaultYPos);
         
         // left L piece game board
-        clearScript.UpdateBoard(0, 0, 1);
-        clearScript.UpdateBoard(0, 1, 1);
-        clearScript.UpdateBoard(1, 1, 1);
-        clearScript.UpdateBoard(2, 1, 1);
+        boardScript.UpdateBoard(0, 0, 1);
+        boardScript.UpdateBoard(0, 1, 1);
+        boardScript.UpdateBoard(1, 1, 1);
+        boardScript.UpdateBoard(2, 1, 1);
 
         //print the board
-        clearScript.PrintBoard();
+        boardScript.PrintBoard();
 
         edgeOfBoardX = Mathf.Abs(transform.position.x);
         edgeOfBoardY = Mathf.Abs(transform.position.y);
@@ -106,22 +106,22 @@ public class MovePieces : MonoBehaviour
             parentObject.transform.Translate(Vector2.down);
 
             // clear previous stuff on board
-            clearScript.UpdateBoard(gameBoardX, gameBoardY, 0);
-            clearScript.UpdateBoard(gameBoardX, gameBoardY + 1, 0);
-            clearScript.UpdateBoard(gameBoardX + 1, gameBoardY + 1, 0);
-            clearScript.UpdateBoard(gameBoardX + 2, gameBoardY + 1, 0);
+            boardScript.UpdateBoard(gameBoardX, gameBoardY, 0);
+            boardScript.UpdateBoard(gameBoardX, gameBoardY + 1, 0);
+            boardScript.UpdateBoard(gameBoardX + 1, gameBoardY + 1, 0);
+            boardScript.UpdateBoard(gameBoardX + 2, gameBoardY + 1, 0);
 
             // update position on game board
             gameBoardY += 1;
 
             // left L piece game board updates
-            clearScript.UpdateBoard(gameBoardX, gameBoardY, 1);
-            clearScript.UpdateBoard(gameBoardX, gameBoardY + 1, 1);
-            clearScript.UpdateBoard(gameBoardX + 1, gameBoardY + 1, 1);
-            clearScript.UpdateBoard(gameBoardX + 2, gameBoardY + 1, 1);
+            boardScript.UpdateBoard(gameBoardX, gameBoardY, 1);
+            boardScript.UpdateBoard(gameBoardX, gameBoardY + 1, 1);
+            boardScript.UpdateBoard(gameBoardX + 1, gameBoardY + 1, 1);
+            boardScript.UpdateBoard(gameBoardX + 2, gameBoardY + 1, 1);
 
             //print the board
-            clearScript.PrintBoard();
+            boardScript.PrintBoard();
         }
 
         // drop the block

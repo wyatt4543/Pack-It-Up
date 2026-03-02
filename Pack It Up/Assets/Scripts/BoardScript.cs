@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ClearScript : MonoBehaviour
+public class BoardScript : MonoBehaviour
 {
     public int[,] gameBoard = new int[,]
     {

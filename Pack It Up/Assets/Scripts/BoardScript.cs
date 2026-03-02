@@ -48,6 +48,21 @@ public class BoardScript : MonoBehaviour
         }
     }
 
+    // function for testing if the next block position will go out of bounds for the bottom
+    public bool TestOutsideBottom(int x, int y, int xUpdates = 0, int yUpdates = 0) {
+        // if it is outside of bounds of 10 x 20 box at the bottom return true
+        if (y + yUpdates > 19)
+        {
+            return true;
+        }
+        //otherwise return false
+        else
+        {
+            return false;
+        }
+    }
+
+
     // test if entire blocks are outside of the game board
     public bool TestOutsideBlock(int x, int y, int xUpdates = 0, int yUpdates = 0) {
         // test if left L block is outside of the game board
@@ -72,7 +87,7 @@ public class BoardScript : MonoBehaviour
     // function for updating a block's rotation
     public void UpdateBlockRotation(int direction)
     {
-        
+        // todo: piece rotation
     }
 
     // function for updating the game board

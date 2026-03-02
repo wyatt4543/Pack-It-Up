@@ -108,9 +108,6 @@ public class MoveBlocks : MonoBehaviour
                 // update position on game board
                 gameBoardY+= DropRate;
                 boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
-
-                //print the board
-                boardScript.PrintBoard();
             }
         }
 

@@ -146,10 +146,15 @@ public class MovePieces : MonoBehaviour
 
         // update the player's visual position
         parentObject.transform.position = nextPos;
+        
+        // clear previous block position on the game board
+        boardScript.UpdateBlock(gameBoardX, gameBoardY, 0);
 
         // update player's position on actual game board
         gameBoardX += (int)moveInput.x;
         gameBoardY += (int)moveInput.y;
+        boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
+
         // if the next player position is not off the board update the player position
         //rotation detection
     }

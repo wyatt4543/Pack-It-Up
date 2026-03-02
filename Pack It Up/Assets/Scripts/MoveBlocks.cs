@@ -157,7 +157,7 @@ public class MoveBlocks : MonoBehaviour
 
             // update player's position on actual game board
             gameBoardX += (int)moveInput.x;
-            gameBoardY += (int)moveInput.y;
+            gameBoardY -= (int)moveInput.y;
             boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
 
             //rotation detection

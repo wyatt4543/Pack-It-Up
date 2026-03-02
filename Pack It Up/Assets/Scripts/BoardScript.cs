@@ -69,6 +69,12 @@ public class BoardScript : MonoBehaviour
         }
     }
 
+    // function for updating a block's rotation
+    public void UpdateBlockRotation(int direction)
+    {
+        
+    }
+
     // function for updating the game board
     public void UpdateBoard(int x, int y, int value) {
         gameBoard[y, x] = value;

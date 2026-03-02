@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BoardScript : MonoBehaviour
 {
+    // make an array for the game board
     public int[,] gameBoard = new int[,]
     {
         { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -27,6 +28,13 @@ public class BoardScript : MonoBehaviour
         { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
 
+    // make an array for the leftLBlock
+    public int[,] leftLBlock = new int[,]
+    {
+        {0, 0},
+        {1, 0}, {1, 1}, {1, 2}
+    };
+
     // function for testing if the next block position will go out of bounds
     // true means outside of bounds
     public bool TestOutside(int x, int y, int xUpdates = 0, int yUpdates = 0) {
@@ -41,12 +49,14 @@ public class BoardScript : MonoBehaviour
         }
     }
 
+
     public bool TestOutsideBlock(int x, int y, int xUpdates = 0, int yUpdates = 0) {
-        // left L block game board updates
-        UpdateBoard(x, y, value);
-        UpdateBoard(x, y + 1, value);
-        UpdateBoard(x + 1, y + 1, value);
-        UpdateBoard(x + 2, y + 1, value);
+        // test if left L block is outside of the game board
+
+        TestOutside(x, y, xUpdates, yUpdates);
+        TestOutside(x, y + 1, xUpdates, yUpdates);
+        TestOutside(x + 1, y + 1, xUpdates, yUpdates);
+        TestOutside(x + 2, y + 1, xUpdates, yUpdates);
     }
 
     // function for updating a block's position

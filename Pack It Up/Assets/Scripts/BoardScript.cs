@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class BoardScript : MonoBehaviour
 {

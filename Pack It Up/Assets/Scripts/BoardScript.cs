@@ -30,10 +30,12 @@ public class BoardScript : MonoBehaviour
     // function for testing if the next block position will go out of bounds
     // true means outside of bounds
     public bool TestOutside(int x, int y, int xUpdates = 0, int yUpdates = 0) {
+        // if it is outside of bounds of 10 x 20 box return true
         if ((x + xUpdates > 10) || (y + yUpdates > 20))
         {
             return true;
         }
+        //otherwise return false
         else {
             return false;
         }

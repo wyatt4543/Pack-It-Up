@@ -98,7 +98,7 @@ public class MoveBlocks : MonoBehaviour
         if ((fallTimer -= Time.deltaTime) < 0)
         {
             // test if the next player postion is not off of the board
-            if (!boardScript.TestOutside(gameBoardX, gameBoardY, 0, DropRate)) {
+            if (!boardScript.TestOutsideBlock(gameBoardX, gameBoardY, 0, DropRate)) {
                 // move down visually 1 unit every second
                 fallTimer = defaultFallTimer; // reset timer to 1 second
                 parentObject.transform.Translate(Vector2.down);
@@ -144,7 +144,7 @@ public class MoveBlocks : MonoBehaviour
     public void Move()
     {
         // test if the next player postion is not off of the board
-        if (!boardScript.TestOutside(gameBoardX, gameBoardY, (int)moveInput.x, (int)moveInput.y))
+        if (!boardScript.TestOutsideBlock(gameBoardX, gameBoardY, (int)moveInput.x, (int)moveInput.y))
         {
             // find the next player position
             Vector2 nextPos = new Vector2(parentObject.transform.position.x + moveInput.x, parentObject.transform.position.y + moveInput.y);

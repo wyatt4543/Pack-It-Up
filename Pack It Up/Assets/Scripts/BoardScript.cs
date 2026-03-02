@@ -63,12 +63,9 @@ public class BoardScript : MonoBehaviour
     // function for updating a block's position
     public void UpdateBlock(int x, int y, int value) {
         // left L block game board updates
-        print("length of array: " + leftLBlock.GetLength(1));
-        for (int i = 0; i < 10; i++) { print(i); }
-        UpdateBoard(x, y, value);
-        UpdateBoard(x, y + 1, value);
-        UpdateBoard(x + 1, y + 1, value);
-        UpdateBoard(x + 2, y + 1, value);
+        for (int i = 0; i < leftLBlock.GetLength(0); i++) {
+            UpdateBoard(x + leftLBlock[i, 0], y + leftLBlock[i, 1], value);
+        }
     }
 
     // function for updating the game board

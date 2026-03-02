@@ -42,6 +42,8 @@ public class MovePieces : MonoBehaviour
         autoMoveTimer = defaultAutoMoveTimer;
         autoMoveCapTimer = defaultAutoMoveCapTimer;
 
+        parentObject.transform.position = new Vector2(defaultXPos, defaultYPos);
+
         edgeOfBoardX = Mathf.Abs(transform.position.x);
         edgeOfBoardY = Mathf.Abs(transform.position.y);
     }
@@ -87,12 +89,12 @@ public class MovePieces : MonoBehaviour
         if ((fallTimer -= Time.deltaTime) < 0)
         {
             fallTimer = defaultFallTimer; // reset timer to 1 second
-            parentObject.transform.Translate(Vector3.down);
+            parentObject.transform.Translate(Vector2.down);
         }
 
         // drop the block
         if (playerInput.actions["Drop"].WasPressedThisFrame()) {
-            parentObject.transform.position = new Vector3(parentObject.transform.position.x, -10f, parentObject.transform.position.z);
+            parentObject.transform.position = new Vector2(parentObject.transform.position.x, -10f);
             Destroy(this);
         }
 
@@ -119,7 +121,7 @@ public class MovePieces : MonoBehaviour
     public void Move()
     {
         // find the next player position
-        Vector3 nextPos = new Vector3(parentObject.transform.position.x + moveInput.x, parentObject.transform.position.y + moveInput.y, 0);
+        Vector2 nextPos = new Vector2(parentObject.transform.position.x + moveInput.x, parentObject.transform.position.y + moveInput.y);
 
         // if the next player position is not off the board update the player position
         if (Mathf.Abs(nextPos.x) <= edgeOfBoardX)

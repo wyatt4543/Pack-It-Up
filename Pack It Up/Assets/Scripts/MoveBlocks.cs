@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class MoveBlocks : MonoBehaviour
 {
     // game object and script variables
-    public GameObject parentObject;
     private BoardScript boardScript;
     private GameObject gameBoard;
     
@@ -45,7 +44,7 @@ public class MoveBlocks : MonoBehaviour
         autoMoveCapTimer = defaultAutoMoveCapTimer;
 
         // Initialize postion on game board
-        parentObject.transform.position = new Vector2(defaultXPos, defaultYPos);
+        //parentObject.transform.position = new Vector2(defaultXPos, defaultYPos);
 
         // put the initial left L block game board
         boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
@@ -91,24 +90,14 @@ public class MoveBlocks : MonoBehaviour
         // move down 1 unit every second
         if ((fallTimer -= Time.deltaTime) < 0)
         {
-            // test if the next player postion is not off of the board
-            if (!boardScript.TestOutsideBlock(gameBoardX, gameBoardY, 0, DropRate)) {
-                // move down visually 1 unit every second
-                fallTimer = defaultFallTimer; // reset timer to 1 second
-                parentObject.transform.Translate(Vector2.down);
-
-                // clear previous block position on the game board
-                boardScript.UpdateBlock(gameBoardX, gameBoardY, 0);
-
-                // update position on game board
-                gameBoardY+= DropRate;
-                boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
-            }
+            // move down visually 1 unit every second
+            fallTimer = defaultFallTimer; // reset timer to 1 second
+            transform.Translate(Vector2.down);
         }
 
         // drop the block
         if (playerInput.actions["Drop"].WasPressedThisFrame()) {
-            parentObject.transform.position = new Vector2(parentObject.transform.position.x, parentObject.transform.position.y - boardScript.DropBlock(gameBoardX,gameBoardY));
+            //parentObject.transform.position = new Vector2(parentObject.transform.position.x, parentObject.transform.position.y - boardScript.DropBlock(gameBoardX,gameBoardY));
             Destroy(this);
         }
 
@@ -124,6 +113,8 @@ public class MoveBlocks : MonoBehaviour
         if (context.action.name == "Move")
         {
             moveInput = context.ReadValue<Vector2>();
+            movementX = Mathf.Ceil(moveInput.x);
+            movementY = Mathf.Ceil(moveInput.y);
         }
         else if (context.action.name == "Rotate")
         { 
@@ -134,28 +125,8 @@ public class MoveBlocks : MonoBehaviour
     // move the block based on player inputs
     public void Move()
     {
-        // make variables to keep player inputs rounded to 1
-        movementX = Mathf.Ceil(moveInput.x);
-        movementY = Mathf.Ceil(moveInput.y);
 
-        // test if the next player postion is not off of the board
-        if (!boardScript.TestOutsideBlock(gameBoardX, gameBoardY, (int)movementX, -(int)movementY))
-        {
-            // find the next player position
-            Vector2 nextPos = new Vector2(parentObject.transform.position.x + movementX, parentObject.transform.position.y + movementY);
-
-            // update the player's visual position
-            parentObject.transform.position = nextPos;
-
-            // clear previous block position on the game board
-            boardScript.UpdateBlock(gameBoardX, gameBoardY, 0);
-
-            // update player's position on actual game board
-            gameBoardX += (int)movementX;
-            gameBoardY -= (int)movementY;
-            boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
-
-            //rotation detection
-        }
+        // move the block left or right
+        transform.position = new Vector2(transform.position.x + movementX, transform.position.y + movementY);  
     }
 }

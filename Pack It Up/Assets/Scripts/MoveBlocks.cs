@@ -223,7 +223,7 @@ public class MoveBlocks : MonoBehaviour
                     grid[j, y] = null;
 
                     //move the square down
-                    grid[j, newY].transform.position -= new Vector3(0, newY, 0);
+                    grid[j, newY].transform.position = new Vector3(j, newY, 0);
                 }
             }
         }

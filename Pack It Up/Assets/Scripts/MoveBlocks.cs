@@ -113,6 +113,7 @@ public class MoveBlocks : MonoBehaviour
                 // self destruct on hitting the bottom of the screen
                 spawnBlockScript.NewBlock();
                 AddToGrid();
+                CheckForLines();
                 Destroy(this);
             }
         }
@@ -149,6 +150,28 @@ public class MoveBlocks : MonoBehaviour
         }
     }
 
+    // check for a line clear
+    public void CheckForLines()
+    {
+        for (int i = height - 1; i >= 0; i--)
+        {
+            // if line clear
+            if (HasLine())
+            {
+                // delete the line with the line clear
+                DeleteLine(i);
+                
+                // move the rows down
+                RowDown(i);
+            }
+        }
+    }
+
+    public bool HasLine()
+    {
+
+    }
+
     // check if the player's movements were valid
     public void AddToGrid()
     {
@@ -162,7 +185,6 @@ public class MoveBlocks : MonoBehaviour
             grid[roundedX, roundedY] = children;
         }
     }
-
 
     // check if the player's movements were valid
     public bool ValidMove(int xUpdate, int yUpdate = 0) {

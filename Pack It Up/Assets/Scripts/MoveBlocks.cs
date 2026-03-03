@@ -17,6 +17,7 @@ public class MoveBlocks : MonoBehaviour
     public static int height = 20;
 
     // movement variables
+    public Vector2 rotationPoint;
     private float movementX;
     private float movementY;
 
@@ -85,10 +86,17 @@ public class MoveBlocks : MonoBehaviour
         // rotate the block
         if (playerInput.actions["Rotate"].WasPressedThisFrame())
         {
+            // if up key pressed
             if (rotateInput == 1) 
             {
-                transform.Rotate(0, 0, 90);
-            } 
+                
+                transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
+                if (!ValidRotation())
+                {
+                    transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
+                }
+            }
+            // if z key pressed
             else
             {
                 transform.Rotate(0, 0, -90);
@@ -143,7 +151,7 @@ public class MoveBlocks : MonoBehaviour
         }
     }
 
-    // check if the players movements were valid
+    // check if the player's movements were valid
     public bool ValidMove(int xUpdate, int yUpdate = 0) {
         foreach (Transform children in transform)
         {
@@ -157,6 +165,27 @@ public class MoveBlocks : MonoBehaviour
 
             // check if the block is on any side of the box
             if (updatedX < 0 || updatedX >= width || updatedY < 0 || updatedY >= height)
+            {
+                // if it is don't allow movement
+                return false;
+            }
+        }
+
+        // if it isn't going to move outside allow movement
+        return true;
+    }
+
+    // check if the player's rotation was valid
+    public bool ValidRotation()
+    {
+        foreach (Transform children in transform)
+        {
+            // round the x and y positions
+            int roundedX = Mathf.RoundToInt(children.position.x);
+            int roundedY = Mathf.RoundToInt(children.position.y);
+
+            // check if the block is on any side of the box
+            if (roundedX < 0 || roundedX >= width || roundedY < 0 || roundedY >= height)
             {
                 // if it is don't allow movement
                 return false;

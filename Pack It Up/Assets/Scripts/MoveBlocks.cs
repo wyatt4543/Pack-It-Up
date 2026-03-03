@@ -10,6 +10,7 @@ public class MoveBlocks : MonoBehaviour
     //gameboard variables
     public static int width = 10;
     public static int height = 20;
+    private static Transform[,] grid = new Transform[width, height]; 
 
     // movement variables
     private float movementX;
@@ -111,6 +112,7 @@ public class MoveBlocks : MonoBehaviour
             {
                 // self destruct on hitting the bottom of the screen
                 spawnBlockScript.NewBlock();
+                AddToGrid();
                 Destroy(this);
             }
         }
@@ -148,6 +150,21 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // check if the player's movements were valid
+    public void AddToGrid()
+    {
+        foreach (Transform children in transform)
+        {
+            // round the x and y positions
+            int roundedX = Mathf.RoundToInt(children.position.x);
+            int roundedY = Mathf.RoundToInt(children.position.y);
+
+            //add the block to the grid
+            grid[roundedX, roundedY] = children;
+        }
+    }
+
+
+    // check if the player's movements were valid
     public bool ValidMove(int xUpdate, int yUpdate = 0) {
         foreach (Transform children in transform)
         {
@@ -161,6 +178,13 @@ public class MoveBlocks : MonoBehaviour
 
             // check if the block is on any side of the box
             if (updatedX < 0 || updatedX >= width || updatedY < 0 || updatedY >= height)
+            {
+                // if it is don't allow movement
+                return false;
+            }
+
+            // check if the block is touching any other piece
+            if (grid[roundedX, roundedY] != null)
             {
                 // if it is don't allow movement
                 return false;

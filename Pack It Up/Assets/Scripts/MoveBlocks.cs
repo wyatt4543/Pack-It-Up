@@ -199,10 +199,13 @@ public class MoveBlocks : MonoBehaviour
     // function for moving the blocks down
     public void RowDown(int i)
     {
+        // look at the y's from current line upwards
         for (int y = i; y < height; y++)
         {
+            // loop through each x
             for (int j = 0; j < width; j++)
             {
+                // if tile is filled with a square
                 if (grid[j,y] != null)
                 {
                     // update the grid

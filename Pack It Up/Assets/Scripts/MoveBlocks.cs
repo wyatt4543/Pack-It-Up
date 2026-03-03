@@ -13,7 +13,6 @@ public class MoveBlocks : MonoBehaviour
     private int gameBoardX, gameBoardY = 0;
 
     // movement variables
-    private int DropRate = 1;
     private float movementX;
     private float movementY;
 
@@ -90,7 +89,7 @@ public class MoveBlocks : MonoBehaviour
         // move down 1 unit every second
         if ((fallTimer -= Time.deltaTime) < 0)
         {
-            // move down visually 1 unit every second
+            // move down 1 unit every second
             fallTimer = defaultFallTimer; // reset timer to 1 second
             transform.Translate(Vector2.down);
         }

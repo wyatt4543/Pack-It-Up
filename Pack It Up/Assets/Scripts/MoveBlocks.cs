@@ -4,13 +4,13 @@ using UnityEngine.InputSystem;
 public class MoveBlocks : MonoBehaviour
 {
     // game object and script variables
-    private BoardScript boardScript;
-    private GameObject gameBoard;
+    //private BoardScript boardScript;
+    //private GameObject gameBoard;
     
     // position variables
-    public float defaultXPos;
-    public float defaultYPos;
-    private int gameBoardX, gameBoardY = 0;
+    //public float defaultXPos;
+    //public float defaultYPos;
+    //private int gameBoardX, gameBoardY = 0;
 
     // movement variables
     private float movementX;
@@ -34,8 +34,8 @@ public class MoveBlocks : MonoBehaviour
     {
         // Initialize object variables
         playerInput = GetComponent<PlayerInput>();
-        gameBoard = GameObject.Find("Background");
-        boardScript = gameBoard.GetComponent<BoardScript>();
+        //gameBoard = GameObject.Find("Background");
+        //boardScript = gameBoard.GetComponent<BoardScript>();
 
         // Initialize timers
         fallTimer = defaultFallTimer;
@@ -46,7 +46,7 @@ public class MoveBlocks : MonoBehaviour
         //parentObject.transform.position = new Vector2(defaultXPos, defaultYPos);
 
         // put the initial left L block game board
-        boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
+        //boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
     }
 
     // Update is called once per frame
@@ -95,15 +95,15 @@ public class MoveBlocks : MonoBehaviour
         }
 
         // drop the block
-        if (playerInput.actions["Drop"].WasPressedThisFrame()) {
+        //if (playerInput.actions["Drop"].WasPressedThisFrame()) {
             //parentObject.transform.position = new Vector2(parentObject.transform.position.x, parentObject.transform.position.y - boardScript.DropBlock(gameBoardX,gameBoardY));
-            Destroy(this);
-        }
+        //    Destroy(this);
+        //}
 
         // self destruct on hitting the bottom of the screen
-        if (boardScript.TestOutsideBottomBlock(gameBoardY, 1)) {
-            Destroy(this);
-        }
+        //if (boardScript.TestOutsideBottomBlock(gameBoardY, 1)) {
+        //    Destroy(this);
+        //}
     }
 
     // get player inputs
@@ -124,7 +124,6 @@ public class MoveBlocks : MonoBehaviour
     // move the block based on player inputs
     public void Move()
     {
-
         // move the block left or right
         transform.position = new Vector2(transform.position.x + movementX, transform.position.y + movementY);  
     }

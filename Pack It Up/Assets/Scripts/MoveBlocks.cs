@@ -210,13 +210,20 @@ public class MoveBlocks : MonoBehaviour
                 {
                     // find the lowest the square can move down
                     int downY = y - 1;
+                    while (downY >= 0 && grid[j, downY] == null)
+                    {
+                        downY--;
+                    }
+
+                    // store the movement downward in a variable
+                    int newY = downY + 1;
                     
                     // update the grid
-                    grid[j, y - 1] = grid[j, y];
+                    grid[j, newY] = grid[j, y];
                     grid[j, y] = null;
 
                     //move the square down
-                    grid[j, y - 1].transform.position -= new Vector3(0, 1, 0);
+                    grid[j, newY].transform.position -= new Vector3(0, newY, 0);
                 }
             }
         }

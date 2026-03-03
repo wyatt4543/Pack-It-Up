@@ -156,7 +156,7 @@ public class MoveBlocks : MonoBehaviour
         for (int i = height - 1; i >= 0; i--)
         {
             // if line clear
-            if (HasLine())
+            if (HasLine(i))
             {
                 // delete the line with the line clear
                 DeleteLine(i);
@@ -167,9 +167,47 @@ public class MoveBlocks : MonoBehaviour
         }
     }
 
-    public bool HasLine()
+    public bool HasLine(int i)
     {
+        // search each line for a clear & return true or false for a clear
+        for (int j = 0; j < width; j++)
+        {
+            if (grid[j, i] == null)
+                return false;
+        }
 
+        return true;
+    }
+
+    public void DeleteLine(int i)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            // delete the game objects on the line
+            Destroy(grid[j, i].gameObject);
+
+            // update the grid
+            grid[j, i] = null;
+        }
+    }
+    
+    public void RowDown(int i)
+    {
+        for (int y = i; y < height; y++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                if (grid[j,y] != null)
+                {
+                    // update the grid
+                    grid[j, y - 1] = grid[j, y];
+                    grid[j, y] = null;
+
+                    // move the blocks down
+                    grid[j, y - 1].Translate(Vector2.down);
+                }
+            }
+        }
     }
 
     // check if the player's movements were valid

@@ -3,8 +3,9 @@ using UnityEngine.InputSystem;
 
 public class MoveBlocks : MonoBehaviour
 {
-    // transform variables
+    // transform variables & script variables
     public Transform parentTransform;
+    private SpawnBlock spawnBlockScript;
 
     //gameboard variables
     public static int width = 10;
@@ -40,6 +41,9 @@ public class MoveBlocks : MonoBehaviour
         fallTimer = defaultFallTimer;
         autoMoveTimer = defaultAutoMoveTimer;
         autoMoveCapTimer = defaultAutoMoveCapTimer;
+
+        // Initialize spawn block script
+        spawnBlockScript = FindFirstObjectByType<SpawnBlock>();
     }
 
     // Update is called once per frame
@@ -106,7 +110,7 @@ public class MoveBlocks : MonoBehaviour
             else
             {
                 // self destruct on hitting the bottom of the screen
-                FindFirstObjectByType<SpawnBlock>().NewBlock();
+                spawnBlockScript.NewBlock();
                 Destroy(this);
             }
         }

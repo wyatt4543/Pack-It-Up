@@ -208,13 +208,16 @@ public class MoveBlocks : MonoBehaviour
                 // if tile is filled with a square
                 if (grid[j,y] != null)
                 {
-                    // update the grid
-                    grid[j, y - 1] = grid[j, y];
-                    grid[j, y] = null;
-
                     // move the blocks down with gravity
                     while (ValidMove(0, -1))
+                    {
+                        // update the grid
+                        grid[j, y - 1] = grid[j, y];
+                        grid[j, y] = null;
+
+                        //move the square down
                         grid[j, y - 1].transform.position -= new Vector3(0, 1, 0);
+                    }
                 }
             }
         }

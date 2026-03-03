@@ -30,6 +30,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7815388068207644817}
+  - {fileID: 7897457441075617755}
+  - {fileID: 3790929462768683167}
+  - {fileID: 314057758695615305}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1010808466831137581
@@ -63,10 +66,7 @@ Transform:
   m_LocalPosition: {x: -1, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7897457441075617755}
-  - {fileID: 3790929462768683167}
-  - {fileID: 314057758695615305}
+  m_Children: []
   m_Father: {fileID: 1635218556250037907}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7314319267727287600
@@ -275,11 +275,11 @@ Transform:
   m_GameObject: {fileID: 1488732731975594689}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: -1, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7815388068207644817}
+  m_Father: {fileID: 1635218556250037907}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &54716925601902306
 SpriteRenderer:
@@ -366,11 +366,11 @@ Transform:
   m_GameObject: {fileID: 4932985719055413222}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7815388068207644817}
+  m_Father: {fileID: 1635218556250037907}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6010671925463570321
 SpriteRenderer:
@@ -457,11 +457,11 @@ Transform:
   m_GameObject: {fileID: 6181690287864961926}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: -1, z: 0}
+  m_LocalPosition: {x: 1, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7815388068207644817}
+  m_Father: {fileID: 1635218556250037907}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &137170535000983566
 SpriteRenderer:

@@ -100,7 +100,10 @@ public class MoveBlocks : MonoBehaviour
         {
             // move down 1 unit every second
             fallTimer = defaultFallTimer; // reset timer to 1 second
-            transform.Translate(Vector2.down);
+            if (ValidMove())
+            {
+                transform.Translate(Vector2.down);
+            }
         }
 
         // drop the block
@@ -138,15 +141,19 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // check if the players movements were valid
-    public bool ValidMove() {
+    public bool ValidMove(int xUpdate, int yUpdate = 0) {
         foreach (Transform children in transform)
         {
             // round the x and y positions
             int roundedX = Mathf.RoundToInt(children.position.x);
             int roundedY = Mathf.RoundToInt(children.position.y);
 
+            // create the updated x and y positions
+            int updatedX = roundedX + xUpdate;
+            int updatedY = roundedY + yUpdate;
+
             // check if the block is on any side of the box
-            if (roundedX < 0 || roundedX >= width || roundedY < 0 || roundedY >= height)
+            if (updatedX < 0 || updatedX >= width || updatedY < 0 || updatedY >= height)
             {
                 // if it is don't allow movement
                 return false;

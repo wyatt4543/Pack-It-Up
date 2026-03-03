@@ -145,11 +145,15 @@ public class MoveBlocks : MonoBehaviour
             int roundedX = Mathf.RoundToInt(children.position.x);
             int roundedY = Mathf.RoundToInt(children.position.y);
 
-            if (roundedX < 0 || roundedX >= width)
+            // check if the block is on any side of the box
+            if (roundedX < 0 || roundedX >= width || roundedY < 0 || roundedY >= height)
             {
+                // if it is don't allow movement
                 return false;
             }
-
         }
+
+        // if it isn't going to move outside allow movement
+        return true;
     }
 }

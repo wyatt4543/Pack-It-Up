@@ -208,18 +208,15 @@ public class MoveBlocks : MonoBehaviour
                 // if tile is filled with a square
                 if (grid[j,y] != null)
                 {
-                   // move the blocks down with gravity
-                   // update the grid
-                   print("grid[j,y]: " + grid[j,y]);
-                   print("grid[j,y - 1]: " + grid[j,y - 1]);
-                   grid[j, y - 1] = grid[j, y];
-                   print("updated grid[j,y - 1]: " + grid[j,y - 1]);
-                   grid[j, y] = null;
+                    // find the lowest the square can move down
+                    int downY = y - 1;
+                    
+                    // update the grid
+                    grid[j, y - 1] = grid[j, y];
+                    grid[j, y] = null;
 
                     //move the square down
-                    print("grid[j,y - 1].transform.position: " + grid[j, y - 1]);
                     grid[j, y - 1].transform.position -= new Vector3(0, 1, 0);
-                    print("updated grid[j,y - 1].transform.position: " + grid[j, y - 1]);
                 }
             }
         }

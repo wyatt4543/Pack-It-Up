@@ -184,7 +184,7 @@ public class MoveBlocks : MonoBehaviour
             }
 
             // check if the block is touching any other piece
-            if (grid[roundedX, roundedY] != null)
+            if (grid[updatedX, updatedY] != null)
             {
                 // if it is don't allow movement
                 return false;

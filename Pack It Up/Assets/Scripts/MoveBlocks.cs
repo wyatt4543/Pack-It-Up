@@ -198,11 +198,10 @@ public class MoveBlocks : MonoBehaviour
 
             // update the grid
             grid[j, i] = null;
-
-            // update the line clears variable & print it
-            lineClears++;
-            print("number of clears: " + lineClears);
         }
+        // update the line clears variable & print it
+        lineClears++;
+        print("number of clears: " + lineClears);
     }
     
     // function for moving the blocks down

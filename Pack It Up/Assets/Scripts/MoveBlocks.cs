@@ -6,11 +6,15 @@ public class MoveBlocks : MonoBehaviour
     // game object and script variables
     //private BoardScript boardScript;
     //private GameObject gameBoard;
-    
+
     // position variables
     //public float defaultXPos;
     //public float defaultYPos;
     //private int gameBoardX, gameBoardY = 0;
+
+    //gameboard variables
+    public static int width = 10;
+    public static int height = 20;
 
     // movement variables
     private float movementX;
@@ -32,7 +36,7 @@ public class MoveBlocks : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Initialize object variables
+        // Initialize player input
         playerInput = GetComponent<PlayerInput>();
         //gameBoard = GameObject.Find("Background");
         //boardScript = gameBoard.GetComponent<BoardScript>();
@@ -124,7 +128,11 @@ public class MoveBlocks : MonoBehaviour
     // move the block based on player inputs
     public void Move()
     {
-        // move the block left or right
+        // move the block left, right, or down
         transform.position = new Vector2(transform.position.x + movementX, transform.position.y + movementY);  
+    }
+
+    public bool ValidMove() {
+
     }
 }

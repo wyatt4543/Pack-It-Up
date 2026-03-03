@@ -24,7 +24,7 @@ public class MoveBlocks : MonoBehaviour
     private float defaultFallTimer = 1.5f;
     private float fallTimer;
     private int gameRound;
-    private int lineClears;
+    public int lineClears;
 
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
@@ -51,9 +51,6 @@ public class MoveBlocks : MonoBehaviour
 
         // Initialize spawn block script
         spawnBlockScript = FindFirstObjectByType<SpawnBlock>();
-
-        // Set the number of line clears correctly
-        lineClears = 0;
     }
 
     // Update is called once per frame
@@ -122,7 +119,7 @@ public class MoveBlocks : MonoBehaviour
             else
             {
                 // self destruct script on hitting the bottom of the screen & do update stuff
-                spawnBlockScript.NewBlock();
+                spawnBlockScript.NewBlock(lineClears);
                 AddToGrid();
                 CheckForLines();
                 Destroy(this);

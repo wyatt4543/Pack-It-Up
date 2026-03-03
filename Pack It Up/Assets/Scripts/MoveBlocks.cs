@@ -5,13 +5,6 @@ public class MoveBlocks : MonoBehaviour
 {
     // transform variables
     public Transform parentTransform;
-    //private BoardScript boardScript;
-    //private GameObject gameBoard;
-
-    // position variables
-    //public float defaultXPos;
-    //public float defaultYPos;
-    //private int gameBoardX, gameBoardY = 0;
 
     //gameboard variables
     public static int width = 10;
@@ -42,19 +35,11 @@ public class MoveBlocks : MonoBehaviour
     {
         // Initialize player input
         playerInput = GetComponent<PlayerInput>();
-        //gameBoard = GameObject.Find("Background");
-        //boardScript = gameBoard.GetComponent<BoardScript>();
 
         // Initialize timers
         fallTimer = defaultFallTimer;
         autoMoveTimer = defaultAutoMoveTimer;
         autoMoveCapTimer = defaultAutoMoveCapTimer;
-
-        // Initialize postion on game board
-        //parentObject.transform.position = new Vector2(defaultXPos, defaultYPos);
-
-        // put the initial left L block game board
-        //boardScript.UpdateBlock(gameBoardX, gameBoardY, 1);
     }
 
     // Update is called once per frame

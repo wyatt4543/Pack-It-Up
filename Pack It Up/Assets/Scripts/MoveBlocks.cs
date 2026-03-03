@@ -212,8 +212,9 @@ public class MoveBlocks : MonoBehaviour
                     grid[j, y - 1] = grid[j, y];
                     grid[j, y] = null;
 
-                    // move the blocks down
-                    grid[j, y - 1].transform.position -= new Vector3(0, 1, 0);
+                    // move the blocks down with gravity
+                    while (ValidMove(0, -1))
+                        grid[j, y - 1].transform.position -= new Vector3(0, 1, 0);
                 }
             }
         }

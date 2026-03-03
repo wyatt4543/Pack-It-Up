@@ -112,7 +112,7 @@ public class MoveBlocks : MonoBehaviour
             fallTimer = defaultFallTimer; // reset timer to 1 second
             if (ValidMove(0, -1))
             {
-                transform.Translate(Vector2.down);
+                parentTransform.Translate(Vector2.down);
             }
         }
 

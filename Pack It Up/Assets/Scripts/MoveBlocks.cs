@@ -122,8 +122,9 @@ public class MoveBlocks : MonoBehaviour
         }
 
         // quick drop the block
-        if (playerInput.actions["Drop"].WasPressedThisFrame()) {
+        if (playerInput.actions["Drop"].WasReleasedThisFrame()) {
             quickDrop = true;
+            fallTimer = 0;
         }
     }
 

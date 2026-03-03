@@ -103,17 +103,18 @@ public class MoveBlocks : MonoBehaviour
             {
                 parentTransform.Translate(Vector2.down);
             }
+            else
+            {
+                // self destruct on hitting the bottom of the screen
+                FindFirstObjectByType<SpawnBlock>().NewBlock();
+                Destroy(this);
+            }
         }
 
         // drop the block
         //if (playerInput.actions["Drop"].WasPressedThisFrame()) {
             //parentTransform.position = new Vector2(parentTransform.position.x, parentTransform.position.y);
             //Destroy(this);
-        //}
-
-        // self destruct on hitting the bottom of the screen
-        //if (boardScript.TestOutsideBottomBlock(gameBoardY, 1)) {
-        //    Destroy(this);
         //}
     }
 

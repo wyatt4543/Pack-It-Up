@@ -100,7 +100,7 @@ public class MoveBlocks : MonoBehaviour
         {
             // move down 1 unit every second
             fallTimer = defaultFallTimer; // reset timer to 1 second
-            if (ValidMove())
+            if (ValidMove(0, -1))
             {
                 transform.Translate(Vector2.down);
             }
@@ -137,7 +137,10 @@ public class MoveBlocks : MonoBehaviour
     public void Move()
     {
         // move the block left, right, or down
-        transform.position = new Vector2(transform.position.x + movementX, transform.position.y + movementY);  
+        if (ValidMove((int)movementX, (int)movementY))
+        {
+            transform.position = new Vector2(transform.position.x + movementX, transform.position.y + movementY);
+        }
     }
 
     // check if the players movements were valid

@@ -16,7 +16,10 @@ public class SpawnBlock : MonoBehaviour
         // create a random new block in the spawner postion
         GameObject newBlock = Instantiate(Blocks[Random.Range(0, Blocks.Length)], transform.position, Quaternion.identity);
 
+        // get the moveBlocksScript
+        MoveBlocks moveBlocksScript = newBlock.GetComponentsInChildren<MoveBlocks>()[0];
+
         // set the number of line clears
-        newBlock.GetComponent<MoveBlocks>().lineClears = lineClears;
+        moveBlocksScript.lineClears = lineClears;
     }
 }

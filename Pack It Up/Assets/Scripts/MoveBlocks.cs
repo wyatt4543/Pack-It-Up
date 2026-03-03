@@ -119,9 +119,9 @@ public class MoveBlocks : MonoBehaviour
             else
             {
                 // self destruct script on hitting the bottom of the screen & do update stuff
-                spawnBlockScript.NewBlock(lineClears);
                 AddToGrid();
                 CheckForLines();
+                spawnBlockScript.NewBlock(lineClears);
                 Destroy(this);
             }
         }

@@ -66,7 +66,8 @@ public class MoveBlocks : MonoBehaviour
         if (playerInput.actions["Move"].IsPressed() && !(playerInput.actions["Move"].WasPressedThisFrame()))
         {
             // test if enough time has passed for automove
-            if ((autoMoveTimer -= Time.deltaTime) < 0) {
+            if ((autoMoveTimer -= Time.deltaTime) < 0) 
+            {
                 // cap the automovement to 60 movements per second
                 if ((autoMoveCapTimer -= Time.deltaTime) < 0)
                 {
@@ -82,10 +83,14 @@ public class MoveBlocks : MonoBehaviour
         }
 
         // rotate the block
-        if (playerInput.actions["Rotate"].WasPressedThisFrame()) {
-            if (rotateInput == 1) {
+        if (playerInput.actions["Rotate"].WasPressedThisFrame())
+        {
+            if (rotateInput == 1) 
+            {
                 transform.Rotate(0, 0, 90);
-            } else {
+            } 
+            else
+            {
                 transform.Rotate(0, 0, -90);
             }
         }
@@ -132,7 +137,19 @@ public class MoveBlocks : MonoBehaviour
         transform.position = new Vector2(transform.position.x + movementX, transform.position.y + movementY);  
     }
 
+    // check if the players movements were valid
     public bool ValidMove() {
+        foreach (Transform children in transform)
+        {
+            // round the x and y positions
+            int roundedX = Mathf.RoundToInt(children.position.x);
+            int roundedY = Mathf.RoundToInt(children.position.y);
 
+            if (roundedX < 0 || roundedX >= width)
+            {
+                return false;
+            }
+
+        }
     }
 }

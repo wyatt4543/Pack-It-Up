@@ -3,7 +3,8 @@ using UnityEngine.InputSystem;
 
 public class MoveBlocks : MonoBehaviour
 {
-    // game object and script variables
+    // transform variables
+    public Transform parentTransform;
     //private BoardScript boardScript;
     //private GameObject gameBoard;
 
@@ -17,9 +18,11 @@ public class MoveBlocks : MonoBehaviour
     public static int height = 20;
 
     // movement variables
-    public Vector2 rotationPoint;
     private float movementX;
     private float movementY;
+
+    // rotation variables
+    public Vector2 rotationPoint;
 
     // timer variables
     private float defaultFallTimer = 1.5f;
@@ -89,7 +92,6 @@ public class MoveBlocks : MonoBehaviour
             // if up key pressed
             if (rotateInput == 1) 
             {
-                
                 transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
                 if (!ValidRotation())
                 {
@@ -147,7 +149,7 @@ public class MoveBlocks : MonoBehaviour
         // move the block left, right, or down
         if (ValidMove((int)movementX, (int)movementY))
         {
-            transform.position = new Vector2(transform.position.x + movementX, transform.position.y + movementY);
+            parentTransform.position = new Vector2(parentTransform.position.x + movementX, parentTransform.position.y + movementY);
         }
     }
 

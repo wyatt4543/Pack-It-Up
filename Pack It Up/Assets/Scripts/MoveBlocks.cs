@@ -19,11 +19,15 @@ public class MoveBlocks : MonoBehaviour
     // rotation variables
     public Vector2 rotationPoint;
 
-    // timer variables
+    // fall variables
+    //calculation for the speed per round: (0.8-((level-1)*0.007))^(level-1)
     private float defaultFallTimer = 1.5f;
+    private float fallTimer;
+    private float gameRound;
+
+    // timer variables
     private float defaultAutoMoveTimer = 0.1f;
     private float defaultAutoMoveCapTimer = 1.0f / 60.0f;
-    private float fallTimer;
     private float autoMoveTimer;
     private float autoMoveCapTimer;
     private bool quickDrop = false;

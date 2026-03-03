@@ -23,7 +23,8 @@ public class MoveBlocks : MonoBehaviour
     //calculation for the speed per round: (0.8-((level-1)*0.007))^(level-1)
     private float defaultFallTimer = 1.5f;
     private float fallTimer;
-    private float gameRound;
+    private int gameRound;
+    private int lineClears = 0;
 
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
@@ -197,6 +198,10 @@ public class MoveBlocks : MonoBehaviour
 
             // update the grid
             grid[j, i] = null;
+
+            // update the line clears variable & print it
+            lineClears++;
+            print("number of clears: " + lineClears);
         }
     }
     

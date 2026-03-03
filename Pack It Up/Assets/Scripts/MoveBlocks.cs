@@ -207,7 +207,7 @@ public class MoveBlocks : MonoBehaviour
                     grid[j, y] = null;
 
                     // move the blocks down
-                    grid[j, y - 1].Translate(Vector2.down);
+                    grid[j, y - 1].transform.position -= new Vector3(0, 1, 0);
                 }
             }
         }

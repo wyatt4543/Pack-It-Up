@@ -273,6 +273,13 @@ public class MoveBlocks : MonoBehaviour
                 // if it is don't allow movement
                 return false;
             }
+
+            // check if the block is touching any other piece
+            if (grid[roundedX, roundedY] != null)
+            {
+                // if it is don't allow movement
+                return false;
+            }
         }
 
         // if it isn't going to move outside allow movement

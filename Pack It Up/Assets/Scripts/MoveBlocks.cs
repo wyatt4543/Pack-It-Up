@@ -150,7 +150,7 @@ public class MoveBlocks : MonoBehaviour
         }
     }
 
-    // check for a line clear
+    // function for doing line clears
     public void CheckForLines()
     {
         for (int i = height - 1; i >= 0; i--)
@@ -167,6 +167,7 @@ public class MoveBlocks : MonoBehaviour
         }
     }
 
+    // function for checking for a line clear
     public bool HasLine(int i)
     {
         // search each line for a clear & return true or false for a clear
@@ -179,6 +180,7 @@ public class MoveBlocks : MonoBehaviour
         return true;
     }
 
+    // function for deleting lines
     public void DeleteLine(int i)
     {
         for (int j = 0; j < width; j++)
@@ -191,6 +193,7 @@ public class MoveBlocks : MonoBehaviour
         }
     }
     
+    // function for moving the blocks down
     public void RowDown(int i)
     {
         for (int y = i; y < height; y++)

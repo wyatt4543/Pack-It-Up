@@ -107,8 +107,8 @@ public class MoveBlocks : MonoBehaviour
 
         // drop the block
         //if (playerInput.actions["Drop"].WasPressedThisFrame()) {
-            //parentObject.transform.position = new Vector2(parentObject.transform.position.x, parentObject.transform.position.y - boardScript.DropBlock(gameBoardX,gameBoardY));
-        //    Destroy(this);
+            //parentTransform.position = new Vector2(parentTransform.position.x, parentTransform.position.y);
+            //Destroy(this);
         //}
 
         // self destruct on hitting the bottom of the screen

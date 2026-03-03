@@ -101,7 +101,11 @@ public class MoveBlocks : MonoBehaviour
             // if z key pressed
             else
             {
-                transform.Rotate(0, 0, -90);
+                transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
+                if (!ValidRotation())
+                {
+                    transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
+                }
             }
         }
         

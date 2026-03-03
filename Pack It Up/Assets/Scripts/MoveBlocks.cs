@@ -26,6 +26,7 @@ public class MoveBlocks : MonoBehaviour
     private float fallTimer;
     private float autoMoveTimer;
     private float autoMoveCapTimer;
+    private bool quickDrop = false;
 
     // input variables
     private Vector2 moveInput;
@@ -103,14 +104,16 @@ public class MoveBlocks : MonoBehaviour
         if ((fallTimer -= Time.deltaTime) < 0)
         {
             // move down 1 unit every second
-            fallTimer = defaultFallTimer; // reset timer to 1 second
+            if (!quickDrop)
+                fallTimer = defaultFallTimer; // reset timer to 1 second
             if (ValidMove(0, -1))
             {
                 parentTransform.Translate(Vector2.down);
             }
+            // once it hits the bottom of the screen place the block
             else
             {
-                // self destruct on hitting the bottom of the screen
+                // self destruct script on hitting the bottom of the screen & do update stuff
                 spawnBlockScript.NewBlock();
                 AddToGrid();
                 CheckForLines();
@@ -118,11 +121,10 @@ public class MoveBlocks : MonoBehaviour
             }
         }
 
-        // drop the block
-        //if (playerInput.actions["Drop"].WasPressedThisFrame()) {
-            //parentTransform.position = new Vector2(parentTransform.position.x, parentTransform.position.y);
-            //Destroy(this);
-        //}
+        // quick drop the block
+        if (playerInput.actions["Drop"].WasPressedThisFrame()) {
+            quickDrop = true;
+        }
     }
 
     // get player inputs

@@ -10,6 +10,7 @@ public class MoveBlocks : MonoBehaviour
 
     // text object variables
     private TextMeshProUGUI roundCounter;
+    private TextMeshProUGUI linesCounter;
 
     // gameboard variables
     public static int width = 10;
@@ -61,6 +62,10 @@ public class MoveBlocks : MonoBehaviour
         // update the game round display
         roundCounter = GameObject.Find("Canvas/RoundCounter").GetComponent<TextMeshProUGUI>();
         roundCounter.text = "Round: " + gameRound;
+
+        // update the game lines display
+        roundCounter = GameObject.Find("Canvas/LinesCounter").GetComponent<TextMeshProUGUI>();
+        roundCounter.text = "Lines: " + gameRound;
     }
 
     // Update is called once per frame
@@ -211,7 +216,6 @@ public class MoveBlocks : MonoBehaviour
         }
         // update the line clears variable & print it
         lineClears++;
-        print("number of clears: " + lineClears);
     }
     
     // function for moving the blocks down

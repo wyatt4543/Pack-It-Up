@@ -59,7 +59,7 @@ public class MoveBlocks : MonoBehaviour
         spawnBlockScript = FindFirstObjectByType<SpawnBlock>();
 
         // update the game round display
-        roundCounter = GameObject.Find("GameCanvas/RoundCounter").GetComponent<TextMeshProUGUI>();
+        roundCounter = GameObject.Find("Canvas/RoundCounter").GetComponent<TextMeshProUGUI>();
         roundCounter.text = "Round: " + gameRound;
     }
 

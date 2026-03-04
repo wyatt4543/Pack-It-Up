@@ -407,6 +407,7 @@ GameObject:
   - component: {fileID: 253259727740024530}
   - component: {fileID: 4668861606766228224}
   - component: {fileID: 1535701856264659310}
+  - component: {fileID: 3009261587229026975}
   m_Layer: 0
   m_Name: TBlock
   m_TagString: Untagged
@@ -553,3 +554,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoveBlocks
   parentTransform: {fileID: 425931889292934151}
   rotationPoint: {x: 1, y: 0}
+  lineClears: 0
+  gameRound: 0
+--- !u!114 &3009261587229026975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7581880808752867878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d187eb1e6d5b4694fb23fffb8b6a5755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeletionTest

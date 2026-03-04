@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4068729703544219171}
   - component: {fileID: 1477445909731715830}
   - component: {fileID: 2332382128365098854}
+  - component: {fileID: 8854483813922261452}
   m_Layer: 0
   m_Name: SBlock
   m_TagString: Untagged
@@ -157,6 +158,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoveBlocks
   parentTransform: {fileID: 7990251774008074735}
   rotationPoint: {x: 1, y: 1}
+  lineClears: 0
+  gameRound: 0
+--- !u!114 &8854483813922261452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280575924095112264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d187eb1e6d5b4694fb23fffb8b6a5755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeletionTest
 --- !u!1 &2464024562260691426
 GameObject:
   m_ObjectHideFlags: 0

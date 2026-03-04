@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +8,10 @@ public class MoveBlocks : MonoBehaviour
     public Transform parentTransform;
     private SpawnBlock spawnBlockScript;
 
-    //gameboard variables
+    // text object variables
+    private TextMeshProUGUI roundCounter;
+
+    // gameboard variables
     public static int width = 10;
     public static int height = 20;
     private static Transform[,] grid = new Transform[width, height]; 
@@ -20,7 +24,7 @@ public class MoveBlocks : MonoBehaviour
     public Vector2 rotationPoint;
 
     // fall variables
-    //calculation for the speed per round: (0.8-((level-1)*0.007))^(level-1)
+    // calculation for the speed per round: (0.8-((level-1)*0.007))^(level-1)
     public int lineClears;
     public int gameRound;
     private float defaultFallTimer;
@@ -54,8 +58,9 @@ public class MoveBlocks : MonoBehaviour
         // Initialize spawn block script
         spawnBlockScript = FindFirstObjectByType<SpawnBlock>();
 
-        // print what the game round is
-        print("Round: " + gameRound);
+        // update the game round display
+        roundCounter = GameObject.Find("GameCanvas/RoundCounter").GetComponent<TextMeshProUGUI>();
+        roundCounter.text = "Round: " + gameRound;
     }
 
     // Update is called once per frame

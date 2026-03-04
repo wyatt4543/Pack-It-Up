@@ -12,6 +12,7 @@ public class MoveBlocks : MonoBehaviour
     // text object variables
     private TextMeshProUGUI roundCounter;
     private TextMeshProUGUI linesCounter;
+    private TextMeshProUGUI scoreCounter;
 
     // gameboard variables
     public static int width = 10;
@@ -78,8 +79,8 @@ public class MoveBlocks : MonoBehaviour
         linesCounter.text = "Lines: " + lineClears;
         
         // update the game score display
-        linesCounter = GameObject.Find("Canvas/ScoreCounter").GetComponent<TextMeshProUGUI>();
-        linesCounter.text = "Score: " + gameScore;
+        scoreCounter = GameObject.Find("Canvas/ScoreCounter").GetComponent<TextMeshProUGUI>();
+        scoreCounter.text = "Score: " + gameScore;
 
         // test for a game over
         if (!ValidMove(0, -1))

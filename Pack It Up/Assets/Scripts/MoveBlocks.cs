@@ -60,6 +60,10 @@ public class MoveBlocks : MonoBehaviour
         spawnBlockScript = FindFirstObjectByType<SpawnBlock>();
 
         // update the game round display
+        if ((lineClears > 0) && (lineClears % 10 == 0))
+        {
+            gameRound++;
+        }
         roundCounter = GameObject.Find("Canvas/RoundCounter").GetComponent<TextMeshProUGUI>();
         roundCounter.text = "Round: " + gameRound;
 

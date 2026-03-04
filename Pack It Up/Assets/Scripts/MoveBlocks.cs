@@ -51,7 +51,6 @@ public class MoveBlocks : MonoBehaviour
 
         // Initialize timers
         defaultFallTimer = Mathf.Pow((0.8f - ((gameRound - 1) * 0.007f)), gameRound - 1);
-        print("defaultFallTimer: " + defaultFallTimer);
         fallTimer = defaultFallTimer;
         autoMoveTimer = defaultAutoMoveTimer;
         autoMoveCapTimer = defaultAutoMoveCapTimer;

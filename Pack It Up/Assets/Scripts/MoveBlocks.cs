@@ -345,7 +345,7 @@ public class MoveBlocks : MonoBehaviour
     // end the game upon loss
     private void EndGame()
     {
-        
+        gameOverObject.SetActive(true);
         Destroy(this);
     }
 }

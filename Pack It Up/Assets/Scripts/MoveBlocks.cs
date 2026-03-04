@@ -21,10 +21,10 @@ public class MoveBlocks : MonoBehaviour
 
     // fall variables
     //calculation for the speed per round: (0.8-((level-1)*0.007))^(level-1)
+    public int lineClears;
+    public int gameRound;
     private float defaultFallTimer = 1.5f;
     private float fallTimer;
-    public int gameRound;
-    public int lineClears;
 
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;

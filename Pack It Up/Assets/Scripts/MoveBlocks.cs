@@ -360,11 +360,14 @@ public class MoveBlocks : MonoBehaviour
                 // check each x position around the bomb
                 for (int x = -1; x <= 1; x++)
                 {
-                    // destroy the game object around or at the bomb
-                    Destroy(grid[roundedX + x, roundedY + y].gameObject);
+                    if (grid[x, y] == null)
+                    {
+                        // destroy the game object around or at the bomb
+                        Destroy(grid[roundedX + x, roundedY + y].gameObject);
 
-                    // update the grid
-                    grid[roundedX + x, roundedY + y] = null;
+                        // update the grid
+                        grid[roundedX + x, roundedY + y] = null;
+                    }
                 }
             }
         }

@@ -210,6 +210,27 @@ public class MoveBlocks : MonoBehaviour
                 RowDown(i);
             }
         }
+
+        // increase the score by a certain amount based on the number of line clears in one placement
+        if (singlePlaceClears == 1)
+        {
+            gameScore += 40 * gameRound;
+        }
+        else if (singlePlaceClears == 2)
+        {
+            gameScore += 100 * gameRound;
+        }
+        else if (singlePlaceClears == 3)
+        {
+            gameScore += 300 * gameRound;
+        }
+        else if (singlePlaceClears >= 4)
+        {
+            gameScore += 1200 * gameRound;
+        }
+
+        // update the single placement variable back to 0 for the next time it's used for checks
+        singlePlaceClears = 0;
     }
 
     // function for checking for a line clear

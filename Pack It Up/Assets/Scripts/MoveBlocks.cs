@@ -7,6 +7,7 @@ public class MoveBlocks : MonoBehaviour
     // transform variables & script variables
     public Transform parentTransform;
     private SpawnBlock spawnBlockScript;
+    private GameOver gameOverScript;
 
     // text object variables
     private TextMeshProUGUI roundCounter;
@@ -57,6 +58,9 @@ public class MoveBlocks : MonoBehaviour
 
         // Initialize spawn block script
         spawnBlockScript = FindFirstObjectByType<SpawnBlock>();
+
+        // Initialize game over script
+        gameOverScript = FindFirstObjectByType<GameOver>();
 
         // update the game round display
         roundCounter = GameObject.Find("Canvas/RoundCounter").GetComponent<TextMeshProUGUI>();

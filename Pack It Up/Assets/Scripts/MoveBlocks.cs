@@ -407,6 +407,9 @@ public class MoveBlocks : MonoBehaviour
 
                             // update the grid
                             grid[checkX, checkY] = null;
+
+                            // give the player 10 points (scaling with each game round) for each square cleared
+                            gameScore += 10 * gameRound;
                         }
                     }
                 }

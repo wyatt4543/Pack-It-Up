@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveBlocks
   parentTransform: {fileID: 8971592935239941350}
-  rotationPoint: {x: 1.5, y: 0.5}
+  rotationPoint: {x: 0, y: 0}
   lineClears: 0
   gameRound: 0
 --- !u!114 &8974948991955680583

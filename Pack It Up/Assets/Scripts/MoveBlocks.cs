@@ -361,7 +361,7 @@ public class MoveBlocks : MonoBehaviour
                 for (int x = -1; x <= 1; x++)
                 {
                     // check if square empty & if trying to go out of bounds & if trying to delete the current game object
-                    if (grid[roundedX + x, roundedX + y] != null && !(roundedX + x < 0 || roundedX + x >= width || roundedY + y < 0 || roundedY + y >= height) && !(x == 0 && y == 0))
+                    if (grid[roundedX + x, roundedX + y] != null && !(roundedX + x < 0 || roundedX + x >= width || roundedY + y < 0 || roundedY + y >= height) && !(roundedX + x == roundedX && roundedY + y == roundedY))
                     {
                         // destroy the game object around the bomb
                         Destroy(grid[roundedX + x, roundedY + y].gameObject);

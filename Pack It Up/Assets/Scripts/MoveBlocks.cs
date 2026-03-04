@@ -226,6 +226,7 @@ public class MoveBlocks : MonoBehaviour
             // update the grid
             grid[j, i] = null;
         }
+        
         // update the line clears variable
         lineClears++;
 
@@ -233,6 +234,12 @@ public class MoveBlocks : MonoBehaviour
         if ((lineClears > 0) && (lineClears % 10 == 0))
         {
             gameRound++;
+        }
+
+        //delete object if it has no children
+        if (transform.childCount == 0)
+        {
+            Destroy(gameObject);
         }
     }
     

@@ -4,10 +4,10 @@ using UnityEngine.InputSystem;
 
 public class MoveBlocks : MonoBehaviour
 {
-    // transform variables & script variables
+    // transform variables & script variables & game object variables
     public Transform parentTransform;
     private SpawnBlock spawnBlockScript;
-    private GameOver gameOverScript;
+    private GameObject gameOverObject;
 
     // text object variables
     private TextMeshProUGUI roundCounter;
@@ -59,14 +59,13 @@ public class MoveBlocks : MonoBehaviour
         // Initialize spawn block script
         spawnBlockScript = FindFirstObjectByType<SpawnBlock>();
 
-        // Initialize game over script
-        gameOverScript = GameObject.Find("GameOver").GetComponentsInChildren<GameOver>()[0];
+        // Initialize game over object
+        gameOverObject = GameObject.Find("GameOver");
 
         // test for a game over
         if (!ValidMove(0, -1))
         {
-            gameOverScript.EndGame();
-            Destroy(this);
+            EndGame();
         }
 
         // update the game round display

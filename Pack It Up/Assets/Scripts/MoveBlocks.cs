@@ -23,7 +23,7 @@ public class MoveBlocks : MonoBehaviour
     //calculation for the speed per round: (0.8-((level-1)*0.007))^(level-1)
     public int lineClears;
     public int gameRound;
-    private float defaultFallTimer = 1.5f;
+    private float defaultFallTimer;
     private float fallTimer;
 
     // timer variables
@@ -45,6 +45,8 @@ public class MoveBlocks : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
 
         // Initialize timers
+        defaultFallTimer = Mathf.Pow((0.8f - ((gameRound - 1) * 0.007f)), gameRound - 1);
+        print("defaultFallTimer: " + defaultFallTimer);
         fallTimer = defaultFallTimer;
         autoMoveTimer = defaultAutoMoveTimer;
         autoMoveCapTimer = defaultAutoMoveCapTimer;
@@ -53,7 +55,7 @@ public class MoveBlocks : MonoBehaviour
         spawnBlockScript = FindFirstObjectByType<SpawnBlock>();
 
         // print what the game round is
-        print(gameRound);
+        print("Round: " + gameRound);
     }
 
     // Update is called once per frame

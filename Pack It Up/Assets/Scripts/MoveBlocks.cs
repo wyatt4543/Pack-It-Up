@@ -32,6 +32,9 @@ public class MoveBlocks : MonoBehaviour
     private float defaultFallTimer;
     private float fallTimer;
 
+    // score variable
+    public int gameScore;
+
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
     private float defaultAutoMoveCapTimer = 1.0f / 60.0f;
@@ -72,6 +75,10 @@ public class MoveBlocks : MonoBehaviour
         // update the game lines display
         linesCounter = GameObject.Find("Canvas/LinesCounter").GetComponent<TextMeshProUGUI>();
         linesCounter.text = "Lines: " + lineClears;
+        
+        // update the game score display
+        linesCounter = GameObject.Find("Canvas/ScoreCounter").GetComponent<TextMeshProUGUI>();
+        linesCounter.text = "Score: " + gameScore;
 
         // test for a game over
         if (!ValidMove(0, -1))
@@ -150,7 +157,7 @@ public class MoveBlocks : MonoBehaviour
                 // function for doing special block actions
                 CursedBlocks();
                 CheckForLines();
-                spawnBlockScript.NewBlock(lineClears, gameRound);
+                spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
                 Destroy(this);
             }
         }

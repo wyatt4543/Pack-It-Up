@@ -12,7 +12,7 @@ public class SpawnBlock : MonoBehaviour
     }
 
     // function for creating new blocks
-    public void NewBlock(int lineClears = 0, int gameRound = 1) {
+    public void NewBlock(int lineClears = 0, int gameRound = 1, int gameScore = 0) {
         // create a random new block in the spawner postion
         GameObject newBlock = Instantiate(Blocks[Random.Range(0, Blocks.Length)], transform.position, Quaternion.identity);
 
@@ -24,5 +24,8 @@ public class SpawnBlock : MonoBehaviour
 
         // set the game round
         moveBlocksScript.gameRound = gameRound;
+
+        // set the game score
+        moveBlocksScript.gameScore = gameScore;
     }
 }

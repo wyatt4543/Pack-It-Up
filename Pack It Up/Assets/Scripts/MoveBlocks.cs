@@ -349,8 +349,8 @@ public class MoveBlocks : MonoBehaviour
         gameOverObject.GetComponent<Renderer>().enabled = true;
 
         // hide the text
-        roundCounter.enabled = false;
-        linesCounter.enabled = false;
+        roundCounter.text = "";
+        linesCounter.text = "";
 
         // delete this script to disable movement
         Destroy(this);

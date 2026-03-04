@@ -60,7 +60,7 @@ public class MoveBlocks : MonoBehaviour
         spawnBlockScript = FindFirstObjectByType<SpawnBlock>();
 
         // Initialize game over script
-        gameOverScript = FindFirstObjectByType<GameOver>();
+        gameOverScript = GameObject.Find("GameOver").GetComponentsInChildren<GameOver>()[0];
 
         // test for a game over
         if (!ValidMove(0, -1))

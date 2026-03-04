@@ -9,15 +9,8 @@ public class GameOver : MonoBehaviour
     }
 
     // run this function when the player loses
-    public void EndGame(bool endGame = false)
+    public void EndGame()
     {
-        if (endGame)
-        {
-
-        }
-        else
-        {
-            
-        }
+        gameObject.SetActive(true);
     }
 }

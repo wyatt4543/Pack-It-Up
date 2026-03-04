@@ -62,6 +62,9 @@ public class MoveBlocks : MonoBehaviour
         // Initialize game over object
         gameOverObject = GameObject.Find("GameOver");
 
+        // disable the game over game object
+        gameOverObject.SetActive(false);
+
         // test for a game over
         if (!ValidMove(0, -1))
         {
@@ -337,5 +340,12 @@ public class MoveBlocks : MonoBehaviour
 
         // if it isn't going to move outside allow movement
         return true;
+    }
+
+    // end the game upon loss
+    private void EndGame()
+    {
+        
+        Destroy(this);
     }
 }

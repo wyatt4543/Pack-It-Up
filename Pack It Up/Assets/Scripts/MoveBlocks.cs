@@ -147,6 +147,8 @@ public class MoveBlocks : MonoBehaviour
             {
                 // self destruct script on hitting the bottom of the screen & do update stuff
                 AddToGrid();
+                // function for doing special block actions
+                CursedBlocks();
                 CheckForLines();
                 spawnBlockScript.NewBlock(lineClears, gameRound);
                 Destroy(this);
@@ -341,6 +343,15 @@ public class MoveBlocks : MonoBehaviour
 
         // if it isn't going to move outside allow movement
         return true;
+    }
+
+    // check the type of block & do its ability
+    private void CursedBlocks()
+    {
+        if (gameObject.name == "BombBlock")
+        {
+            print("I bomb block");
+        }
     }
 
     // end the game upon loss

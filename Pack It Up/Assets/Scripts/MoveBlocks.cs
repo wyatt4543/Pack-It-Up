@@ -360,14 +360,22 @@ public class MoveBlocks : MonoBehaviour
                 // check each x position around the bomb
                 for (int x = -1; x <= 1; x++)
                 {
-                    // check if square empty & if trying to go out of bounds & if trying to delete the current game object
-                    if (grid[roundedX + x, roundedX + y] != null && !(roundedX + x < 0 || roundedX + x >= width || roundedY + y < 0 || roundedY + y >= height) && !(roundedX + x == roundedX && roundedY + y == roundedY))
-                    {
-                        // destroy the game object around the bomb
-                        Destroy(grid[roundedX + x, roundedY + y].gameObject);
+                    // make the x and y to check
+                    int checkX = roundedX + x;
+                    int checkY = roundedY + y;
 
-                        // update the grid
-                        grid[roundedX + x, roundedY + y] = null;
+                    // if the square is trying to delete out of bounds
+                    if (!(checkX < 0 || checkX >= width || checkY < 0 || checkY >= height))
+                    {
+                        // check if the square is empty & if trying to delete the current game object
+                        if ((grid[checkX, checkY] != null) && !(x == 0 && y == 0))
+                        {
+                            // destroy the game object around the bomb
+                            Destroy(grid[checkX, checkY].gameObject);
+
+                            // update the grid
+                            grid[checkX, checkY] = null;
+                        }
                     }
                 }
             }

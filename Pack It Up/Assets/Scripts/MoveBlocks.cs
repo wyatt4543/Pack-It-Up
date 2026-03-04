@@ -350,7 +350,23 @@ public class MoveBlocks : MonoBehaviour
     {
         if (gameObject.name == "BombBlock")
         {
-            print("I bomb block");
+            // round the current x and y positions
+            int roundedX = Mathf.RoundToInt(parentTransform.position.x);
+            int roundedY = Mathf.RoundToInt(parentTransform.position.y);
+
+            // check each y position around the bomb
+            for (int y = 1; y >= -1; y--)
+            {
+                // check each x position around the bomb
+                for (int x = -1; x <= 1; x++)
+                {
+                    // destroy the game object around or at the bomb
+                    Destroy(grid[roundedX + x, roundedY + y].gameObject);
+
+                    // update the grid
+                    grid[roundedX + x, roundedY + y] = null;
+                }
+            }
         }
     }
 

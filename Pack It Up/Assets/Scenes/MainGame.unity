@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 1462123618}
   - component: {fileID: 1462123617}
   m_Layer: 5
-  m_Name: ClearsCounter
+  m_Name: LinesCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

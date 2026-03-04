@@ -65,12 +65,6 @@ public class MoveBlocks : MonoBehaviour
         // disable the game over game object
         gameOverObject.GetComponent<Renderer>().enabled = false;
 
-        // test for a game over
-        if (!ValidMove(0, -1))
-        {
-            EndGame();
-        }
-
         // update the game round display
         roundCounter = GameObject.Find("Canvas/RoundCounter").GetComponent<TextMeshProUGUI>();
         roundCounter.text = "Round: " + gameRound;
@@ -78,6 +72,12 @@ public class MoveBlocks : MonoBehaviour
         // update the game lines display
         linesCounter = GameObject.Find("Canvas/LinesCounter").GetComponent<TextMeshProUGUI>();
         linesCounter.text = "Lines: " + lineClears;
+
+        // test for a game over
+        if (!ValidMove(0, -1))
+        {
+            EndGame();
+        }
     }
 
     // Update is called once per frame
@@ -349,8 +349,8 @@ public class MoveBlocks : MonoBehaviour
         gameOverObject.GetComponent<Renderer>().enabled = true;
 
         // hide the text
-        roundCounter.text = "";
-        linesCounter.text = "";
+        roundCounter.enabled = false;
+        linesCounter.enabled = false;
 
         // delete this script to disable movement
         Destroy(this);

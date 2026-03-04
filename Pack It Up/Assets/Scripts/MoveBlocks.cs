@@ -360,7 +360,8 @@ public class MoveBlocks : MonoBehaviour
                 // check each x position around the bomb
                 for (int x = -1; x <= 1; x++)
                 {
-                    if (grid[x, y] == null)
+                    // check if square empty and if trying to go out of bounds
+                    if (grid[roundedX + x, roundedX + y] == null && !(roundedX + x < 0 || roundedX + x >= width || roundedY + y < 0 || roundedY + y >= height))
                     {
                         // destroy the game object around or at the bomb
                         Destroy(grid[roundedX + x, roundedY + y].gameObject);

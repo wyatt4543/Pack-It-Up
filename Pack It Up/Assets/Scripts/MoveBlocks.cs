@@ -345,7 +345,14 @@ public class MoveBlocks : MonoBehaviour
     // end the game upon loss
     private void EndGame()
     {
+        // show the game over object
         gameOverObject.GetComponent<Renderer>().enabled = true;
+
+        // hide the text
+        roundCounter.GetComponent<Renderer>().enabled = false;
+        linesCounter.GetComponent<Renderer>().enabled = false;
+
+        // delete this script to disable movement
         Destroy(this);
     }
 }

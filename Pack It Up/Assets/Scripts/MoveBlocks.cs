@@ -62,6 +62,13 @@ public class MoveBlocks : MonoBehaviour
         // Initialize game over script
         gameOverScript = FindFirstObjectByType<GameOver>();
 
+        // test for a game over
+        if (!ValidMove(0, -1))
+        {
+            gameOverScript.EndGame();
+            Destroy(this);
+        }
+
         // update the game round display
         roundCounter = GameObject.Find("Canvas/RoundCounter").GetComponent<TextMeshProUGUI>();
         roundCounter.text = "Round: " + gameRound;

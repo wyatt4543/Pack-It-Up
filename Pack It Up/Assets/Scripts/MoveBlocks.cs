@@ -235,12 +235,6 @@ public class MoveBlocks : MonoBehaviour
         {
             gameRound++;
         }
-
-        //delete object if it has no children
-        if (transform.childCount == 0)
-        {
-            Destroy(gameObject);
-        }
     }
     
     // function for moving the blocks down

@@ -23,7 +23,7 @@ public class SpawnBlock : MonoBehaviour
         moveBlocksScript.lineClears = lineClears;
 
         // set the game round
-        if (lineClears % 10 == 0)
+        if ((lineClears > 0) && (lineClears % 10 == 0))
         {
             gameRound++;
         }

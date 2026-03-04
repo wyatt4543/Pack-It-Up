@@ -32,8 +32,9 @@ public class MoveBlocks : MonoBehaviour
     private float defaultFallTimer;
     private float fallTimer;
 
-    // score variable
+    // score variables
     public int gameScore;
+    private int singlePlaceClears = 0;
 
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
@@ -238,6 +239,9 @@ public class MoveBlocks : MonoBehaviour
         
         // update the line clears variable
         lineClears++;
+
+        // update the variable keeping track of the line clears made by one block
+        singlePlaceClears++;
 
         // update the game round if lineClears is a multiple of 10
         if ((lineClears > 0) && (lineClears % 10 == 0))

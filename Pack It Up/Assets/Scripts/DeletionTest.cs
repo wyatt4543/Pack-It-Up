@@ -8,7 +8,7 @@ public class DeletionTest : MonoBehaviour
         //delete object if it has no children
         if (transform.childCount == 0)
         {
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }

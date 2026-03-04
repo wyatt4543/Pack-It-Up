@@ -384,7 +384,7 @@ public class MoveBlocks : MonoBehaviour
             grid[roundedX, roundedY] = null;
 
             // destroy the current game object
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 

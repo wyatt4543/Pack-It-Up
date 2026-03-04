@@ -63,8 +63,8 @@ public class MoveBlocks : MonoBehaviour
         roundCounter.text = "Round: " + gameRound;
 
         // update the game lines display
-        roundCounter = GameObject.Find("Canvas/LinesCounter").GetComponent<TextMeshProUGUI>();
-        roundCounter.text = "Lines: " + lineClears;
+        linesCounter = GameObject.Find("Canvas/LinesCounter").GetComponent<TextMeshProUGUI>();
+        linesCounter.text = "Lines: " + lineClears;
     }
 
     // Update is called once per frame

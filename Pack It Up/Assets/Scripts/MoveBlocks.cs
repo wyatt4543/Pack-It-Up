@@ -63,7 +63,7 @@ public class MoveBlocks : MonoBehaviour
         gameOverObject = GameObject.Find("GameOver");
 
         // disable the game over game object
-        gameOverObject.SetActive(false);
+        gameOverObject.GetComponent<Renderer>().enabled = false;
 
         // test for a game over
         if (!ValidMove(0, -1))
@@ -345,7 +345,7 @@ public class MoveBlocks : MonoBehaviour
     // end the game upon loss
     private void EndGame()
     {
-        gameOverObject.SetActive(true);
+        gameOverObject.GetComponent<Renderer>().enabled = true;
         Destroy(this);
     }
 }

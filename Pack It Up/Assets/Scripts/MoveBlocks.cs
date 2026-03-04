@@ -23,7 +23,7 @@ public class MoveBlocks : MonoBehaviour
     //calculation for the speed per round: (0.8-((level-1)*0.007))^(level-1)
     private float defaultFallTimer = 1.5f;
     private float fallTimer;
-    private int gameRound;
+    public int gameRound;
     public int lineClears;
 
     // timer variables
@@ -51,6 +51,9 @@ public class MoveBlocks : MonoBehaviour
 
         // Initialize spawn block script
         spawnBlockScript = FindFirstObjectByType<SpawnBlock>();
+
+        // print what the game round is
+        print(gameRound);
     }
 
     // Update is called once per frame
@@ -121,7 +124,7 @@ public class MoveBlocks : MonoBehaviour
                 // self destruct script on hitting the bottom of the screen & do update stuff
                 AddToGrid();
                 CheckForLines();
-                spawnBlockScript.NewBlock(lineClears);
+                spawnBlockScript.NewBlock(lineClears, gameRound);
                 Destroy(this);
             }
         }

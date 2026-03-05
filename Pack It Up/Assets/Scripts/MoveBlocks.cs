@@ -427,8 +427,8 @@ public class MoveBlocks : MonoBehaviour
         // functionality for the water block
         if (gameObject.name == "JWaterBlock")
         {
-            // look at the y's from the block's current line upwards
-            for (int y = Mathf.RoundToInt(parentTransform.position.y); y < height; y++)
+            // look at the y's from the bottom line upwards
+            for (int y = 0; y < height; y++)
             {
                 // loop through each x
                 for (int j = 0; j < width; j++)

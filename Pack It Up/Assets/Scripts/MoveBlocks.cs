@@ -321,7 +321,30 @@ public class MoveBlocks : MonoBehaviour
         // functionality for the Negative Block
         if (gameObject.name == "JNegativeBlockMovement")
         {
+            foreach (Transform children in transform)
+            {
+                // round the x and y positions
+                int roundedX = Mathf.RoundToInt(children.position.x);
+                int roundedY = Mathf.RoundToInt(children.position.y);
 
+                // create the updated x and y positions
+                int updatedX = roundedX + xUpdate;
+                int updatedY = roundedY + yUpdate;
+
+                // check if the block is on any side of the box
+                if (updatedX < 0 || updatedX >= width || updatedY < 0 || updatedY >= height)
+                {
+                    // if it is don't allow movement
+                    return false;
+                }
+
+                // check if all blocks are touching another piece
+                if (grid[updatedX, updatedY] != null)
+                {
+                    // if it is don't allow movement
+                    return false;
+                }
+            }
         }
         else
         {

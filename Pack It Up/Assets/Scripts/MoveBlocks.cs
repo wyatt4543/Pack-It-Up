@@ -381,6 +381,7 @@ public class MoveBlocks : MonoBehaviour
     // check the type of block & do its ability
     private void CursedBlocks()
     {
+        // functionality for the bomb block
         if (gameObject.name == "BombBlock")
         {
             // round the current x and y positions
@@ -421,6 +422,12 @@ public class MoveBlocks : MonoBehaviour
 
             // destroy the current game object
             Destroy(transform.parent.gameObject);
+        }
+
+        // functionality for the water block
+        if (gameObject.name == "JWaterBlock")
+        {
+
         }
     }
 

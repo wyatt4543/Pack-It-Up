@@ -427,36 +427,33 @@ public class MoveBlocks : MonoBehaviour
         // functionality for the water block
         if (gameObject.name == "JWaterBlock")
         {
-            // temporarily remove each square to not block own movement
-            foreach (Transform children in transform)
+            // look at the y's from the block's current line upwards
+            for (int y = 0; y < height; y++)
             {
-                int roundedX = Mathf.RoundToInt(children.position.x);
-                int roundedY = Mathf.RoundToInt(children.position.y);
-                grid[roundedX, roundedY] = null;
-            }
-
-            // look at each individual square and see if it can move down
-            foreach (Transform children in transform)
-            {
-                // round the x and y positions
-                int roundedX = Mathf.RoundToInt(children.position.x);
-                int roundedY = Mathf.RoundToInt(children.position.y);
-
-                // find the lowest the square can move down
-                int downY = roundedY - 1;
-                while (downY >= 0 && grid[roundedX, downY] == null)
+                // loop through each x
+                for (int j = 0; j < width; j++)
                 {
-                    downY--;
+                    // if tile is filled with a square
+                    if (grid[j, y] != null && grid[j, y].transform.parent.name == "JWaterBlock")
+                    {
+                        // find the lowest the square can move down
+                        int downY = y - 1;
+                        while (downY >= 0 && grid[j, downY] == null)
+                        {
+                            downY--;
+                        }
+
+                        // store the movement downward in a variable
+                        int newY = downY + 1;
+
+                        // update the grid
+                        grid[j, newY] = grid[j, y];
+                        grid[j, y] = null;
+
+                        //move the square down
+                        grid[j, newY].transform.position = new Vector3(j, newY, 0);
+                    }
                 }
-
-                // store the movement downward in a variable
-                int newY = downY + 1;
-
-                // move the square down
-                children.position = new Vector3(roundedX, newY, 0);
-
-                // update the grid
-                grid[roundedX, newY] = children;
             }
         }
     }

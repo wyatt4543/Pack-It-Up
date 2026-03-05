@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static Unity.VisualScripting.Metadata;
 
 public class MoveBlocks : MonoBehaviour
 {
@@ -437,9 +435,6 @@ public class MoveBlocks : MonoBehaviour
                 grid[roundedX, roundedY] = null;
             }
 
-            // create a dictionary for storing taken positions
-            Dictionary<Transform, Vector3> targetPositions = new Dictionary<Transform, Vector3>();
-
             // look at each individual square and see if it can move down
             foreach (Transform children in transform)
             {
@@ -457,22 +452,11 @@ public class MoveBlocks : MonoBehaviour
                 // store the movement downward in a variable
                 int newY = downY + 1;
 
-                // store the new placement
-                targetPositions[children] = new Vector3(roundedX, newY, 0);
-            }
-
-
-            foreach (Transform children in transform)
-            {
-                // round the x and y positions
-                int roundedX = Mathf.RoundToInt(children.position.x);
-                int roundedY = Mathf.RoundToInt(children.position.y);
-
                 // move the square down
-                children.position = targetPositions[children];
+                children.position = new Vector3(roundedX, newY, 0);
 
                 // update the grid
-                grid[roundedX, roundedY] = children;
+                grid[roundedX, newY] = children;
             }
         }
     }

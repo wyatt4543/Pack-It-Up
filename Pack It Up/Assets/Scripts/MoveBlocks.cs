@@ -318,32 +318,40 @@ public class MoveBlocks : MonoBehaviour
 
     // check if the player's movements were valid
     public bool ValidMove(int xUpdate, int yUpdate = 0) {
-        foreach (Transform children in transform)
+        // functionality for the Negative Block
+        if (gameObject.name == "JNegativeBlockMovement")
         {
-            // round the x and y positions
-            int roundedX = Mathf.RoundToInt(children.position.x);
-            int roundedY = Mathf.RoundToInt(children.position.y);
 
-            // create the updated x and y positions
-            int updatedX = roundedX + xUpdate;
-            int updatedY = roundedY + yUpdate;
-
-            // check if the block is on any side of the box
-            if (updatedX < 0 || updatedX >= width || updatedY < 0 || updatedY >= height)
+        }
+        else
+        {
+            foreach (Transform children in transform)
             {
-                // if it is don't allow movement
-                return false;
-            }
+                // round the x and y positions
+                int roundedX = Mathf.RoundToInt(children.position.x);
+                int roundedY = Mathf.RoundToInt(children.position.y);
 
-            // check if the block is touching any other piece
-            if (grid[updatedX, updatedY] != null)
-            {
-                // if it is don't allow movement
-                return false;
+                // create the updated x and y positions
+                int updatedX = roundedX + xUpdate;
+                int updatedY = roundedY + yUpdate;
+
+                // check if the block is on any side of the box
+                if (updatedX < 0 || updatedX >= width || updatedY < 0 || updatedY >= height)
+                {
+                    // if it is don't allow movement
+                    return false;
+                }
+
+                // check if the block is touching any other piece
+                if (grid[updatedX, updatedY] != null)
+                {
+                    // if it is don't allow movement
+                    return false;
+                }
             }
         }
 
-        // if it isn't going to move outside allow movement
+        // allow movement if no collison or getting out of bounds
         return true;
     }
 

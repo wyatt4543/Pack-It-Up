@@ -232,6 +232,9 @@ public class MoveBlocks : MonoBehaviour
 
         // update the single placement variable back to 0 for the next time it's used for checks
         singlePlaceClears = 0;
+
+        // update the game round according to line clears
+        gameRound = (lineClears / 10) + 1;
     }
 
     // function for checking for a line clear
@@ -264,12 +267,6 @@ public class MoveBlocks : MonoBehaviour
 
         // update the variable keeping track of the line clears made by one block
         singlePlaceClears++;
-
-        // update the game round if lineClears is a multiple of 10
-        if ((lineClears > 0) && (lineClears % 10 == 0))
-        {
-            gameRound++;
-        }
     }
     
     // function for moving the blocks down

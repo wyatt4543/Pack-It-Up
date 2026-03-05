@@ -17,7 +17,7 @@ public class MoveBlocks : MonoBehaviour
     // gameboard variables
     public static int width = 10;
     public static int height = 20;
-    private static Transform[,] grid = new Transform[width, height]; 
+    private static Transform[,] grid = new Transform[width, height];
 
     // movement variables
     private float movementX;
@@ -444,12 +444,17 @@ public class MoveBlocks : MonoBehaviour
                 // store the movement downward in a variable
                 int newY = downY + 1;
 
-                // update the grid
-                grid[roundedX, newY] = grid[roundedX, roundedY];
-                grid[roundedX, roundedY] = null;
+                // check if the piece is actually going down
+                if (roundedY != newY)
+                {
+                    // update the grid
+                    grid[roundedX, newY] = grid[roundedX, roundedY];
+                    grid[roundedX, roundedY] = null;
 
-                //move the square down
-                grid[roundedX, newY].transform.position = new Vector3(roundedX, newY, 0);
+                    //move the square down
+                    grid[roundedX, newY].transform.position = new Vector3(roundedX, newY, 0);
+                    
+                }
             }
         }
     }

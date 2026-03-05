@@ -427,7 +427,30 @@ public class MoveBlocks : MonoBehaviour
         // functionality for the water block
         if (gameObject.name == "JWaterBlock")
         {
+            // look at each individual square and see if it can move down
+            foreach (Transform children in transform)
+            {
+                // round the x and y positions
+                int roundedX = Mathf.RoundToInt(children.position.x);
+                int roundedY = Mathf.RoundToInt(children.position.y);
 
+                // find the lowest the square can move down
+                int downY = roundedY - 1;
+                while (downY >= 0 && grid[roundedX, downY] == null)
+                {
+                    downY--;
+                }
+
+                // store the movement downward in a variable
+                int newY = downY + 1;
+
+                // update the grid
+                grid[roundedX, newY] = grid[roundedX, roundedY];
+                grid[roundedX, roundedY] = null;
+
+                //move the square down
+                grid[roundedX, newY].transform.position = new Vector3(roundedX, newY, 0);
+            }
         }
     }
 

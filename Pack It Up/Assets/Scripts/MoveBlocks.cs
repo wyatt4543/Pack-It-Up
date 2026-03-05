@@ -305,7 +305,7 @@ public class MoveBlocks : MonoBehaviour
         }
     }
 
-    // check if the player's movements were valid
+    // add the player's block to the grid
     public void AddToGrid()
     {
         foreach (Transform children in transform)

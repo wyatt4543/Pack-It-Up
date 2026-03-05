@@ -446,7 +446,8 @@ public class MoveBlocks : MonoBehaviour
                         // store the movement downward in a variable
                         int newY = downY + 1;
 
-                        if (newY != downY)
+                        // check if the square actually moves down
+                        if (newY != y)
                         {
                             // update the grid
                             grid[j, newY] = grid[j, y];

@@ -563,13 +563,13 @@ public class MoveBlocks : MonoBehaviour
                 // update the grid
                 grid[roundedX, roundedY] = null;
             }
-
-            // spawn a new piece
-            spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
-
-            // destroy the negative block
-            Destroy(transform.parent.gameObject);
         }
+
+        // spawn a new piece
+        spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
+
+        // destroy the negative block
+        Destroy(transform.parent.gameObject);
     }
 
     // end the game upon loss

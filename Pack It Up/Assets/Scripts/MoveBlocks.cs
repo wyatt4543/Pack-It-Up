@@ -301,7 +301,6 @@ public class MoveBlocks : MonoBehaviour
                 // if tile is filled with a square
                 if (grid[j,y] != null)
                 {
-                    print(grid[j, y].gameObject.name);
                     // find the lowest the square can move down
                     int downY = y - 1;
                     while (downY >= 0 && grid[j, downY] == null)

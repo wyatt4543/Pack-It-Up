@@ -340,8 +340,10 @@ public class MoveBlocks : MonoBehaviour
                 }
 
                 // activate the negative block if it is at the bottom of the screen
-                if (updatedY < 0) {
+                if (updatedY < 0)
+                {
                     NegativeBlockDestruction();
+                    return false;
                 }
 
                 // check if all blocks are touching another piece
@@ -415,6 +417,7 @@ public class MoveBlocks : MonoBehaviour
                 if (roundedY < 0)
                 {
                     NegativeBlockDestruction();
+                    return false;
                 }
 
                 // check if all blocks are touching another piece

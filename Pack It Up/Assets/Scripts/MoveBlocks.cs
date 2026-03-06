@@ -394,24 +394,65 @@ public class MoveBlocks : MonoBehaviour
     // check if the player's rotation was valid
     public bool ValidRotation()
     {
-        foreach (Transform children in transform)
+        // functionality for the Negative Block
+        if (gameObject.name == "JNegativeBlock")
         {
-            // round the x and y positions
-            int roundedX = Mathf.RoundToInt(children.position.x);
-            int roundedY = Mathf.RoundToInt(children.position.y);
-
-            // check if the block is on any side of the box
-            if (roundedX < 0 || roundedX >= width || roundedY < 0 || roundedY >= height)
+            int overlapCount = 0;
+            foreach (Transform children in transform)
             {
-                // if it is don't allow movement
-                return false;
+                // round the x and y positions
+                int roundedX = Mathf.RoundToInt(children.position.x);
+                int roundedY = Mathf.RoundToInt(children.position.y);
+
+                // check if the block is on any side of the box
+                if (roundedX < 0 || roundedX >= width || roundedY >= height)
+                {
+                    // if it is don't allow movement
+                    return false;
+                }
+
+                // activate the negative block if it is at the bottom of the screen
+                if (roundedY < 0)
+                {
+                    NegativeBlockDestruction();
+                }
+
+                // check if all blocks are touching another piece
+                if (grid[roundedX, roundedY] != null)
+                {
+                    // increment the overlapping negative blocks count if the negative square is overlapping another piece
+                    overlapCount++;
+                }
             }
 
-            // check if the block is touching any other piece
-            if (grid[roundedX, roundedY] != null)
+            // if all of the pieces of the negative block overlap with a normal piece
+            if (overlapCount == gameObject.transform.childCount)
             {
-                // if it is don't allow movement
-                return false;
+                // remove the pieces the negative piece overlaps with
+                NegativeBlockDestruction();
+            }
+        }
+        else
+        { 
+            foreach (Transform children in transform)
+            {
+                // round the x and y positions
+                int roundedX = Mathf.RoundToInt(children.position.x);
+                int roundedY = Mathf.RoundToInt(children.position.y);
+
+                // check if the block is on any side of the box
+                if (roundedX < 0 || roundedX >= width || roundedY < 0 || roundedY >= height)
+                {
+                    // if it is don't allow movement
+                    return false;
+                }
+
+                // check if the block is touching any other piece
+                if (grid[roundedX, roundedY] != null)
+                {
+                    // if it is don't allow movement
+                    return false;
+                }
             }
         }
 

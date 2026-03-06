@@ -258,11 +258,20 @@ public class MoveBlocks : MonoBehaviour
     {
         for (int j = 0; j < width; j++)
         {
-            // delete the game objects on the line
-            Destroy(grid[j, i].gameObject);
+            // add the testing for a tile with a number on it
+            if (grid[j, i].gameObject.GetComponentInChildren<SpriteRenderer>().sprite.name == "2_0")
+            {
+                Destroy(grid[j, i].gameObject.transform.GetChild(0));
+            }
+            // if it is a normal tile do the normal line deletion
+            else
+            {
+                // delete the game objects on the line
+                Destroy(grid[j, i].gameObject);
 
-            // update the grid
-            grid[j, i] = null;
+                // update the grid
+                grid[j, i] = null;
+            }
         }
         
         // update the line clears variable

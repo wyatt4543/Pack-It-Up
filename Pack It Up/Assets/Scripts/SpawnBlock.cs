@@ -8,13 +8,19 @@ public class SpawnBlock : MonoBehaviour
     void Start()
     {
         // spawn a new block at the beginning of the game
-        NewBlock();
+        NewBlock(0,1,0,11);
     }
 
     // function for creating new blocks
-    public void NewBlock(int lineClears = 0, int gameRound = 1, int gameScore = 0) {
+    public void NewBlock(int lineClears = 0, int gameRound = 1, int gameScore = 0, int blockType = -1) {
+        // assign the default block type value
+        if (blockType == -1)
+        {
+            blockType = Random.Range(0, Blocks.Length);
+        }
+
         // create a random new block in the spawner postion
-        GameObject newBlock = Instantiate(Blocks[Random.Range(0, Blocks.Length)], transform.position, Quaternion.identity);
+        GameObject newBlock = Instantiate(Blocks[blockType], transform.position, Quaternion.identity);
 
         // get the moveBlocksScript
         MoveBlocks moveBlocksScript = newBlock.GetComponentsInChildren<MoveBlocks>()[0];

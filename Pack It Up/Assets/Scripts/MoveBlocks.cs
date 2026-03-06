@@ -55,6 +55,8 @@ public class MoveBlocks : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        print(gameObject.GetComponentInChildren<SpriteRenderer>().sprite.name);
+
         // Initialize player input
         playerInput = GetComponent<PlayerInput>();
 

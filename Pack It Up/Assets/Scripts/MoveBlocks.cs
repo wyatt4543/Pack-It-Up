@@ -311,13 +311,17 @@ public class MoveBlocks : MonoBehaviour
 
                     // store the movement downward in a variable
                     int newY = downY + 1;
-                    
-                    // update the grid
-                    grid[j, newY] = grid[j, y];
-                    grid[j, y] = null;
 
-                    //move the square down
-                    grid[j, newY].transform.position = new Vector3(j, newY, 0);
+                    // check if the square actually moves down
+                    if (newY != y)
+                    {
+                        // update the grid
+                        grid[j, newY] = grid[j, y];
+                        grid[j, y] = null;
+
+                        //move the square down
+                        grid[j, newY].transform.position = new Vector3(j, newY, 0);
+                    }
                 }
             }
         }

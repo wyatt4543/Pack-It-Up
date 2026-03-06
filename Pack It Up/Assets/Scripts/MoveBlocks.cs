@@ -258,7 +258,10 @@ public class MoveBlocks : MonoBehaviour
     {
         for (int j = 0; j < width; j++)
         {
-            // testing for a tile with a number on it
+            // add a bool for testing if the square is a numbered square
+            bool numberedSquare = false;
+
+            // testing for a square with a number on it
             if (gameObject.transform.childCount > 0)
             {
                 if (gameObject.transform.GetChild(0).childCount > 0)
@@ -266,11 +269,13 @@ public class MoveBlocks : MonoBehaviour
                     if (grid[j, i].gameObject.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite.name == "2_0")
                     {
                         Destroy(grid[j, i].gameObject.transform.GetChild(0).GetChild(0));
+                        numberedSquare = true;
                     }
                 }
             }
-            // if it is a normal tile do the normal line deletion
-            else
+            
+            // if it is a normal square do the normal line deletion
+            if (!numberedSquare)
             {
                 // delete the game objects on the line
                 Destroy(grid[j, i].gameObject);

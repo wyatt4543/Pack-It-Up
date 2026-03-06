@@ -262,15 +262,12 @@ public class MoveBlocks : MonoBehaviour
             bool numberedSquare = false;
 
             // testing for a square with a number on it
-            if (gameObject.transform.childCount > 0)
+            if (grid[j, i].gameObject.transform.childCount > 0)
             {
-                if (gameObject.transform.GetChild(0).childCount > 0)
+                if (grid[j, i].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name == "2_0")
                 {
-                    if (grid[j, i].gameObject.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite.name == "2_0")
-                    {
-                        Destroy(grid[j, i].gameObject.transform.GetChild(0).GetChild(0));
-                        numberedSquare = true;
-                    }
+                    Destroy(grid[j, i].gameObject.transform.GetChild(0));
+                    numberedSquare = true;
                 }
             }
             

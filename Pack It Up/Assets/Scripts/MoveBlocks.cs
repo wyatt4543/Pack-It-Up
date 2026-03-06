@@ -37,6 +37,9 @@ public class MoveBlocks : MonoBehaviour
     public int gameScore;
     private int singlePlaceClears = 0;
 
+    // cursed pieces variables
+    private bool NegativeBlockCalled = false;
+
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
     private float defaultAutoMoveCapTimer = 1.0f / 60.0f;
@@ -343,7 +346,6 @@ public class MoveBlocks : MonoBehaviour
                 if (updatedY < 0)
                 {
                     NegativeBlockDestruction();
-                    return false;
                 }
 
                 // check if all blocks are touching another piece
@@ -417,7 +419,6 @@ public class MoveBlocks : MonoBehaviour
                 if (roundedY < 0)
                 {
                     NegativeBlockDestruction();
-                    return false;
                 }
 
                 // check if all blocks are touching another piece
@@ -550,29 +551,36 @@ public class MoveBlocks : MonoBehaviour
     // function for destorying blocks that the negative block overlaps with
     private void NegativeBlockDestruction()
     {
-        // loop through each child to destroy all of the correct blocks
-        foreach (Transform children in transform)
-        {
-            // round the current child's x and y positions
-            int roundedX = Mathf.RoundToInt(children.transform.position.x);
-            int roundedY = Mathf.RoundToInt(children.transform.position.y);
-
-            // check if there is actually a piece there
-            if (grid[roundedX, roundedY] != null)
+        // check if this function has been called
+        if (NegativeBlockCalled == false)
+        {   
+            // stop this from spawning multiple blocks
+            NegativeBlockCalled = true;
+            
+            // loop through each child to destroy all of the correct blocks
+            foreach (Transform children in transform)
             {
-                // delete the game objects overlapping with a piece
-                Destroy(grid[roundedX, roundedY].gameObject);
+                // round the current child's x and y positions
+                int roundedX = Mathf.RoundToInt(children.transform.position.x);
+                int roundedY = Mathf.RoundToInt(children.transform.position.y);
 
-                // update the grid
-                grid[roundedX, roundedY] = null;
+                // check if there is actually a piece there
+                if (grid[roundedX, roundedY] != null)
+                {
+                    // delete the game objects overlapping with a piece
+                    Destroy(grid[roundedX, roundedY].gameObject);
+
+                    // update the grid
+                    grid[roundedX, roundedY] = null;
+                }
             }
+
+            // spawn a new piece
+            spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
+
+            // destroy the negative block
+            Destroy(transform.parent.gameObject);
         }
-
-        // spawn a new piece
-        spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
-
-        // destroy the negative block
-        Destroy(transform.parent.gameObject);
     }
 
     // end the game upon loss

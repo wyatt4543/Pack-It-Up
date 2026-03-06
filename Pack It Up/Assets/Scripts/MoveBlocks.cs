@@ -55,12 +55,6 @@ public class MoveBlocks : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (gameObject.transform.childCount > 0)
-        {
-            if (gameObject.transform.GetChild(0).childCount > 0)
-                print(gameObject.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite.name);
-        }
-
         // Initialize player input
         playerInput = GetComponent<PlayerInput>();
 
@@ -264,10 +258,16 @@ public class MoveBlocks : MonoBehaviour
     {
         for (int j = 0; j < width; j++)
         {
-            // add the testing for a tile with a number on it
-            if (grid[j, i].gameObject.GetComponentInChildren<SpriteRenderer>().sprite.name == "2_0")
+            // testing for a tile with a number on it
+            if (gameObject.transform.childCount > 0)
             {
-                Destroy(grid[j, i].gameObject.transform.GetChild(0));
+                if (gameObject.transform.GetChild(0).childCount > 0)
+                {
+                    if (grid[j, i].gameObject.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite.name == "2_0")
+                    {
+                        Destroy(grid[j, i].gameObject.transform.GetChild(0).GetChild(0));
+                    }
+                }
             }
             // if it is a normal tile do the normal line deletion
             else

@@ -321,6 +321,7 @@ public class MoveBlocks : MonoBehaviour
         // functionality for the Negative Block
         if (gameObject.name == "JNegativeBlock")
         {
+            int overlapCount = 0;
             foreach (Transform children in transform)
             {
                 // round the x and y positions
@@ -341,9 +342,16 @@ public class MoveBlocks : MonoBehaviour
                 // check if all blocks are touching another piece
                 if (grid[updatedX, updatedY] != null)
                 {
-                    // if it is don't allow movement
-                    return false;
+                    // increment the overlapping negative blocks count if the negative square is overlapping another piece
+                    overlapCount++;
                 }
+            }
+
+            // if all of the pieces of the negative block overlap with a normal piece
+            if (overlapCount == gameObject.transform.childCount)
+            {
+                // remove the pieces the negative piece overlaps with
+                NegativeBlockDestruction();
             }
         }
         else

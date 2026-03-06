@@ -333,10 +333,15 @@ public class MoveBlocks : MonoBehaviour
                 int updatedY = roundedY + yUpdate;
 
                 // check if the block is on any side of the box
-                if (updatedX < 0 || updatedX >= width || updatedY < 0 || updatedY >= height)
+                if (updatedX < 0 || updatedX >= width || updatedY >= height)
                 {
                     // if it is don't allow movement
                     return false;
+                }
+
+                // activate the negative block if it is at the bottom of the screen
+                if (updatedY < 0) {
+                    NegativeBlockDestruction();
                 }
 
                 // check if all blocks are touching another piece

@@ -340,7 +340,7 @@ public class MoveBlocks : MonoBehaviour
                 }
 
                 // check if all blocks are touching another piece
-                if (grid[updatedX, updatedY] != null)
+                if (grid[roundedX, roundedY] != null)
                 {
                     // increment the overlapping negative blocks count if the negative square is overlapping another piece
                     overlapCount++;
@@ -456,7 +456,7 @@ public class MoveBlocks : MonoBehaviour
             // update the grid
             grid[roundedX, roundedY] = null;
 
-            // destroy the current game object
+            // destroy the bomb block
             Destroy(transform.parent.gameObject);
         }
 
@@ -495,6 +495,31 @@ public class MoveBlocks : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    // function for destorying blocks that the negative block overlaps with
+    private void NegativeBlockDestruction()
+    {
+        // loop through each child to destroy all of the correct blocks
+        foreach (Transform children in transform)
+        {
+            // round the current child's x and y positions
+            int roundedX = Mathf.RoundToInt(children.transform.position.x);
+            int roundedY = Mathf.RoundToInt(children.transform.position.y);
+
+            // check if there is actually a piece there
+            if (grid[roundedX, roundedY] != null)
+            {
+                // delete the game objects overlapping with a piece
+                Destroy(grid[roundedX, roundedY].gameObject);
+
+                // update the grid
+                grid[roundedX, roundedY] = null;
+            }
+
+            // destroy the negative block
+            Destroy(transform.parent.gameObject);
         }
     }
 

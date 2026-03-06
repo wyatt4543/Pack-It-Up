@@ -319,7 +319,7 @@ public class MoveBlocks : MonoBehaviour
     // check if the player's movements were valid
     public bool ValidMove(int xUpdate, int yUpdate = 0) {
         // functionality for the Negative Block
-        if (gameObject.name == "JNegativeBlockMovement")
+        if (gameObject.name == "JNegativeBlock")
         {
             foreach (Transform children in transform)
             {

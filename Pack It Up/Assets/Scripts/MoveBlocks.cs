@@ -266,7 +266,7 @@ public class MoveBlocks : MonoBehaviour
             {
                 if (grid[j, i].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name == "2_0")
                 {
-                    Destroy(grid[j, i].gameObject.transform.GetChild(0));
+                    Destroy(grid[j, i].gameObject.transform.GetChild(0).gameObject);
                     numberedSquare = true;
                 }
             }

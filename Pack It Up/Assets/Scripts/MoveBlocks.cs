@@ -97,6 +97,11 @@ public class MoveBlocks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // get the current mouse position
+        Vector3 mousePos = Input.mousePosition;
+
+        Debug.Log("Mouse X: " + mousePos.x + ", Mouse Y: " + mousePos.y);
+
         // normal move left and right
         if (playerInput.actions["Move"].WasPressedThisFrame())
         {
@@ -195,10 +200,21 @@ public class MoveBlocks : MonoBehaviour
     // move the block based on player inputs
     public void Move()
     {
-        // move the block left, right, or down
-        if (ValidMove((int)movementX, (int)movementY))
+        if (!(gameObject.name == "DragBlock"))
         {
-            parentTransform.position = new Vector2(parentTransform.position.x + movementX, parentTransform.position.y + movementY);
+            // move the block left, right, or down
+            if (ValidMove((int)movementX, (int)movementY))
+            {
+                parentTransform.position = new Vector2(parentTransform.position.x + movementX, parentTransform.position.y + movementY);
+            }
+        }
+        else
+        {
+            // only allow downwards movement for the drag block
+            if (ValidMove(0, (int)movementY))
+            {
+                parentTransform.position = new Vector2(parentTransform.position.x, parentTransform.position.y + movementY);
+            }
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -39,6 +40,7 @@ public class MoveBlocks : MonoBehaviour
 
     // cursed pieces variables
     private bool NegativeBlockCalled = false;
+    private Sprite[] numberDisplaySprites; 
 
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
@@ -84,6 +86,12 @@ public class MoveBlocks : MonoBehaviour
         // update the game score display
         scoreCounter = GameObject.Find("Canvas/ScoreCounter").GetComponent<TextMeshProUGUI>();
         scoreCounter.text = "Score: " + gameScore;
+
+        // assign the number sprites to the numDisplaySprites variable
+        for (int i = 0; i < 5; i++)
+        {
+            numberDisplaySprites[0] = Resources.Load<Sprite>("Sprites/" + (i+2));
+        }
 
         // test for a game over
         if (!ValidMove(0, -1))
@@ -264,10 +272,23 @@ public class MoveBlocks : MonoBehaviour
             // testing for a square with a number on it
             if (grid[j, i].gameObject.transform.childCount > 0)
             {
-                if (grid[j, i].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name == "2_0")
+                if (grid[j, i].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name[0] == '2')
                 {
+                    // destroy the number overlay if it is at 2
                     Destroy(grid[j, i].gameObject.transform.GetChild(0).gameObject);
                     numberedSquare = true;
+                }
+                // if the overlay is higher than two
+                else
+                {
+                    // get the value of the number display
+                    int numberDisplayValue = (int)Char.GetNumericValue(grid[j, i].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name[0]);
+
+                    // decrement the display value
+                    numberDisplayValue--;
+
+                    // update the display's sprite
+                    grid[j, i].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = numberDisplaySprites[numberDisplayValue];
                 }
             }
             

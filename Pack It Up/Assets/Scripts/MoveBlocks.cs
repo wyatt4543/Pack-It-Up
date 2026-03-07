@@ -635,6 +635,88 @@ public class MoveBlocks : MonoBehaviour
                 }
             }
         }
+
+        // functionality for the gravel block
+        if (gameObject.name == "GravelBlock")
+        {
+            // create variables for the maximum x and y of the gravel block
+            int minX = Mathf.RoundToInt(transform.GetChild(0).position.x);
+            int minY = Mathf.RoundToInt(transform.GetChild(0).position.y);
+            int maxX = 0;
+            int maxY = 0;
+
+            // look for the maximum and minimum x and y of the block
+            foreach (Transform children in transform)
+            {
+                if (Mathf.RoundToInt(children.position.x) < minX)
+                {
+                    minX = Mathf.RoundToInt(children.position.x);
+                }
+                if (Mathf.RoundToInt(children.position.y) < minY)
+                {
+                    minY = Mathf.RoundToInt(children.position.y);
+                }
+                if (Mathf.RoundToInt(children.position.x) > maxX)
+                {
+                    maxX = Mathf.RoundToInt(children.position.x);
+                }
+                if (Mathf.RoundToInt(children.position.y) > maxY)
+                {
+                    maxY = Mathf.RoundToInt(children.position.y);
+                }
+            }
+
+            // update the maximum and minimum x and y for modifying the squares around the gravel block
+            if (minX - 1 >= 0)
+            {
+                minX--;
+            }
+            if (minY - 1 >= 0)
+            {
+                minY--;
+            }
+            if (maxX + 1 < width)
+            {
+                minX++;
+            }
+            if (minY + 1 < height)
+            {
+                minY++;
+            }
+
+            // look at the gravel's bottom y upwards
+            for (int y = minY; y <= maxY; y++)
+            {
+                // loop through each x that's part of and around the gravel
+                for (int j = minX; j <= maxX; j++)
+                {
+                    // if tile is filled with a square
+                    if (grid[j, y] != null)
+                    {
+                        // find the lowest the square can move down
+                        int downY = y - 1;
+                        while (downY >= 0 && grid[j, downY] == null)
+                        {
+                            downY--;
+                        }
+
+                        // store the movement downward in a variable
+                        int newY = downY + 1;
+
+                        // check if the square actually moves down
+                        if (newY != y)
+                        {
+                            // update the grid
+                            grid[j, newY] = grid[j, y];
+                            grid[j, y] = null;
+
+                            //move the square down
+                            grid[j, newY].transform.position = new Vector3(j, newY, 0);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // function for destorying blocks that the negative block overlaps with

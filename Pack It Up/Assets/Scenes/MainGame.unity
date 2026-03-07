@@ -315,6 +315,7 @@ MonoBehaviour:
   - {fileID: 468290122866100752, guid: 1b6865a15c99e6744a0451b05de7f5a4, type: 3}
   - {fileID: 8926614132876042614, guid: 4f38eedb7f1b8a8499f1891b5565749f, type: 3}
   - {fileID: 1550645897694374754, guid: e4fe6d9f2cde1c240b6dab5f7771595b, type: 3}
+  - {fileID: 8274824464922810872, guid: f3cb1cad785acac409e87fbc09c87210, type: 3}
   numberDisplaySprites:
   - {fileID: 6937817954938267909, guid: caa29b0eb1f129240a02b078978e2db2, type: 3}
   - {fileID: -6470460504253458178, guid: 27530a5fdf53e174e96f1f049817d15f, type: 3}

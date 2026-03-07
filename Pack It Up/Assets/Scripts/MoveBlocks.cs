@@ -259,7 +259,39 @@ public class MoveBlocks : MonoBehaviour
     // function for deleting lines
     public void DeleteLine(int i)
     {
-        for (int j = 0; j < width; j++)
+        // variable for testing for the x position of the half block;
+        int halfBlockX;
+        bool halfBlockExists = false;
+
+        // search for the half block
+        for (halfBlockX = 0; halfBlockX < width; halfBlockX++)
+        {
+            if (grid[halfBlockX, i].gameObject.name == "HalfSquare")
+            {
+                halfBlockExists = true;
+                break;
+            }
+        }
+
+        // set the normal values
+        int testWidth = width;
+        int startX = 0;
+
+        if (halfBlockExists)
+        {
+            // if the half block is on the left side only clear the left side
+            if (halfBlockX < 5)
+            {
+                testWidth = 5;
+            }
+            // otherwise clear the right side
+            else
+            {
+                startX = 5;
+            }
+        }
+
+        for (int j = startX; j < testWidth; j++)
         {
             // testing for a square with a number on it
             if (grid[j, i].gameObject.transform.childCount > 0)
@@ -282,29 +314,14 @@ public class MoveBlocks : MonoBehaviour
                     grid[j, i].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = numberDisplaySprites[numberDisplayValue-2];
                 }
             }
+            // if it is a normal square do the normal line deletion
             else
             {
-                // if it is the half block only delete half of the line
-                if (gameObject.name == "HalfBlock")
-                {
-                    if (j < 5)
-                    {
-                        // delete half the game objects on the line
-                        Destroy(grid[j, i].gameObject);
+                // delete the game objects on the line
+                Destroy(grid[j, i].gameObject);
 
-                        // update the grid
-                        grid[j, i] = null;
-                    }
-                }
-                // if it is a normal square do the normal line deletion
-                else
-                {
-                    // delete the game objects on the line
-                    Destroy(grid[j, i].gameObject);
-
-                    // update the grid
-                    grid[j, i] = null;
-                }
+                // update the grid
+                grid[j, i] = null;
             }
         }
         

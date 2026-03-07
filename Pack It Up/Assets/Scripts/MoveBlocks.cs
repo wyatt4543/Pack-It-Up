@@ -677,11 +677,11 @@ public class MoveBlocks : MonoBehaviour
             }
             if (maxX + 1 < width)
             {
-                minX++;
+                maxX++;
             }
-            if (minY + 1 < height)
+            if (maxY + 1 < height)
             {
-                minY++;
+                maxY++;
             }
 
             // look at the gravel's bottom y upwards

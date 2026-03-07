@@ -106,7 +106,7 @@ public class MoveBlocks : MonoBehaviour
         Vector3 cameraDistance = new Vector3(screenPos.x, screenPos.y, 10f);
         Vector3 worldPosition = mainCamera.ScreenToWorldPoint(cameraDistance);
         
-        Debug.Log("World position: " + worldPosition.ToString("F3"));
+        parentTransform.position = new Vector2(worldPosition.x, parentTransform.position.y);
 
         // normal move left and right
         if (playerInput.actions["Move"].WasPressedThisFrame())

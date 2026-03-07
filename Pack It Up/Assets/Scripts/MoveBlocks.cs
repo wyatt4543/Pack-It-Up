@@ -165,6 +165,7 @@ public class MoveBlocks : MonoBehaviour
                 CursedBlocks();
                 CheckForLines();
                 spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
+                Destroy(gameObject.GetComponent<PlayerInput>());
                 Destroy(this);
             }
         }

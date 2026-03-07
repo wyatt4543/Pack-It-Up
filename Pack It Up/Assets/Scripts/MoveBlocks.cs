@@ -282,14 +282,29 @@ public class MoveBlocks : MonoBehaviour
                     grid[j, i].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = numberDisplaySprites[numberDisplayValue-2];
                 }
             }
-            // if it is a normal square do the normal line deletion
             else
             {
-                // delete the game objects on the line
-                Destroy(grid[j, i].gameObject);
+                // if it is the half block only delete half of the line
+                if (gameObject.name == "HalfBlock")
+                {
+                    if (j < 5)
+                    {
+                        // delete half the game objects on the line
+                        Destroy(grid[j, i].gameObject);
 
-                // update the grid
-                grid[j, i] = null;
+                        // update the grid
+                        grid[j, i] = null;
+                    }
+                }
+                // if it is a normal square do the normal line deletion
+                else
+                {
+                    // delete the game objects on the line
+                    Destroy(grid[j, i].gameObject);
+
+                    // update the grid
+                    grid[j, i] = null;
+                }
             }
         }
         

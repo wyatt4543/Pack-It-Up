@@ -161,6 +161,7 @@ MonoBehaviour:
   lineClears: 0
   gameRound: 0
   gameScore: 0
+  numberDisplaySprites: []
 --- !u!114 &4680623958358978969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +199,7 @@ Transform:
   m_GameObject: {fileID: 6052027982987745614}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4312985, y: 4.687814, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

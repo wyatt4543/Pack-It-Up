@@ -190,6 +190,7 @@ MonoBehaviour:
   lineClears: 0
   gameRound: 0
   gameScore: 0
+  numberDisplaySprites: []
 --- !u!114 &2203960234148165624
 MonoBehaviour:
   m_ObjectHideFlags: 0

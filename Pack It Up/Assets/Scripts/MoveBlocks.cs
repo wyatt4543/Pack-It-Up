@@ -282,7 +282,7 @@ public class MoveBlocks : MonoBehaviour
                     numberDisplayValue--;
 
                     // update the display's sprite
-                    grid[j, i].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = numberDisplaySprites[numberDisplayValue];
+                    grid[j, i].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = numberDisplaySprites[numberDisplayValue-2];
                 }
             }
             

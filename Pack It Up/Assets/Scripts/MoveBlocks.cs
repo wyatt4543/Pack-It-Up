@@ -874,6 +874,22 @@ public class MoveBlocks : MonoBehaviour
                     // check if there is actually a piece there
                     if (grid[roundedX, roundedY] != null)
                     {
+                        // create the value for the number display
+                        int numberDisplayValue = 2;
+
+                        // testing for a square with a number on it
+                        if (grid[roundedX, roundedY].gameObject.transform.childCount > 0)
+                        {
+                            // get the value of the number display
+                            numberDisplayValue = (int)Char.GetNumericValue(grid[roundedX, roundedY].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name[0]);
+
+                            // check if the number display value is at its maximum
+                            if (numberDisplayValue != 5)
+                            {
+                                // increment the display value
+                                numberDisplayValue++;
+                            }
+                        }
                         // delete the game objects overlapping with a piece
                         Destroy(grid[roundedX, roundedY].gameObject);
 
@@ -881,7 +897,15 @@ public class MoveBlocks : MonoBehaviour
                         grid[roundedX, roundedY] = null;
 
                         // create the number display object
-                        (Instantiate(numberDisplayPrefab, new Vector2(roundedX, roundedY), Quaternion.identity) as GameObject).transform.parent = children.transform;
+                        GameObject numberDisplayBox = Instantiate(numberDisplayPrefab, new Vector2(roundedX, roundedY), Quaternion.identity);
+
+                        // assign the number display object's number
+                        numberDisplayBox.GetComponent<SpriteRenderer>().sprite = numberDisplaySprites[numberDisplayValue - 2];
+
+                        // assign the number display's parent
+                        numberDisplayBox.transform.parent = children.transform;
+
+
                     }
                 }
                 else

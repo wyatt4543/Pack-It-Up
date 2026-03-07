@@ -9,6 +9,7 @@ public class MoveBlocks : MonoBehaviour
     public Transform parentTransform;
     private SpawnBlock spawnBlockScript;
     private GameObject gameOverObject;
+    private Camera mainCamera;
 
     // text object variables
     private TextMeshProUGUI roundCounter;
@@ -87,6 +88,9 @@ public class MoveBlocks : MonoBehaviour
         scoreCounter = GameObject.Find("Canvas/ScoreCounter").GetComponent<TextMeshProUGUI>();
         scoreCounter.text = "Score: " + gameScore;
 
+        // Initialize the camera variable
+        mainCamera = Camera.main;
+
         // test for a game over
         if (!ValidMove(0, -1))
         {
@@ -97,10 +101,12 @@ public class MoveBlocks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // get the current mouse position
-        Vector3 mousePos = Input.mousePosition;
-
-        Debug.Log("Mouse X: " + mousePos.x + ", Mouse Y: " + mousePos.y);
+        // get the current mouse position relative to the world
+        Vector2 screenPos = Mouse.current.position.ReadValue();
+        Vector3 cameraDistance = new Vector3(screenPos.x, screenPos.y, 10f);
+        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(cameraDistance);
+        
+        Debug.Log("World position: " + worldPosition.ToString("F3"));
 
         // normal move left and right
         if (playerInput.actions["Move"].WasPressedThisFrame())

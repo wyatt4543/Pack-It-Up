@@ -420,12 +420,15 @@ public class MoveBlocks : MonoBehaviour
     {
         foreach (Transform children in transform)
         {
-            // round the x and y positions
-            int roundedX = Mathf.RoundToInt(children.position.x);
-            int roundedY = Mathf.RoundToInt(children.position.y);
+            if (children.name != "BoxFlap")
+            {
+                // round the x and y positions
+                int roundedX = Mathf.RoundToInt(children.position.x);
+                int roundedY = Mathf.RoundToInt(children.position.y);
 
-            //add the block to the grid
-            grid[roundedX, roundedY] = children;
+                //add the block to the grid
+                grid[roundedX, roundedY] = children;
+            }
         }
     }
 

@@ -40,7 +40,7 @@ public class MoveBlocks : MonoBehaviour
 
     // cursed pieces variables
     private bool NegativeBlockCalled = false;
-    private Sprite[] numberDisplaySprites; 
+    public Sprite[] numberDisplaySprites; 
 
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
@@ -86,12 +86,6 @@ public class MoveBlocks : MonoBehaviour
         // update the game score display
         scoreCounter = GameObject.Find("Canvas/ScoreCounter").GetComponent<TextMeshProUGUI>();
         scoreCounter.text = "Score: " + gameScore;
-
-        // assign the number sprites to the numDisplaySprites variable
-        for (int i = 0; i < 5; i++)
-        {
-            numberDisplaySprites[0] = Resources.Load<Sprite>("Sprites/" + (i+2));
-        }
 
         // test for a game over
         if (!ValidMove(0, -1))

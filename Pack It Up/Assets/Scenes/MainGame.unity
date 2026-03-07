@@ -313,6 +313,11 @@ MonoBehaviour:
   - {fileID: 6052027982987745614, guid: 4c378fdbd1bb35f46903caaf61a3b030, type: 3}
   - {fileID: 988282771911747836, guid: f65355f810d96494b834ce188fb6d926, type: 3}
   - {fileID: 468290122866100752, guid: 1b6865a15c99e6744a0451b05de7f5a4, type: 3}
+  numberDisplaySprites:
+  - {fileID: 6937817954938267909, guid: caa29b0eb1f129240a02b078978e2db2, type: 3}
+  - {fileID: -6470460504253458178, guid: 27530a5fdf53e174e96f1f049817d15f, type: 3}
+  - {fileID: -4178046375966092550, guid: f8e2731560c19bd49aaf7dc25b15087e, type: 3}
+  - {fileID: 4130640169021434097, guid: d3d99666c4182064aa946591f31b469e, type: 3}
 --- !u!1 &248991568
 GameObject:
   m_ObjectHideFlags: 0

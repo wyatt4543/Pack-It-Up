@@ -3,6 +3,7 @@ using UnityEngine;
 public class SpawnBlock : MonoBehaviour
 {
     public GameObject[] Blocks;
+    public Sprite[] numberDisplaySprites;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,6 +20,12 @@ public class SpawnBlock : MonoBehaviour
             blockType = Random.Range(0, Blocks.Length);
         }
 
+        // check for the copied block type & assign it a random value
+        if (blockType == 11)
+        {
+
+        }
+
         // create a random new block in the spawner postion
         GameObject newBlock = Instantiate(Blocks[blockType], transform.position, Quaternion.identity);
 
@@ -33,5 +40,8 @@ public class SpawnBlock : MonoBehaviour
 
         // set the game score
         moveBlocksScript.gameScore = gameScore;
+
+        // set the number display sprites
+        moveBlocksScript.numberDisplaySprites = numberDisplaySprites;
     }
 }

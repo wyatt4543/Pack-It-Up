@@ -519,26 +519,22 @@ public class MoveBlocks : MonoBehaviour
                         // make the box only do this check if it is moved
                         if (xUpdate != 0)
                         {
-                            // test for out of bounds
-                            if (!(roundedX - 1 < 0 || roundedX + 1 >= width))
+                            if (children.name == "Bottom Left Square")
                             {
-                                if (children.name == "Bottom Left Square")
+                                // check if the left square is touching another piece
+                                if (grid[roundedX, roundedY] != null)
                                 {
-                                    // check if the left square is touching another piece
-                                    if (grid[roundedX - 1, roundedY] != null)
-                                    {
-                                        // activate the box block if the box is touching another piece
-                                        return BoxBlockDestruction();
-                                    }
+                                    // activate the box block if the box is touching another piece
+                                    return BoxBlockDestruction();
                                 }
-                                if (children.name == "Bottom Right Square")
+                            }
+                            if (children.name == "Bottom Right Square")
+                            {
+                                // check if the right square is touching another piece
+                                if (grid[roundedX , roundedY] != null)
                                 {
-                                    // check if the right square is touching another piece
-                                    if (grid[roundedX + 1, roundedY] != null)
-                                    {
-                                        // activate the box block if the box is touching another piece
-                                        return BoxBlockDestruction();
-                                    }
+                                    // activate the box block if the box is touching another piece
+                                    return BoxBlockDestruction();
                                 }
                             }
                         }

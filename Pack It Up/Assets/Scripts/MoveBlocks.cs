@@ -101,12 +101,11 @@ public class MoveBlocks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // get the current mouse position relative to the world
-        Vector2 screenPos = Mouse.current.position.ReadValue();
-        Vector3 cameraDistance = new Vector3(screenPos.x, screenPos.y, 10f);
-        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(cameraDistance);
-        
-        parentTransform.position = new Vector2(worldPosition.x, parentTransform.position.y);
+        // movement for the drag block
+        if (gameObject.name == "DragBlock")
+        {
+            DragBlockMove(Mathf.RoundToInt(parentTransform.position.x));
+        }
 
         // normal move left and right
         if (playerInput.actions["Move"].WasPressedThisFrame())
@@ -221,6 +220,24 @@ public class MoveBlocks : MonoBehaviour
             {
                 parentTransform.position = new Vector2(parentTransform.position.x, parentTransform.position.y + movementY);
             }
+        }
+    }
+
+    // move the block based on mouse position
+    public void DragBlockMove(int previousX)
+    {
+        // get the current mouse position relative to the world
+        Vector2 screenPos = Mouse.current.position.ReadValue();
+        Vector3 cameraDistance = new Vector3(screenPos.x, screenPos.y, 10f);
+        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(cameraDistance);
+
+        //check the difference between the current mouse position and the previous x position
+        int mouseXMovement = Mathf.RoundToInt(worldPosition.x) - previousX;
+
+        // update the block position if it is valid
+        if (ValidMove(mouseXMovement, 0))
+        {
+            parentTransform.position = new Vector2(Mathf.RoundToInt(worldPosition.x), parentTransform.position.y);
         }
     }
 

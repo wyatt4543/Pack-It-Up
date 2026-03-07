@@ -9,7 +9,7 @@ public class SpawnBlock : MonoBehaviour
     void Start()
     {
         // spawn a new block at the beginning of the game
-        NewBlock(0,1,0,11);
+        NewBlock();
     }
 
     // function for creating new blocks

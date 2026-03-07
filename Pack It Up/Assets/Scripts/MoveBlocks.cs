@@ -521,11 +521,36 @@ public class MoveBlocks : MonoBehaviour
                         // check if the square is empty & if trying to delete the current game object
                         if ((grid[checkX, checkY] != null) && !(x == 0 && y == 0))
                         {
-                            // destroy the game object around the bomb
-                            Destroy(grid[checkX, checkY].gameObject);
+                            // testing for a square with a number on it
+                            if (grid[checkX, checkY].gameObject.transform.childCount > 0)
+                            {
+                                if (grid[checkX, checkY].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name[0] == '2')
+                                {
+                                    // destroy the number overlay if it is at 2
+                                    Destroy(grid[checkX, checkY].gameObject.transform.GetChild(0).gameObject);
+                                }
+                                // if the overlay is higher than two
+                                else
+                                {
+                                    // get the value of the number display
+                                    int numberDisplayValue = (int)Char.GetNumericValue(grid[checkX, checkY].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name[0]);
 
-                            // update the grid
-                            grid[checkX, checkY] = null;
+                                    // decrement the display value
+                                    numberDisplayValue--;
+
+                                    // update the display's sprite
+                                    grid[checkX, checkY].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = numberDisplaySprites[numberDisplayValue - 2];
+                                }
+                            }
+                            // if it is a normal square do the normal bomb deletion
+                            else
+                            {
+                                // destroy the game object around the bomb
+                                Destroy(grid[checkX, checkY].gameObject);
+
+                                // update the grid
+                                grid[checkX, checkY] = null;
+                            }
 
                             // give the player 10 points (scaling with each game round) for each square cleared
                             gameScore += 10 * gameRound;

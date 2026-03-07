@@ -20,14 +20,14 @@ public class SpawnBlock : MonoBehaviour
             blockType = Random.Range(0, Blocks.Length);
         }
 
+        // create a random new block in the spawner postion
+        GameObject newBlock = Instantiate(Blocks[blockType], transform.position, Quaternion.identity);
+
         // check for the copied block type & assign it a random value
         if (blockType == 11)
         {
-
+            newBlock.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = numberDisplaySprites[Random.Range(0, numberDisplaySprites.Length)];
         }
-
-        // create a random new block in the spawner postion
-        GameObject newBlock = Instantiate(Blocks[blockType], transform.position, Quaternion.identity);
 
         // get the moveBlocksScript
         MoveBlocks moveBlocksScript = newBlock.GetComponentsInChildren<MoveBlocks>()[0];

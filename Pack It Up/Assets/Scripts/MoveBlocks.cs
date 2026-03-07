@@ -270,7 +270,6 @@ public class MoveBlocks : MonoBehaviour
                 {
                     // destroy the number overlay if it is at 2
                     Destroy(grid[j, i].gameObject.transform.GetChild(0).gameObject);
-                    numberedSquare = true;
                 }
                 // if the overlay is higher than two
                 else
@@ -284,6 +283,9 @@ public class MoveBlocks : MonoBehaviour
                     // update the display's sprite
                     grid[j, i].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = numberDisplaySprites[numberDisplayValue-2];
                 }
+                
+                // tell the game that this square is the numbered square
+                numberedSquare = true;
             }
             
             // if it is a normal square do the normal line deletion

@@ -163,6 +163,7 @@ MonoBehaviour:
   lineClears: 0
   gameRound: 0
   gameScore: 0
+  numberDisplayPrefab: {fileID: 4424447009255818281, guid: 9e539fccf148da44eb74c28a3499e77a, type: 3}
   numberDisplaySprites: []
 --- !u!114 &2176200525864101840
 MonoBehaviour:
@@ -262,7 +263,7 @@ PrefabInstance:
       objectReference: {fileID: -3961162394569261791, guid: f78ee195d1436c147b529aaa630254c3, type: 3}
     - target: {fileID: 5814861561363321387, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
       propertyPath: m_Name
-      value: Left Flap
+      value: BoxFlap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -394,7 +395,7 @@ PrefabInstance:
       objectReference: {fileID: -3961162394569261791, guid: f78ee195d1436c147b529aaa630254c3, type: 3}
     - target: {fileID: 5814861561363321387, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
       propertyPath: m_Name
-      value: Right Flap
+      value: BoxFlap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -456,7 +457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5814861561363321387, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
       propertyPath: m_Name
-      value: Top Right Square
+      value: OverlapSquare
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -522,7 +523,7 @@ PrefabInstance:
       objectReference: {fileID: 7643310471006196807, guid: e9508c72c17aa4240b802220facaccc7, type: 3}
     - target: {fileID: 5814861561363321387, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
       propertyPath: m_Name
-      value: Top Left Square
+      value: OverlapSquare
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class MoveBlocks : MonoBehaviour
 {
@@ -41,6 +42,8 @@ public class MoveBlocks : MonoBehaviour
 
     // cursed pieces variables
     private bool NegativeBlockCalled = false;
+    private bool BoxBlockCalled = false;
+    public GameObject numberDisplayPrefab;
     public Sprite[] numberDisplaySprites; 
 
     // timer variables
@@ -136,22 +139,26 @@ public class MoveBlocks : MonoBehaviour
         // rotate the block
         if (playerInput.actions["Rotate"].WasPressedThisFrame())
         {
-            // if up key pressed
-            if (rotateInput == 1) 
+            // disable rotation for the box block
+            if (!(gameObject.name == "BoxBlock"))
             {
-                transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
-                if (!ValidRotation())
-                {
-                    transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
-                }
-            }
-            // if z key pressed
-            else
-            {
-                transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
-                if (!ValidRotation())
+                // if up key pressed
+                if (rotateInput == 1)
                 {
                     transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
+                    if (!ValidRotation())
+                    {
+                        transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
+                    }
+                }
+                // if z key pressed
+                else
+                {
+                    transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
+                    if (!ValidRotation())
+                    {
+                        transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
+                    }
                 }
             }
         }
@@ -464,6 +471,68 @@ public class MoveBlocks : MonoBehaviour
             {
                 // remove the pieces the negative piece overlaps with
                 NegativeBlockDestruction();
+            }
+        }
+        // functionality for the Box Block
+        else if (gameObject.name == "BoxBlock")
+        {
+            foreach (Transform children in transform)
+            {
+                if (children.name != "BoxFlap")
+                {
+                    // round the x and y positions
+                    int roundedX = Mathf.RoundToInt(children.position.x);
+                    int roundedY = Mathf.RoundToInt(children.position.y);
+
+                    // create the updated x and y positions
+                    int updatedX = roundedX + xUpdate;
+                    int updatedY = roundedY + yUpdate;
+
+                    // check if the block is on any side of the box
+                    if (updatedX < 0 || updatedX >= width || updatedY >= height)
+                    {
+                        // if it is don't allow movement
+                        return false;
+                    }
+
+                    // activate the box block if it is at the bottom of the screen
+                    if (updatedY < 0)
+                    {
+                        return BoxBlockDestruction();
+                    }
+
+                    // check for an overlap square
+                    if (children.name == "OverlapSquare")
+                    {
+                        // check if the overlap blocks are touching another piece
+                        if (grid[roundedX, roundedY] != null)
+                        {
+                            // activate the box block if the box square is overlapping another piece
+                            return BoxBlockDestruction();
+                        }
+                    }
+                    else
+                    {
+                        if (children.name == "Bottom Left Square")
+                        {
+                            // check if the left square is touching another piece
+                            if (grid[roundedX - 1, roundedY] != null)
+                            {
+                                // activate the box block if the box is touching another piece
+                                return BoxBlockDestruction();
+                            }
+                        }
+                        if (children.name == "Bottom Right Square")
+                        {
+                            // check if the right square is touching another piece
+                            if (grid[roundedX + 1, roundedY] != null)
+                            {
+                                // activate the box block if the box is touching another piece
+                                return BoxBlockDestruction();
+                            }
+                        }
+                    }
+                }
             }
         }
         else
@@ -791,6 +860,49 @@ public class MoveBlocks : MonoBehaviour
             // destroy the negative block
             Destroy(transform.parent.gameObject);
         }
+    }
+
+    // function for incrementing blocks that the box block overlaps with
+    private bool BoxBlockDestruction()
+    {
+        // check if this function has been called
+        if (BoxBlockCalled == false)
+        {
+            // stop this from spawning multiple blocks
+            BoxBlockCalled = true;
+
+            // loop through each child to destroy all of the correct blocks
+            foreach (Transform children in transform)
+            {
+                if (children.name != "BoxFlap")
+                {
+                    // round the current child's x and y positions
+                    int roundedX = Mathf.RoundToInt(children.transform.position.x);
+                    int roundedY = Mathf.RoundToInt(children.transform.position.y);
+
+                    // check if there is actually a piece there
+                    if (grid[roundedX, roundedY] != null)
+                    {
+                        // delete the game objects overlapping with a piece
+                        Destroy(grid[roundedX, roundedY].gameObject);
+
+                        // update the grid
+                        grid[roundedX, roundedY] = null;
+
+                        // create the number display object
+                        (Instantiate(numberDisplayPrefab, new Vector2(roundedX, roundedY), Quaternion.identity) as GameObject).transform.parent = children.transform;
+                    }
+                }
+                else
+                {
+                    // delete the box flaps
+                    Destroy(children.gameObject);
+                }
+            }
+        }
+
+        // stop movement
+        return false;
     }
 
     // end the game upon loss

@@ -169,7 +169,7 @@ public class MoveBlocks : MonoBehaviour
             // move down 1 unit every second
             if (!quickDrop)
                 fallTimer = defaultFallTimer; // reset timer to 1 second
-            if (ValidMove(0, -1))
+            if (ValidMove(0, -1) && !(BoxBlockCalled))
             {
                 parentTransform.Translate(Vector2.down);
             }
@@ -215,7 +215,7 @@ public class MoveBlocks : MonoBehaviour
         if (!(gameObject.name == "DragBlock"))
         {
             // move the block left, right, or down
-            if (ValidMove((int)movementX, (int)movementY))
+            if (ValidMove((int)movementX, (int)movementY) && !(BoxBlockCalled))
             {
                 parentTransform.position = new Vector2(parentTransform.position.x + movementX, parentTransform.position.y + movementY);
             }
@@ -516,27 +516,11 @@ public class MoveBlocks : MonoBehaviour
                     }
                     else
                     {
-                        // make the box only do this check if it is moved
-                        if (xUpdate != 0)
+                        // make the box only do this check if it is moved && check if the square is overlapping another piece
+                        if (xUpdate != 0 && grid[roundedX, roundedY] != null)
                         {
-                            if (children.name == "Bottom Left Square")
-                            {
-                                // check if the left square is touching another piece
-                                if (grid[roundedX, roundedY] != null)
-                                {
-                                    // activate the box block if the box is touching another piece
-                                    return BoxBlockDestruction();
-                                }
-                            }
-                            if (children.name == "Bottom Right Square")
-                            {
-                                // check if the right square is touching another piece
-                                if (grid[roundedX , roundedY] != null)
-                                {
-                                    // activate the box block if the box is touching another piece
-                                    return BoxBlockDestruction();
-                                }
-                            }
+                            // activate the box block if the box is overlapping another piece
+                            return BoxBlockDestruction();
                         }
                     }
                 }

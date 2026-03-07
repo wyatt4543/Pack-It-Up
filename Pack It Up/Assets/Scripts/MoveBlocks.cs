@@ -513,22 +513,26 @@ public class MoveBlocks : MonoBehaviour
                     }
                     else
                     {
-                        if (children.name == "Bottom Left Square")
+                        // test for out of bounds
+                        if (!(roundedX - 1 < 0 || roundedX + 1 >= width))
                         {
-                            // check if the left square is touching another piece
-                            if (grid[roundedX - 1, roundedY] != null)
+                            if (children.name == "Bottom Left Square")
                             {
-                                // activate the box block if the box is touching another piece
-                                return BoxBlockDestruction();
+                                // check if the left square is touching another piece
+                                if (grid[roundedX - 1, roundedY] != null)
+                                {
+                                    // activate the box block if the box is touching another piece
+                                    return BoxBlockDestruction();
+                                }
                             }
-                        }
-                        if (children.name == "Bottom Right Square")
-                        {
-                            // check if the right square is touching another piece
-                            if (grid[roundedX + 1, roundedY] != null)
+                            if (children.name == "Bottom Right Square")
                             {
-                                // activate the box block if the box is touching another piece
-                                return BoxBlockDestruction();
+                                // check if the right square is touching another piece
+                                if (grid[roundedX + 1, roundedY] != null)
+                                {
+                                    // activate the box block if the box is touching another piece
+                                    return BoxBlockDestruction();
+                                }
                             }
                         }
                     }

@@ -193,6 +193,7 @@ MonoBehaviour:
   lineClears: 0
   gameRound: 0
   gameScore: 0
+  numberDisplayPrefab: {fileID: 0}
   numberDisplaySprites: []
 --- !u!114 &4923203968539023796
 MonoBehaviour:
@@ -253,6 +254,14 @@ PrefabInstance:
     - target: {fileID: 631246488685496310, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796119850986987759, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796119850986987759, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 7316044667493107830, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
       propertyPath: m_Name
@@ -316,6 +325,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1796119850986987759, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796119850986987759, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 7316044667493107830, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
       propertyPath: m_Name
       value: Middle Left Square
@@ -378,6 +395,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1796119850986987759, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796119850986987759, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 7316044667493107830, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
       propertyPath: m_Name
       value: Left Square
@@ -439,6 +464,14 @@ PrefabInstance:
     - target: {fileID: 631246488685496310, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796119850986987759, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796119850986987759, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 7316044667493107830, guid: 1badd850555f71747b9b9729e84b300c, type: 3}
       propertyPath: m_Name

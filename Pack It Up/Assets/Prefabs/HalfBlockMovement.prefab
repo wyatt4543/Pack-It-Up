@@ -158,6 +158,7 @@ MonoBehaviour:
   lineClears: 0
   gameRound: 0
   gameScore: 0
+  numberDisplayPrefab: {fileID: 0}
   numberDisplaySprites: []
 --- !u!114 &7202829316109132418
 MonoBehaviour:
@@ -254,6 +255,14 @@ PrefabInstance:
     - target: {fileID: 8031503339960335462, guid: ec6ec46500d08e24cb0199b1d84b8874, type: 3}
       propertyPath: m_Name
       value: HalfSquare
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961262063457487514, guid: ec6ec46500d08e24cb0199b1d84b8874, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961262063457487514, guid: ec6ec46500d08e24cb0199b1d84b8874, type: 3}
+      propertyPath: m_Size.y
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

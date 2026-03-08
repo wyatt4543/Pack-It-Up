@@ -190,6 +190,7 @@ MonoBehaviour:
   lineClears: 0
   gameRound: 0
   gameScore: 0
+  numberDisplayPrefab: {fileID: 0}
   numberDisplaySprites: []
 --- !u!114 &2203960234148165624
 MonoBehaviour:
@@ -254,6 +255,14 @@ PrefabInstance:
     - target: {fileID: 5562451547923127774, guid: b3ff2f69695e9164a83da77b57e74ca7, type: 3}
       propertyPath: m_Name
       value: CopiedSquare
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780347171907840802, guid: b3ff2f69695e9164a83da77b57e74ca7, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780347171907840802, guid: b3ff2f69695e9164a83da77b57e74ca7, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

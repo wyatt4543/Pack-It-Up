@@ -161,6 +161,7 @@ MonoBehaviour:
   lineClears: 0
   gameRound: 0
   gameScore: 0
+  numberDisplayPrefab: {fileID: 0}
   numberDisplaySprites: []
 --- !u!114 &7701707355441374225
 MonoBehaviour:
@@ -343,6 +344,14 @@ PrefabInstance:
       value: Left Square
       objectReference: {fileID: 0}
     - target: {fileID: 5543824781344479296, guid: 805efb685a4695e4a9e9262a768d23c2, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543824781344479296, guid: 805efb685a4695e4a9e9262a768d23c2, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543824781344479296, guid: 805efb685a4695e4a9e9262a768d23c2, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1362058913294850930, guid: 3ee0791d8a8c5554587af71f5f9cd209, type: 3}
@@ -407,6 +416,14 @@ PrefabInstance:
     - target: {fileID: 3568339524297797849, guid: 805efb685a4695e4a9e9262a768d23c2, type: 3}
       propertyPath: m_Name
       value: Right Square
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543824781344479296, guid: 805efb685a4695e4a9e9262a768d23c2, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543824781344479296, guid: 805efb685a4695e4a9e9262a768d23c2, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5543824781344479296, guid: 805efb685a4695e4a9e9262a768d23c2, type: 3}
       propertyPath: m_Sprite

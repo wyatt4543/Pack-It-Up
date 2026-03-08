@@ -161,6 +161,7 @@ MonoBehaviour:
   lineClears: 0
   gameRound: 0
   gameScore: 0
+  numberDisplayPrefab: {fileID: 0}
   numberDisplaySprites: []
 --- !u!114 &8854483813922261452
 MonoBehaviour:
@@ -258,6 +259,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8877340127961135680, guid: 5494811b11c87f645bd638c1da2ae8c3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877340127961135680, guid: 5494811b11c87f645bd638c1da2ae8c3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -319,6 +328,14 @@ PrefabInstance:
     - target: {fileID: 7296917047551705290, guid: 5494811b11c87f645bd638c1da2ae8c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877340127961135680, guid: 5494811b11c87f645bd638c1da2ae8c3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877340127961135680, guid: 5494811b11c87f645bd638c1da2ae8c3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -382,6 +399,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8877340127961135680, guid: 5494811b11c87f645bd638c1da2ae8c3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877340127961135680, guid: 5494811b11c87f645bd638c1da2ae8c3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -443,6 +468,14 @@ PrefabInstance:
     - target: {fileID: 7296917047551705290, guid: 5494811b11c87f645bd638c1da2ae8c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877340127961135680, guid: 5494811b11c87f645bd638c1da2ae8c3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877340127961135680, guid: 5494811b11c87f645bd638c1da2ae8c3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

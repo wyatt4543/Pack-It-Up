@@ -191,6 +191,7 @@ MonoBehaviour:
   lineClears: 0
   gameRound: 0
   gameScore: 0
+  numberDisplayPrefab: {fileID: 0}
   numberDisplaySprites: []
 --- !u!114 &4790149566828926019
 MonoBehaviour:
@@ -256,6 +257,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Square
       objectReference: {fileID: 0}
+    - target: {fileID: 7758985975789023465, guid: b19a8fc9c8c99f248a61f2bb8981b7ab, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758985975789023465, guid: b19a8fc9c8c99f248a61f2bb8981b7ab, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -317,6 +326,14 @@ PrefabInstance:
     - target: {fileID: 7351850556029553565, guid: b19a8fc9c8c99f248a61f2bb8981b7ab, type: 3}
       propertyPath: m_Name
       value: Right Square
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758985975789023465, guid: b19a8fc9c8c99f248a61f2bb8981b7ab, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758985975789023465, guid: b19a8fc9c8c99f248a61f2bb8981b7ab, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

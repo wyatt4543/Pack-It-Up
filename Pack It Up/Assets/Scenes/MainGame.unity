@@ -1704,7 +1704,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1757272110}
         m_TargetAssemblyTypeName: buttonUI, Assembly-CSharp
-        m_MethodName: RestartButton
+        m_MethodName: HomeButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

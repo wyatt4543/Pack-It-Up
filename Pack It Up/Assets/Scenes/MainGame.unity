@@ -980,7 +980,7 @@ GameObject:
   - component: {fileID: 1444946896}
   - component: {fileID: 1444946895}
   m_Layer: 5
-  m_Name: Retry ext
+  m_Name: RetryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

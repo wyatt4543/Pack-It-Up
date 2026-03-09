@@ -937,5 +937,8 @@ public class MoveBlocks : MonoBehaviour
 
         // delete this script to disable movement
         Destroy(this);
+
+        // show the restart button
+        buttonUIScript.ToggleButton(0);
     }
 }

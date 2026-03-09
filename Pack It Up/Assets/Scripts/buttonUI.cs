@@ -23,7 +23,7 @@ public class buttonUI : MonoBehaviour
     public void ToggleButton(Button button)
     {
         // make the button invisible/visible and disable/enable interaction
-        button.enabled = !button.enabled;
+        button.gameObject.SetActive(!button.gameObject.activeInHierarchy);
         button.interactable = !button.interactable;
     }
 }

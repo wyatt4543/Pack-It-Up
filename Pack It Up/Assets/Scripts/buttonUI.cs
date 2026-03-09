@@ -14,8 +14,9 @@ public class buttonUI : MonoBehaviour
         // if the scene is the main game
         if (SceneManager.GetActiveScene().name == mainGame)
         {
-            // hide the restart button
+            // hide the restart button & home button
             ToggleButton(0);
+            ToggleButton(1);
         }
     }
 

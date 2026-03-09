@@ -102,8 +102,8 @@ public class MoveBlocks : MonoBehaviour
         buttonController = GameObject.Find("ButtonController");
         buttonUIScript = buttonController.GetComponent<buttonUI>();
 
-        // assign the bomb audio clip
-        AudioClip explosionSound = Resources.Load<AudioClip>("Sounds/SFX/explosion");
+        //assign the bomb sound effect
+        explosionSound = Resources.Load<AudioClip>("Sounds/SFX/explosion");
 
         // test for a game over
         if (!ValidMove(0, -1))

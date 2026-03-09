@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 1206646097}
   - component: {fileID: 1206646096}
   m_Layer: 5
-  m_Name: RetryButton
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -980,7 +980,7 @@ GameObject:
   - component: {fileID: 1444946896}
   - component: {fileID: 1444946895}
   m_Layer: 5
-  m_Name: RetryText
+  m_Name: RestartText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

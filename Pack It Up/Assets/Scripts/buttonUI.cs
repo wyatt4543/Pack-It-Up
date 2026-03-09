@@ -11,7 +11,7 @@ public class buttonUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ToggleButton(buttons[0]);
+        ToggleButton(0);
     }
 
     // function for adding the behavior of restarting the game
@@ -20,10 +20,10 @@ public class buttonUI : MonoBehaviour
     }
 
     // function for disabling a button
-    public void ToggleButton(Button button)
+    public void ToggleButton(int buttonIndex)
     {
         // make the button invisible/visible and disable/enable interaction
-        button.gameObject.SetActive(!button.gameObject.activeInHierarchy);
-        button.interactable = !button.interactable;
+        buttons[buttonIndex].gameObject.SetActive(!buttons[buttonIndex].gameObject.activeInHierarchy);
+        buttons[buttonIndex].interactable = !buttons[buttonIndex].interactable;
     }
 }

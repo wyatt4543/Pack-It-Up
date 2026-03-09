@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class MoveBlocks : MonoBehaviour
 {
     // sound effect variables
-    [SerializeField] private AudioClip explosionSound;
+    private AudioClip explosionSound;
 
     // transform variables & script variables & game object variables
     public Transform parentTransform;
@@ -101,6 +101,9 @@ public class MoveBlocks : MonoBehaviour
         // get the moveBlocksScript & it's game object
         buttonController = GameObject.Find("ButtonController");
         buttonUIScript = buttonController.GetComponent<buttonUI>();
+
+        // assign the bomb audio clip
+        AudioClip clip = Resources.Load<AudioClip>("Sounds/SFX/explosion");
 
         // test for a game over
         if (!ValidMove(0, -1))

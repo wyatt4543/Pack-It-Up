@@ -6,6 +6,9 @@ public class buttonUI : MonoBehaviour
 {
     // set the string to the main game scene name
     [SerializeField] private string mainGame = "MainGame";
+    [SerializeField] private string mainMenu = "MainMenu";
+    
+    // collect a list of all of the buttons
     public Button[] buttons;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,6 +44,12 @@ public class buttonUI : MonoBehaviour
     public void QuitButton()
     {
         Application.Quit();
+    }
+
+    // function for adding the behavior of heading back to the main menu
+    public void HomeButton()
+    {
+        SceneManager.LoadScene(mainMenu);
     }
 
     // function for adding the behavior of restarting the game

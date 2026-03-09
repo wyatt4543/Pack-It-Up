@@ -1436,6 +1436,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   mainGame: MainGame
+  buttons:
+  - {fileID: 1206646096}
 --- !u!1 &1990920656
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class MoveBlocks : MonoBehaviour
 {
+    // sound effect variables
+    [SerializeField] private AudioClip explosionSound;
+
     // transform variables & script variables & game object variables
     public Transform parentTransform;
     private SpawnBlock spawnBlockScript;
@@ -638,6 +641,9 @@ public class MoveBlocks : MonoBehaviour
         // functionality for the bomb block
         if (gameObject.name == "BombBlock")
         {
+            // play the explosion sound effect
+            SFXManager.instance.PlaySFXClip(explosionSound, parentTransform, 1f);
+            
             // round the current x and y positions
             int roundedX = Mathf.RoundToInt(parentTransform.position.x);
             int roundedY = Mathf.RoundToInt(parentTransform.position.y);

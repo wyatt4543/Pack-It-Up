@@ -11,11 +11,13 @@ public class buttonUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // hide the restart button
         ToggleButton(0);
     }
 
     // function for adding the behavior of restarting the game
     public void RestartButton() {
+        // load the main game on restart
         SceneManager.LoadScene(mainGame);
     }
 

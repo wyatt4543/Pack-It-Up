@@ -209,7 +209,10 @@ public class MoveBlocks : MonoBehaviour
         AddToGrid();
         // function for doing special block actions
         await CursedBlocks();
-        CheckForLines();
+        if (gameObject.name != "BombBlock")
+        {
+            CheckForLines();
+        }
         spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
         if (gameObject.name == "BombBlock")
         {

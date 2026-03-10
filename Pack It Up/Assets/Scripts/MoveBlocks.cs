@@ -696,17 +696,21 @@ public class MoveBlocks : MonoBehaviour
                                 // play the explosion animation
                                 ExplosionAnimation(grid[checkX, checkY].gameObject.transform.GetComponent<SpriteRenderer>());
 
-                                // allow there to be a delay for the bomb animation
-                                if ((bombAnimationTimer -= Time.deltaTime) < 0)
+                                // allow the timer to run down before moving on
+                                while (bombAnimationTimer > 0)
                                 {
-                                    bombAnimationTimer = defaultBombAnimationTimer;  // reset the animation timer to 1 second
+                                    // allow there to be a delay for the bomb animation
+                                    if ((bombAnimationTimer -= Time.deltaTime) < 0)
+                                    {
+                                        // destroy the game object around the bomb
+                                        Destroy(grid[checkX, checkY].gameObject);
 
-                                    // destroy the game object around the bomb
-                                    Destroy(grid[checkX, checkY].gameObject);
-
-                                    // update the grid
-                                    grid[checkX, checkY] = null;
+                                        // update the grid
+                                        grid[checkX, checkY] = null;
+                                    }
                                 }
+
+                                bombAnimationTimer = defaultBombAnimationTimer;  // reset the animation timer to 1 second
                             }
 
                             // give the player 10 points (scaling with each game round) for each square cleared

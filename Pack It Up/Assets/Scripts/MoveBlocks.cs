@@ -190,7 +190,7 @@ public class MoveBlocks : MonoBehaviour
             // once it hits the bottom of the screen place the block
             else
             {
-                _ = HandleBlockPlacement();
+                HandleBlockPlacement();
             }
         }
 
@@ -201,12 +201,12 @@ public class MoveBlocks : MonoBehaviour
         }
     }
 
-    private async Task HandleBlockPlacement()
+    private void HandleBlockPlacement()
     {
         // self destruct script on hitting the bottom of the screen & do update stuff
         AddToGrid();
         // function for doing special block actions
-        await CursedBlocks();
+        _ = CursedBlocks();
         CheckForLines();
         spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
         Destroy(gameObject.GetComponent<PlayerInput>());
@@ -727,9 +727,6 @@ public class MoveBlocks : MonoBehaviour
 
             // update the grid
             grid[roundedX, roundedY] = null;
-
-            // destroy the bomb block
-            Destroy(transform.parent.gameObject);
         }
 
         // functionality for the water block

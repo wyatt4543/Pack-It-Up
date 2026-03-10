@@ -696,21 +696,8 @@ public class MoveBlocks : MonoBehaviour
                                 // play the explosion animation
                                 ExplosionAnimation(grid[checkX, checkY].gameObject.transform.GetComponent<SpriteRenderer>());
 
-                                // allow the timer to run down before moving on
-                                while (bombAnimationTimer > 0)
-                                {
-                                    // allow there to be a delay for the bomb animation
-                                    if ((bombAnimationTimer -= Time.deltaTime) < 0)
-                                    {
-                                        // destroy the game object around the bomb
-                                        Destroy(grid[checkX, checkY].gameObject);
-
-                                        // update the grid
-                                        grid[checkX, checkY] = null;
-                                    }
-                                }
-
-                                bombAnimationTimer = defaultBombAnimationTimer;  // reset the animation timer to 1 second
+                                // destroy the normal block
+                                StartCoroutine(NormalBombDesruction(checkX, checkY));
                             }
 
                             // give the player 10 points (scaling with each game round) for each square cleared
@@ -880,6 +867,19 @@ public class MoveBlocks : MonoBehaviour
             // destroy the negative block
             Destroy(transform.parent.gameObject);
         }
+    }
+
+    // function that destorys blocks without numbers
+    IEnumerator NormalBombDesruction(int checkX, int checkY)
+    {
+        // wait 1 second
+        yield return new WaitForSeconds(1);
+
+        // destroy the game object around the bomb
+        Destroy(grid[checkX, checkY].gameObject);
+
+        // update the grid
+        grid[checkX, checkY] = null;
     }
 
     // function for playing the explosion animation

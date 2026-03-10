@@ -51,6 +51,7 @@ public class MoveBlocks : MonoBehaviour
     public GameObject numberDisplayPrefab;
     public Sprite[] numberDisplaySprites;
     public Sprite explosionSprite;
+    private bool animationComplete = true;
 
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
@@ -193,10 +194,13 @@ public class MoveBlocks : MonoBehaviour
                 AddToGrid();
                 // function for doing special block actions
                 CursedBlocks();
-                CheckForLines();
-                spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
-                Destroy(gameObject.GetComponent<PlayerInput>());
-                Destroy(this);
+                if (animationComplete)
+                {
+                    CheckForLines();
+                    spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
+                    Destroy(gameObject.GetComponent<PlayerInput>());
+                    Destroy(this);
+                }
             }
         }
 
@@ -225,20 +229,23 @@ public class MoveBlocks : MonoBehaviour
     // move the block based on player inputs
     public void Move()
     {
-        if (!(gameObject.name == "DragBlock"))
+        if (animationComplete)
         {
-            // move the block left, right, or down
-            if (ValidMove((int)movementX, (int)movementY) && !(BoxBlockCalled))
+            if (!(gameObject.name == "DragBlock"))
             {
-                parentTransform.position = new Vector2(parentTransform.position.x + movementX, parentTransform.position.y + movementY);
+                // move the block left, right, or down
+                if (ValidMove((int)movementX, (int)movementY) && !(BoxBlockCalled))
+                {
+                    parentTransform.position = new Vector2(parentTransform.position.x + movementX, parentTransform.position.y + movementY);
+                }
             }
-        }
-        else
-        {
-            // only allow downwards movement for the drag block
-            if (ValidMove(0, (int)movementY))
+            else
             {
-                parentTransform.position = new Vector2(parentTransform.position.x, parentTransform.position.y + movementY);
+                // only allow downwards movement for the drag block
+                if (ValidMove(0, (int)movementY))
+                {
+                    parentTransform.position = new Vector2(parentTransform.position.x, parentTransform.position.y + movementY);
+                }
             }
         }
     }
@@ -574,6 +581,11 @@ public class MoveBlocks : MonoBehaviour
     // check if the player's rotation was valid
     public bool ValidRotation()
     {
+        if (!animationComplete) 
+        {
+            return false;
+        }
+
         // functionality for the Negative Block
         if (gameObject.name == "JNegativeBlock")
         {
@@ -645,7 +657,10 @@ public class MoveBlocks : MonoBehaviour
     {
         // functionality for the bomb block
         if (gameObject.name == "BombBlock")
-        {   
+        {
+            // state the animation isn't complete
+            animationComplete = false;
+
             // round the current x and y positions
             int roundedX = Mathf.RoundToInt(parentTransform.position.x);
             int roundedY = Mathf.RoundToInt(parentTransform.position.y);
@@ -715,6 +730,9 @@ public class MoveBlocks : MonoBehaviour
 
             // destroy the bomb block
             Destroy(transform.parent.gameObject);
+
+            // state that the animation is complete
+            animationComplete = true;
         }
 
         // functionality for the water block

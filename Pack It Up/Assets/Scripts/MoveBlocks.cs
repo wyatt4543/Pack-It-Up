@@ -727,6 +727,9 @@ public class MoveBlocks : MonoBehaviour
 
             // destroy the bomb block
             Destroy(transform.parent.gameObject);
+            
+            // wait 100 milliseconds
+            await Task.Delay(100);
 
             // state that the animation is complete
             animationComplete = true;

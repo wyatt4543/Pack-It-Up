@@ -51,7 +51,6 @@ public class MoveBlocks : MonoBehaviour
     public GameObject numberDisplayPrefab;
     public Sprite[] numberDisplaySprites;
     public Sprite explosionSprite;
-    private bool animationComplete = true;
 
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
@@ -188,16 +187,9 @@ public class MoveBlocks : MonoBehaviour
                 parentTransform.Translate(Vector2.down);
             }
             // once it hits the bottom of the screen place the block
-            else if (animationComplete)
+            else
             {
-                // self destruct script on hitting the bottom of the screen & do update stuff
-                AddToGrid();
-                // function for doing special block actions
-                CursedBlocks();
-                CheckForLines();
-                spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
-                Destroy(gameObject.GetComponent<PlayerInput>());
-                Destroy(this);
+                _ = HandleBlockPlacement();
             }
         }
 
@@ -206,6 +198,18 @@ public class MoveBlocks : MonoBehaviour
             quickDrop = true;
             fallTimer = 0;
         }
+    }
+
+    private async Task HandleBlockPlacement()
+    {
+        // self destruct script on hitting the bottom of the screen & do update stuff
+        AddToGrid();
+        // function for doing special block actions
+        await CursedBlocks();
+        CheckForLines();
+        spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
+        Destroy(gameObject.GetComponent<PlayerInput>());
+        Destroy(this);
     }
 
     // get player inputs
@@ -226,23 +230,20 @@ public class MoveBlocks : MonoBehaviour
     // move the block based on player inputs
     public void Move()
     {
-        if (animationComplete)
+        if (!(gameObject.name == "DragBlock"))
         {
-            if (!(gameObject.name == "DragBlock"))
+            // move the block left, right, or down
+            if (ValidMove((int)movementX, (int)movementY) && !(BoxBlockCalled))
             {
-                // move the block left, right, or down
-                if (ValidMove((int)movementX, (int)movementY) && !(BoxBlockCalled))
-                {
-                    parentTransform.position = new Vector2(parentTransform.position.x + movementX, parentTransform.position.y + movementY);
-                }
+                parentTransform.position = new Vector2(parentTransform.position.x + movementX, parentTransform.position.y + movementY);
             }
-            else
+        }
+        else
+        {
+            // only allow downwards movement for the drag block
+            if (ValidMove(0, (int)movementY))
             {
-                // only allow downwards movement for the drag block
-                if (ValidMove(0, (int)movementY))
-                {
-                    parentTransform.position = new Vector2(parentTransform.position.x, parentTransform.position.y + movementY);
-                }
+                parentTransform.position = new Vector2(parentTransform.position.x, parentTransform.position.y + movementY);
             }
         }
     }
@@ -578,11 +579,6 @@ public class MoveBlocks : MonoBehaviour
     // check if the player's rotation was valid
     public bool ValidRotation()
     {
-        if (!animationComplete) 
-        {
-            return false;
-        }
-
         // functionality for the Negative Block
         if (gameObject.name == "JNegativeBlock")
         {
@@ -650,14 +646,11 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // check the type of block & do its ability
-    private async void CursedBlocks()
+    private async Task CursedBlocks()
     {
         // functionality for the bomb block
         if (gameObject.name == "BombBlock")
         {
-            // state the animation isn't complete
-            animationComplete = false;
-
             // round the current x and y positions
             int roundedX = Mathf.RoundToInt(parentTransform.position.x);
             int roundedY = Mathf.RoundToInt(parentTransform.position.y);
@@ -727,12 +720,6 @@ public class MoveBlocks : MonoBehaviour
 
             // destroy the bomb block
             Destroy(transform.parent.gameObject);
-            
-            // wait 100 milliseconds
-            await Task.Delay(100);
-
-            // state that the animation is complete
-            animationComplete = true;
         }
 
         // functionality for the water block

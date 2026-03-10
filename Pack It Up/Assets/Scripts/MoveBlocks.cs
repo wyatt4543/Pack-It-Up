@@ -52,6 +52,7 @@ public class MoveBlocks : MonoBehaviour
     public Sprite[] numberDisplaySprites;
     public Sprite explosionSprite;
     public GameObject explosionObject;
+    private bool placingBlock = false;
 
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
@@ -188,9 +189,10 @@ public class MoveBlocks : MonoBehaviour
                 parentTransform.Translate(Vector2.down);
             }
             // once it hits the bottom of the screen place the block
-            else
+            else if (!placingBlock)
             {
-                HandleBlockPlacement();
+                placingBlock = true;
+                _ = HandleBlockPlacement();
             }
         }
 
@@ -201,12 +203,12 @@ public class MoveBlocks : MonoBehaviour
         }
     }
 
-    private void HandleBlockPlacement()
+    private async Task HandleBlockPlacement()
     {
         // self destruct script on hitting the bottom of the screen & do update stuff
         AddToGrid();
         // function for doing special block actions
-        _ = CursedBlocks();
+        await CursedBlocks();
         CheckForLines();
         spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
         if (gameObject.name == "BombBlock")

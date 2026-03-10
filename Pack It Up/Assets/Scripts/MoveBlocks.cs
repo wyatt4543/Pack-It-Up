@@ -209,6 +209,11 @@ public class MoveBlocks : MonoBehaviour
         _ = CursedBlocks();
         CheckForLines();
         spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
+        if (gameObject.name == "BombBlock")
+        {
+            // destroy the bomb block
+            Destroy(transform.parent.gameObject);
+        }
         Destroy(gameObject.GetComponent<PlayerInput>());
         Destroy(this);
     }

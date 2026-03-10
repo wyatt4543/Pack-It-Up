@@ -715,12 +715,6 @@ public class MoveBlocks : MonoBehaviour
                 }
             }
 
-            // play the explosion animation
-            ExplosionAnimation(grid[roundedX, roundedY].gameObject.transform.GetComponent<SpriteRenderer>());
-
-            // wait 100 milliseconds
-            await Task.Delay(100);
-
             // update the grid
             grid[roundedX, roundedY] = null;
 

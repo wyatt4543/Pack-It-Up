@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -644,7 +644,7 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // check the type of block & do its ability
-    private void CursedBlocks()
+    private async void CursedBlocks()
     {
         // functionality for the bomb block
         if (gameObject.name == "BombBlock")
@@ -696,8 +696,14 @@ public class MoveBlocks : MonoBehaviour
                                 // play the explosion animation
                                 ExplosionAnimation(grid[checkX, checkY].gameObject.transform.GetComponent<SpriteRenderer>());
 
-                                // destroy the normal block
-                                StartCoroutine(NormalBombDesruction(checkX, checkY));
+                                // wait 1 second
+                                await Task.Delay(1000);
+
+                                // destroy the game object around the bomb
+                                Destroy(grid[checkX, checkY].gameObject);
+
+                                // update the grid
+                                grid[checkX, checkY] = null;
                             }
 
                             // give the player 10 points (scaling with each game round) for each square cleared
@@ -867,19 +873,6 @@ public class MoveBlocks : MonoBehaviour
             // destroy the negative block
             Destroy(transform.parent.gameObject);
         }
-    }
-
-    // function that destorys blocks without numbers
-    IEnumerator NormalBombDesruction(int checkX, int checkY)
-    {
-        // wait 1 second
-        yield return new WaitForSeconds(1);
-
-        // destroy the game object around the bomb
-        Destroy(grid[checkX, checkY].gameObject);
-
-        // update the grid
-        grid[checkX, checkY] = null;
     }
 
     // function for playing the explosion animation

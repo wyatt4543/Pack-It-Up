@@ -188,19 +188,16 @@ public class MoveBlocks : MonoBehaviour
                 parentTransform.Translate(Vector2.down);
             }
             // once it hits the bottom of the screen place the block
-            else
+            else if (animationComplete)
             {
                 // self destruct script on hitting the bottom of the screen & do update stuff
                 AddToGrid();
                 // function for doing special block actions
                 CursedBlocks();
-                if (animationComplete)
-                {
-                    CheckForLines();
-                    spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
-                    Destroy(gameObject.GetComponent<PlayerInput>());
-                    Destroy(this);
-                }
+                CheckForLines();
+                spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
+                Destroy(gameObject.GetComponent<PlayerInput>());
+                Destroy(this);
             }
         }
 

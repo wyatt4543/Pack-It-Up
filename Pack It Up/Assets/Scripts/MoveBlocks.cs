@@ -698,8 +698,8 @@ public class MoveBlocks : MonoBehaviour
                                 // play the explosion animation
                                 ExplosionAnimation(grid[checkX, checkY].gameObject.transform.GetComponent<SpriteRenderer>());
 
-                                // wait 200 milliseconds
-                                await Task.Delay(200);
+                                // wait 100 milliseconds
+                                await Task.Delay(100);
 
                                 // destroy the game object around the bomb
                                 Destroy(grid[checkX, checkY].gameObject);

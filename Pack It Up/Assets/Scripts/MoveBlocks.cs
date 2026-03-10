@@ -51,8 +51,6 @@ public class MoveBlocks : MonoBehaviour
     public GameObject numberDisplayPrefab;
     public Sprite[] numberDisplaySprites;
     public Sprite explosionSprite;
-    private float defaultBombAnimationTimer = 1f;
-    private float bombAnimationTimer;
 
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
@@ -77,7 +75,6 @@ public class MoveBlocks : MonoBehaviour
         fallTimer = defaultFallTimer;
         autoMoveTimer = defaultAutoMoveTimer;
         autoMoveCapTimer = defaultAutoMoveCapTimer;
-        bombAnimationTimer = defaultBombAnimationTimer;
 
         // Initialize spawn block script
         spawnBlockScript = FindFirstObjectByType<SpawnBlock>();

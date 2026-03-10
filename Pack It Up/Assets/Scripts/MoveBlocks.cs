@@ -51,6 +51,8 @@ public class MoveBlocks : MonoBehaviour
     public GameObject numberDisplayPrefab;
     public Sprite[] numberDisplaySprites;
     public Sprite explosionSprite;
+    private float defaultBombAnimationTimer = 1f;
+    private float bombAnimationTimer;
 
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
@@ -75,6 +77,7 @@ public class MoveBlocks : MonoBehaviour
         fallTimer = defaultFallTimer;
         autoMoveTimer = defaultAutoMoveTimer;
         autoMoveCapTimer = defaultAutoMoveCapTimer;
+        bombAnimationTimer = defaultBombAnimationTimer;
 
         // Initialize spawn block script
         spawnBlockScript = FindFirstObjectByType<SpawnBlock>();
@@ -691,13 +694,19 @@ public class MoveBlocks : MonoBehaviour
                             else
                             {
                                 // play the explosion animation
-                                StartCoroutine(ExplosionAnimation(grid[checkX, checkY].gameObject.transform.GetComponent<SpriteRenderer>()));
+                                ExplosionAnimation(grid[checkX, checkY].gameObject.transform.GetComponent<SpriteRenderer>());
 
-                                // destroy the game object around the bomb
-                                Destroy(grid[checkX, checkY].gameObject);
+                                // allow there to be a delay for the bomb animation
+                                if ((bombAnimationTimer -= Time.deltaTime) < 0)
+                                {
+                                    bombAnimationTimer = defaultBombAnimationTimer;  // reset the animation timer to 1 second
 
-                                // update the grid
-                                grid[checkX, checkY] = null;
+                                    // destroy the game object around the bomb
+                                    Destroy(grid[checkX, checkY].gameObject);
+
+                                    // update the grid
+                                    grid[checkX, checkY] = null;
+                                }
                             }
 
                             // give the player 10 points (scaling with each game round) for each square cleared
@@ -870,16 +879,13 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // function for playing the explosion animation
-    IEnumerator ExplosionAnimation(SpriteRenderer blockSpriteRenderer)
+    private void ExplosionAnimation(SpriteRenderer blockSpriteRenderer)
     {
         // update the block texture to be the explosion
         blockSpriteRenderer.sprite = explosionSprite;
 
         // play the explosion sound effect
         SFXManager.instance.PlaySFXClip(explosionSound, parentTransform, 1f);
-
-        // wait for 1 second
-        yield return new WaitForSeconds(1);
     }
 
     // function for incrementing blocks that the box block overlaps with

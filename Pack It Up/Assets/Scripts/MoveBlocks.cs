@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -48,7 +49,8 @@ public class MoveBlocks : MonoBehaviour
     private bool NegativeBlockCalled = false;
     private bool BoxBlockCalled = false;
     public GameObject numberDisplayPrefab;
-    public Sprite[] numberDisplaySprites; 
+    public Sprite[] numberDisplaySprites;
+    public Sprite explosionSprite;
 
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
@@ -643,10 +645,7 @@ public class MoveBlocks : MonoBehaviour
     {
         // functionality for the bomb block
         if (gameObject.name == "BombBlock")
-        {
-            // play the explosion sound effect
-            SFXManager.instance.PlaySFXClip(explosionSound, parentTransform, 1f);
-            
+        {   
             // round the current x and y positions
             int roundedX = Mathf.RoundToInt(parentTransform.position.x);
             int roundedY = Mathf.RoundToInt(parentTransform.position.y);
@@ -691,6 +690,9 @@ public class MoveBlocks : MonoBehaviour
                             // if it is a normal square do the normal bomb deletion
                             else
                             {
+                                // play the explosion animation
+                                StartCoroutine(ExplosionAnimation(grid[checkX, checkY].gameObject.transform.GetComponent<SpriteRenderer>()));
+
                                 // destroy the game object around the bomb
                                 Destroy(grid[checkX, checkY].gameObject);
 
@@ -865,6 +867,19 @@ public class MoveBlocks : MonoBehaviour
             // destroy the negative block
             Destroy(transform.parent.gameObject);
         }
+    }
+
+    // function for playing the explosion animation
+    IEnumerator ExplosionAnimation(SpriteRenderer blockSpriteRenderer)
+    {
+        // update the block texture to be the explosion
+        blockSpriteRenderer.sprite = explosionSprite;
+
+        // play the explosion sound effect
+        SFXManager.instance.PlaySFXClip(explosionSound, parentTransform, 1f);
+
+        // wait for 1 second
+        yield return new WaitForSeconds(1);
     }
 
     // function for incrementing blocks that the box block overlaps with

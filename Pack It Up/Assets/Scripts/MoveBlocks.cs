@@ -51,6 +51,7 @@ public class MoveBlocks : MonoBehaviour
     public GameObject numberDisplayPrefab;
     public Sprite[] numberDisplaySprites;
     public Sprite explosionSprite;
+    public GameObject explosionObject;
 
     // timer variables
     private float defaultAutoMoveTimer = 0.1f;
@@ -674,6 +675,9 @@ public class MoveBlocks : MonoBehaviour
                             // testing for a square with a number on it
                             if (grid[checkX, checkY].gameObject.transform.childCount > 0)
                             {
+                                // play the explosion animation
+                                GameObject TempExplosion = ExplosionAnimation(null, checkX, checkY, true);
+
                                 if (grid[checkX, checkY].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name[0] == '2')
                                 {
                                     // destroy the number overlay if it is at 2
@@ -691,6 +695,12 @@ public class MoveBlocks : MonoBehaviour
                                     // update the display's sprite
                                     grid[checkX, checkY].gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = numberDisplaySprites[numberDisplayValue - 2];
                                 }
+
+                                // wait 100 milliseconds
+                                await Task.Delay(100);
+
+                                // destroy the explosion game object
+                                Destroy(TempExplosion);
                             }
                             // if it is a normal square do the normal bomb deletion
                             else
@@ -878,13 +888,30 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // function for playing the explosion animation
-    private void ExplosionAnimation(SpriteRenderer blockSpriteRenderer)
+    private GameObject ExplosionAnimation(SpriteRenderer blockSpriteRenderer, int checkX = 0, int checkY = 0, bool numberedBlock = false)
     {
-        // update the block texture to be the explosion
-        blockSpriteRenderer.sprite = explosionSprite;
+        if (numberedBlock)
+        {
+            // update the block texture to be the explosion
+            GameObject TempExplosion = Instantiate(explosionObject, grid[checkX, checkY].gameObject.transform.position, Quaternion.identity);
 
-        // play the explosion sound effect
-        SFXManager.instance.PlaySFXClip(explosionSound, parentTransform, 1f);
+            // play the explosion sound effect
+            SFXManager.instance.PlaySFXClip(explosionSound, parentTransform, 1f);
+
+            // return the explosion object
+            return TempExplosion;
+        }
+        else
+        {
+            // update the block texture to be the explosion
+            blockSpriteRenderer.sprite = explosionSprite;
+
+            // play the explosion sound effect
+            SFXManager.instance.PlaySFXClip(explosionSound, parentTransform, 1f);
+        }
+
+        // return nothing
+        return null;
     }
 
     // function for incrementing blocks that the box block overlaps with

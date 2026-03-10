@@ -5,6 +5,7 @@ public class SpawnBlock : MonoBehaviour
     public GameObject[] Blocks;
     public Sprite[] numberDisplaySprites;
     public Sprite explosionSprite;
+    public GameObject explosionObject;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,5 +48,8 @@ public class SpawnBlock : MonoBehaviour
 
         // set the explosion sprite
         moveBlocksScript.explosionSprite = explosionSprite;
+
+        // set the explosion object
+        moveBlocksScript.explosionObject = explosionObject;
     }
 }

@@ -109,7 +109,7 @@ public class MoveBlocks : MonoBehaviour
 
         //assign the sound effects
         explosionSound = Resources.Load<AudioClip>("Sounds/SFX/explosion");
-        explosionSound = Resources.Load<AudioClip>("Sounds/SFX/water");
+        waterSound = Resources.Load<AudioClip>("Sounds/SFX/water");
 
         // test for a game over
         if (!ValidMove(0, -1))

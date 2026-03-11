@@ -184,12 +184,12 @@ public class MoveBlocks : MonoBehaviour
             // move down 1 unit every second
             if (!quickDrop)
                 fallTimer = defaultFallTimer; // reset timer to 1 second
-            if (ValidMove(0, -1) && !(BoxBlockCalled))
+            if (ValidMove(0, -1) && !(BoxBlockCalled) && !(placingBlock))
             {
                 parentTransform.Translate(Vector2.down);
             }
             // once it hits the bottom of the screen place the block
-            else if (!placingBlock)
+            else
             {
                 placingBlock = true;
                 _ = HandleBlockPlacement();

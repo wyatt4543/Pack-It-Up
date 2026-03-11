@@ -660,6 +660,15 @@ public class MoveBlocks : MonoBehaviour
             int roundedX = Mathf.RoundToInt(parentTransform.position.x);
             int roundedY = Mathf.RoundToInt(parentTransform.position.y);
 
+            // play the explosion animation for the bomb
+            ExplosionAnimation(grid[roundedX, roundedY].gameObject.transform.GetComponent<SpriteRenderer>());
+
+            // wait 100 milliseconds
+            await Task.Delay(100);
+
+            // hide the bomb
+            grid[roundedX, roundedY].gameObject.transform.GetComponent<SpriteRenderer>().enabled = false;
+
             // check each y position around the bomb
             for (int y = 1; y >= -1; y--)
             {

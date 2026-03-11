@@ -768,6 +768,12 @@ public class MoveBlocks : MonoBehaviour
                             //move the square down
                             grid[j, newY].transform.position = new Vector3(j, newY, 0);
                         }
+
+                        // play the explosion sound effect
+                        SFXManager.instance.PlaySFXClip(waterSound, parentTransform, 1f);
+
+                        // add a delay for until the next water falls down
+                        await Task.Delay(300);
                     }
                 }
             }

@@ -209,16 +209,8 @@ public class MoveBlocks : MonoBehaviour
         AddToGrid();
         // function for doing special block actions
         await CursedBlocks();
-        if (gameObject.name != "BombBlock")
-        {
-            CheckForLines();
-        }
+        CheckForLines();
         spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
-        if (gameObject.name == "BombBlock")
-        {
-            // destroy the bomb block
-            Destroy(transform.parent.gameObject);
-        }
         Destroy(gameObject.GetComponent<PlayerInput>());
         Destroy(this);
     }
@@ -737,6 +729,9 @@ public class MoveBlocks : MonoBehaviour
 
             // update the grid
             grid[roundedX, roundedY] = null;
+
+            // destroy the bomb block
+            Destroy(transform.parent.gameObject);
         }
 
         // functionality for the water block

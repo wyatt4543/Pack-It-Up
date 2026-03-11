@@ -211,6 +211,7 @@ public class MoveBlocks : MonoBehaviour
         AddToGrid();
         // function for doing special block actions
         await CursedBlocks();
+        print("done bomb");
         CheckForLines();
         spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
         Destroy(gameObject.GetComponent<PlayerInput>());

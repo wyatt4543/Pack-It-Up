@@ -8,6 +8,7 @@ public class MoveBlocks : MonoBehaviour
 {
     // sound effect variables
     private AudioClip explosionSound;
+    private AudioClip waterSound;
 
     // transform variables & script variables & game object variables
     public Transform parentTransform;
@@ -106,8 +107,9 @@ public class MoveBlocks : MonoBehaviour
         buttonController = GameObject.Find("ButtonController");
         buttonUIScript = buttonController.GetComponent<buttonUI>();
 
-        //assign the bomb sound effect
+        //assign the sound effects
         explosionSound = Resources.Load<AudioClip>("Sounds/SFX/explosion");
+        explosionSound = Resources.Load<AudioClip>("Sounds/SFX/water");
 
         // test for a game over
         if (!ValidMove(0, -1))

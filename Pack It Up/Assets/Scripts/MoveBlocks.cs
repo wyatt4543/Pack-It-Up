@@ -761,6 +761,9 @@ public class MoveBlocks : MonoBehaviour
                         // check if the square actually moves down
                         if (newY != y)
                         {
+                            // add a delay for until the next water falls down
+                            await Task.Delay(300);
+
                             // update the grid
                             grid[j, newY] = grid[j, y];
                             grid[j, y] = null;
@@ -768,11 +771,8 @@ public class MoveBlocks : MonoBehaviour
                             //move the square down
                             grid[j, newY].transform.position = new Vector3(j, newY, 0);
 
-                            // play the explosion sound effect
+                            // play the water sound effect
                             SFXManager.instance.PlaySFXClip(waterSound, parentTransform, 1f);
-
-                            // add a delay for until the next water falls down
-                            await Task.Delay(300);
                         }
                     }
                 }

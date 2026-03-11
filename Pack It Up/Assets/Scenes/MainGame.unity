@@ -187,6 +187,7 @@ MonoBehaviour:
   - {fileID: 4130640169021434097, guid: d3d99666c4182064aa946591f31b469e, type: 3}
   explosionSprite: {fileID: 5986030973748356752, guid: 541806dcb905f554fb08a7b1add568cb, type: 3}
   explosionObject: {fileID: 1112180302190987919, guid: 052fec60a550db043a848ab3471addb6, type: 3}
+  blockChute: {fileID: 1818601659}
 --- !u!1 &66049963
 GameObject:
   m_ObjectHideFlags: 0

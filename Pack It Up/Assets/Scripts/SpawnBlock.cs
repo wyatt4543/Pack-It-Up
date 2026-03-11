@@ -32,7 +32,7 @@ public class SpawnBlock : MonoBehaviour
         }
 
         // create the next block
-        GameObject nextBlock = Instantiate(Blocks[nextBlockType], transform.position, Quaternion.identity);
+        GameObject nextBlock = Instantiate(Blocks[nextBlockType], blockChute.transform.position, Quaternion.identity);
 
         // delete the next block's scripts
         MonoBehaviour[] scripts = nextBlock.transform.GetChild(0).GetComponents<MonoBehaviour>();

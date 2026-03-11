@@ -8,6 +8,7 @@ public class SpawnBlock : MonoBehaviour
     public GameObject explosionObject;
     public GameObject blockChute;
     private int nextBlockType;
+    private GameObject nextBlock;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +25,12 @@ public class SpawnBlock : MonoBehaviour
         // assign the default block type value
         if (blockType == -1)
         {
+            // delete the previous next block
+            if (nextBlock)
+            {
+                Destroy(nextBlock);
+            }
+
             // assign the current block type
             blockType = nextBlockType;
 
@@ -32,7 +39,7 @@ public class SpawnBlock : MonoBehaviour
         }
 
         // create the next block
-        GameObject nextBlock = Instantiate(Blocks[nextBlockType], blockChute.transform.position, Quaternion.identity);
+        nextBlock = Instantiate(Blocks[nextBlockType], blockChute.transform.position, Quaternion.identity);
 
         // delete the next block's scripts
         MonoBehaviour[] scripts = nextBlock.transform.GetChild(0).GetComponents<MonoBehaviour>();
@@ -41,6 +48,9 @@ public class SpawnBlock : MonoBehaviour
         {
             Destroy(script);
         }
+
+        // shrink the next block
+        nextBlock.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 
         // create a random new block in the spawner postion
         GameObject newBlock = Instantiate(Blocks[blockType], transform.position, Quaternion.identity);

@@ -191,7 +191,7 @@ public class MoveBlocks : MonoBehaviour
                 parentTransform.Translate(Vector2.down);
             }
             // once it hits the bottom of the screen place the block
-            else
+            else if (!placingBlock)
             {
                 placingBlock = true;
                 _ = HandleBlockPlacement();

@@ -274,6 +274,7 @@ public class MoveBlocks : MonoBehaviour
     // function for doing line clears
     public void CheckForLines()
     {
+        print("lines");
         for (int i = height - 1; i >= 0; i--)
         {
             // if line clear
@@ -656,6 +657,7 @@ public class MoveBlocks : MonoBehaviour
         // functionality for the bomb block
         if (gameObject.name == "BombBlock")
         {
+            print("bomb");
             // round the current x and y positions
             int roundedX = Mathf.RoundToInt(parentTransform.position.x);
             int roundedY = Mathf.RoundToInt(parentTransform.position.y);

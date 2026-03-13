@@ -3555,10 +3555,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1571101630492551440, guid: 4da65ceb651dd4940986fdcd728555da, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1996046136333186741, guid: 4da65ceb651dd4940986fdcd728555da, type: 3}
       propertyPath: m_Pivot.x
       value: 0

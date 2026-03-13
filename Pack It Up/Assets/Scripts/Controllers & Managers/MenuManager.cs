@@ -48,4 +48,16 @@ public class MenuManager : MonoBehaviour
         menuOpen = !menuOpen;
         soundMenu.SetActive(menuOpen);
     }
+
+    // pause function
+    public void Pause()
+    {
+
+    }
+
+    // unpause function
+    public void UnPause()
+    {
+
+    }
 }

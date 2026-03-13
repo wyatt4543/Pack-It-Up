@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1571101630492551440}
   - component: {fileID: 6077246078742422514}
   m_Layer: 5
-  m_Name: DialogBox
+  m_Name: DialogueBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,6 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966e913834508c547ad0351582939308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dialog
+  textComponent: {fileID: 0}
+  dialogLines: []
+  textSpeed: 0
 --- !u!1 &8050512989167702000
 GameObject:
   m_ObjectHideFlags: 0

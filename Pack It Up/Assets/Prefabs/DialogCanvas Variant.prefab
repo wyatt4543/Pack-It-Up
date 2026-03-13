@@ -89,9 +89,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966e913834508c547ad0351582939308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dialog
-  textComponent: {fileID: 0}
-  dialogLines: []
-  textSpeed: 0
+  textComponent: {fileID: 4368163567432888915}
+  dialogLines:
+  - 'Worker: You must be new here! Let me teach you how to stack some boxes!'
+  - 'Worker: First, there''s these food boxes. All of them stack regularly.'
+  - 'Worker: To adjust the box use the left or right arrow keys, and the up arrow
+    to turn it clockwise or z to turn it counterclockwise. Try it out!'
+  textSpeed: 0.3
 --- !u!1 &8050512989167702000
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +131,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1600, y: 200}
+  m_SizeDelta: {x: 1650, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2436518843858609919
 CanvasRenderer:
@@ -157,7 +161,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Worker: my name is john'
+  m_text: Some Text Here
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

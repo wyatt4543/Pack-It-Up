@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PauseManager : MonoBehaviour
 {
     public static PauseManager instance;
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
 
     public bool IsPaused {  get; private set; }
 
@@ -14,9 +14,6 @@ public class PauseManager : MonoBehaviour
         {
             instance = this;
         }
-
-        // Initialize player input
-        playerInput = GetComponent<PlayerInput>();
     }
 
     public void PauseGame()

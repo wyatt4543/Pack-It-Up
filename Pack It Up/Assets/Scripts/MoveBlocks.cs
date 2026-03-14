@@ -70,8 +70,9 @@ public class MoveBlocks : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Initialize player input
+        // Initialize player input for various game objects
         playerInput = GetComponent<PlayerInput>();
+        PauseManager.instance.playerInput = playerInput;
 
         // Initialize timers
         defaultFallTimer = Mathf.Pow((0.8f - ((gameRound - 1) * 0.007f)), gameRound - 1);

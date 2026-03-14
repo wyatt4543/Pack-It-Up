@@ -6,6 +6,7 @@ public class buttonUI : MonoBehaviour
 {
     // set the string to the main game scene name
     [SerializeField] private string mainGame = "MainGame";
+    [SerializeField] private string level1 = "Level 1";
     [SerializeField] private string mainMenu = "MainMenu";
     
     // collect a list of all of the buttons
@@ -15,7 +16,7 @@ public class buttonUI : MonoBehaviour
     void Start()
     {
         // if the scene is the main game
-        if (SceneManager.GetActiveScene().name == mainGame)
+        if (SceneManager.GetActiveScene().name == mainGame || SceneManager.GetActiveScene().name == level1)
         {
             // hide the restart button & home button
             ToggleButton(0);
@@ -54,8 +55,8 @@ public class buttonUI : MonoBehaviour
 
     // function for adding the behavior of restarting the game
     public void RestartButton() {
-        // load the main game on restart
-        SceneManager.LoadScene(mainGame);
+        // load the current scene on restart
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // function for disabling a button

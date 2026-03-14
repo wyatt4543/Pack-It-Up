@@ -31,7 +31,7 @@ public class MenuManager : MonoBehaviour
             delegate { soundMixer.SetMusicVolume(musicVolume.value); }
         );
         backButton.onClick.AddListener(
-            delegate { UpdateSoundMenu(); }
+            delegate { PauseUnpause(); }
         );
     }
 
@@ -39,10 +39,23 @@ public class MenuManager : MonoBehaviour
     {
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            UpdateSoundMenu();
+            PauseUnpause();
         }
     }
 
+    public void PauseUnpause()
+    {
+        if (!PauseManager.instance.IsPaused)
+        {
+            Pause();
+        }
+        else
+        {
+            Unpause();
+        }
+    }
+
+    // open or close the pause menu
     public void UpdateSoundMenu()
     {
         menuOpen = !menuOpen;
@@ -52,12 +65,14 @@ public class MenuManager : MonoBehaviour
     // pause function
     public void Pause()
     {
-
+        PauseManager.instance.PauseGame();
+        UpdateSoundMenu();
     }
 
     // unpause function
-    public void UnPause()
+    public void Unpause()
     {
-
+        PauseManager.instance.UnpauseGame();
+        UpdateSoundMenu();
     }
 }

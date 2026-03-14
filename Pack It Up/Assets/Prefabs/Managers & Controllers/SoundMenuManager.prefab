@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 187591130318399908}
   - component: {fileID: 8668685728475448536}
+  - component: {fileID: 2311229938470618559}
   m_Layer: 0
   m_Name: SoundMenuManager
   m_TagString: Untagged
@@ -44,3 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87289d85ff6c3244d865037f6060cc86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &2311229938470618559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4676052531811569941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170e112013c0eed4aab56ccf146a2fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseManager

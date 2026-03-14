@@ -123,7 +123,7 @@ public class MoveBlocks : MonoBehaviour
     void Update()
     {
         // check if dialogue is active
-        if (!Dialogue.instance.DialogueActive) { return; }
+        if (Dialogue.instance.DialogueActive) { return; }
 
         // movement for the drag block
         if (gameObject.name == "DragBlock" && !PauseManager.instance.IsPaused)

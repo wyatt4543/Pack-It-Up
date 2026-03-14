@@ -1,17 +1,29 @@
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Dialogue : MonoBehaviour
 {
+    public static Dialogue instance;
     public TextMeshProUGUI textComponent;
     public TextMeshProUGUI continueText;
     public string[] dialogLines;
     public float textSpeed;
 
     private int index;
+
+    public bool DialogueActive { get; private set; }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+        DialogueActive = true;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -68,6 +80,7 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
+            DialogueActive = false;
             gameObject.SetActive(false);
         }
     }

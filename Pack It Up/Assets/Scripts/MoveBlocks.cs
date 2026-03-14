@@ -122,6 +122,7 @@ public class MoveBlocks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         // movement for the drag block
         if (gameObject.name == "DragBlock" && !PauseManager.instance.IsPaused)
         {

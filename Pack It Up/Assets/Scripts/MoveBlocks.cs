@@ -123,7 +123,7 @@ public class MoveBlocks : MonoBehaviour
     void Update()
     {
         // movement for the drag block
-        if (gameObject.name == "DragBlock")
+        if (gameObject.name == "DragBlock" && !PauseManager.instance.IsPaused)
         {
             DragBlockMove(Mathf.RoundToInt(parentTransform.position.x));
         }
@@ -228,7 +228,7 @@ public class MoveBlocks : MonoBehaviour
             movementY = Mathf.Ceil(moveInput.y);
         }
         else if (context.action.name == "Rotate")
-        { 
+        {
             rotateInput = context.ReadValue<float>();
         }
     }

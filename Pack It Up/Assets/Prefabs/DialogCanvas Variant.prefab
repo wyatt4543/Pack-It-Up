@@ -90,11 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dialog
   textComponent: {fileID: 4368163567432888915}
-  dialogLines:
-  - 'Worker: You must be new here! Let me teach you how to stack some boxes!'
-  - 'Worker: First, there''s these food boxes. All of them stack regularly.'
-  - 'Worker: To adjust the box use the left or right arrow keys, and the up arrow
-    to turn it clockwise or z to turn it counterclockwise. Try it out!'
+  dialogLines: []
   textSpeed: 0.1
 --- !u!1 &8050512989167702000
 GameObject:

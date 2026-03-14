@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dialog
   textComponent: {fileID: 4368163567432888915}
+  continueText: {fileID: 7376425169862558634}
   dialogLines: []
   textSpeed: 0.1
 --- !u!1 &7515879060500495936

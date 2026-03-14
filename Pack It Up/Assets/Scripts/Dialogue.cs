@@ -1,11 +1,13 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
+    public TextMeshProUGUI continueText;
     public string[] dialogLines;
     public float textSpeed;
 
@@ -15,6 +17,7 @@ public class Dialogue : MonoBehaviour
     void Start()
     {
         textComponent.text = string.Empty;
+        continueText.enabled = false;
         StartDialogue();
     }
 
@@ -31,6 +34,7 @@ public class Dialogue : MonoBehaviour
             {
                 StopAllCoroutines();
                 textComponent.text = dialogLines[index];
+                continueText.enabled = true;
             }
         }
     }
@@ -49,6 +53,8 @@ public class Dialogue : MonoBehaviour
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
+
+        continueText.enabled = true;
     }
 
     void NextLine()
@@ -57,6 +63,7 @@ public class Dialogue : MonoBehaviour
         {
             index++;
             textComponent.text = string.Empty;
+            continueText.enabled = false;
             StartCoroutine(TypeLine());
         }
         else

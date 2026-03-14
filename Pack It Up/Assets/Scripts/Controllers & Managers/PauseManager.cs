@@ -22,7 +22,7 @@ public class PauseManager : MonoBehaviour
     
     public void UnpauseGame()
     {
-        IsPaused = true;
+        IsPaused = false;
         Time.timeScale = 1f;
     }
 }

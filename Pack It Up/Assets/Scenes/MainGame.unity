@@ -3556,6 +3556,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6077246078742422514, guid: 4da65ceb651dd4940986fdcd728555da, type: 3}
+      propertyPath: dialogLines.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077246078742422514, guid: 4da65ceb651dd4940986fdcd728555da, type: 3}
+      propertyPath: 'dialogLines.Array.data[0]'
+      value: 'Worker: You must be new here! Let me teach you how to stack some boxes!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077246078742422514, guid: 4da65ceb651dd4940986fdcd728555da, type: 3}
+      propertyPath: 'dialogLines.Array.data[1]'
+      value: 'Worker: First, there''s these food boxes. All of them stack regularly.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077246078742422514, guid: 4da65ceb651dd4940986fdcd728555da, type: 3}
+      propertyPath: 'dialogLines.Array.data[2]'
+      value: 'Worker: To adjust the box use the left or right arrow keys, and the
+        up arrow to turn it clockwise or z to turn it counterclockwise. Try it out!'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

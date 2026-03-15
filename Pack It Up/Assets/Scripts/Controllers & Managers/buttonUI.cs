@@ -79,6 +79,7 @@ public class buttonUI : MonoBehaviour
     // function for continuing to the next level
     public void ContinueButton() {
         // load the next level
+        PauseManager.instance.UnpauseGame();
         SceneManager.LoadScene("Level 2");
     }
 

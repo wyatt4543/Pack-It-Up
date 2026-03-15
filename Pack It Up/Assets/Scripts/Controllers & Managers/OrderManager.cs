@@ -11,6 +11,7 @@ public class OrderManager : MonoBehaviour
 
     // text objects
     private TextMeshProUGUI currentOrderText;
+    private TextMeshProUGUI totalOrdersText;
 
     private void Awake()
     {
@@ -23,7 +24,9 @@ public class OrderManager : MonoBehaviour
         {
             totalOrders = currentTotalOrders = 2;
             currentOrderText = GameObject.Find("Canvas/CurrentOrder").GetComponent<TextMeshProUGUI>();
+            totalOrdersText = GameObject.Find("Canvas/TotalOrders").GetComponent<TextMeshProUGUI>();
             currentOrderText.enabled = false;
+            totalOrdersText.enabled = false;
             gameObject.SetActive(false);
         }
     }
@@ -37,6 +40,7 @@ public class OrderManager : MonoBehaviour
     public void EnableOrders()
     {
         currentOrderText.enabled = true;
+        totalOrdersText.enabled = true;
     }
 
     public void UpdateOrder(string completedOrder)
@@ -71,6 +75,7 @@ public class OrderManager : MonoBehaviour
             currentOrderText.text = "Order:\tX" + currentOrders;
 
             // update the total orders text
+            totalOrdersText.text = "Completed Orders: " + currentTotalOrders + "/" + totalOrders;
 
             // create the current Order
             currentOrder = Instantiate(Blocks[Random.Range(0, Blocks.Length)], gameObject.transform.position, Quaternion.identity);

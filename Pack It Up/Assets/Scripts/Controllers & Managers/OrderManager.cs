@@ -39,6 +39,17 @@ public class OrderManager : MonoBehaviour
         currentOrderText.enabled = true;
     }
 
+    public void UpdateOrder(string completedOrder)
+    {
+        // if an order is completed
+        if (currentOrder.name == completedOrder)
+        {
+            // update the displayed order count
+            currentOrders--;
+            currentOrderText.text = "Order:\tX" + currentOrders;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

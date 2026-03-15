@@ -57,6 +57,13 @@ public class buttonUI : MonoBehaviour
         canvases[1].enabled = true;
     }
 
+    // function for adding the behavior of selecting a level
+    public void SelectLevel(string level)
+    {
+        // load the selected level
+        SceneManager.LoadScene(level);
+    }
+
     // function for opening the settings menu
     public void SettingsButton()
     {

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class OrderManager : MonoBehaviour
 {
     public static OrderManager instance;
-    private int currentOrders = 0, totalOrders;
+    private int currentOrders = 0, totalOrders, currentTotalOrders;
     public GameObject[] Blocks;
     private GameObject currentOrder;
 
@@ -21,7 +21,7 @@ public class OrderManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
-            totalOrders = 5;
+            totalOrders = currentTotalOrders = 2;
             currentOrderText = GameObject.Find("Canvas/CurrentOrder").GetComponent<TextMeshProUGUI>();
             currentOrderText.enabled = false;
             gameObject.SetActive(false);
@@ -55,10 +55,22 @@ public class OrderManager : MonoBehaviour
     {
         if (currentOrders == 0)
         {
+            // update the total order count & the delete the previous current order
+            if (currentOrder != null)
+            {
+                // update the current total orders
+                currentTotalOrders--;
+
+                // delete the previous current order
+                Destroy(currentOrder);
+            }
+
             // set the current orders to 5
             currentOrders = 5;
 
             currentOrderText.text = "Order:\tX" + currentOrders;
+
+            // update the total orders text
 
             // create the current Order
             currentOrder = Instantiate(Blocks[Random.Range(0, Blocks.Length)], gameObject.transform.position, Quaternion.identity);

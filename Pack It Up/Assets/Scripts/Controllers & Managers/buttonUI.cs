@@ -96,7 +96,7 @@ public class buttonUI : MonoBehaviour
     public void ContinueButton() {
         // load the next level
         PauseManager.instance.UnpauseGame();
-        SceneManager.LoadScene("Level " + (SceneManager.GetActiveScene().name[^1] + '1'));
+        SceneManager.LoadScene("Level " + (SceneManager.GetActiveScene().name[^1] - '0' + 1));
     }
 
     // function for disabling a button

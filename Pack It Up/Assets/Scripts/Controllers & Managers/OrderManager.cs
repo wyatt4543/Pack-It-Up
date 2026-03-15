@@ -30,6 +30,11 @@ public class OrderManager : MonoBehaviour
             totalOrdersText.enabled = false;
             gameObject.SetActive(false);
         }
+
+        if (SceneManager.GetActiveScene().name == "Level 2")
+        {
+            totalOrders = currentTotalOrders = 2;
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

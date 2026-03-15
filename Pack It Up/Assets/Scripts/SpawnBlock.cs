@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnBlock : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SpawnBlock : MonoBehaviour
     public GameObject blockChute;
     private int nextBlockType;
     private GameObject nextBlock;
+    private int blockCount = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +24,27 @@ public class SpawnBlock : MonoBehaviour
 
     // function for creating new blocks
     public void NewBlock(int lineClears = 0, int gameRound = 1, int gameScore = 0, int blockType = -1) {
+        // increase the block count
+        blockCount++;
+
+        // if the first block is placed on level 1 update the dialog
+        if (SceneManager.GetActiveScene().name == "Level 1" && blockCount == 2)
+        {
+            // activate the dialog game object
+            Dialogue.instance.gameObject.SetActive(true);
+
+            // add new lines
+            Dialogue.instance.dialogLines = new string[] {
+                "Worker: Now that you've placed your first crate, let's do your first order.",
+                "Worker: In the top right is an order.",
+                "Worker: To fulfill that order, you need to make a complete row of crates to send it out of the box.",
+                "Worker: The order is only complete once you get the entire crate delivered."
+            };
+
+            // restart the dialog
+            Dialogue.instance.RestartDialogue();
+        }
+        
         // assign the default block type value
         if (blockType == -1)
         {

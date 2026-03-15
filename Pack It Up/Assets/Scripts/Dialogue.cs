@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -23,8 +24,8 @@ public class Dialogue : MonoBehaviour
             instance = this;
         }
 
-        DialogueActive = true;
-        
+        RestartDialogue();
+
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
             dialogLines = new string[] {
@@ -33,14 +34,6 @@ public class Dialogue : MonoBehaviour
                 "Worker: To adjust the crate use the left or right arrow keys, and the up arrow to turn it clockwise or z to turn it counterclockwise. Try it out!"
             };
         }
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        textComponent.text = string.Empty;
-        continueText.enabled = false;
-        StartDialogue();
     }
 
     // Update is called once per frame
@@ -59,6 +52,14 @@ public class Dialogue : MonoBehaviour
                 continueText.enabled = true;
             }
         }
+    }
+
+    // reset the dialogue
+    public void RestartDialogue() {
+        DialogueActive = true;
+        textComponent.text = string.Empty;
+        continueText.enabled = false;
+        StartDialogue();
     }
 
     void StartDialogue()

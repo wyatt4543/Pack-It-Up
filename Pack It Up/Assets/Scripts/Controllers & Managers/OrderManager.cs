@@ -1,11 +1,27 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OrderManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static OrderManager instance;
+
+    // text objects
+    private TextMeshProUGUI currentOrderText;
+
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+        if (SceneManager.GetActiveScene().name == "Level 1")
+        {
+            currentOrderText = GameObject.Find("Canvas/RoundCounter").GetComponent<TextMeshProUGUI>();
+            currentOrderText.enabled = false;
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

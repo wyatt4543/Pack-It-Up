@@ -61,7 +61,7 @@ public class buttonUI : MonoBehaviour
     public void SelectLevel(string level)
     {
         // load the selected level
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene("Level " + level);
     }
 
     // function for opening the settings menu

@@ -51,7 +51,7 @@ public class SpawnBlock : MonoBehaviour
                 "Worker: Now that you've placed your first crate, let's do your first order.",
                 "Worker: In the top right is an order.",
                 "Worker: To fulfill that order, you need to make a complete row of crates to send it out of the box.",
-                "Worker: The order is only complete once you get the entire crate delivered."
+                "Worker: The order number goes down by one only once you get the full group of required crates delivered."
             };
 
             // restart the dialog

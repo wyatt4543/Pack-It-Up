@@ -24,6 +24,11 @@ public class OrderManager : MonoBehaviour
         }
     }
 
+    public void EnableOrders()
+    {
+        currentOrderText.enabled = true;
+    }
+
     // Update is called once per frame
     void Update()
     {

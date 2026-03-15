@@ -33,6 +33,9 @@ public class SpawnBlock : MonoBehaviour
             // activate the dialog game object
             Dialogue.instance.gameObject.SetActive(true);
 
+            // activate the order manager game object
+            OrderManager.instance.gameObject.SetActive(true);
+
             // add new lines
             Dialogue.instance.dialogLines = new string[] {
                 "Worker: Now that you've placed your first crate, let's do your first order.",
@@ -43,6 +46,9 @@ public class SpawnBlock : MonoBehaviour
 
             // restart the dialog
             Dialogue.instance.RestartDialogue();
+
+            // enable the order manager
+            OrderManager.instance.EnableOrders();
         }
         
         // assign the default block type value

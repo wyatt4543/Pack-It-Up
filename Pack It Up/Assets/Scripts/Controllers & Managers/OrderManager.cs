@@ -18,7 +18,7 @@ public class OrderManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
-            currentOrderText = GameObject.Find("Canvas/RoundCounter").GetComponent<TextMeshProUGUI>();
+            currentOrderText = GameObject.Find("Canvas/CurrentOrder").GetComponent<TextMeshProUGUI>();
             currentOrderText.enabled = false;
             gameObject.SetActive(false);
         }

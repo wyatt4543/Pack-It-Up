@@ -23,10 +23,6 @@ public class OrderManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
             totalOrders = currentTotalOrders = 2;
-            currentOrderText = GameObject.Find("Canvas/CurrentOrder").GetComponent<TextMeshProUGUI>();
-            totalOrdersText = GameObject.Find("Canvas/TotalOrders").GetComponent<TextMeshProUGUI>();
-            currentOrderText.enabled = false;
-            totalOrdersText.enabled = false;
             gameObject.SetActive(false);
         }
     }
@@ -34,6 +30,14 @@ public class OrderManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Level 1")
+        {
+            currentOrderText = GameObject.Find("Canvas/CurrentOrder").GetComponent<TextMeshProUGUI>();
+            totalOrdersText = GameObject.Find("Canvas/TotalOrders").GetComponent<TextMeshProUGUI>();
+            currentOrderText.enabled = false;
+            totalOrdersText.enabled = false;
+        }
+
         Blocks = SpawnBlock.instance.Blocks;
     }
 

@@ -15,6 +15,9 @@ public class OrderManager : MonoBehaviour
 
     private void Awake()
     {
+        currentOrderText = GameObject.Find("LevelCanvas/CurrentOrder").GetComponent<TextMeshProUGUI>();
+        totalOrdersText = GameObject.Find("LevelCanvas/TotalOrders").GetComponent<TextMeshProUGUI>();
+
         if (instance == null)
         {
             instance = this;
@@ -23,8 +26,6 @@ public class OrderManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
             totalOrders = currentTotalOrders = 2;
-            currentOrderText = GameObject.Find("LevelCanvas/CurrentOrder").GetComponent<TextMeshProUGUI>();
-            totalOrdersText = GameObject.Find("LevelCanvas/TotalOrders").GetComponent<TextMeshProUGUI>();
             currentOrderText.enabled = false;
             totalOrdersText.enabled = false;
             gameObject.SetActive(false);

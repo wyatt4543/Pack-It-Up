@@ -34,6 +34,12 @@ public class Dialogue : MonoBehaviour
 
             RestartDialogue();
         }
+
+        if (SceneManager.GetActiveScene().name == "Level 2")
+        {
+            DialogueActive = false;
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

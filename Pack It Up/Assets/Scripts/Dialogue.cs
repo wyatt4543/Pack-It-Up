@@ -24,8 +24,6 @@ public class Dialogue : MonoBehaviour
             instance = this;
         }
 
-        RestartDialogue();
-
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
             dialogLines = new string[] {
@@ -34,6 +32,8 @@ public class Dialogue : MonoBehaviour
                 "Worker: To adjust the crate use the left or right arrow keys, and the up arrow to turn it clockwise or z to turn it counterclockwise. Try it out!"
             };
         }
+
+        RestartDialogue();
     }
 
     // Update is called once per frame

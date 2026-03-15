@@ -88,15 +88,15 @@ public class MoveBlocks : MonoBehaviour
         gameOverObject.GetComponent<Renderer>().enabled = false;
 
         // update the game round display
-        roundCounter = GameObject.Find("Canvas/RoundCounter").GetComponent<TextMeshProUGUI>();
+        roundCounter = GameObject.Find("LevelCanvas/RoundCounter").GetComponent<TextMeshProUGUI>();
         roundCounter.text = "Round: " + gameRound;
 
         // update the game lines display
-        linesCounter = GameObject.Find("Canvas/LinesCounter").GetComponent<TextMeshProUGUI>();
+        linesCounter = GameObject.Find("LevelCanvas/LinesCounter").GetComponent<TextMeshProUGUI>();
         linesCounter.text = "Lines: " + lineClears;
         
         // update the game score display
-        scoreCounter = GameObject.Find("Canvas/ScoreCounter").GetComponent<TextMeshProUGUI>();
+        scoreCounter = GameObject.Find("LevelCanvas/ScoreCounter").GetComponent<TextMeshProUGUI>();
         scoreCounter.text = "Score: " + gameScore;
 
         // Initialize the camera variable

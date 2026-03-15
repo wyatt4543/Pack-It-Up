@@ -32,8 +32,8 @@ public class OrderManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
-            currentOrderText = GameObject.Find("Canvas/CurrentOrder").GetComponent<TextMeshProUGUI>();
-            totalOrdersText = GameObject.Find("Canvas/TotalOrders").GetComponent<TextMeshProUGUI>();
+            currentOrderText = GameObject.Find("LevelCanvas/CurrentOrder").GetComponent<TextMeshProUGUI>();
+            totalOrdersText = GameObject.Find("LevelCanvas/TotalOrders").GetComponent<TextMeshProUGUI>();
             currentOrderText.enabled = false;
             totalOrdersText.enabled = false;
         }

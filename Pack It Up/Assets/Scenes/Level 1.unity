@@ -3949,7 +3949,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: buttons.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: 'buttons.Array.data[0]'
@@ -3959,6 +3959,10 @@ PrefabInstance:
       propertyPath: 'buttons.Array.data[1]'
       value: 
       objectReference: {fileID: 941665584}
+    - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
+      propertyPath: 'buttons.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1542209715}
     - target: {fileID: 7557138627855827683, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: m_Name
       value: ButtonController

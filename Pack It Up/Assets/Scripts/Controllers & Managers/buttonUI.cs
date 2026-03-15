@@ -22,6 +22,13 @@ public class buttonUI : MonoBehaviour
             ToggleButton(0);
             ToggleButton(1);
         }
+
+        // if scene is a level
+        if (SceneManager.GetActiveScene().name == level1)
+        {
+            // hide the continue button
+            ToggleButton(2);
+        }
     }
 
     // function for adding the behavior of starting the game
@@ -57,6 +64,12 @@ public class buttonUI : MonoBehaviour
     public void RestartButton() {
         // load the current scene on restart
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // function for continuing to the next level
+    public void ContinueButton() {
+        // load the next level
+        SceneManager.LoadScene("Level 2");
     }
 
     // function for disabling a button

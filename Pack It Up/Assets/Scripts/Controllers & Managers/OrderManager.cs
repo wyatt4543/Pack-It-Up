@@ -14,8 +14,6 @@ public class OrderManager : MonoBehaviour
 
     private void Awake()
     {
-        Blocks = SpawnBlock.instance.Blocks;
-
         if (instance == null)
         {
             instance = this;
@@ -28,6 +26,12 @@ public class OrderManager : MonoBehaviour
             currentOrderText.enabled = false;
             gameObject.SetActive(false);
         }
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Start()
+    {
+        Blocks = SpawnBlock.instance.Blocks;
     }
 
     public void EnableOrders()

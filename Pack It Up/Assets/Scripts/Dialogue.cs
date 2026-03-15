@@ -31,9 +31,9 @@ public class Dialogue : MonoBehaviour
                 "Worker: First, there's these food crates. All of them stack snugly together.",
                 "Worker: To adjust the crate use the left or right arrow keys, and the up arrow to turn it clockwise or z to turn it counterclockwise. Try it out!"
             };
-        }
 
-        RestartDialogue();
+            RestartDialogue();
+        }
     }
 
     // Update is called once per frame

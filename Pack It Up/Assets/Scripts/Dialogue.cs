@@ -41,7 +41,8 @@ public class Dialogue : MonoBehaviour
                 "Worker: There are two new blocks in the level.",
                 "Worker: A bomb block which destroys all adjacent blocks.",
                 "Worker: And a negative block which removes the squares which it overlaps.",
-                "Worker: The negative block only activates when it hits the bottom of the game board, or all of its squares overlap other squares."
+                "Worker: The negative block only activates when it hits the bottom of the game board, or all of its squares overlap other squares.",
+                "Worker: Now, get to completing those orders!"
             };
 
             RestartDialogue();

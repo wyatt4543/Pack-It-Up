@@ -59,6 +59,9 @@ public class OrderManager : MonoBehaviour
             {
                 Destroy(script);
             }
+
+            // make the current order a child of the order manager
+            currentOrder.transform.parent = gameObject.transform;
         }
     }
 }

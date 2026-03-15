@@ -99,6 +99,9 @@ public class OrderManager : MonoBehaviour
 
             // show the continue button
             buttonUI.instance.ToggleButton(2);
+
+            // disable the order manager
+            gameObject.SetActive(false);
         }
     }
 }

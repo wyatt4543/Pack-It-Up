@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Dialogue : MonoBehaviour
 {
@@ -23,6 +24,15 @@ public class Dialogue : MonoBehaviour
         }
 
         DialogueActive = true;
+        
+        if (SceneManager.GetActiveScene().name == "Level 1")
+        {
+            dialogLines = new string[] {
+                "Worker: You must be new here! Let me teach you how to stack some crates!",
+                "Worker: First, there's these food crates. All of them stack snugly together.",
+                "Worker: To adjust the crate use the left or right arrow keys, and the up arrow to turn it clockwise or z to turn it counterclockwise. Try it out!"
+            };
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

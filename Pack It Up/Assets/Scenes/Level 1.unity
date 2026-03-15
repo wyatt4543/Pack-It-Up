@@ -3735,6 +3735,10 @@ PrefabInstance:
       propertyPath: blockChute
       value: 
       objectReference: {fileID: 1818601659}
+    - target: {fileID: 6178287234929047873, guid: e1a53a42524261a46acaefa404d4a46f, type: 3}
+      propertyPath: Blocks.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6430645838612966595, guid: e1a53a42524261a46acaefa404d4a46f, type: 3}
       propertyPath: m_Name
       value: Spawner

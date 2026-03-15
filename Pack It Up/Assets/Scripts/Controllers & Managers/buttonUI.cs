@@ -34,7 +34,7 @@ public class buttonUI : MonoBehaviour
         }
 
         // if the scene is the main game
-        if (SceneManager.GetActiveScene().name == mainGame || SceneManager.GetActiveScene().name == level1)
+        if (SceneManager.GetActiveScene().name == mainGame || SceneManager.GetActiveScene().name.Contains("Level"))
         {
             // hide the restart button & home button
             ToggleButton(0);
@@ -42,7 +42,7 @@ public class buttonUI : MonoBehaviour
         }
 
         // if scene is a level
-        if (SceneManager.GetActiveScene().name == level1)
+        if (SceneManager.GetActiveScene().name.Contains("Level"))
         {
             // hide the continue button
             ToggleButton(2);

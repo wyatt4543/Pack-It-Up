@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class buttonUI : MonoBehaviour
 {
+    public static buttonUI instance;
+
     // set the string to the main game scene name
     [SerializeField] private string mainGame = "MainGame";
     [SerializeField] private string level1 = "Level 1";
@@ -11,6 +13,14 @@ public class buttonUI : MonoBehaviour
     
     // collect a list of all of the buttons
     public Button[] buttons;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

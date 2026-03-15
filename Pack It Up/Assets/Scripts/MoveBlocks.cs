@@ -15,8 +15,6 @@ public class MoveBlocks : MonoBehaviour
     private SpawnBlock spawnBlockScript;
     private GameObject gameOverObject;
     private Camera mainCamera;
-    private GameObject buttonController;
-    private buttonUI buttonUIScript;
 
     // text object variables
     private TextMeshProUGUI roundCounter;
@@ -103,10 +101,6 @@ public class MoveBlocks : MonoBehaviour
 
         // Initialize the camera variable
         mainCamera = Camera.main;
-
-        // get the moveBlocksScript & it's game object
-        buttonController = GameObject.Find("ButtonController");
-        buttonUIScript = buttonController.GetComponent<buttonUI>();
 
         //assign the sound effects
         explosionSound = Resources.Load<AudioClip>("Sounds/SFX/explosion");
@@ -1018,7 +1012,7 @@ public class MoveBlocks : MonoBehaviour
         Destroy(this);
 
         // show the restart button & home button
-        buttonUIScript.ToggleButton(0);
-        buttonUIScript.ToggleButton(1);
+        buttonUI.instance.ToggleButton(0);
+        buttonUI.instance.ToggleButton(1);
     }
 }

@@ -8,7 +8,6 @@ public class buttonUI : MonoBehaviour
 
     // set the string to the main game scene name
     [SerializeField] private string mainGame = "MainGame";
-    [SerializeField] private string level1 = "Level 1";
     [SerializeField] private string mainMenu = "MainMenu";
     
     // collect a list of all of the buttons & canvases

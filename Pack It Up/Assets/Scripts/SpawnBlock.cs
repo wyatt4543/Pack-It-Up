@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SpawnBlock : MonoBehaviour
 {
+    public static SpawnBlock instance;
     public GameObject[] Blocks;
     public Sprite[] numberDisplaySprites;
     public Sprite explosionSprite;
@@ -11,6 +12,15 @@ public class SpawnBlock : MonoBehaviour
     private int nextBlockType;
     private GameObject nextBlock;
     private int blockCount = 0;
+
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

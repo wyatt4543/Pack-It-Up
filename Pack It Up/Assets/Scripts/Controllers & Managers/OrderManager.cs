@@ -47,7 +47,7 @@ public class OrderManager : MonoBehaviour
             // set the current orders to 5
             currentOrders = 5;
 
-            currentOrderText.text = "Order:  X" + currentOrders;
+            currentOrderText.text = "Order:\tX" + currentOrders;
 
             // create the current Order
             currentOrder = Instantiate(Blocks[Random.Range(0, Blocks.Length)], gameObject.transform.position, Quaternion.identity);

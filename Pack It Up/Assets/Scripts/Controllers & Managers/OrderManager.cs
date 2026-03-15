@@ -93,5 +93,12 @@ public class OrderManager : MonoBehaviour
         }
 
         if (currentTotalOrders <= 0)
+        {
+            // pause the game
+            PauseManager.instance.PauseGame();
+
+            // show the continue button
+            buttonUI.instance.ToggleButton(2);
+        }
     }
 }

@@ -57,7 +57,7 @@ public class OrderManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentOrders == 0)
+        if (currentOrders <= 0)
         {
             // update the total order count & the delete the previous current order
             if (currentOrder != null)
@@ -91,5 +91,7 @@ public class OrderManager : MonoBehaviour
             // make the current order a child of the order manager
             currentOrder.transform.parent = gameObject.transform;
         }
+
+        if (currentTotalOrders <= 0)
     }
 }

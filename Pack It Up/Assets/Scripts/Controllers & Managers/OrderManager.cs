@@ -28,8 +28,9 @@ public class OrderManager : MonoBehaviour
             totalOrders = currentTotalOrders = 2;
             currentOrderText.enabled = false;
             totalOrdersText.enabled = false;
-            gameObject.SetActive(false);
         }
+
+        gameObject.SetActive(false);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

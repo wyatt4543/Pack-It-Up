@@ -11,8 +11,9 @@ public class buttonUI : MonoBehaviour
     [SerializeField] private string level1 = "Level 1";
     [SerializeField] private string mainMenu = "MainMenu";
     
-    // collect a list of all of the buttons
+    // collect a list of all of the buttons & canvases
     public Button[] buttons;
+    public Canvas[] canvases;
 
     private void Awake()
     {
@@ -25,6 +26,13 @@ public class buttonUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // if scene is the main menu
+        if (SceneManager.GetActiveScene().name == mainMenu)
+        {
+            // hide the level select canvas
+            canvases[1].enabled = false;
+        }
+
         // if the scene is the main game
         if (SceneManager.GetActiveScene().name == mainGame || SceneManager.GetActiveScene().name == level1)
         {
@@ -44,8 +52,9 @@ public class buttonUI : MonoBehaviour
     // function for adding the behavior of starting the game
     public void PlayButton()
     {
-        // load the main game on play
-        SceneManager.LoadScene(mainGame);
+        // open the level selection menu
+        canvases[0].enabled = false;
+        canvases[1].enabled = true;
     }
 
     // function for opening the settings menu

@@ -1298,6 +1298,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 935298607240688499, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2816872841930793221, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
       propertyPath: m_Name
       value: LevelCanvas
@@ -1393,6 +1397,11 @@ PrefabInstance:
 --- !u!224 &1572882665 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3769742310626124242, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
+  m_PrefabInstance: {fileID: 1572882664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &1572882666 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 935298607240688499, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
   m_PrefabInstance: {fileID: 1572882664}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1757272110 stripped
@@ -1517,6 +1526,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3769742310626124242, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
   m_PrefabInstance: {fileID: 1778121420}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &1778121422 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 935298607240688499, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
+  m_PrefabInstance: {fileID: 1778121420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1990920656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,6 +1623,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
+      propertyPath: canvases.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: 'buttons.Array.data[0]'
       value: 
       objectReference: {fileID: 1206646096}
@@ -1620,6 +1638,14 @@ PrefabInstance:
       propertyPath: 'buttons.Array.data[2]'
       value: 
       objectReference: {fileID: 1173715695}
+    - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
+      propertyPath: 'canvases.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1778121422}
+    - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
+      propertyPath: 'canvases.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1572882666}
     - target: {fileID: 7557138627855827683, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: m_Name
       value: ButtonController

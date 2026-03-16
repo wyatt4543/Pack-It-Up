@@ -44,7 +44,7 @@ public class OrderManager : MonoBehaviour
         // remove the bomb block and negative block from the order pool
         for (int i = 0; i < SpawnBlock.instance.Blocks.Length; i++)
         {
-            if (!SpawnBlock.instance.Blocks[i].name.Contains("Bomb") || !SpawnBlock.instance.Blocks[i].name.Contains("Negative"))
+            if (!SpawnBlock.instance.Blocks[i].name.Contains("Bomb") && !SpawnBlock.instance.Blocks[i].name.Contains("Negative"))
                 Blocks = Blocks.Append(SpawnBlock.instance.Blocks[i]).ToArray();
         }
     }

@@ -59,8 +59,16 @@ public class buttonUI : MonoBehaviour
     // function for adding the behavior of selecting a level
     public void SelectLevel(string level)
     {
-        // load the selected level
-        SceneManager.LoadScene("Level " + level);
+        if (!(level == "0"))
+        {
+            // load the selected level
+            SceneManager.LoadScene("Level " + level);
+        }
+        else
+        {
+            // load the arcade mode
+            SceneManager.LoadScene(mainGame);
+        }
     }
 
     // function for opening the settings menu

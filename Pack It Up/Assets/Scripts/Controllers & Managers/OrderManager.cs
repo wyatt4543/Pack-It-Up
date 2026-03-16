@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -42,10 +42,10 @@ public class OrderManager : MonoBehaviour
     private void Start()
     {
         // remove the bomb block and negative block from the order pool
-        for (int i = 0; i < Blocks.Length; i++)
+        for (int i = 0; i < SpawnBlock.instance.Blocks.Length; i++)
         {
             if (!SpawnBlock.instance.Blocks[i].name.Contains("Bomb") || !SpawnBlock.instance.Blocks[i].name.Contains("Negative"))
-                Blocks[i] = SpawnBlock.instance.Blocks[i];
+                Blocks = Blocks.Append(SpawnBlock.instance.Blocks[i]).ToArray();
         }
     }
 

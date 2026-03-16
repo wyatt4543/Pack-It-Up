@@ -72,6 +72,9 @@ public class MoveBlocks : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         PauseManager.instance.playerInput = playerInput;
 
+        // unpause the game
+        PauseManager.instance.UnpauseGame();
+
         // Initialize timers
         defaultFallTimer = Mathf.Pow((0.8f - ((gameRound - 1) * 0.007f)), gameRound - 1);
         fallTimer = defaultFallTimer;

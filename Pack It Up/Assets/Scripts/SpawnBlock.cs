@@ -25,9 +25,6 @@ public class SpawnBlock : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // unpause the game
-        PauseManager.instance.UnpauseGame();
-
         // assign the first block type
         nextBlockType = Random.Range(0, Blocks.Length);
 

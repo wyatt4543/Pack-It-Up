@@ -9,6 +9,7 @@ public class OrderManager : MonoBehaviour
     private int currentOrders = 0, totalOrders, currentTotalOrders;
     public GameObject[] Blocks;
     private GameObject currentOrder;
+    private int customOrder = -1;
 
     // text objects
     private TextMeshProUGUI currentOrderText;
@@ -89,8 +90,17 @@ public class OrderManager : MonoBehaviour
             // update the total orders text
             totalOrdersText.text = "Completed Orders: " + currentTotalOrders + "/" + totalOrders;
 
-            // create the current Order
-            currentOrder = Instantiate(Blocks[Random.Range(0, Blocks.Length)], gameObject.transform.position, Quaternion.identity);
+            // create the current order
+            if (customOrder == -1)
+            {
+                // create a random order
+                currentOrder = Instantiate(Blocks[Random.Range(0, Blocks.Length)], gameObject.transform.position, Quaternion.identity);
+            }
+            else
+            {
+                // create a custom order
+                currentOrder = Instantiate(Blocks[customOrder], gameObject.transform.position, Quaternion.identity);
+            }
 
             // delete the next block's scripts
             MonoBehaviour[] scripts = currentOrder.transform.GetChild(0).GetComponents<MonoBehaviour>();

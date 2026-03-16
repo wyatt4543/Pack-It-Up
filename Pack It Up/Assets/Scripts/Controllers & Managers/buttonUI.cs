@@ -29,8 +29,9 @@ public class buttonUI : MonoBehaviour
         // if scene is the main menu
         if (SceneManager.GetActiveScene().name == mainMenu)
         {
-            // hide the level select canvas
+            // hide the currently unused canvases
             canvases[1].enabled = false;
+            canvases[2].enabled = false;
         }
 
         // if the scene is the main game
@@ -80,6 +81,14 @@ public class buttonUI : MonoBehaviour
         ToggleButton(2);
         
         // open the settings menu 
+    }
+
+    // function for the button to show the credits
+    public void CreditsButton()
+    {
+        // open the credits menu
+        canvases[0].enabled = false;
+        canvases[2].enabled = true;
     }
 
     // function for the button to quit the game

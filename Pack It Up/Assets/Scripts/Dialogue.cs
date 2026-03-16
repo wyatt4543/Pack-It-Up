@@ -73,6 +73,18 @@ public class Dialogue : MonoBehaviour
 
             RestartDialogue();
         }
+
+        if (SceneManager.GetActiveScene().name == "Level 5")
+        {
+            dialogLines = new string[] {
+                "Worker: In this level there are some weird crates.",
+                "Worker: The half crate only delivers the half of the row that it is in.",
+                "Worker: The crate with a hand on it is moved and rotated with your mouse.",
+                "Worker: Good luck with these new deliveries!"
+            };
+
+            RestartDialogue();
+        }
     }
 
     // Update is called once per frame

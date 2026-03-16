@@ -745,7 +745,7 @@ PrefabInstance:
       objectReference: {fileID: 1818601659}
     - target: {fileID: 6178287234929047873, guid: e1a53a42524261a46acaefa404d4a46f, type: 3}
       propertyPath: Blocks.Array.size
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6178287234929047873, guid: e1a53a42524261a46acaefa404d4a46f, type: 3}
       propertyPath: 'Blocks.Array.data[7]'
@@ -755,6 +755,14 @@ PrefabInstance:
       propertyPath: 'Blocks.Array.data[8]'
       value: 
       objectReference: {fileID: 988282771911747836, guid: f65355f810d96494b834ce188fb6d926, type: 3}
+    - target: {fileID: 6178287234929047873, guid: e1a53a42524261a46acaefa404d4a46f, type: 3}
+      propertyPath: 'Blocks.Array.data[9]'
+      value: 
+      objectReference: {fileID: 1550645897694374754, guid: e4fe6d9f2cde1c240b6dab5f7771595b, type: 3}
+    - target: {fileID: 6178287234929047873, guid: e1a53a42524261a46acaefa404d4a46f, type: 3}
+      propertyPath: 'Blocks.Array.data[10]'
+      value: 
+      objectReference: {fileID: 6052027982987745614, guid: 4c378fdbd1bb35f46903caaf61a3b030, type: 3}
     - target: {fileID: 6430645838612966595, guid: e1a53a42524261a46acaefa404d4a46f, type: 3}
       propertyPath: m_Name
       value: Spawner

@@ -58,6 +58,11 @@ public class OrderManager : MonoBehaviour
             // set the initial custom order
             customOrder = 7;
         }
+
+        if (SceneManager.GetActiveScene().name == "Level 6")
+        {
+            totalOrders = currentTotalOrders = 3;
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

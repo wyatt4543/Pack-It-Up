@@ -30,8 +30,8 @@ public class buttonUI : MonoBehaviour
         if (SceneManager.GetActiveScene().name == mainMenu)
         {
             // hide the currently unused canvases
-            canvases[1].enabled = false;
-            canvases[2].enabled = false;
+            ToggleCanvas(1);
+            ToggleCanvas(2);
         }
 
         // if the scene is the main game
@@ -54,8 +54,8 @@ public class buttonUI : MonoBehaviour
     public void PlayButton()
     {
         // open the level selection menu
-        canvases[0].enabled = false;
-        canvases[1].enabled = true;
+        ToggleCanvas(0);
+        ToggleCanvas(1);
     }
 
     // function for adding the behavior of selecting a level
@@ -87,8 +87,8 @@ public class buttonUI : MonoBehaviour
     public void CreditsButton()
     {
         // open the credits menu
-        canvases[0].enabled = false;
-        canvases[2].enabled = true;
+        ToggleCanvas(0);
+        ToggleCanvas(2);
     }
 
     // function for the button to quit the game
@@ -129,11 +129,17 @@ public class buttonUI : MonoBehaviour
         }
     }
 
-    // function for disabling a button
+    // function for disabling/enabling a button
     public void ToggleButton(int buttonIndex)
     {
         // make the button invisible/visible and disable/enable interaction
         buttons[buttonIndex].gameObject.SetActive(!buttons[buttonIndex].gameObject.activeInHierarchy);
         buttons[buttonIndex].interactable = !buttons[buttonIndex].interactable;
+    }
+
+    // function for disabling/enabling a canvas
+    public void ToggleCanvas(int canvasIndex)
+    {
+        canvases[canvasIndex].enabled = !canvases[canvasIndex].enabled;
     }
 }

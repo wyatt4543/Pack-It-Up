@@ -37,6 +37,13 @@ public class OrderManager : MonoBehaviour
         {
             totalOrders = currentTotalOrders = 2;
         }
+
+        if (SceneManager.GetActiveScene().name == "Level 3")
+        {
+            totalOrders = currentTotalOrders = 2;
+            // set the initial custom order
+            customOrder = 7;
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -100,6 +107,9 @@ public class OrderManager : MonoBehaviour
             {
                 // create a custom order
                 currentOrder = Instantiate(Blocks[customOrder], gameObject.transform.position, Quaternion.identity);
+
+                // increase the customOrder variable by 1 to move onto the next order in the list of blocks
+                customOrder++;
             }
 
             // delete the next block's scripts

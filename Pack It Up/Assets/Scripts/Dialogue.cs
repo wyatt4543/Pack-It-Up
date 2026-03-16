@@ -47,6 +47,19 @@ public class Dialogue : MonoBehaviour
 
             RestartDialogue();
         }
+
+        if (SceneManager.GetActiveScene().name == "Level 3")
+        {
+            dialogLines = new string[] {
+                "Worker: There are some new materials that are used for concrete.",
+                "Worker: The first is water, and it falls whenever it is placed.",
+                "Worker: The second is gravel, it is used as the base ingredient for the concrete.",
+                "Worker: The gravel causes crates and other materials around it to fall when it is placed.",
+                "Worker: Get to delivering the materials needed for concrete!"
+            };
+
+            RestartDialogue();
+        }
     }
 
     // Update is called once per frame

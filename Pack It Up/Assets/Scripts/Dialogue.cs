@@ -85,6 +85,18 @@ public class Dialogue : MonoBehaviour
 
             RestartDialogue();
         }
+
+        if (SceneManager.GetActiveScene().name == "Level 6")
+        {
+            dialogLines = new string[] {
+                "Worker: This is the final level.",
+                "Worker: There is a new split crate that has two separate crates moving as one crate.",
+                "Worker: Use what I have taught you to deliver all of the requested orders.",
+                "Worker: Good luck!"
+            };
+
+            RestartDialogue();
+        }
     }
 
     // Update is called once per frame

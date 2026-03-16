@@ -9,6 +9,7 @@ public class buttonUI : MonoBehaviour
     // set the string to the main game scene name
     [SerializeField] private string mainGame = "MainGame";
     [SerializeField] private string mainMenu = "MainMenu";
+    private string nextLevel;
     
     // collect a list of all of the buttons & canvases
     public Button[] buttons;
@@ -101,9 +102,22 @@ public class buttonUI : MonoBehaviour
 
     // function for continuing to the next level
     public void ContinueButton() {
-        // load the next level
+        // unpause the game
         PauseManager.instance.UnpauseGame();
-        SceneManager.LoadScene("Level " + (SceneManager.GetActiveScene().name[^1] - '0' + 1));
+
+        // update the nextLevel string
+        nextLevel = "Level " + (SceneManager.GetActiveScene().name[^1] - '0' + 1);
+
+        if (SceneUtility.GetBuildIndexByScenePath(nextLevel) != -1)
+        {
+            // load the next level
+            SceneManager.LoadScene(nextLevel);
+        }
+        else
+        {
+            // load arcade mode
+            SceneManager.LoadScene(mainGame);
+        }
     }
 
     // function for disabling a button

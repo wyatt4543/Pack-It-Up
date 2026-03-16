@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -40,7 +41,12 @@ public class OrderManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        Blocks = SpawnBlock.instance.Blocks;
+        // remove the bomb block and negative block from the order pool
+        for (int i = 0; i < Blocks.Length; i++)
+        {
+            if (!SpawnBlock.instance.Blocks[i].name.Contains("Bomb") || !SpawnBlock.instance.Blocks[i].name.Contains("Negative"))
+                Blocks[i] = SpawnBlock.instance.Blocks[i];
+        }
     }
 
     public void EnableOrders()

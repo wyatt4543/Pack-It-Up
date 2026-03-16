@@ -38,8 +38,8 @@ public class Dialogue : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Level 2")
         {
             dialogLines = new string[] {
-                "Worker: There are two new blocks in the level.",
-                "Worker: A bomb block which destroys all adjacent blocks.",
+                "Worker: There are two new things in the level.",
+                "Worker: A bomb which destroys all adjacent squares.",
                 "Worker: And a negative block which removes the squares which it overlaps.",
                 "Worker: The negative block only activates when it hits the bottom of the game board, or all of its squares overlap other squares.",
                 "Worker: Now, get to completing those orders!"

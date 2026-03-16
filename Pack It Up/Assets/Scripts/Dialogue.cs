@@ -60,6 +60,19 @@ public class Dialogue : MonoBehaviour
 
             RestartDialogue();
         }
+
+        if (SceneManager.GetActiveScene().name == "Level 4")
+        {
+            dialogLines = new string[] {
+                "Worker: In this level there is some special deliveries that need to be done.",
+                "Worker: Some of the orders need to be put into a box.",
+                "Worker: This box covers the items and increases the number of times you have to deliver the square covered by the box.",
+                "Worker: There are also crates that need to be delivered the amount of times listed on the box.",
+                "Worker: Good luck fulfilling these new orders!"
+            };
+
+            RestartDialogue();
+        }
     }
 
     // Update is called once per frame

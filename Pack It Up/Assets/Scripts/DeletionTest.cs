@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeletionTest : MonoBehaviour
 {
@@ -8,8 +9,11 @@ public class DeletionTest : MonoBehaviour
         //delete object if it has no children
         if (transform.childCount == 0)
         {
-            // send the deleted object's name to the order manager
-            OrderManager.instance.UpdateOrder(transform.parent.gameObject.name);
+            if (SceneManager.GetActiveScene().name != "MainGame")
+            {
+                // send the deleted object's name to the order manager
+                OrderManager.instance.UpdateOrder(transform.parent.gameObject.name);
+            }
 
             Destroy(transform.parent.gameObject);
         }

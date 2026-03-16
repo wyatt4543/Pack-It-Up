@@ -997,6 +997,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3769742310626124242, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
   m_PrefabInstance: {fileID: 612424261}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &612424263 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 935298607240688499, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
+  m_PrefabInstance: {fileID: 612424261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &633563681
 GameObject:
   m_ObjectHideFlags: 0
@@ -3786,11 +3791,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: buttons.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: canvases.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: 'buttons.Array.data[0]'
@@ -3805,6 +3810,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1173715695}
     - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
+      propertyPath: 'buttons.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2067845853}
+    - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: 'canvases.Array.data[0]'
       value: 
       objectReference: {fileID: 1778121422}
@@ -3812,6 +3821,10 @@ PrefabInstance:
       propertyPath: 'canvases.Array.data[1]'
       value: 
       objectReference: {fileID: 1572882666}
+    - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
+      propertyPath: 'canvases.Array.data[2]'
+      value: 
+      objectReference: {fileID: 612424263}
     - target: {fileID: 7557138627855827683, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: m_Name
       value: ButtonController

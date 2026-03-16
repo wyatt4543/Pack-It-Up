@@ -1198,7 +1198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428476728853702932, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_Name
-      value: SoundMenuCanvas
+      value: PauseMenuCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 4289424211945327002, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_AnchorMax.x

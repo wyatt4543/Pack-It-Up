@@ -3600,7 +3600,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1757272110}
         m_TargetAssemblyTypeName: buttonUI, Assembly-CSharp
-        m_MethodName: SettingsButton
+        m_MethodName: CreditsButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

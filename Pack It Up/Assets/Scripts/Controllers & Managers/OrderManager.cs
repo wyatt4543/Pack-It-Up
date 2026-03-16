@@ -109,7 +109,10 @@ public class OrderManager : MonoBehaviour
                 currentOrder = Instantiate(Blocks[customOrder], gameObject.transform.position, Quaternion.identity);
 
                 // increase the customOrder variable by 1 to move onto the next order in the list of blocks
-                customOrder++;
+                if (customOrder != Blocks.Length - 1)
+                {
+                    customOrder++;
+                }
             }
 
             // delete the next block's scripts

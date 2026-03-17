@@ -926,13 +926,21 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1227333777}
+    - target: {fileID: 2252331623087860819, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1757272110}
+    - target: {fileID: 2252331623087860819, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HomeButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2750159918772575419, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1227333777}
     - target: {fileID: 3428476728853702932, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_Name
-      value: SoundMenuCanvas
+      value: PauseMenuCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 4289424211945327002, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1037,6 +1045,14 @@ PrefabInstance:
     - target: {fileID: 5057999095267674622, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105294729613818456, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1757272110}
+    - target: {fileID: 6105294729613818456, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartButton
       objectReference: {fileID: 0}
     - target: {fileID: 9097371906374827473, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1324,7 +1340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4676052531811569941, guid: 3dec922bae0961a4787e17d839f6d6da, type: 3}
       propertyPath: m_Name
-      value: SoundMenuManager
+      value: PauseMenuManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

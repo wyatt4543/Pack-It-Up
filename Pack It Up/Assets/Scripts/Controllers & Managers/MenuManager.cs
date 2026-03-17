@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     private bool menuOpen = false;
-    [SerializeField] private GameObject pauseMenu;
+    private GameObject pauseMenu;
     private SoundMixerManager soundMixer;
     private Slider masterVolume;
     private Slider SFXVolume;
@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        pauseMenu = GameObject.Find("PauseMenuCanvas");
         pauseMenu.SetActive(false);
         soundMixer = GameObject.Find("SoundMixerManager").GetComponent<SoundMixerManager>();
         masterVolume = pauseMenu.transform.Find("Master Volume").gameObject.GetComponent<Slider>();

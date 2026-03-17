@@ -1189,12 +1189,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2103387609573407973, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103387609573407973, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 5777524254788330350}
+    - target: {fileID: 2103387609573407973, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSFXVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103387609573407973, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SoundMixerManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750159918772575419, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2750159918772575419, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 5777524254788330350}
+    - target: {fileID: 2750159918772575419, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMusicVolume
       objectReference: {fileID: 0}
     - target: {fileID: 3428476728853702932, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_Name
@@ -1293,8 +1313,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4415104416613086469, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415104416613086469, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 5777524254788330350}
+    - target: {fileID: 4415104416613086469, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMasterVolume
       objectReference: {fileID: 0}
     - target: {fileID: 5057999095267674622, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1679,6 +1707,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65f8d5665d52d8644b4e2044fae015ae, type: 3}
+--- !u!114 &5777524254788330350 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6741379124637859839, guid: 65f8d5665d52d8644b4e2044fae015ae, type: 3}
+  m_PrefabInstance: {fileID: 5777524254788330349}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e91a2178900d28409ae59705d08cbac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &6081309766632733196
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1204,6 +1204,14 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SoundMixerManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 2252331623087860819, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1757272110}
+    - target: {fileID: 2252331623087860819, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HomeButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2750159918772575419, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 4
@@ -1331,6 +1339,14 @@ PrefabInstance:
     - target: {fileID: 5057999095267674622, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105294729613818456, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1757272110}
+    - target: {fileID: 6105294729613818456, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartButton
       objectReference: {fileID: 0}
     - target: {fileID: 9097371906374827473, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_AnchorMax.x

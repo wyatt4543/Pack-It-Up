@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     private bool menuOpen = false;
-    private GameObject soundMenu;
+    private GameObject pauseMenu;
     private SoundMixerManager soundMixer;
     private Slider masterVolume;
     private Slider SFXVolume;
@@ -14,13 +14,13 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        soundMenu = GameObject.Find("SoundMenuCanvas");
-        soundMenu.SetActive(false);
+        pauseMenu = GameObject.Find("PauseMenuCanvas");
+        pauseMenu.SetActive(false);
         soundMixer = GameObject.Find("SoundMixerManager").GetComponent<SoundMixerManager>();
-        masterVolume = soundMenu.transform.Find("Master Volume").gameObject.GetComponent<Slider>();
-        SFXVolume = soundMenu.transform.Find("SFX Volume").gameObject.GetComponent<Slider>();
-        musicVolume = soundMenu.transform.Find("Music Volume").gameObject.GetComponent<Slider>();
-        backButton = soundMenu.transform.Find("BackButton").gameObject.GetComponent<Button>();
+        masterVolume = pauseMenu.transform.Find("Master Volume").gameObject.GetComponent<Slider>();
+        SFXVolume = pauseMenu.transform.Find("SFX Volume").gameObject.GetComponent<Slider>();
+        musicVolume = pauseMenu.transform.Find("Music Volume").gameObject.GetComponent<Slider>();
+        backButton = pauseMenu.transform.Find("BackButton").gameObject.GetComponent<Button>();
         masterVolume.onValueChanged.AddListener(
             delegate { soundMixer.SetMasterVolume(masterVolume.value); }
         );
@@ -59,7 +59,7 @@ public class MenuManager : MonoBehaviour
     public void UpdateSoundMenu()
     {
         menuOpen = !menuOpen;
-        soundMenu.SetActive(menuOpen);
+        pauseMenu.SetActive(menuOpen);
     }
 
     // pause function

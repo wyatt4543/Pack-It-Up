@@ -95,7 +95,8 @@ public class buttonUI : MonoBehaviour
         // toggle the door animation
         ToggleTitleDoorAnimation();
 
-        await Task.Delay((int)(titleDoorAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length * 1000));
+        // wait for the animation to complete
+        await Task.Delay(350);
 
         // open the credits menu
         ToggleCanvas(0);

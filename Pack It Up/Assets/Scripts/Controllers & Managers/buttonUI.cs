@@ -174,11 +174,13 @@ public class buttonUI : MonoBehaviour
     // function for adding the behavior of heading back to the main menu
     public void HomeButton()
     {
+        PauseManager.instance.UnpauseGame();
         SceneManager.LoadScene(mainMenu);
     }
 
     // function for adding the behavior of restarting the game
     public void RestartButton() {
+        PauseManager.instance.UnpauseGame();
         // load the current scene on restart
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

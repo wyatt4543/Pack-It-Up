@@ -4450,6 +4450,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
+      propertyPath: titleDoorAnimator
+      value: 
+      objectReference: {fileID: 1212869594}
+    - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: buttons.Array.size
       value: 4
       objectReference: {fileID: 0}

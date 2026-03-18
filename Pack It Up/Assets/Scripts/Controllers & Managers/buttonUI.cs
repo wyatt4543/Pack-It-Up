@@ -14,9 +14,10 @@ public class buttonUI : MonoBehaviour
     private bool triggerTitleDoorOpen = false;
     private string nextLevel;
     
-    // collect a list of all of the buttons & canvases
+    // collect a list of all of the buttons, images, and canvases
     public Button[] buttons;
     public Canvas[] canvases;
+    public Image[] images;
 
     private void Awake()
     {
@@ -95,6 +96,9 @@ public class buttonUI : MonoBehaviour
         // toggle the door animation
         ToggleTitleDoorAnimation();
 
+        // instantly hide the title
+        ToggleImage(0);
+
         // wait for the animation to complete
         await Task.Delay(350);
 
@@ -160,5 +164,11 @@ public class buttonUI : MonoBehaviour
     {
         triggerTitleDoorOpen = !triggerTitleDoorOpen;
         titleDoorAnimator.SetBool("triggerTitleDoorOpen", triggerTitleDoorOpen);
+    }
+
+    // function for toggling an image
+    public void ToggleImage(int imageIndex)
+    {
+        images[imageIndex].enabled = !images[imageIndex].enabled;
     }
 }

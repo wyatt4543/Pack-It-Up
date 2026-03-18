@@ -60,15 +60,31 @@ public class buttonUI : MonoBehaviour
         // toggle the door animation
         ToggleTitleDoorAnimation();
 
-        // instantly hide the title
-        ToggleImage(0);
+        // check if the main menu is open
+        if (canvases[0].enabled)
+        {
+            // instantly hide the title
+            ToggleImage(0);
 
-        // wait for the animation to complete
-        await Task.Delay(350);
+            // wait for the animation to complete
+            await Task.Delay(350);
 
-        // open the level selection menu
-        ToggleCanvas(0);
-        ToggleCanvas(1);
+            // open the level selection menu
+            ToggleCanvas(0);
+            ToggleCanvas(1);
+        }
+        else
+        {
+            // hide the level selection menu
+            ToggleCanvas(1);
+
+            // wait for the animation to complete
+            await Task.Delay(350);
+
+            // show the title & open the main menu
+            ToggleImage(0);
+            ToggleCanvas(0);
+        }
     }
 
     // function for adding the behavior of selecting a level
@@ -102,15 +118,31 @@ public class buttonUI : MonoBehaviour
         // toggle the door animation
         ToggleTitleDoorAnimation();
 
-        // instantly hide the title
-        ToggleImage(0);
+        // check if the main menu is open
+        if (canvases[0].enabled)
+        {
+            // instantly hide the title
+            ToggleImage(0);
 
-        // wait for the animation to complete
-        await Task.Delay(350);
+            // wait for the animation to complete
+            await Task.Delay(350);
 
-        // open the credits menu
-        ToggleCanvas(0);
-        ToggleCanvas(2);
+            // open the credits menu
+            ToggleCanvas(0);
+            ToggleCanvas(2);
+        }
+        else
+        {
+            // hide the credits menu
+            ToggleCanvas(2);
+
+            // wait for the animation to complete
+            await Task.Delay(350);
+
+            // show the title & open the main menu
+            ToggleImage(0);
+            ToggleCanvas(0);
+        }
     }
 
     // function for the button to quit the game

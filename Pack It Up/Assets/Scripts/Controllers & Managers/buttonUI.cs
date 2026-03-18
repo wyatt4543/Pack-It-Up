@@ -10,7 +10,7 @@ public class buttonUI : MonoBehaviour
     [SerializeField] private string mainGame = "MainGame";
     [SerializeField] private string mainMenu = "MainMenu";
     [SerializeField] private Animator titleDoorAnimator;
-    bool triggerTitleDoorOpen = false;
+    private bool triggerTitleDoorOpen = false;
     private string nextLevel;
     
     // collect a list of all of the buttons & canvases

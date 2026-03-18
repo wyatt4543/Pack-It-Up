@@ -49,7 +49,7 @@ public class SpawnBlock : MonoBehaviour
             // add new lines
             Dialogue.instance.dialogLines = new string[] {
                 "Worker: Now that you've placed your first crate, let's do your first order.",
-                "Worker: In the top right is an order.",
+                "Worker: On the right is an order.",
                 "Worker: To fulfill that order, you need to make a complete row of crates to send it out of the box.",
                 "Worker: The order number goes down by one only once you get the full group of required crates delivered."
             };

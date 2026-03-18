@@ -455,7 +455,10 @@ MonoBehaviour:
     Sprites Artists: Why Awesome, Mark Hamrick,
     and Madeline Hamrick
 
-    Composer & Game Designer: ImPesto'
+    Composer & Game Designer: ImPesto
+
+    Font Creator:
+    Why Awesome'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71ba550cbfad4614da257250b85b12ff, type: 2}
   m_sharedMaterial: {fileID: 3525288246048698027, guid: 71ba550cbfad4614da257250b85b12ff, type: 2}

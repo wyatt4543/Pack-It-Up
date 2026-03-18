@@ -231,7 +231,6 @@ public class buttonUI : MonoBehaviour
     {
         foreach (Transform children in canvases[canvasIndex].transform)
         {
-            var componentsList = children.GetComponents<Behaviour>();
             if (children.name != "BackButton")
             {
                 children.gameObject.SetActive(!children.gameObject.activeSelf);

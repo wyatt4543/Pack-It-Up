@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -84,15 +85,17 @@ public class buttonUI : MonoBehaviour
         // hide the other two buttons
         ToggleButton(0);
         ToggleButton(2);
-        
+
         // open the settings menu 
     }
 
     // function for the button to show the credits
-    public void CreditsButton()
+    public async void CreditsButton()
     {
         // toggle the door animation
         ToggleTitleDoorAnimation();
+
+        await Task.Delay((int)(titleDoorAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length * 1000));
 
         // open the credits menu
         ToggleCanvas(0);

@@ -66,20 +66,28 @@ public class buttonUI : MonoBehaviour
             // instantly hide the title
             ToggleImage(0);
 
+            // show only the back button in the level selection menu
+            ToggleCanvas(1);
+
             // wait for the animation to complete
             await Task.Delay(350);
 
-            // open the level selection menu
+            // hide the main menu
             ToggleCanvas(0);
-            ToggleCanvas(1);
+            
+            // show everything in the level selection menu
+            ToggleNotBackButton(1);
         }
         else
         {
-            // hide the level selection menu
-            ToggleCanvas(1);
+            // hide everything except the back button in the level selection menu
+            ToggleNotBackButton(1);
 
             // wait for the animation to complete
             await Task.Delay(350);
+
+            // hide the level selection menu
+            ToggleCanvas(1);
 
             // show the title & open the main menu
             ToggleImage(0);
@@ -124,20 +132,28 @@ public class buttonUI : MonoBehaviour
             // instantly hide the title
             ToggleImage(0);
 
+            // show only the back button in the credits menu
+            ToggleCanvas(2);
+
             // wait for the animation to complete
             await Task.Delay(350);
 
-            // open the credits menu
+            // hide the main menu
             ToggleCanvas(0);
-            ToggleCanvas(2);
+
+            // show everything in the credits menu
+            ToggleNotBackButton(2);
         }
         else
         {
-            // hide the credits menu
-            ToggleCanvas(2);
+            // hide everything except the back button in the credits menu
+            ToggleNotBackButton(2);
 
             // wait for the animation to complete
             await Task.Delay(350);
+
+            // hide the credits menu
+            ToggleCanvas(2);
 
             // show the title & open the main menu
             ToggleImage(0);

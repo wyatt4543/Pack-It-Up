@@ -125,7 +125,7 @@ TextureImporter:
       name: Title_Background_Animation_1
       rect:
         serializedVersion: 2
-        x: 639
+        x: 640
         y: 0
         width: 640
         height: 360
@@ -147,7 +147,7 @@ TextureImporter:
       name: Title_Background_Animation_2
       rect:
         serializedVersion: 2
-        x: 1283
+        x: 1280
         y: 0
         width: 640
         height: 360

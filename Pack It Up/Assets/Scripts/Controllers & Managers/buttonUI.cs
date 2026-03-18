@@ -55,10 +55,16 @@ public class buttonUI : MonoBehaviour
     }
 
     // function for adding the behavior of starting the game
-    public void PlayButton()
+    public async void PlayButton()
     {
         // toggle the door animation
         ToggleTitleDoorAnimation();
+
+        // instantly hide the title
+        ToggleImage(0);
+
+        // wait for the animation to complete
+        await Task.Delay(350);
 
         // open the level selection menu
         ToggleCanvas(0);

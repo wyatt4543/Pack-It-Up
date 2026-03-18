@@ -66,17 +66,17 @@ public class buttonUI : MonoBehaviour
             // instantly hide the title
             ToggleImage(0);
 
-            // show only the back button in the level selection menu
-            ToggleCanvas(1);
-
             // wait for the animation to complete
             await Task.Delay(350);
 
             // hide the main menu
             ToggleCanvas(0);
-            
-            // show everything in the level selection menu
-            ToggleNotBackButton(1);
+
+            // reenable the title because the main menu is hidden
+            ToggleImage(0);
+
+            // show the level selection menu
+            ToggleCanvas(1);
         }
         else
         {
@@ -89,8 +89,10 @@ public class buttonUI : MonoBehaviour
             // hide the level selection menu
             ToggleCanvas(1);
 
-            // show the title & open the main menu
-            ToggleImage(0);
+            // reenable everything because the level selection menu is hidden
+            ToggleNotBackButton(1);
+
+            // show the open the main menu
             ToggleCanvas(0);
         }
     }
@@ -132,17 +134,17 @@ public class buttonUI : MonoBehaviour
             // instantly hide the title
             ToggleImage(0);
 
-            // show only the back button in the credits menu
-            ToggleCanvas(2);
-
             // wait for the animation to complete
             await Task.Delay(350);
 
             // hide the main menu
             ToggleCanvas(0);
 
-            // show everything in the credits menu
-            ToggleNotBackButton(2);
+            // reenable the title because the main menu is hidden
+            ToggleImage(0);
+
+            // show the credits menu
+            ToggleCanvas(2);
         }
         else
         {
@@ -155,8 +157,10 @@ public class buttonUI : MonoBehaviour
             // hide the credits menu
             ToggleCanvas(2);
 
-            // show the title & open the main menu
-            ToggleImage(0);
+            // reenable everything because the credits menu is hidden
+            ToggleNotBackButton(2);
+
+            // show the open the main menu
             ToggleCanvas(0);
         }
     }

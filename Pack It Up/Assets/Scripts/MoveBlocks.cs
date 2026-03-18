@@ -72,9 +72,6 @@ public class MoveBlocks : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         PauseManager.instance.playerInput = playerInput;
 
-        // unpause the game
-        PauseManager.instance.UnpauseGame();
-
         // Initialize timers
         defaultFallTimer = Mathf.Pow((0.8f - ((gameRound - 1) * 0.007f)), gameRound - 1);
         fallTimer = defaultFallTimer;
@@ -1014,11 +1011,11 @@ public class MoveBlocks : MonoBehaviour
         roundCounter.enabled = false;
         linesCounter.enabled = false;
 
-        // delete this script to disable movement
-        Destroy(this);
-
         // show the restart button & home button
         buttonUI.instance.ToggleButton(0);
         buttonUI.instance.ToggleButton(1);
+
+        // delete this script to disable movement
+        Destroy(this);
     }
 }

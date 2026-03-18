@@ -209,4 +209,16 @@ public class buttonUI : MonoBehaviour
     {
         images[imageIndex].enabled = !images[imageIndex].enabled;
     }
+
+    // function for toggling eveything except the back button on the title screen
+    public void ToggleNotBackButton(int canvasIndex)
+    {
+        foreach (Transform children in canvases[canvasIndex].transform)
+        {
+            if (children.name != "BackButton")
+            {
+                children.gameObject.GetComponent<Renderer>().enabled = !children.gameObject.GetComponent<Renderer>().enabled;
+            }
+        }
+    }
 }

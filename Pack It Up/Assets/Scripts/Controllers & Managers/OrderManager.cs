@@ -2,6 +2,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OrderManager : MonoBehaviour
 {
@@ -14,11 +15,13 @@ public class OrderManager : MonoBehaviour
     // text objects
     private TextMeshProUGUI currentOrderText;
     private TextMeshProUGUI totalOrdersText;
+    private Image ordersList;
 
     private void Awake()
     {
         currentOrderText = GameObject.Find("LevelCanvas/CurrentOrder").GetComponent<TextMeshProUGUI>();
         totalOrdersText = GameObject.Find("LevelCanvas/TotalOrders").GetComponent<TextMeshProUGUI>();
+        ordersList = GameObject.Find("LevelCanvas/OrdersList").GetComponent<Image>();
 
         if (instance == null)
         {
@@ -30,6 +33,7 @@ public class OrderManager : MonoBehaviour
             totalOrders = currentTotalOrders = 2;
             currentOrderText.enabled = false;
             totalOrdersText.enabled = false;
+            ordersList.enabled = false;
             gameObject.SetActive(false);
         }
 
@@ -80,6 +84,7 @@ public class OrderManager : MonoBehaviour
     {
         currentOrderText.enabled = true;
         totalOrdersText.enabled = true;
+        ordersList.enabled = true;
     }
 
     public void UpdateOrder(string completedOrder)

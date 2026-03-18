@@ -9,6 +9,8 @@ public class buttonUI : MonoBehaviour
     // set the string to the main game scene name
     [SerializeField] private string mainGame = "MainGame";
     [SerializeField] private string mainMenu = "MainMenu";
+    [SerializeField] private Animator titleDoorAnimator;
+    bool triggerTitleDoorOpen = false;
     private string nextLevel;
     
     // collect a list of all of the buttons & canvases
@@ -53,6 +55,9 @@ public class buttonUI : MonoBehaviour
     // function for adding the behavior of starting the game
     public void PlayButton()
     {
+        // toggle the door animation
+        ToggleTitleDoorAnimation();
+
         // open the level selection menu
         ToggleCanvas(0);
         ToggleCanvas(1);
@@ -86,6 +91,9 @@ public class buttonUI : MonoBehaviour
     // function for the button to show the credits
     public void CreditsButton()
     {
+        // toggle the door animation
+        ToggleTitleDoorAnimation();
+
         // open the credits menu
         ToggleCanvas(0);
         ToggleCanvas(2);
@@ -141,5 +149,12 @@ public class buttonUI : MonoBehaviour
     public void ToggleCanvas(int canvasIndex)
     {
         canvases[canvasIndex].enabled = !canvases[canvasIndex].enabled;
+    }
+
+    // function for toggling the title screen door open animation
+    public void ToggleTitleDoorAnimation()
+    {
+        triggerTitleDoorOpen = !triggerTitleDoorOpen;
+        titleDoorAnimator.SetBool("triggerTitleDoorOpen", triggerTitleDoorOpen);
     }
 }

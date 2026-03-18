@@ -233,7 +233,7 @@ public class buttonUI : MonoBehaviour
         {
             if (children.name != "BackButton")
             {
-                children.gameObject.GetComponent<Renderer>().enabled = !children.gameObject.GetComponent<Renderer>().enabled;
+                children.gameObject.GetComponent<Image>().enabled = !children.gameObject.GetComponent<Image>().enabled;
             }
         }
     }

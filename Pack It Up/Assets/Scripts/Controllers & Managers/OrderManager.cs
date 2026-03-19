@@ -140,14 +140,23 @@ public class OrderManager : MonoBehaviour
             // create the current order
             if (customOrder == -1)
             {
+                // assign a random number to the block index
+                int blockIndex = Random.Range(0, Blocks.Count);
+
                 // create a random order
-                tempOrder = Instantiate(Blocks[Random.Range(0, Blocks.Count)], new Vector2(0, 0), Quaternion.identity);
+                tempOrder = Instantiate(Blocks[blockIndex], new Vector2(0, 0), Quaternion.identity);
+                
+                // get the block name based on index
+                tempOrder.name = Blocks[blockIndex].name;
             }
             else
             {
                 // create a custom order
                 tempOrder = Instantiate(Blocks[customOrder], new Vector2(0, 0), Quaternion.identity);
-                
+
+                // get the block name based on index
+                tempOrder.name = Blocks[customOrder].name;
+
                 // increase the customOrder variable by 1 to move onto the next order in the list of blocks
                 if (customOrder != Blocks.Count - 1)
                 {

@@ -126,7 +126,7 @@ public class OrderManager : MonoBehaviour
                 currentTotalOrders--;
 
                 // delete the previous current order
-                Destroy(currentOrder);
+                Destroy(currentOrder.gameObject);
             }
 
             // set the current orders to 5

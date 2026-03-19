@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -8,7 +9,8 @@ public class OrderManager : MonoBehaviour
 {
     public static OrderManager instance;
     private int currentOrders = 0, totalOrders, currentTotalOrders;
-    public GameObject[] Blocks;
+    public List<GameObject> Blocks;
+    private List<GameObject> tempBlocks;
     private GameObject currentOrder;
     private int customOrder = -1;
 
@@ -75,9 +77,20 @@ public class OrderManager : MonoBehaviour
         // remove the bomb block and negative block from the order pool
         for (int i = 0; i < SpawnBlock.instance.Blocks.Length; i++)
         {
-            if (!SpawnBlock.instance.Blocks[i].name.Contains("Bomb") && !SpawnBlock.instance.Blocks[i].name.Contains("Negative"))
-                Blocks = Blocks.Append(SpawnBlock.instance.Blocks[i]).ToArray();
+            foreach (GameObject Block in Blocks)
+            {
+                if (SpawnBlock.instance.Blocks[i].name.Contains(Block.name) && !SpawnBlock.instance.Blocks[i].name.Contains("Bomb") && !SpawnBlock.instance.Blocks[i].name.Contains("Negative"))
+                {
+                    tempBlocks.Add(Blocks[i]);
+                }
+            }
         }
+
+        // finish the new block pool
+        Blocks = tempBlocks;
+
+        // delete the temp list
+        tempBlocks = null;
     }
 
     public void EnableOrders()
@@ -90,7 +103,7 @@ public class OrderManager : MonoBehaviour
     public void UpdateOrder(string completedOrder)
     {
         // if an order is completed
-        if (currentOrder.name == completedOrder)
+        if (completedOrder.Contains(currentOrder.name))
         {
             // update the displayed order count
             currentOrders--;
@@ -125,7 +138,7 @@ public class OrderManager : MonoBehaviour
             if (customOrder == -1)
             {
                 // create a random order
-                currentOrder = Instantiate(Blocks[Random.Range(0, Blocks.Length)], gameObject.transform.position, Quaternion.identity);
+                currentOrder = Instantiate(Blocks[Random.Range(0, Blocks.Count)], gameObject.transform.position, Quaternion.identity);
             }
             else
             {
@@ -133,7 +146,7 @@ public class OrderManager : MonoBehaviour
                 currentOrder = Instantiate(Blocks[customOrder], gameObject.transform.position, Quaternion.identity);
 
                 // increase the customOrder variable by 1 to move onto the next order in the list of blocks
-                if (customOrder != Blocks.Length - 1)
+                if (customOrder != Blocks.Count - 1)
                 {
                     customOrder++;
                 }

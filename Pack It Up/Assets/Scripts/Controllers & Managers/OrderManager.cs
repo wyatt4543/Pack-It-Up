@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Profiling;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,22 +10,23 @@ public class OrderManager : MonoBehaviour
     public static OrderManager instance;
     private int currentOrders = 0, totalOrders, currentTotalOrders;
     public List<GameObject> Blocks;
-    private List<GameObject> tempBlocks;
-    private GameObject currentOrder;
+    private List<GameObject> tempBlocks = new List<GameObject>();
+    private GameObject tempOrder;
+    private RectTransform currentOrder;
     private int customOrder = -1;
 
     // orders objects
     private TextMeshProUGUI currentOrderText;
     private TextMeshProUGUI totalOrdersText;
     private Image ordersList;
-    private GameObject ordersHolder;
+    private RectTransform ordersHolder;
 
     private void Awake()
     {
         currentOrderText = GameObject.Find("LevelCanvas/CurrentOrder").GetComponent<TextMeshProUGUI>();
         totalOrdersText = GameObject.Find("LevelCanvas/TotalOrders").GetComponent<TextMeshProUGUI>();
         ordersList = GameObject.Find("LevelCanvas/OrdersList").GetComponent<Image>();
-        ordersHolder = GameObject.Find("LevelCanvas/Orders");
+        ordersHolder = GameObject.Find("LevelCanvas/Orders").GetComponent<RectTransform>();
 
         if (instance == null)
         {
@@ -139,13 +141,13 @@ public class OrderManager : MonoBehaviour
             if (customOrder == -1)
             {
                 // create a random order
-                currentOrder = Instantiate(Blocks[Random.Range(0, Blocks.Count)], gameObject.transform.position, Quaternion.identity);
+                tempOrder = Instantiate(Blocks[Random.Range(0, Blocks.Count)], new Vector2(0, 0), Quaternion.identity);
             }
             else
             {
                 // create a custom order
-                currentOrder = Instantiate(Blocks[customOrder], gameObject.transform.position, Quaternion.identity);
-
+                tempOrder = Instantiate(Blocks[customOrder], new Vector2(0, 0), Quaternion.identity);
+                
                 // increase the customOrder variable by 1 to move onto the next order in the list of blocks
                 if (customOrder != Blocks.Count - 1)
                 {
@@ -154,7 +156,9 @@ public class OrderManager : MonoBehaviour
             }
 
             // make the current order a child of the order holder
-            currentOrder.transform.parent = ordersHolder.transform;
+            currentOrder = tempOrder.GetComponent<RectTransform>();
+            currentOrder.SetParent(ordersHolder);
+            currentOrder.anchoredPosition = Vector2.zero;
         }
 
         if (currentTotalOrders <= 0)

@@ -84,7 +84,7 @@ public class OrderManager : MonoBehaviour
             {
                 if (SpawnBlock.instance.Blocks[i].name.Contains(Block.name) && !SpawnBlock.instance.Blocks[i].name.Contains("Bomb") && !SpawnBlock.instance.Blocks[i].name.Contains("Negative"))
                 {
-                    tempBlocks.Add(Blocks[i]);
+                    tempBlocks.Add(Block);
                 }
             }
         }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,16 +13,18 @@ public class OrderManager : MonoBehaviour
     private GameObject currentOrder;
     private int customOrder = -1;
 
-    // text objects
+    // orders objects
     private TextMeshProUGUI currentOrderText;
     private TextMeshProUGUI totalOrdersText;
     private Image ordersList;
+    private GameObject ordersHolder;
 
     private void Awake()
     {
         currentOrderText = GameObject.Find("LevelCanvas/CurrentOrder").GetComponent<TextMeshProUGUI>();
         totalOrdersText = GameObject.Find("LevelCanvas/TotalOrders").GetComponent<TextMeshProUGUI>();
         ordersList = GameObject.Find("LevelCanvas/OrdersList").GetComponent<Image>();
+        ordersHolder = GameObject.Find("LevelCanvas/Orders");
 
         if (instance == null)
         {
@@ -152,16 +153,8 @@ public class OrderManager : MonoBehaviour
                 }
             }
 
-            // delete the next block's scripts
-            MonoBehaviour[] scripts = currentOrder.transform.GetChild(0).GetComponents<MonoBehaviour>();
-
-            foreach (MonoBehaviour script in scripts)
-            {
-                Destroy(script);
-            }
-
-            // make the current order a child of the order manager
-            currentOrder.transform.parent = gameObject.transform;
+            // make the current order a child of the order holder
+            currentOrder.transform.parent = ordersHolder.transform;
         }
 
         if (currentTotalOrders <= 0)

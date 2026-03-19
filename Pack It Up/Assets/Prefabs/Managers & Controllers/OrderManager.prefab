@@ -44,3 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5fdc89bdbad5241ab79ee82e36c72d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OrderManager
+  Blocks:
+  - {fileID: 4319820853221745336, guid: 8b140e413102bf740be592aa5ead160f, type: 3}
+  - {fileID: 3661619599327873644, guid: 0fef87bcb52046841ab1c251dd9116af, type: 3}
+  - {fileID: 839602782697103187, guid: b839896cdef6e684790036274fcd4961, type: 3}
+  - {fileID: 6382131285138536824, guid: 4092950abeb50d248a90d4feab77b872, type: 3}
+  - {fileID: 333757389303461432, guid: bdffed7503c09f54fabcdb8ef50eeb22, type: 3}
+  - {fileID: 3620331522226415404, guid: 9f088d82135e2dc4499f0597ead5e6e2, type: 3}
+  - {fileID: 5793534892029745901, guid: ef4f787ab43ab584d8bba9e1095208f8, type: 3}
+  - {fileID: 7184500385157894200, guid: 6cc70e4cd026739448e17241929c8001, type: 3}
+  - {fileID: 5927160420258768397, guid: f46e04009ee9e8a439ecdbe245bb8bc8, type: 3}
+  - {fileID: 7531618341868734413, guid: cb4929ff03cc0a744baa9b3fc9c5dd85, type: 3}
+  - {fileID: 7284654225107230001, guid: d11363d2a6396414994d403a5ae1688e, type: 3}
+  - {fileID: 4625536374141076219, guid: 8141841985a1b54408bb9b63933e12cb, type: 3}
+  - {fileID: 5555070662252348970, guid: 060abb4f6ef0c47429c629557808fe55, type: 3}
+  - {fileID: 2021899501349024038, guid: 6c2869054fd450742a83ee96ef586695, type: 3}

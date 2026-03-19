@@ -94,7 +94,7 @@ public class OrderManager : MonoBehaviour
         {
             // update the displayed order count
             currentOrders--;
-            currentOrderText.text = "Order:\tX" + currentOrders;
+            currentOrderText.text = "X" + currentOrders;
         }
     }
 
@@ -116,7 +116,7 @@ public class OrderManager : MonoBehaviour
             // set the current orders to 5
             currentOrders = 5;
 
-            currentOrderText.text = "Order:\t\tX" + currentOrders;
+            currentOrderText.text = "X" + currentOrders;
 
             // update the total orders text
             totalOrdersText.text = "Completed Orders: " + currentTotalOrders + "/" + totalOrders;

@@ -109,23 +109,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Conveyor_Belt_0
+      name: Conveyor_Belt_Left_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 33
-        height: 13
+        width: 8
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 47863467361446f90800000000000000
+      spriteID: 2b29a4d0f61687f45b2d9ef017d5549d
+      internalID: 1132766581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Conveyor_Belt_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9093295364bbef548ac9a27a06a8cdf1
       internalID: -6961367228566247308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Conveyor_Belt_Right_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77e9d0e9563ca79418c623e4beff4434
+      internalID: -1323817024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Conveyor_Belt_Left_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6148e8545beb0d3438ea47981aba037b
+      internalID: -1588275683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Conveyor_Belt_Right_1
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 0
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f32ce36b43f7bfd41ac0948c1969aab6
+      internalID: 1004219939
       vertices: []
       indices: 
       edges: []
@@ -134,20 +222,64 @@ TextureImporter:
       name: Conveyor_Belt_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 41
         y: 0
-        width: 34
-        height: 13
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 321424d0977e7194ead6b3ca507aed79
+      internalID: 3281510752613695629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Conveyor_Belt_Left_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 8
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d800a20b4a44a8d20800000000000000
-      internalID: 3281510752613695629
+      spriteID: 9ffb520fc32c8a74789367232697a933
+      internalID: 1352480568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Conveyor_Belt_Right_2
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 0
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ed89c5e2e523e449b5fd80c4fa32de6
+      internalID: 1141670648
       vertices: []
       indices: 
       edges: []
@@ -156,20 +288,64 @@ TextureImporter:
       name: Conveyor_Belt_2
       rect:
         serializedVersion: 2
-        x: 65
+        x: 74
         y: 0
-        width: 34
-        height: 13
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 973b26cdfda0829f0800000000000000
-      internalID: -493132202605628551
+      spriteID: df4fcd344a9473a4aa501278d73480c6
+      internalID: -967788630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Conveyor_Belt_Left_3
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 0
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bdec5f99dbe2f44da828d260b28b531
+      internalID: 1796763604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Conveyor_Belt_Right_3
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 0
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2d4d1988b0ae3b47b12f30f29cf28ad
+      internalID: -1241897665
       vertices: []
       indices: 
       edges: []
@@ -178,20 +354,20 @@ TextureImporter:
       name: Conveyor_Belt_3
       rect:
         serializedVersion: 2
-        x: 98
+        x: 107
         y: 0
-        width: 33
-        height: 13
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a36a857f4245ceb50800000000000000
-      internalID: 6623761669700494906
+      spriteID: bae4c52bc939c2f4eb8d3331895f9efb
+      internalID: 1051623693
       vertices: []
       indices: 
       edges: []
@@ -200,7 +376,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b5a643953a7d22c43b9a0c4bfff0ebeb
     internalID: 0
     vertices: []
     indices: 
@@ -208,12 +384,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Conveyor_Belt_0: -6961367228566247308
       Conveyor_Belt_1: 3281510752613695629
-      Conveyor_Belt_2: -493132202605628551
-      Conveyor_Belt_3: 6623761669700494906
+      Conveyor_Belt_2: -967788630
+      Conveyor_Belt_3: 1051623693
+      Conveyor_Belt_Left_0: 1132766581
+      Conveyor_Belt_Left_1: -1588275683
+      Conveyor_Belt_Left_2: 1352480568
+      Conveyor_Belt_Left_3: 1796763604
+      Conveyor_Belt_Right_0: -1323817024
+      Conveyor_Belt_Right_1: 1004219939
+      Conveyor_Belt_Right_2: 1141670648
+      Conveyor_Belt_Right_3: -1241897665
+      _Conveyor_BeltL_1: -1588275683
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

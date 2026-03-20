@@ -59,3 +59,8 @@ MonoBehaviour:
   - {fileID: 4625536374141076219, guid: 8141841985a1b54408bb9b63933e12cb, type: 3}
   - {fileID: 5555070662252348970, guid: 060abb4f6ef0c47429c629557808fe55, type: 3}
   - {fileID: 2021899501349024038, guid: 6c2869054fd450742a83ee96ef586695, type: 3}
+  deliveryTruck: {fileID: 0}
+  deliveryTruckAnimationClips:
+  - {fileID: 7400000, guid: 5cab0e610eeb7b544ac83e4e21e47110, type: 2}
+  - {fileID: 7400000, guid: e71d870a2e8b5784688c4f7d9a668750, type: 2}
+  - {fileID: 7400000, guid: 8095153a2441d6146820d18e61eda207, type: 2}

@@ -16,7 +16,7 @@ public class OrderManager : MonoBehaviour
 
     // delivery truck stuff
     [SerializeField] private GameObject deliveryTruck;
-    private float deliveryTruckSpeed = 10.0f;
+    private float deliveryTruckSpeed = 20.0f;
     private Vector2 deliveryTruckDestination = new Vector2(-27.5f, -4.5f);
     private bool moveDeliveryTruck = false;
 

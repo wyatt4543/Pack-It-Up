@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,11 +17,15 @@ public class OrderManager : MonoBehaviour
 
     // delivery truck stuff
     [SerializeField] private GameObject deliveryTruck;
+    [SerializeField] private AnimationClip[] deliveryTruckAnimationClips;
     private Animator deliveryTruckAnimator;
     private float deliveryTruckSpeed = 20.0f;
-    private Vector2 deliveryTruckDestination = new Vector2(-27.5f, -4.5f);
+    private Vector2 deliveryTruckOffScreenDestination = new Vector2(-29.65f, -4.5f);
+    private Vector2 deliveryTruckOnScreenDestination = new Vector2(-27.5f, -4.5f);
+    private Vector2 deliveryTruckDestination;
     private bool moveDeliveryTruck = false;
     private bool triggerDeliveryTruckOpen = false;
+    private bool firstTruck = true;
 
     // orders objects
     private TextMeshProUGUI currentOrderText;
@@ -124,27 +129,75 @@ public class OrderManager : MonoBehaviour
         }
     }
 
+    // function for moving the delivery truck onto the screen
+    private void DeliveryTruckShow()
+    {
+        // update the delivery truck destination to be on screen
+        deliveryTruckDestination = deliveryTruckOnScreenDestination;
+
+        // check if the distance to the destination is really close or not
+        if (Vector3.Distance(deliveryTruck.transform.position, deliveryTruckDestination) > 0.01f)
+        {
+            // move the delivery truck
+            deliveryTruck.transform.position = Vector3.MoveTowards(deliveryTruck.transform.position, deliveryTruckDestination, deliveryTruckSpeed * Time.deltaTime);
+        }
+        else
+        {
+            // stop the delivery truck
+            deliveryTruck.transform.position = deliveryTruckDestination;
+            moveDeliveryTruck = false;
+
+            //open the delivery truck
+            triggerDeliveryTruckOpen = true;
+            deliveryTruckAnimator.SetBool("triggerDeliveryTruckOpen", triggerDeliveryTruckOpen);
+        }
+    }
+
+    // function for moving the delivery truck off the screen & back onto the screen
+    private async void DeliveryTruckHideAndShow()
+    {
+        //close the delivery truck
+        triggerDeliveryTruckOpen = false;
+        deliveryTruckAnimator.SetBool("triggerDeliveryTruckOpen", triggerDeliveryTruckOpen);
+
+        // wait for the close animation to complete
+        await Task.Delay(Mathf.RoundToInt(deliveryTruckAnimationClips[2].length * 1000));
+
+        // update the delivery truck destination to be off screen
+        deliveryTruckDestination = deliveryTruckOffScreenDestination;
+
+        // check if the distance to the destination is really close or not
+        if (Vector3.Distance(deliveryTruck.transform.position, deliveryTruckDestination) > 0.01f)
+        {
+            // move the delivery truck
+            deliveryTruck.transform.position = Vector3.MoveTowards(deliveryTruck.transform.position, deliveryTruckDestination, deliveryTruckSpeed * Time.deltaTime);
+        }
+        else
+        {
+            // stop the delivery truck
+            deliveryTruck.transform.position = deliveryTruckDestination;
+        }
+
+        DeliveryTruckShow();
+    }
+
     // Update is called once per frame
     void Update()
     {
         // move the delivery truck if it is time to do so
         if (moveDeliveryTruck == true)
         {
-            // check if the distance to the destination is really close or not
-            if (Vector3.Distance(deliveryTruck.transform.position, deliveryTruckDestination) > 0.01f)
+            // check if the delivery truck is the first delivery truck
+            if (firstTruck == true)
             {
-                // move the delivery truck
-                deliveryTruck.transform.position = Vector3.MoveTowards(deliveryTruck.transform.position, deliveryTruckDestination, deliveryTruckSpeed * Time.deltaTime);
+                // move the delivery truck onto the screen
+                DeliveryTruckShow();
             }
+            // if it is on screen
             else
             {
-                // stop the delivery truck
-                deliveryTruck.transform.position = deliveryTruckDestination;
-                moveDeliveryTruck = false;
-                
-                //open the delivery truck
-                triggerDeliveryTruckOpen = true;
-                deliveryTruckAnimator.SetBool("triggerDeliveryTruckOpen", triggerDeliveryTruckOpen);
+                // move the delivery truck off the screen & back onto the screen
+                DeliveryTruckHideAndShow();
             }
         }
 
@@ -161,6 +214,9 @@ public class OrderManager : MonoBehaviour
 
                 // delete the previous current order
                 Destroy(currentOrder.gameObject);
+
+                // set first truck to false
+                firstTruck = false;
             }
 
             // set the current orders to 5

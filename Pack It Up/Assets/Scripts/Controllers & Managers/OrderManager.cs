@@ -131,30 +131,31 @@ public class OrderManager : MonoBehaviour
     }
 
     // function for moving the delivery truck onto the screen
-    private void DeliveryTruckShow()
+    private async void DeliveryTruckShow()
     {
         // update the delivery truck destination to be on screen
         deliveryTruckDestination = deliveryTruckOnScreenDestination;
 
         // check if the distance to the destination is really close or not
-        if (Vector3.Distance(deliveryTruck.transform.position, deliveryTruckDestination) > 0.01f)
+        while (Vector3.Distance(deliveryTruck.transform.position, deliveryTruckDestination) > 0.01f)
         {
             // move the delivery truck
             deliveryTruck.transform.position = Vector3.MoveTowards(deliveryTruck.transform.position, deliveryTruckDestination, deliveryTruckSpeed * Time.deltaTime);
-        }
-        else
-        {
-            // stop the delivery truck
-            deliveryTruck.transform.position = deliveryTruckDestination;
-            moveDeliveryTruck = false;
 
-            //open the delivery truck
-            triggerDeliveryTruckOpen = true;
-            deliveryTruckAnimator.SetBool("triggerDeliveryTruckOpen", triggerDeliveryTruckOpen);
-
-            // state that the animation is done playing
-            animationPlaying = false;
+            // wait until the truck is in place
+            await Task.Yield();
         }
+
+        // stop the delivery truck
+        deliveryTruck.transform.position = deliveryTruckDestination;
+        moveDeliveryTruck = false;
+
+        //open the delivery truck
+        triggerDeliveryTruckOpen = true;
+        deliveryTruckAnimator.SetBool("triggerDeliveryTruckOpen", triggerDeliveryTruckOpen);
+
+        // state that the animation is done playing
+        animationPlaying = false;
     }
 
     // function for moving the delivery truck off the screen & back onto the screen

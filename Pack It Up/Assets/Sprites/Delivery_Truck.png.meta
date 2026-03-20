@@ -184,8 +184,8 @@ TextureImporter:
       name: Delivery_Truck_Open_1
       rect:
         serializedVersion: 2
-        x: 91
-        y: 1
+        x: 93
+        y: 0
         width: 104
         height: 48
       alignment: 9

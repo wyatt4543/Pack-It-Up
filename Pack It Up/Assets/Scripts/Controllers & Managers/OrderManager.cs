@@ -178,6 +178,9 @@ public class OrderManager : MonoBehaviour
             deliveryTruck.transform.position = deliveryTruckDestination;
         }
 
+        // wait 2 seconds before moving the truck back on screen
+        await Task.Delay(2000);
+
         DeliveryTruckShow();
     }
 

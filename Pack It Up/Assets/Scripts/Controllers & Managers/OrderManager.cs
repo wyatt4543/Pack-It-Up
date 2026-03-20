@@ -171,16 +171,17 @@ public class OrderManager : MonoBehaviour
         deliveryTruckDestination = deliveryTruckOffScreenDestination;
 
         // check if the distance to the destination is really close or not
-        if (Vector3.Distance(deliveryTruck.transform.position, deliveryTruckDestination) > 0.01f)
+        while (Vector3.Distance(deliveryTruck.transform.position, deliveryTruckDestination) > 0.01f)
         {
             // move the delivery truck
             deliveryTruck.transform.position = Vector3.MoveTowards(deliveryTruck.transform.position, deliveryTruckDestination, deliveryTruckSpeed * Time.deltaTime);
+
+            // wait until the truck is in place
+            await Task.Yield();
         }
-        else
-        {
-            // stop the delivery truck
-            deliveryTruck.transform.position = deliveryTruckDestination;
-        }
+
+        // stop the delivery truck
+        deliveryTruck.transform.position = deliveryTruckDestination;
 
         // wait 1 second before moving the truck back on screen
         await Task.Delay(1000);

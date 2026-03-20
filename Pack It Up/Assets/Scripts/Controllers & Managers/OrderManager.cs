@@ -18,6 +18,7 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private GameObject deliveryTruck;
     private float deliveryTruckSpeed = 5.0f;
     private Vector2 deliveryTruckDestination = new Vector2(-27.5f, -4.5f);
+    private bool moveDeliveryTruck = false;
 
     // orders objects
     private TextMeshProUGUI currentOrderText;
@@ -121,9 +122,27 @@ public class OrderManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // move the delivery truck if it is time to do so
+        if (moveDeliveryTruck == true)
+        {
+            // check if the distance to the destination is really close or not
+            if (Vector3.Distance(deliveryTruck.transform.position, deliveryTruckDestination) > 0.01f)
+            {
+                // move the delivery truck
+                deliveryTruck.transform.position = Vector3.MoveTowards(deliveryTruck.transform.position, deliveryTruckDestination, deliveryTruckSpeed * Time.deltaTime);
+            }
+            else
+            {
+                // stop the delivery truck
+                deliveryTruck.transform.position = deliveryTruckDestination;
+                moveDeliveryTruck = false;
+            }
+        }
+
         if (currentOrders <= 0)
         {
-            deliveryTruck.transform.position = Vector3.MoveTowards(deliveryTruck.transform.position, deliveryTruckDestination, deliveryTruckSpeed * Time.deltaTime);
+            // enable movement for the delivery truck
+            moveDeliveryTruck = true;
 
             // update the total order count & the delete the previous current order
             if (currentOrder != null)

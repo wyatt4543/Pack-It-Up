@@ -26,6 +26,7 @@ public class OrderManager : MonoBehaviour
     private bool moveDeliveryTruck = false;
     private bool triggerDeliveryTruckOpen = false;
     private bool firstTruck = true;
+    private bool animationPlaying = false;
 
     // orders objects
     private TextMeshProUGUI currentOrderText;
@@ -151,6 +152,9 @@ public class OrderManager : MonoBehaviour
             triggerDeliveryTruckOpen = true;
             deliveryTruckAnimator.SetBool("triggerDeliveryTruckOpen", triggerDeliveryTruckOpen);
         }
+
+        // state that the animation is done playing
+        animationPlaying = false;
     }
 
     // function for moving the delivery truck off the screen & back onto the screen
@@ -178,8 +182,8 @@ public class OrderManager : MonoBehaviour
             deliveryTruck.transform.position = deliveryTruckDestination;
         }
 
-        // wait 2 seconds before moving the truck back on screen
-        await Task.Delay(2000);
+        // wait 1 second before moving the truck back on screen
+        await Task.Delay(1000);
 
         DeliveryTruckShow();
     }
@@ -188,10 +192,13 @@ public class OrderManager : MonoBehaviour
     void Update()
     {
         // move the delivery truck if it is time to do so
-        if (moveDeliveryTruck == true)
+        if (moveDeliveryTruck && !animationPlaying)
         {
+            // state that the animation is playing
+            animationPlaying = true;
+
             // check if the delivery truck is the first delivery truck
-            if (firstTruck == true)
+            if (firstTruck)
             {
                 // move the delivery truck onto the screen
                 DeliveryTruckShow();

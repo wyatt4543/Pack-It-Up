@@ -14,6 +14,11 @@ public class OrderManager : MonoBehaviour
     private RectTransform currentOrder;
     private int customOrder = -1;
 
+    // delivery truck stuff
+    [SerializeField] private GameObject deliveryTruck;
+    private float deliveryTruckSpeed = 5.0f;
+    private Vector2 deliveryTruckDestination = new Vector2(-27.5f, -4.5f);
+
     // orders objects
     private TextMeshProUGUI currentOrderText;
     private TextMeshProUGUI totalOrdersText;
@@ -118,6 +123,8 @@ public class OrderManager : MonoBehaviour
     {
         if (currentOrders <= 0)
         {
+            deliveryTruck.transform.position = Vector3.MoveTowards(deliveryTruck.transform.position, deliveryTruckDestination, deliveryTruckSpeed * Time.deltaTime);
+
             // update the total order count & the delete the previous current order
             if (currentOrder != null)
             {

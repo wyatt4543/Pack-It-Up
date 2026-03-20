@@ -144,7 +144,7 @@ public class OrderManager : MonoBehaviour
                 
                 //open the delivery truck
                 triggerDeliveryTruckOpen = true;
-                deliveryTruckAnimator.SetBool("triggerTitleDoorOpen", triggerDeliveryTruckOpen);
+                deliveryTruckAnimator.SetBool("triggerDeliveryTruckOpen", triggerDeliveryTruckOpen);
             }
         }
 

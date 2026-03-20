@@ -16,9 +16,11 @@ public class OrderManager : MonoBehaviour
 
     // delivery truck stuff
     [SerializeField] private GameObject deliveryTruck;
+    private Animator deliveryTruckAnimator;
     private float deliveryTruckSpeed = 20.0f;
     private Vector2 deliveryTruckDestination = new Vector2(-27.5f, -4.5f);
     private bool moveDeliveryTruck = false;
+    private bool triggerDeliveryTruckOpen = false;
 
     // orders objects
     private TextMeshProUGUI currentOrderText;
@@ -32,6 +34,9 @@ public class OrderManager : MonoBehaviour
         totalOrdersText = GameObject.Find("LevelCanvas/TotalOrders").GetComponent<TextMeshProUGUI>();
         ordersList = GameObject.Find("LevelCanvas/OrdersList").GetComponent<Image>();
         ordersHolder = GameObject.Find("LevelCanvas/Orders").GetComponent<RectTransform>();
+
+        // assign the delivery truck animator
+        deliveryTruckAnimator = deliveryTruck.GetComponent<Animator>();
 
         if (instance == null)
         {
@@ -136,6 +141,10 @@ public class OrderManager : MonoBehaviour
                 // stop the delivery truck
                 deliveryTruck.transform.position = deliveryTruckDestination;
                 moveDeliveryTruck = false;
+                
+                //open the delivery truck
+                triggerDeliveryTruckOpen = true;
+                deliveryTruckAnimator.SetBool("triggerTitleDoorOpen", triggerDeliveryTruckOpen);
             }
         }
 

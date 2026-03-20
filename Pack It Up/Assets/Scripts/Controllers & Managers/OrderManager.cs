@@ -151,10 +151,10 @@ public class OrderManager : MonoBehaviour
             //open the delivery truck
             triggerDeliveryTruckOpen = true;
             deliveryTruckAnimator.SetBool("triggerDeliveryTruckOpen", triggerDeliveryTruckOpen);
-        }
 
-        // state that the animation is done playing
-        animationPlaying = false;
+            // state that the animation is done playing
+            animationPlaying = false;
+        }
     }
 
     // function for moving the delivery truck off the screen & back onto the screen

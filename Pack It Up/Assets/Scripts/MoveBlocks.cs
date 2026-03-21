@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -39,6 +40,11 @@ public class MoveBlocks : MonoBehaviour
     public int gameRound;
     private float defaultFallTimer;
     private float fallTimer;
+
+    // clear line animation variables
+    private List<GameObject> clearedBlocks;
+    private float squareSpeed = 10.0f;
+    private Vector2 squareDestination = new Vector2(8.2f, -1.1f);
 
     // score variables
     public int gameScore;
@@ -282,6 +288,9 @@ public class MoveBlocks : MonoBehaviour
             {
                 // delete the line with the line clear
                 DeleteLine(i);
+
+                // animate the pieces leaving the board
+                AnimateLine();
                 
                 // move the rows down
                 RowDown(i);
@@ -387,6 +396,15 @@ public class MoveBlocks : MonoBehaviour
             // if it is a normal square do the normal line deletion
             else
             {
+                // clone the cleared block
+                GameObject clearedBlock = Instantiate(grid[j, i].gameObject, grid[j, i].gameObject.transform.position, Quaternion.identity);
+
+                // shrink the cleared block
+                clearedBlock.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+
+                // add the cleared block to the list of cleared blocks
+                clearedBlocks.Add(grid[j, i].gameObject);
+
                 // delete the game objects on the line
                 Destroy(grid[j, i].gameObject);
 
@@ -401,7 +419,32 @@ public class MoveBlocks : MonoBehaviour
         // update the variable keeping track of the line clears made by one block
         singlePlaceClears++;
     }
-    
+
+
+    // function for animating the blocks leaving the board
+    private async void AnimateLine()
+    {
+        for (int i = 0; i < clearedBlocks.Count; i++)
+        {
+            // check if the distance to the destination of the bottom box is really close or not
+            while (Vector3.Distance(clearedBlocks[i].transform.position, squareDestination) > 0.01f)
+            {
+                // move the individual square
+                clearedBlocks[i].transform.position = Vector3.MoveTowards(clearedBlocks[i].transform.position, squareDestination, squareSpeed * Time.deltaTime);
+
+                // wait until the square is in place
+                await Task.Yield();
+            }
+
+            // stop the square
+            clearedBlocks[i].transform.position = squareDestination;
+
+            // remove the square from the list of cleared blocks
+            clearedBlocks.RemoveAt(i);
+        }
+    }
+
+
     // function for moving the blocks down
     public void RowDown(int i)
     {

@@ -289,7 +289,7 @@ public class MoveBlocks : MonoBehaviour
             if (HasLine(i))
             {
                 // delete the line with the line clear
-                DeleteLine(i);
+                await DeleteLine(i);
 
                 // animate the pieces leaving the board
                 // await AnimateLine();
@@ -297,8 +297,6 @@ public class MoveBlocks : MonoBehaviour
                 // move the rows down
                 RowDown(i);
             }
-
-            await Task.Yield();
         }
 
         // increase the score by a certain amount based on the number of line clears in one placement
@@ -340,7 +338,7 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // function for deleting lines
-    public void DeleteLine(int i)
+    public async Task DeleteLine(int i)
     {
         // variable for testing for the x position of the half block;
         int halfBlockX;
@@ -422,6 +420,9 @@ public class MoveBlocks : MonoBehaviour
 
         // update the variable keeping track of the line clears made by one block
         singlePlaceClears++;
+
+        // wait for the delete line function to complete
+        await Task.Yield();
     }
 
 

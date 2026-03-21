@@ -49,6 +49,9 @@ public class MoveBlocks : MonoBehaviour
 
     // variables for completed packages
     [SerializeField] private GameObject package;
+    private Vector2 packageStartPostion = new Vector2(8.2f, -3f);
+    private float landedY = -5.125f;
+    private Vector2 packageDestination = new Vector2(-19.468f, -5.125f);
 
     // score variables
     public int gameScore;

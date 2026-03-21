@@ -403,7 +403,7 @@ public class MoveBlocks : MonoBehaviour
                 clearedBlock.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 
                 // add the cleared block to the list of cleared blocks
-                clearedBlocks.Add(grid[j, i].gameObject);
+                clearedBlocks.Add(clearedBlock);
 
                 // delete the game objects on the line
                 Destroy(grid[j, i].gameObject);

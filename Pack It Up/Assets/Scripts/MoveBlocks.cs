@@ -218,7 +218,7 @@ public class MoveBlocks : MonoBehaviour
         AddToGrid();
         // function for doing special block actions
         await CursedBlocks();
-        CheckForLines();
+        await CheckForLines();
         spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
         Destroy(gameObject.GetComponent<PlayerInput>());
         Destroy(this);
@@ -279,7 +279,7 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // function for doing line clears
-    public void CheckForLines()
+    public async Task CheckForLines()
     {
         for (int i = height - 1; i >= 0; i--)
         {
@@ -290,7 +290,7 @@ public class MoveBlocks : MonoBehaviour
                 DeleteLine(i);
 
                 // animate the pieces leaving the board
-                AnimateLine();
+                await AnimateLine();
                 
                 // move the rows down
                 RowDown(i);
@@ -422,7 +422,7 @@ public class MoveBlocks : MonoBehaviour
 
 
     // function for animating the blocks leaving the board
-    private async void AnimateLine()
+    private async Task AnimateLine()
     {
         for (int i = 0; i < clearedBlocks.Count; i++)
         {

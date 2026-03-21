@@ -8,6 +8,7 @@ public class SpawnBlock : MonoBehaviour
     public Sprite[] numberDisplaySprites;
     public Sprite explosionSprite;
     public GameObject explosionObject;
+    [SerializeField] private GameObject package;
     public GameObject blockChute;
     private int nextBlockType;
     private GameObject nextBlock;
@@ -120,5 +121,8 @@ public class SpawnBlock : MonoBehaviour
 
         // set the explosion object
         moveBlocksScript.explosionObject = explosionObject;
+
+        // set the package game object
+        moveBlocksScript.package = package;
     }
 }

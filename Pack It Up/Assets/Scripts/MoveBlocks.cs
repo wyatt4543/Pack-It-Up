@@ -48,7 +48,8 @@ public class MoveBlocks : MonoBehaviour
     private Vector2 squareDestination = new Vector2(8.2f, -1.1f);
 
     // variables for completed packages
-    [SerializeField] private GameObject package;
+    public GameObject package;
+
     private Vector2 packageStartPostion = new Vector2(8.2f, -3f);
     private float landedY = -5.125f;
     private Vector2 packageDestination = new Vector2(-19.468f, -5.125f);
@@ -744,7 +745,8 @@ public class MoveBlocks : MonoBehaviour
     // function for creating packages from completed lines
     private void CreatePackage()
     {
-
+        // create a new package
+        //clearedBlock = Instantiate(grid[j, i].gameObject, grid[j, i].gameObject.transform.position, Quaternion.identity);
     }
 
     // check the type of block & do its ability

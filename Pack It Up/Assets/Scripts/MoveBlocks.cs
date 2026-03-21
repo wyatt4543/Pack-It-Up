@@ -49,7 +49,7 @@ public class MoveBlocks : MonoBehaviour
 
     // variables for completed packages
     public GameObject package;
-
+    private float packageSpeed = 10.0f;
     private Vector2 packageStartPostion = new Vector2(8.2f, -3f);
     private float landedY = -5.125f;
     private Vector2 packageDestination = new Vector2(-19.468f, -5.125f);
@@ -746,7 +746,27 @@ public class MoveBlocks : MonoBehaviour
     private void CreatePackage()
     {
         // create a new package
-        //clearedBlock = Instantiate(grid[j, i].gameObject, grid[j, i].gameObject.transform.position, Quaternion.identity);
+        GameObject newPackage = Instantiate(package, packageStartPostion, Quaternion.identity);
+
+        // assign its rigid body
+        Rigidbody2D packageRigidBody = newPackage.GetComponent<Rigidbody2D>();
+
+        // wait until the package is on the conveyor belt
+        while (Vector3.Distance(newPackage.transform.position, new Vector2(newPackage.transform.position.x, landedY)) > 0.01f) {}
+
+        // destroy the rigid body once the package is close and assign its y to the landed y
+        Destroy(packageRigidBody);
+        newPackage.transform.position = new Vector2(newPackage.transform.position.x, landedY);
+
+        // wait until the package is really close to the destination
+        while (Vector3.Distance(newPackage.transform.position, packageDestination) > 0.01f)
+        {
+            // move the package to the truck
+            newPackage.transform.position = Vector3.MoveTowards(newPackage.transform.position, packageDestination, packageSpeed * Time.deltaTime);
+        }
+
+        // stop the package at the truck
+        newPackage.transform.position = packageDestination;
     }
 
     // check the type of block & do its ability

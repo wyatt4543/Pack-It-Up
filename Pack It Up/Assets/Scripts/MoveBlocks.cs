@@ -43,6 +43,7 @@ public class MoveBlocks : MonoBehaviour
 
     // clear line animation variables
     private List<GameObject> clearedBlocks;
+    private GameObject movingSquare;
     private float squareSpeed = 10.0f;
     private Vector2 squareDestination = new Vector2(8.2f, -1.1f);
 
@@ -424,24 +425,44 @@ public class MoveBlocks : MonoBehaviour
     // function for animating the blocks leaving the board
     private async Task AnimateLine()
     {
-        for (int i = 0; i < clearedBlocks.Count; i++)
-        {
-            // check if the distance to the destination of the bottom box is really close or not
-            while (Vector3.Distance(clearedBlocks[i].transform.position, squareDestination) > 0.01f)
-            {
-                // move the individual square
-                clearedBlocks[i].transform.position = Vector3.MoveTowards(clearedBlocks[i].transform.position, squareDestination, squareSpeed * Time.deltaTime);
+        // state that the blocks haven't reached the exit box
+        bool allReached = false;
 
-                // wait until the square is in place
-                await Task.Yield();
+        while (!allReached)
+        {
+            // set it to true
+            allReached = true;
+
+            for (int i = 0; i < clearedBlocks.Count; i++)
+            {
+                GameObject currentSquare = clearedBlocks[i];
+                if (currentSquare == null) continue;
+
+                if (Vector3.Distance(currentSquare.transform.position, squareDestination) > 0.01f)
+                {
+                    // set to false if one square is still moving
+                    allReached = false;
+
+                    currentSquare.transform.position = Vector3.MoveTowards(currentSquare.transform.position, squareDestination, squareSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    currentSquare.transform.position = squareDestination;
+                }
             }
 
-            // stop the square
-            clearedBlocks[i].transform.position = squareDestination;
-
-            // remove the square from the list of cleared blocks
-            clearedBlocks.RemoveAt(i);
+            // wait until all of the squares are cleared
+            await Task.Yield();
         }
+
+        // destroy all of the squares
+        foreach (var square in clearedBlocks)
+        {
+            if (square != null) Destroy(square);
+        }
+
+        // clear the list
+        clearedBlocks.Clear();
     }
 
 

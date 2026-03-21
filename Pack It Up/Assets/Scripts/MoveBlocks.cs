@@ -224,7 +224,7 @@ public class MoveBlocks : MonoBehaviour
         // function for doing special block actions
         await CursedBlocks();
         await CheckForLines();
-        CreatePackage()
+        //CreatePackage()
         spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
         Destroy(gameObject.GetComponent<PlayerInput>());
         Destroy(this);

@@ -743,7 +743,7 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // function for creating packages from completed lines
-    private void CreatePackage()
+    private async void CreatePackage()
     {
         // create a new package
         GameObject newPackage = Instantiate(package, packageStartPostion, Quaternion.identity);
@@ -752,7 +752,7 @@ public class MoveBlocks : MonoBehaviour
         Rigidbody2D packageRigidBody = newPackage.GetComponent<Rigidbody2D>();
 
         // wait until the package is on the conveyor belt
-        while (Vector3.Distance(newPackage.transform.position, new Vector2(newPackage.transform.position.x, landedY)) > 0.01f) {}
+        await Task.WaitUntil(() => Vector3.Distance(newPackage.transform.position, new Vector2(newPackage.transform.position.x, landedY)) > 0.01f);
 
         // destroy the rigid body once the package is close and assign its y to the landed y
         Destroy(packageRigidBody);

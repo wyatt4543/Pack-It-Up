@@ -48,6 +48,9 @@ public class MoveBlocks : MonoBehaviour
     private float squareSpeed = 10.0f;
     private Vector2 squareDestination = new Vector2(8.2f, -1.1f);
 
+    // variables for completed packages
+    [SerializeField] private GameObject package;
+
     // score variables
     public int gameScore;
     private int singlePlaceClears = 0;
@@ -221,6 +224,7 @@ public class MoveBlocks : MonoBehaviour
         // function for doing special block actions
         await CursedBlocks();
         await CheckForLines();
+        CreatePackage()
         spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
         Destroy(gameObject.GetComponent<PlayerInput>());
         Destroy(this);

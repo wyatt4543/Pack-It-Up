@@ -401,9 +401,6 @@ public class MoveBlocks : MonoBehaviour
                 // clone the cleared block
                 clearedBlock = Instantiate(grid[j, i].gameObject, grid[j, i].gameObject.transform.position, Quaternion.identity);
 
-                // shrink the cleared block
-                clearedBlock.transform.localScale = new Vector3(0.5f, 0.5f, 1);
-
                 // add the cleared block to the list of cleared blocks
                 clearedBlocks.Add(clearedBlock);
 

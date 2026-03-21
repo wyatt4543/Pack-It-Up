@@ -44,6 +44,7 @@ public class MoveBlocks : MonoBehaviour
     // clear line animation variables
     private List<GameObject> clearedBlocks;
     private GameObject movingSquare;
+    private GameObject clearedBlock;
     private float squareSpeed = 10.0f;
     private Vector2 squareDestination = new Vector2(8.2f, -1.1f);
 
@@ -291,11 +292,13 @@ public class MoveBlocks : MonoBehaviour
                 DeleteLine(i);
 
                 // animate the pieces leaving the board
-                await AnimateLine();
+                // await AnimateLine();
                 
                 // move the rows down
                 RowDown(i);
             }
+
+            await Task.Yield();
         }
 
         // increase the score by a certain amount based on the number of line clears in one placement
@@ -398,7 +401,7 @@ public class MoveBlocks : MonoBehaviour
             else
             {
                 // clone the cleared block
-                GameObject clearedBlock = Instantiate(grid[j, i].gameObject, grid[j, i].gameObject.transform.position, Quaternion.identity);
+                clearedBlock = Instantiate(grid[j, i].gameObject, grid[j, i].gameObject.transform.position, Quaternion.identity);
 
                 // shrink the cleared block
                 clearedBlock.transform.localScale = new Vector3(0.5f, 0.5f, 1);

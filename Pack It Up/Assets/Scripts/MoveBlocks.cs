@@ -42,7 +42,7 @@ public class MoveBlocks : MonoBehaviour
     private float fallTimer;
 
     // clear line animation variables
-    private List<GameObject> clearedBlocks;
+    private List<GameObject> clearedBlocks = new List<GameObject>();
     private GameObject movingSquare;
     private GameObject clearedBlock;
     private float squareSpeed = 10.0f;
@@ -292,7 +292,7 @@ public class MoveBlocks : MonoBehaviour
                 await DeleteLine(i);
 
                 // animate the pieces leaving the board
-                // await AnimateLine();
+                await AnimateLine();
                 
                 // move the rows down
                 RowDown(i);

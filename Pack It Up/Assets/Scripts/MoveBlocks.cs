@@ -431,24 +431,37 @@ public class MoveBlocks : MonoBehaviour
 
         while (!allReached)
         {
-            // set it to true
+            // set the varaible keeping track of all of the blocks reaching the exit to true
             allReached = true;
 
             for (int i = 0; i < clearedBlocks.Count; i++)
             {
                 GameObject currentSquare = clearedBlocks[i];
+                // if there is still a square to move continue
                 if (currentSquare == null) continue;
 
-                if (Vector3.Distance(currentSquare.transform.position, squareDestination) > 0.01f)
+                // move the square towards the end
+                if (Vector3.Distance(currentSquare.transform.position, new Vector2(squareDestination.x, currentSquare.transform.position.y)) > 0.01f)
                 {
                     // set to false if one square is still moving
                     allReached = false;
 
-                    currentSquare.transform.position = Vector3.MoveTowards(currentSquare.transform.position, squareDestination, squareSpeed * Time.deltaTime);
+                    currentSquare.transform.position = Vector3.MoveTowards(currentSquare.transform.position, new Vector2(squareDestination.x, currentSquare.transform.position.y), squareSpeed * Time.deltaTime);
                 }
                 else
                 {
-                    currentSquare.transform.position = squareDestination;
+                    // move the square down
+                    if (Vector3.Distance(currentSquare.transform.position, squareDestination) > 0.01f)
+                    {
+                        // set to false if one square is still moving
+                        allReached = false;
+
+                        currentSquare.transform.position = Vector3.MoveTowards(currentSquare.transform.position, squareDestination, squareSpeed * Time.deltaTime);
+                    }
+                    else
+                    {
+                        currentSquare.transform.position = squareDestination;
+                    }
                 }
             }
 

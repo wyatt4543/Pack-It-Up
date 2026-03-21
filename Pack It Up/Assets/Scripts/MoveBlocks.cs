@@ -226,7 +226,6 @@ public class MoveBlocks : MonoBehaviour
         // function for doing special block actions
         await CursedBlocks();
         await CheckForLines();
-        //CreatePackage()
         spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
         Destroy(gameObject.GetComponent<PlayerInput>());
         Destroy(this);
@@ -303,6 +302,13 @@ public class MoveBlocks : MonoBehaviour
                 // move the rows down
                 RowDown(i);
             }
+        }
+
+        // check if the line clears are greater than 0
+        if (singlePlaceClears > 0)
+        {
+            // create a package if there was at least one line clear
+            CreatePackage();
         }
 
         // increase the score by a certain amount based on the number of line clears in one placement
@@ -733,6 +739,12 @@ public class MoveBlocks : MonoBehaviour
 
         // if it isn't going to move outside allow movement
         return true;
+    }
+
+    // function for creating packages from completed lines
+    private void CreatePackage()
+    {
+
     }
 
     // check the type of block & do its ability

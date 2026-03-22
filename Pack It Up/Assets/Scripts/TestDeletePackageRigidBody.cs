@@ -10,6 +10,6 @@ public class TestDeletePackageRigidBody : MonoBehaviour
         Destroy(packageRigidBody);
         
         // snap the package into place
-        transform.position = new Vector2(transform.position.x, 21.375f);
+        transform.position = new Vector2(transform.position.x, 21.625f);
     }
 }

@@ -1003,6 +1003,9 @@ public class MoveBlocks : MonoBehaviour
                 // loop through each x that's part of and around the gravel
                 for (int j = minX; j <= maxX; j++)
                 {
+                    // add a delay for until the next gravel column falls down
+                    await Task.Delay(300);
+
                     // if tile is filled with a square
                     if (grid[j, y] != null)
                     {
@@ -1027,6 +1030,9 @@ public class MoveBlocks : MonoBehaviour
                             grid[j, newY].transform.position = new Vector3(j, newY, 0);
                         }
                     }
+
+                    // play the gravel sound effect
+                    SFXManager.instance.PlaySFXClip(gravelSound, parentTransform, 1f);
                 }
             }
         }

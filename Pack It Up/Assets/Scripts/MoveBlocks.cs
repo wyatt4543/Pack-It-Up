@@ -755,7 +755,7 @@ public class MoveBlocks : MonoBehaviour
         Rigidbody2D packageRigidBody = newPackage.GetComponent<Rigidbody2D>();
 
         // wait until the package is on the conveyor belt
-        while ((Vector3.Distance(newPackage.transform.position, new Vector2(newPackage.transform.position.x, landedY)) > 0.1f) && newPackage != null)
+        while (Vector3.Distance(newPackage.transform.position, new Vector2(newPackage.transform.position.x, landedY)) > 0.1f)
         {
             await Task.Yield();
         }
@@ -765,7 +765,7 @@ public class MoveBlocks : MonoBehaviour
         newPackage.transform.position = new Vector2(newPackage.transform.position.x, landedY);
 
         // wait until the package is really close to the destination
-        while ((Vector3.Distance(newPackage.transform.position, packageConveyorEnd) > 0.01f) && newPackage != null)
+        while (Vector3.Distance(newPackage.transform.position, packageConveyorEnd) > 0.01f)
         {
             // move the package to the end of the conveyor belt
             newPackage.transform.position = Vector3.MoveTowards(newPackage.transform.position, packageConveyorEnd, packageSpeed * Time.deltaTime);
@@ -790,7 +790,7 @@ public class MoveBlocks : MonoBehaviour
         Destroy(TempExplosion);
 
         // make the package fly towards the truck
-        while ((Vector3.Distance(newPackage.transform.position, packageTruck) > 0.01f) && newPackage != null)
+        while (Vector3.Distance(newPackage.transform.position, packageTruck) > 0.01f)
         {
             // move the package to the end of the conveyor belt
             newPackage.transform.position = Vector3.MoveTowards(newPackage.transform.position, packageTruck, packageExplosionSpeed * Time.deltaTime);

@@ -165,7 +165,7 @@ public class OrderManager : MonoBehaviour
     private async void DeliveryTruckHideAndShow()
     {
         // check if a package is close to the truck
-        while (Vector3.Distance(deliveryTruck.transform.position, deliveryTruckDestination) <= 20f)
+        while (Vector3.Distance(deliveryTruck.transform.position, moveBlockScript.currentPackages[0].transform.position) <= 20f)
         {
             // if there is a package close to the truck wait for the package
             await Task.Yield();

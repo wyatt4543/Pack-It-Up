@@ -169,8 +169,6 @@ public class OrderManager : MonoBehaviour
             // check if a package is close to the truck
             while (moveBlockScript.currentPackages.Count != 0 && Vector3.Distance(deliveryTruck.transform.position, moveBlockScript.currentPackages[0].transform.position) <= 20f)
             {
-                print("distance to package from truck:" + Vector3.Distance(deliveryTruck.transform.position, moveBlockScript.currentPackages[0].transform.position));
-
                 // if there is a package close to the truck wait for the package
                 await Task.Yield();
             }

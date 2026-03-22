@@ -101,7 +101,7 @@ public class SpawnBlock : MonoBehaviour
         nextBlock.transform.parent = nextPackage.transform;
 
         // move the next block to the package
-        nextBlock.transform.localPosition = Vector2.zero;
+        nextBlock.transform.localPosition = new Vector2(-0.248f, 0);
 
         // create a random new block in the spawner postion
         GameObject newBlock = Instantiate(Blocks[blockType], transform.position, Quaternion.identity);

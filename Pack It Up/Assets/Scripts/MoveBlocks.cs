@@ -49,6 +49,7 @@ public class MoveBlocks : MonoBehaviour
 
     // variables for completed packages
     public GameObject package;
+    private bool canCreateAnotherPackage = true;
     private float packageSpeed = 10.0f;
     private Vector2 packageStartPostion = new Vector2(8.2f, -3f);
     private float landedY = -5.125f;
@@ -306,7 +307,7 @@ public class MoveBlocks : MonoBehaviour
         }
 
         // check if the line clears are greater than 0
-        if (singlePlaceClears > 0)
+        if (singlePlaceClears > 0 && canCreateAnotherPackage)
         {
             // create a package if there was at least one line clear
             CreatePackage();
@@ -752,7 +753,7 @@ public class MoveBlocks : MonoBehaviour
         Rigidbody2D packageRigidBody = newPackage.GetComponent<Rigidbody2D>();
 
         // wait until the package is on the conveyor belt
-        while (Vector3.Distance(newPackage.transform.position, new Vector2(newPackage.transform.position.x, landedY)) > 0.01f)
+        while (Vector3.Distance(newPackage.transform.position, new Vector2(newPackage.transform.position.x, landedY)) > 0.1f)
         {
             await Task.Yield();
         }
@@ -760,6 +761,9 @@ public class MoveBlocks : MonoBehaviour
         // destroy the rigid body once the package is close and assign its y to the landed y
         Destroy(packageRigidBody);
         newPackage.transform.position = new Vector2(newPackage.transform.position.x, landedY);
+
+        // allow another package to be created
+        canCreateAnotherPackage = true;
 
         // wait until the package is really close to the destination
         while (Vector3.Distance(newPackage.transform.position, packageDestination) > 0.01f)

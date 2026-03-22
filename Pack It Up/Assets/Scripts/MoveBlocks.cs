@@ -307,7 +307,7 @@ public class MoveBlocks : MonoBehaviour
         }
 
         // check if the line clears are greater than 0
-        if (singlePlaceClears > 0 && canCreateAnotherPackage)
+        if (singlePlaceClears > 0)
         {
             // create a package if there was at least one line clear
             CreatePackage();
@@ -762,14 +762,14 @@ public class MoveBlocks : MonoBehaviour
         Destroy(packageRigidBody);
         newPackage.transform.position = new Vector2(newPackage.transform.position.x, landedY);
 
-        // allow another package to be created
-        canCreateAnotherPackage = true;
-
         // wait until the package is really close to the destination
         while (Vector3.Distance(newPackage.transform.position, packageDestination) > 0.01f)
         {
             // move the package to the truck
             newPackage.transform.position = Vector3.MoveTowards(newPackage.transform.position, packageDestination, packageSpeed * Time.deltaTime);
+
+            // wait until the package is at the truck
+            await Task.Yield();
         }
 
         // stop the package at the truck

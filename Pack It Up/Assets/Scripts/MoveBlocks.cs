@@ -752,7 +752,10 @@ public class MoveBlocks : MonoBehaviour
         Rigidbody2D packageRigidBody = newPackage.GetComponent<Rigidbody2D>();
 
         // wait until the package is on the conveyor belt
-        await Task.WaitUntil(() => Vector3.Distance(newPackage.transform.position, new Vector2(newPackage.transform.position.x, landedY)) > 0.01f);
+        while (Vector3.Distance(newPackage.transform.position, new Vector2(newPackage.transform.position.x, landedY)) > 0.01f)
+        {
+            await Task.Yield();
+        }
 
         // destroy the rigid body once the package is close and assign its y to the landed y
         Destroy(packageRigidBody);

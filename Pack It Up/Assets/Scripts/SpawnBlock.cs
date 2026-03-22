@@ -91,6 +91,9 @@ public class SpawnBlock : MonoBehaviour
             Destroy(script);
         }
 
+        // shrink the next block
+        nextBlock.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+
         // create a random new block in the spawner postion
         GameObject newBlock = Instantiate(Blocks[blockType], transform.position, Quaternion.identity);
 

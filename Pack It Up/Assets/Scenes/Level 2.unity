@@ -176,6 +176,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
+--- !u!1 &32375748 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7258808585035222662, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
+  m_PrefabInstance: {fileID: 32375747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &599387024 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9043093662486600190, guid: bb23ff0eb9d7a764eb87cb0db7f4b8c2, type: 3}
@@ -1048,6 +1053,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8753179176021093064, guid: 064a14e375fa5664dafc7e207fa55b58, type: 3}
+      propertyPath: deliveryTruck
+      value: 
+      objectReference: {fileID: 32375748}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

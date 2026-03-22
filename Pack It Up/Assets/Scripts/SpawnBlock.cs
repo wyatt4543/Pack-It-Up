@@ -92,10 +92,13 @@ public class SpawnBlock : MonoBehaviour
         }
 
         // shrink the next block
-        nextBlock.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+        nextBlock.transform.localScale = new Vector3(0.25f, 0.25f, 1);
 
         // create the package for the next block
         GameObject nextPackage = Instantiate(package, new Vector2(8.5f, 22.75f), Quaternion.identity);
+
+        // grow the next package
+        nextPackage.transform.localScale = new Vector3(1.5f, 1.5f, 1);
 
         // make the next package the parent of the next block
         nextBlock.transform.parent = nextPackage.transform;

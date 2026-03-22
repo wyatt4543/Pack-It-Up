@@ -49,7 +49,6 @@ public class MoveBlocks : MonoBehaviour
 
     // variables for completed packages
     public GameObject package;
-    private bool canCreateAnotherPackage = true;
     private float packageSpeed = 10.0f;
     private Vector2 packageStartPostion = new Vector2(8.2f, -3f);
     private float landedY = -5.125f;

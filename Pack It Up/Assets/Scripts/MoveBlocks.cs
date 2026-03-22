@@ -55,7 +55,7 @@ public class MoveBlocks : MonoBehaviour
     private Vector2 packageConveyorEnd = new Vector2(-19.468f, -5.125f);
     private float packageExplosionSpeed = 50.0f;
     private Vector2 packageTruck = new Vector2(-24.17f, -4.843f);
-
+    public List<GameObject> currentPacakges = new List<GameObject>();
 
     // score variables
     public int gameScore;
@@ -751,6 +751,9 @@ public class MoveBlocks : MonoBehaviour
         // create a new package
         GameObject newPackage = Instantiate(package, packageStartPostion, Quaternion.identity);
 
+        // add the new package to the list of packages
+        currentPacakges.Add(newPackage);
+
         // assign its rigid body
         Rigidbody2D packageRigidBody = newPackage.GetComponent<Rigidbody2D>();
 
@@ -798,6 +801,9 @@ public class MoveBlocks : MonoBehaviour
             // wait until the package is at the to the end of the conveyor belt
             await Task.Yield();
         }
+
+        // remove the package from the list of current packages
+        currentPacakges.Remove(newPackage);
 
         // destroy the package
         Destroy(newPackage);

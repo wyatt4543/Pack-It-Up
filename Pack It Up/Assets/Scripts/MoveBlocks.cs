@@ -776,6 +776,31 @@ public class MoveBlocks : MonoBehaviour
 
         // stop the package at the end of the conveyor belt
         newPackage.transform.position = packageConveyorEnd;
+
+        // explode the package
+        GameObject TempExplosion = Instantiate(explosionObject, newPackage.transform.position, Quaternion.identity);
+
+        // play the explosion sound effect
+        SFXManager.instance.PlaySFXClip(explosionSound, newPackage.transform, 1f);
+
+        // wait 100 milliseconds
+        await Task.Delay(100);
+
+        // destroy the explosion game object
+        Destroy(TempExplosion);
+
+        // make the package fly towards the truck
+        while (Vector3.Distance(newPackage.transform.position, packageTruck) > 0.01f)
+        {
+            // move the package to the end of the conveyor belt
+            newPackage.transform.position = Vector3.MoveTowards(newPackage.transform.position, packageTruck, packageExplosionSpeed * Time.deltaTime);
+
+            // wait until the package is at the to the end of the conveyor belt
+            await Task.Yield();
+        }
+
+        // destroy the package
+        Destroy(newPackage);
     }
 
     // check the type of block & do its ability

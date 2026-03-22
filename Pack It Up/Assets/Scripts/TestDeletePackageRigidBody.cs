@@ -8,5 +8,8 @@ public class TestDeletePackageRigidBody : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Destroy(packageRigidBody);
+        
+        // snap the package into place
+        transform.position = new Vector2(transform.position.x, 21.375f);
     }
 }

@@ -198,6 +198,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!1001 &1098926088
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5805309275127564006, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -29.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805309275127564006, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805309275127564006, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805309275127564006, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805309275127564006, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805309275127564006, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805309275127564006, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805309275127564006, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805309275127564006, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805309275127564006, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258808585035222662, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
+      propertyPath: m_Name
+      value: DeliveryTruck
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35dbf01b8e39039428b8a78aff14447e, type: 3}
 --- !u!114 &1227333777 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6741379124637859839, guid: 65f8d5665d52d8644b4e2044fae015ae, type: 3}
@@ -1557,3 +1614,4 @@ SceneRoots:
   - {fileID: 6844068265578487646}
   - {fileID: 219270415}
   - {fileID: 1285730280}
+  - {fileID: 1098926088}

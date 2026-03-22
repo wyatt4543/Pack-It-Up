@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -36,7 +37,7 @@ public class SpawnBlock : MonoBehaviour
     }
 
     // function for creating new blocks
-    public void NewBlock(int lineClears = 0, int gameRound = 1, int gameScore = 0, int blockType = -1) {
+    public void NewBlock(int lineClears = 0, int gameRound = 1, int gameScore = 0, List<GameObject> currentPackages = null, int blockType = -1) {
         // increase the block count
         blockCount++;
 
@@ -129,6 +130,9 @@ public class SpawnBlock : MonoBehaviour
 
         // set the game score
         moveBlocksScript.gameScore = gameScore;
+
+        // set the current packages
+        moveBlocksScript.currentPackages = currentPackages;
 
         // set the number display sprites
         moveBlocksScript.numberDisplaySprites = numberDisplaySprites;

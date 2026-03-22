@@ -164,11 +164,14 @@ public class OrderManager : MonoBehaviour
     // function for moving the delivery truck off the screen & back onto the screen
     private async void DeliveryTruckHideAndShow()
     {
-        // check if a package is close to the truck
-        while (Vector3.Distance(deliveryTruck.transform.position, moveBlockScript.currentPackages[0].transform.position) <= 20f)
+        if (moveBlockScript.currentPackages[0] != null)
         {
-            // if there is a package close to the truck wait for the package
-            await Task.Yield();
+            // check if a package is close to the truck
+            while (Vector3.Distance(deliveryTruck.transform.position, moveBlockScript.currentPackages[0].transform.position) <= 20f)
+            {
+                // if there is a package close to the truck wait for the package
+                await Task.Yield();
+            }
         }
 
         //close the delivery truck

@@ -230,7 +230,7 @@ public class MoveBlocks : MonoBehaviour
         // function for doing special block actions
         await CursedBlocks();
         await CheckForLines();
-        spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
+        spawnBlockScript.NewBlock(lineClears, gameRound, gameScore, currentPackages);
         Destroy(gameObject.GetComponent<PlayerInput>());
         Destroy(this);
     }
@@ -1058,7 +1058,7 @@ public class MoveBlocks : MonoBehaviour
             }
 
             // spawn a new piece
-            spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
+            spawnBlockScript.NewBlock(lineClears, gameRound, gameScore, currentPackages);
 
             // destroy the negative block
             Destroy(transform.parent.gameObject);

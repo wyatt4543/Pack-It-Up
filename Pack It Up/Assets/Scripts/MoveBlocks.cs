@@ -53,6 +53,8 @@ public class MoveBlocks : MonoBehaviour
     private Vector2 packageStartPostion = new Vector2(8.2f, -3f);
     private float landedY = -5.125f;
     private Vector2 packageConveyorEnd = new Vector2(-19.468f, -5.125f);
+    private float packageExplosionSpeed = 50.0f;
+    private Vector2 packageTruck = new Vector2(-24.17f, -4.843f);
 
 
     // score variables

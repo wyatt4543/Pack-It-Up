@@ -81,7 +81,7 @@ public class SpawnBlock : MonoBehaviour
         }
 
         // create the next block
-        nextBlock = Instantiate(Blocks[nextBlockType], blockChute.transform.position, Quaternion.identity);
+        nextBlock = Instantiate(Blocks[nextBlockType], Vector2.zero, Quaternion.identity);
 
         // delete the next block's scripts
         MonoBehaviour[] scripts = nextBlock.transform.GetChild(0).GetComponents<MonoBehaviour>();
@@ -93,6 +93,12 @@ public class SpawnBlock : MonoBehaviour
 
         // shrink the next block
         nextBlock.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+
+        // create the package for the next block
+        GameObject nextPackage = Instantiate(package, new Vector2(8.5f, 22.75f), Quaternion.identity);
+
+        // make the next package the parent of the new block
+        nextBlock.transform.parent = nextPackage.transform;
 
         // create a random new block in the spawner postion
         GameObject newBlock = Instantiate(Blocks[blockType], transform.position, Quaternion.identity);

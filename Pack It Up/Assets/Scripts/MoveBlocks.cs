@@ -49,10 +49,11 @@ public class MoveBlocks : MonoBehaviour
 
     // variables for completed packages
     public GameObject package;
-    private float packageSpeed = 10.0f;
+    private float packageSpeed = 1.0f;
     private Vector2 packageStartPostion = new Vector2(8.2f, -3f);
     private float landedY = -5.125f;
-    private Vector2 packageDestination = new Vector2(-19.468f, -5.125f);
+    private Vector2 packageConveyorEnd = new Vector2(-19.468f, -5.125f);
+
 
     // score variables
     public int gameScore;
@@ -762,17 +763,17 @@ public class MoveBlocks : MonoBehaviour
         newPackage.transform.position = new Vector2(newPackage.transform.position.x, landedY);
 
         // wait until the package is really close to the destination
-        while (Vector3.Distance(newPackage.transform.position, packageDestination) > 0.01f)
+        while (Vector3.Distance(newPackage.transform.position, packageConveyorEnd) > 0.01f)
         {
-            // move the package to the truck
-            newPackage.transform.position = Vector3.MoveTowards(newPackage.transform.position, packageDestination, packageSpeed * Time.deltaTime);
+            // move the package to the end of the conveyor belt
+            newPackage.transform.position = Vector3.MoveTowards(newPackage.transform.position, packageConveyorEnd, packageSpeed * Time.deltaTime);
 
-            // wait until the package is at the truck
+            // wait until the package is at the to the end of the conveyor belt
             await Task.Yield();
         }
 
-        // stop the package at the truck
-        newPackage.transform.position = packageDestination;
+        // stop the package at the end of the conveyor belt
+        newPackage.transform.position = packageConveyorEnd;
     }
 
     // check the type of block & do its ability

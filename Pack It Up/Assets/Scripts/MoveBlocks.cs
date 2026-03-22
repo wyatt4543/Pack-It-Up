@@ -10,6 +10,7 @@ public class MoveBlocks : MonoBehaviour
     // sound effect variables
     private AudioClip explosionSound;
     private AudioClip waterSound;
+    private AudioClip gravelSound;
 
     // transform variables & script variables & game object variables
     public Transform parentTransform;
@@ -122,6 +123,7 @@ public class MoveBlocks : MonoBehaviour
         //assign the sound effects
         explosionSound = Resources.Load<AudioClip>("Sounds/SFX/explosion");
         waterSound = Resources.Load<AudioClip>("Sounds/SFX/water");
+        gravelSound = Resources.Load<AudioClip>("Sounds/SFX/gravel");
 
         // test for a game over
         if (!ValidMove(0, -1))

@@ -17,6 +17,8 @@ public class SpawnBlock : MonoBehaviour
 
     private void Awake()
     {
+        transform.position = new Vector2(0, 18);
+
         if (instance == null)
         {
             instance = this;

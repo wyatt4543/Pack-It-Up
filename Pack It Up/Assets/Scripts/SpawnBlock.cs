@@ -118,6 +118,9 @@ public class SpawnBlock : MonoBehaviour
         // get the moveBlocksScript
         MoveBlocks moveBlocksScript = newBlock.GetComponentsInChildren<MoveBlocks>()[0];
 
+        // assign the move bloccks script of for the order manager
+        OrderManager.instance.moveBlockScript = moveBlocksScript;
+
         // set the number of line clears
         moveBlocksScript.lineClears = lineClears;
 

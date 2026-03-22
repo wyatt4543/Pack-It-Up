@@ -34,6 +34,9 @@ public class OrderManager : MonoBehaviour
     private Image ordersList;
     private RectTransform ordersHolder;
 
+    // scripts
+    public MoveBlocks moveBlockScript;
+
     private void Awake()
     {
         currentOrderText = GameObject.Find("LevelCanvas/CurrentOrder").GetComponent<TextMeshProUGUI>();
@@ -161,6 +164,13 @@ public class OrderManager : MonoBehaviour
     // function for moving the delivery truck off the screen & back onto the screen
     private async void DeliveryTruckHideAndShow()
     {
+        // check if a package is close to the truck
+        while (Vector3.Distance(deliveryTruck.transform.position, deliveryTruckDestination) <= 20f)
+        {
+            // if there is a package close to the truck wait for the package
+            await Task.Yield();
+        }
+
         //close the delivery truck
         triggerDeliveryTruckOpen = false;
         deliveryTruckAnimator.SetBool("triggerDeliveryTruckOpen", triggerDeliveryTruckOpen);

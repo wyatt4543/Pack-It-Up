@@ -81,6 +81,7 @@ public class MoveBlocks : MonoBehaviour
     // input variables
     private Vector2 moveInput;
     private float rotateInput;
+    private float rotateDragBlockInput;
     private PlayerInput playerInput;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -179,23 +180,13 @@ public class MoveBlocks : MonoBehaviour
             // disable rotation for the box block
             if (!(gameObject.name == "BoxBlock"))
             {
-                // if up key pressed
-                if (rotateInput == 1)
+                if (gameObject.name == "DragBlock")
                 {
-                    transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
-                    if (!ValidRotation())
-                    {
-                        transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
-                    }
+                    Rotate(rotateDragBlockInput);
                 }
-                // if z key pressed
                 else
                 {
-                    transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
-                    if (!ValidRotation())
-                    {
-                        transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
-                    }
+                    Rotate(rotateInput);
                 }
             }
         }
@@ -250,6 +241,10 @@ public class MoveBlocks : MonoBehaviour
         {
             rotateInput = context.ReadValue<float>();
         }
+        else if (context.action.name == "RotateDragBlock")
+        {
+            rotateDragBlockInput = context.ReadValue<float>();
+        }
     }
 
     // move the block based on player inputs
@@ -269,6 +264,28 @@ public class MoveBlocks : MonoBehaviour
             if (ValidMove(0, (int)movementY))
             {
                 parentTransform.position = new Vector2(parentTransform.position.x, parentTransform.position.y + movementY);
+            }
+        }
+    }
+
+    private void Rotate(float currentRotationInput)
+    {
+        // if up key pressed
+        if (currentRotationInput == 1)
+        {
+            transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
+            if (!ValidRotation())
+            {
+                transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
+            }
+        }
+        // if z key pressed
+        else
+        {
+            transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
+            if (!ValidRotation())
+            {
+                transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
             }
         }
     }

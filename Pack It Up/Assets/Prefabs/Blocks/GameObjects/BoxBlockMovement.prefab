@@ -162,9 +162,13 @@ MonoBehaviour:
   rotationPoint: {x: 0.5, y: 0.5}
   lineClears: 0
   gameRound: 0
+  package: {fileID: 0}
+  currentPackages: []
   gameScore: 0
   numberDisplayPrefab: {fileID: 4424447009255818281, guid: 9e539fccf148da44eb74c28a3499e77a, type: 3}
   numberDisplaySprites: []
+  explosionSprite: {fileID: 0}
+  explosionObject: {fileID: 0}
 --- !u!114 &2176200525864101840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,9 +262,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -3961162394569261791, guid: f78ee195d1436c147b529aaa630254c3, type: 3}
+      objectReference: {fileID: -3722211441487651502, guid: ccd7feca5712a6740b2d35e5a4809bb7, type: 3}
+    - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5814861561363321387, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
       propertyPath: m_Name
       value: BoxFlap
@@ -323,6 +339,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -793593863, guid: ccd7feca5712a6740b2d35e5a4809bb7, type: 3}
     - target: {fileID: 5814861561363321387, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
       propertyPath: m_Name
       value: Bottom Left Square
@@ -387,12 +407,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
       propertyPath: m_FlipX
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0625
       objectReference: {fileID: 0}
     - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -3961162394569261791, guid: f78ee195d1436c147b529aaa630254c3, type: 3}
+      objectReference: {fileID: 211097196, guid: ccd7feca5712a6740b2d35e5a4809bb7, type: 3}
+    - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5814861561363321387, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
       propertyPath: m_Name
       value: BoxFlap
@@ -455,6 +487,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -186844190, guid: ccd7feca5712a6740b2d35e5a4809bb7, type: 3}
     - target: {fileID: 5814861561363321387, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
       propertyPath: m_Name
       value: OverlapSquare
@@ -518,9 +554,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 7643310471006196807, guid: e9508c72c17aa4240b802220facaccc7, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0625
+      objectReference: {fileID: 0}
     - target: {fileID: 5814861561363321387, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
       propertyPath: m_Name
       value: OverlapSquare
@@ -583,6 +623,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2377468602771071227, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -793783235, guid: ccd7feca5712a6740b2d35e5a4809bb7, type: 3}
     - target: {fileID: 5814861561363321387, guid: f288596e7ac9ffe4dbffd870e049d4b6, type: 3}
       propertyPath: m_Name
       value: Bottom Right Square

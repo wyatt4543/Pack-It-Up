@@ -287,7 +287,7 @@ public class MoveBlocks : MonoBehaviour
         // update the block position if it is valid
         if (ValidMove(mouseXMovement, 0))
         {
-            parentTransform.position = new Vector2(Mathf.RoundToInt(worldPosition.x), parentTransform.position.y);
+            parentTransform.position = new Vector2(Mathf.RoundToInt(worldPosition.x) + 1.5f, parentTransform.position.y);
         }
     }
 

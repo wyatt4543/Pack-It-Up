@@ -177,20 +177,23 @@ public class MoveBlocks : MonoBehaviour
         // rotate the block
         if (playerInput.actions["Rotate"].WasPressedThisFrame())
         {
-            // disable rotation for the box block
-            if (!(gameObject.name == "BoxBlock"))
+            // disable normal rotation for the box block & drag block
+            if (!(gameObject.name == "BoxBlock") && !(gameObject.name == "DragBlock"))
             {
-                if (gameObject.name == "DragBlock")
-                {
-                    Rotate(rotateDragBlockInput);
-                }
-                else
-                {
-                    Rotate(rotateInput);
-                }
+                Rotate(rotateInput);
             }
         }
-        
+
+        // rotate the drag block
+        if (playerInput.actions["RotateDragBlock"].WasPressedThisFrame())
+        {
+            // only do rotation for the drag block
+            if (gameObject.name == "DragBlock")
+            {
+                Rotate(rotateDragBlockInput);
+            }
+        }
+
         // move down 1 unit every second
         if ((fallTimer -= Time.deltaTime) < 0)
         {

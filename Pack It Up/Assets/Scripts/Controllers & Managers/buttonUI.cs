@@ -36,6 +36,7 @@ public class buttonUI : MonoBehaviour
             // hide the currently unused canvases
             ToggleCanvas(1);
             ToggleCanvas(2);
+            ToggleCanvas(3);
         }
 
         // if the scene is the main game
@@ -113,13 +114,46 @@ public class buttonUI : MonoBehaviour
     }
 
     // function for opening the settings menu
-    public void SettingsButton()
+    public async void SettingsButton()
     {
-        // hide the other two buttons
-        ToggleButton(0);
-        ToggleButton(2);
+        // toggle the door animation
+        ToggleTitleDoorAnimation();
 
-        // open the settings menu 
+        // check if the main menu is open
+        if (canvases[0].enabled)
+        {
+            // instantly hide the title
+            ToggleImage(0);
+
+            // wait for the animation to complete
+            await Task.Delay(350);
+
+            // hide the main menu
+            ToggleCanvas(0);
+
+            // reenable the title because the main menu is hidden
+            ToggleImage(0);
+
+            // show the settings menu
+            ToggleCanvas(3);
+        }
+        else
+        {
+            // hide everything except the back button in the settings menu
+            ToggleNotBackButton(3);
+
+            // wait for the animation to complete
+            await Task.Delay(350);
+
+            // hide the settings menu
+            ToggleCanvas(3);
+
+            // reenable everything because the settings menu is hidden
+            ToggleNotBackButton(3);
+
+            // show the open the main menu
+            ToggleCanvas(0);
+        }
     }
 
     // function for the button to show the credits

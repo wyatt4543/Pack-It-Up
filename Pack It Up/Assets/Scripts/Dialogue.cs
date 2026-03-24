@@ -28,7 +28,7 @@ public class Dialogue : MonoBehaviour
             dialogLines = new string[] {
                 "Worker: You must be new here! Let me teach you how to stack some crates!",
                 "Worker: First, there's these food crates. All of them stack together in a grid-like pattern.",
-                "Worker: To adjust the crate use the left or right arrow keys, and the up arrow to turn it clockwise or z to turn it counterclockwise. Try it out!"
+                "Worker: To adjust the crate use the \"A\" or \"D\" key, and the \"W\" key to turn it clockwise or z to turn it counterclockwise. Try it out!"
             };
 
             RestartDialogue();

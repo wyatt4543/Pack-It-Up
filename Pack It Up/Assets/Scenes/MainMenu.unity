@@ -1042,6 +1042,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3769742310626124242, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
   m_PrefabInstance: {fileID: 423447675}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &423447677 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 935298607240688499, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
+  m_PrefabInstance: {fileID: 423447675}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &551899473
 GameObject:
   m_ObjectHideFlags: 0
@@ -4828,7 +4833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: canvases.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: 'images.Array.data[0]'
@@ -4862,6 +4867,10 @@ PrefabInstance:
       propertyPath: 'canvases.Array.data[2]'
       value: 
       objectReference: {fileID: 612424263}
+    - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
+      propertyPath: 'canvases.Array.data[3]'
+      value: 
+      objectReference: {fileID: 423447677}
     - target: {fileID: 7557138627855827683, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: m_Name
       value: ButtonController

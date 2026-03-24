@@ -1179,7 +1179,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 686006179}
         m_TargetAssemblyTypeName: SoundMixerManager, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 4
@@ -2236,6 +2236,17 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &686006179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6741379124637859839, guid: 65f8d5665d52d8644b4e2044fae015ae, type: 3}
+  m_PrefabInstance: {fileID: 1579423476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e91a2178900d28409ae59705d08cbac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &705442454
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,10 +2952,6 @@ PrefabInstance:
     - target: {fileID: 4452215997809976734, guid: 686305fcc56415a43bd47d5f9dbba1e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7682119859677590741, guid: 686305fcc56415a43bd47d5f9dbba1e1, type: 3}
-      propertyPath: m_Resource
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5908,7 +5915,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 686006179}
         m_TargetAssemblyTypeName: SoundMixerManager, Assembly-CSharp
         m_MethodName: SetSFXVolume
         m_Mode: 4
@@ -6281,7 +6288,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 686006179}
         m_TargetAssemblyTypeName: SoundMixerManager, Assembly-CSharp
         m_MethodName: SetMasterVolume
         m_Mode: 4

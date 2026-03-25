@@ -8100,6 +8100,18 @@ PrefabInstance:
       propertyPath: 'canvases.Array.data[3]'
       value: 
       objectReference: {fileID: 423447677}
+    - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
+      propertyPath: settingsPages.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
+      propertyPath: 'settingsPages.Array.data[0]'
+      value: 
+      objectReference: {fileID: 800043511}
+    - target: {fileID: 4650472534239982345, guid: c13d35be440824145be85ea321c17c8d, type: 3}
+      propertyPath: 'settingsPages.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1448145417}
     - target: {fileID: 7557138627855827683, guid: c13d35be440824145be85ea321c17c8d, type: 3}
       propertyPath: m_Name
       value: ButtonController

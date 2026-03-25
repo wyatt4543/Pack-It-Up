@@ -18,6 +18,7 @@ public class buttonUI : MonoBehaviour
     public Button[] buttons;
     public Canvas[] canvases;
     public Image[] images;
+    [SerializeField] private GameObject[] settingsPages;
 
     private void Awake()
     {
@@ -274,6 +275,18 @@ public class buttonUI : MonoBehaviour
             if (children.name != "BackButton" && children.name != "Overlay")
             {
                 children.gameObject.SetActive(!children.gameObject.activeSelf);
+            }
+        }
+    }
+
+    public void ToggleSettings(int settingsIndex)
+    {
+        // hide the other settings that weren't toggled
+        foreach (GameObject children in settingsPages)
+        {
+            if (children != settingsPages[settingsIndex])
+            {
+                children.SetActive(false);
             }
         }
     }

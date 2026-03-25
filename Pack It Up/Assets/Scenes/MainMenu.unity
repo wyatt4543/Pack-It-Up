@@ -5126,6 +5126,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482272155}
   m_CullTransparentMesh: 1
+--- !u!1 &1516956606 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7801805823273658757, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
+  m_PrefabInstance: {fileID: 5486587772397769365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1516956607 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1167171760371210721, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
@@ -7028,6 +7033,10 @@ PrefabInstance:
       propertyPath: m_BindingId
       value: d2581a9b-1d11-4566-b27d-b92aff5fabbc
       objectReference: {fileID: 0}
+    - target: {fileID: 5000510144183577320, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
+      propertyPath: m_RebindOverlay
+      value: 
+      objectReference: {fileID: 1516956606}
     - target: {fileID: 5183364739986402091, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

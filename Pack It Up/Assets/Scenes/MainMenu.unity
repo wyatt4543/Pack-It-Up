@@ -7041,7 +7041,7 @@ PrefabInstance:
       objectReference: {fileID: 1516956606}
     - target: {fileID: 7951845262698097201, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
-      value: Left Windows
+      value: A
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -11,7 +11,7 @@ public class SoundMenuManager : MonoBehaviour
 
     private void Start()
     {
-        soundSettingsMenu = GameObject.Find("SettingsCanvas/SoundSettings");
+        soundSettingsMenu = GameObject.Find("SettingsCanvas/SettingsStuff/SoundSettings");
         soundMixer = GameObject.Find("SoundMixerManager").GetComponent<SoundMixerManager>();
         masterVolume = soundSettingsMenu.transform.Find("Master Volume").gameObject.GetComponent<Slider>();
         SFXVolume = soundSettingsMenu.transform.Find("SFX Volume").gameObject.GetComponent<Slider>();

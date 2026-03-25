@@ -288,6 +288,10 @@ public class buttonUI : MonoBehaviour
             {
                 children.SetActive(false);
             }
+            else
+            {
+                children.SetActive(true);
+            }
         }
     }
 }

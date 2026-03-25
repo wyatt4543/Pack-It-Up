@@ -1428,9 +1428,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3769742310626124242, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1448145418}
-    - targetCorrespondingSourceObject: {fileID: 3769742310626124242, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1516956607}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
 --- !u!224 &423447676 stripped
@@ -4819,6 +4816,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1095906122}
+  - {fileID: 1516956607}
   m_Father: {fileID: 423447676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7088,7 +7086,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 423447676}
+    m_TransformParent: {fileID: 1448145418}
     m_Modifications:
     - target: {fileID: 1167171760371210721, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
       propertyPath: m_Pivot.x
@@ -7116,11 +7114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1167171760371210721, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1820
       objectReference: {fileID: 0}
     - target: {fileID: 1167171760371210721, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 980
       objectReference: {fileID: 0}
     - target: {fileID: 1167171760371210721, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7140,15 +7138,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1167171760371210721, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1167171760371210721, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1167171760371210721, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1167171760371210721, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
       propertyPath: m_AnchoredPosition.x

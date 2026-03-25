@@ -727,6 +727,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem.RebindingUI::UnityEngine.InputSystem.Samples.RebindUI.RebindSaveLoad
   actions: {fileID: -944628639613478452, guid: 36d1915fa3bed7d43a07a32af9dd061d, type: 3}
-  playerPreferenceKey: 
+  playerPreferenceKey: PlayerRebinds
   loadOnEnable: 1
   saveOnDisable: 1

@@ -271,7 +271,7 @@ public class buttonUI : MonoBehaviour
     {
         foreach (Transform children in canvases[canvasIndex].transform)
         {
-            if (children.name != "BackButton")
+            if (children.name != "BackButton" && children.name != "Overlay")
             {
                 children.gameObject.SetActive(!children.gameObject.activeSelf);
             }

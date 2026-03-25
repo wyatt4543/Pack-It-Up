@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Move Left
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71ba550cbfad4614da257250b85b12ff, type: 2}
   m_sharedMaterial: {fileID: 3525288246048698027, guid: 71ba550cbfad4614da257250b85b12ff, type: 2}
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Action: {fileID: 0}
   m_BindingId: 
   m_DisplayStringOptions: 0
-  m_ActionLabel: {fileID: 0}
+  m_ActionLabel: {fileID: 8339059702889220483}
   m_BindingText: {fileID: 7951845262698097201}
   m_RebindOverlay: {fileID: 0}
   m_RebindText: {fileID: 0}

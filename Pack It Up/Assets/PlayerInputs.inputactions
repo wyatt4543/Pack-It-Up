@@ -17,9 +17,9 @@
                 },
                 {
                     "name": "Drop",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "799188bb-d2e0-41e2-8258-41f5b2f0a366",
-                    "expectedControlType": "Integer",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true

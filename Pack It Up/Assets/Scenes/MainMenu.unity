@@ -7032,6 +7032,10 @@ PrefabInstance:
       value: d2581a9b-1d11-4566-b27d-b92aff5fabbc
       objectReference: {fileID: 0}
     - target: {fileID: 5000510144183577320, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
+      propertyPath: m_RebindText
+      value: 
+      objectReference: {fileID: 5486587772397769366}
+    - target: {fileID: 5000510144183577320, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_RebindOverlay
       value: 
       objectReference: {fileID: 1516956606}
@@ -7185,6 +7189,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
+--- !u!114 &5486587772397769366 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 933695541507330288, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
+  m_PrefabInstance: {fileID: 5486587772397769365}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

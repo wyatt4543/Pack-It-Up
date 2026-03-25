@@ -1554,7 +1554,7 @@ PrefabInstance:
       objectReference: {fileID: 1516956606}
     - target: {fileID: 7951845262698097201, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
-      value: D
+      value: LMB
       objectReference: {fileID: 0}
     - target: {fileID: 8339059702889220483, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
@@ -1853,7 +1853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2816872841930793221, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3769742310626124242, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
       propertyPath: m_Pivot.x
@@ -5581,7 +5581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2816872841930793221, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3769742310626124242, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
       propertyPath: m_Pivot.x
@@ -6461,7 +6461,7 @@ PrefabInstance:
       objectReference: {fileID: 1516956606}
     - target: {fileID: 7951845262698097201, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
-      value: Z
+      value: LMB
       objectReference: {fileID: 0}
     - target: {fileID: 8339059702889220483, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
@@ -6502,7 +6502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2816872841930793221, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3769742310626124242, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
       propertyPath: m_Pivot.x
@@ -7772,7 +7772,7 @@ PrefabInstance:
       objectReference: {fileID: 1516956606}
     - target: {fileID: 7951845262698097201, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
-      value: A
+      value: LMB
       objectReference: {fileID: 0}
     - target: {fileID: 8339059702889220483, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
@@ -7817,11 +7817,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1167171760371210721, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1820
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1167171760371210721, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 980
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1167171760371210721, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7874,10 +7874,6 @@ PrefabInstance:
     - target: {fileID: 7801805823273658757, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
       propertyPath: m_Name
       value: Overlay
-      objectReference: {fileID: 0}
-    - target: {fileID: 7801805823273658757, guid: 5b49e853f7a77d8409d1f640f582b225, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

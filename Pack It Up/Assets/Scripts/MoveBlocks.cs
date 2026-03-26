@@ -1193,6 +1193,12 @@ public class MoveBlocks : MonoBehaviour
         // show the game over object
         gameOverObject.GetComponent<Renderer>().enabled = true;
 
+        // show the leaderboard object
+        Leaderboard.instance.gameObject.SetActive(true);
+
+        // set the new score if possible
+        Leaderboard.instance.SetCurrentScore(gameScore);
+
         // hide the text
         roundCounter.enabled = false;
         linesCounter.enabled = false;

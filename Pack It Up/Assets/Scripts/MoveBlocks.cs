@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MoveBlocks : MonoBehaviour
 {
@@ -1193,17 +1194,21 @@ public class MoveBlocks : MonoBehaviour
         // show the game over object
         gameOverObject.GetComponent<Renderer>().enabled = true;
 
-        // show the leaderboard object
-        Leaderboard.instance.gameObject.SetActive(true);
+        // only if the scene is arcade mode
+        if (SceneManager.GetActiveScene().name == "MainGame")
+        {
+            // show the leaderboard object
+            Leaderboard.instance.gameObject.SetActive(true);
 
-        // set the new score if possible
-        Leaderboard.instance.SetCurrentScore(gameScore);
+            // set the new score if possible
+            Leaderboard.instance.SetCurrentScore(gameScore);
 
-        // make the score a child of the input field
-        scoreCounter.GetComponent<RectTransform>().SetParent(Leaderboard.instance.inputFieldPanel.transform, false);
+            // make the score a child of the input field
+            scoreCounter.GetComponent<RectTransform>().SetParent(Leaderboard.instance.inputFieldPanel.transform, false);
 
-        // update the score position upon loss
-        scoreCounter.GetComponent<RectTransform>().anchoredPosition = new Vector2(-140, 0);
+            // update the score position upon loss
+            scoreCounter.GetComponent<RectTransform>().anchoredPosition = new Vector2(-140, 0);
+        }
 
         // hide the text
         roundCounter.enabled = false;

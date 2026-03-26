@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class Leaderboard : MonoBehaviour
 {
+    public static Leaderboard instance;
+
     // Assign these in the Unity Inspector
     public TMP_Text[] scoreTexts;
     public TMP_Text[] nameTexts;
@@ -17,6 +19,14 @@ public class Leaderboard : MonoBehaviour
     private int currentScore = 0;
     private const string SaveFileName = "highscores.json";
     private string saveFilePath;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     [System.Serializable]
     public class HighScoreEntry
@@ -37,6 +47,7 @@ public class Leaderboard : MonoBehaviour
         inputFieldPanel.SetActive(false);
         LoadHighScores();
         DisplayHighScores();
+        gameObject.SetActive(false);
     }
 
     public void SetCurrentScore(int score)

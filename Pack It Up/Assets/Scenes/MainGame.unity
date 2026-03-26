@@ -4394,6 +4394,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: HomeButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1543766774093263078, guid: bb23ff0eb9d7a764eb87cb0db7f4b8c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1543766774093263078, guid: bb23ff0eb9d7a764eb87cb0db7f4b8c2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148860690640416946, guid: bb23ff0eb9d7a764eb87cb0db7f4b8c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -275
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148860690640416946, guid: bb23ff0eb9d7a764eb87cb0db7f4b8c2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -200
+      objectReference: {fileID: 0}
     - target: {fileID: 5104640448670417469, guid: bb23ff0eb9d7a764eb87cb0db7f4b8c2, type: 3}
       propertyPath: m_Pivot.x
       value: 0

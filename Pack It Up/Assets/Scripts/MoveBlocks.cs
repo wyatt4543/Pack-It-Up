@@ -1203,7 +1203,7 @@ public class MoveBlocks : MonoBehaviour
         scoreCounter.GetComponent<RectTransform>().anchoredPosition = new Vector2(-40, -50);
 
         // make the score a child of the input field
-        scoreCounter.transform.parent = Leaderboard.instance.inputFieldPanel.transform;
+        scoreCounter.GetComponent<RectTransform>().SetParent(Leaderboard.instance.inputFieldPanel.transform);
 
         // hide the text
         roundCounter.enabled = false;

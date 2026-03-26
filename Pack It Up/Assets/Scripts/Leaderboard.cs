@@ -90,7 +90,7 @@ public class Leaderboard : MonoBehaviour
             }
             else
             {
-                nameTexts[i].text = "---";
+                nameTexts[i].text = "AAA";
                 scoreTexts[i].text = "0";
             }
         }

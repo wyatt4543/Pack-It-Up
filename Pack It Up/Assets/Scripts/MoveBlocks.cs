@@ -1202,6 +1202,9 @@ public class MoveBlocks : MonoBehaviour
         // update the score position upon loss
         scoreCounter.GetComponent<RectTransform>().anchoredPosition = new Vector2(-40, -50);
 
+        // make the score a child of the input field
+        scoreCounter.transform.parent = Leaderboard.instance.inputFieldPanel.transform;
+
         // hide the text
         roundCounter.enabled = false;
         linesCounter.enabled = false;

@@ -517,6 +517,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b0a704913f90454db552e815fc51c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Leaderboard
+  scoreTexts:
+  - {fileID: 1055454232}
+  - {fileID: 1509368610}
+  - {fileID: 791607490}
+  - {fileID: 1784549292}
+  - {fileID: 769213486}
+  - {fileID: 1344590198}
+  - {fileID: 281722864}
+  - {fileID: 1869944501}
+  - {fileID: 767166277}
+  - {fileID: 654101059}
+  nameTexts:
+  - {fileID: 481977980}
+  - {fileID: 33947057}
+  - {fileID: 1553276379}
+  - {fileID: 1485530516}
+  - {fileID: 481317441}
+  - {fileID: 1528872403}
+  - {fileID: 521363749}
+  - {fileID: 1184910322}
+  - {fileID: 269155259}
+  - {fileID: 2000058410}
+  nameInputField: {fileID: 0}
+  submitButton: {fileID: 0}
+  inputFieldPanel: {fileID: 0}
 --- !u!1 &281722862
 GameObject:
   m_ObjectHideFlags: 0

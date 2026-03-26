@@ -1199,6 +1199,9 @@ public class MoveBlocks : MonoBehaviour
         // set the new score if possible
         Leaderboard.instance.SetCurrentScore(gameScore);
 
+        // update the score position upon loss
+        scoreCounter.GetComponent<RectTransform>().anchoredPosition = new Vector2(-40, -50);
+
         // hide the text
         roundCounter.enabled = false;
         linesCounter.enabled = false;

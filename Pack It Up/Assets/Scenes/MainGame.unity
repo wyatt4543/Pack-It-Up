@@ -575,9 +575,9 @@ MonoBehaviour:
   - {fileID: 1184910322}
   - {fileID: 269155259}
   - {fileID: 2000058410}
-  nameInputField: {fileID: 0}
-  submitButton: {fileID: 0}
-  inputFieldPanel: {fileID: 0}
+  nameInputField: {fileID: 1279216930}
+  submitButton: {fileID: 1091194590}
+  inputFieldPanel: {fileID: 96708476}
 --- !u!1 &281722862
 GameObject:
   m_ObjectHideFlags: 0

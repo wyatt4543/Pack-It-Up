@@ -19,6 +19,7 @@ public class buttonUI : MonoBehaviour
     public Canvas[] canvases;
     public Image[] images;
     [SerializeField] private GameObject[] settingsPages;
+    private string packageObjectName = "Package";
 
     private void Awake()
     {
@@ -209,12 +210,16 @@ public class buttonUI : MonoBehaviour
     // function for adding the behavior of heading back to the main menu
     public void HomeButton()
     {
+        // destroy current packages in the level
+        DestroyPackages();
         PauseManager.instance.UnpauseGame();
         SceneManager.LoadScene(mainMenu);
     }
 
     // function for adding the behavior of restarting the game
     public void RestartButton() {
+        // destroy current packages in the level
+        DestroyPackages();
         PauseManager.instance.UnpauseGame();
         // load the current scene on restart
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -222,6 +227,9 @@ public class buttonUI : MonoBehaviour
 
     // function for continuing to the next level
     public void ContinueButton() {
+        // destroy current packages in the level
+        DestroyPackages();
+
         // unpause the game
         PauseManager.instance.UnpauseGame();
 
@@ -291,6 +299,21 @@ public class buttonUI : MonoBehaviour
             else
             {
                 children.SetActive(true);
+            }
+        }
+    }
+
+    public void DestroyPackages()
+    {
+        // Find all active GameObjects in the scene
+        GameObject[] allGameObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+
+        foreach (GameObject package in allGameObjects)
+        {
+            // Check if the object's name contains the specified partialName
+            if (package.name.Contains(packageObjectName))
+            {
+                Destroy(package);
             }
         }
     }

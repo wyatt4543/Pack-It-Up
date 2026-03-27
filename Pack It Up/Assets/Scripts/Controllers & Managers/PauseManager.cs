@@ -6,6 +6,7 @@ public class PauseManager : MonoBehaviour
     public static PauseManager instance;
     public PlayerInput playerInput;
     public bool isGameOver = false;
+    public bool levelComplete = false;
 
     public bool IsPaused {  get; private set; }
 
@@ -29,11 +30,14 @@ public class PauseManager : MonoBehaviour
 
     public void UnpauseGame()
     {
-        // unpause time
-        IsPaused = false;
-        Time.timeScale = 1f;
+        if (!levelComplete)
+        {
+            // unpause time
+            IsPaused = false;
+            Time.timeScale = 1f;
 
-        // switch the action map
-        playerInput.SwitchCurrentActionMap("Player");
+            // switch the action map
+            playerInput.SwitchCurrentActionMap("Player");
+        }
     }
 }

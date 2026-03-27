@@ -290,6 +290,9 @@ public class OrderManager : MonoBehaviour
             // pause the game
             PauseManager.instance.PauseGame();
 
+            // set the level completion to true
+            PauseManager.instance.levelComplete = true;
+
             // show the continue button
             buttonUI.instance.ToggleButton(2);
 

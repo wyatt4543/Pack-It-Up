@@ -1191,6 +1191,9 @@ public class MoveBlocks : MonoBehaviour
     // end the game upon loss
     private void EndGame()
     {
+        // set game over to true for the pause manager
+        PauseManager.instance.isGameOver = true;
+
         // show the game over object
         gameOverObject.GetComponent<Renderer>().enabled = true;
 

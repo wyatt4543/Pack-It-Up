@@ -45,13 +45,16 @@ public class MenuManager : MonoBehaviour
 
     public void PauseUnpause()
     {
-        if (!PauseManager.instance.IsPaused)
+        if (!PauseManager.instance.isGameOver)
         {
-            Pause();
-        }
-        else
-        {
-            Unpause();
+            if (!PauseManager.instance.IsPaused)
+            {
+                Pause();
+            }
+            else
+            {
+                Unpause();
+            }
         }
     }
 

@@ -5,6 +5,7 @@ public class PauseManager : MonoBehaviour
 {
     public static PauseManager instance;
     public PlayerInput playerInput;
+    public bool isGameOver = false;
 
     public bool IsPaused {  get; private set; }
 

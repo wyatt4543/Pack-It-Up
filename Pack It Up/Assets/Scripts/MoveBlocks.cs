@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -439,6 +440,9 @@ public class MoveBlocks : MonoBehaviour
             {
                 // clone the cleared block
                 clearedBlock = Instantiate(grid[j, i].gameObject, grid[j, i].gameObject.transform.position, Quaternion.identity);
+
+                // move the cleared block's rendering to the highest sorting layer
+                clearedBlock.GetComponent<SpriteRenderer>().sortingOrder = 10;
 
                 // add the cleared block to the list of cleared blocks
                 clearedBlocks.Add(clearedBlock);

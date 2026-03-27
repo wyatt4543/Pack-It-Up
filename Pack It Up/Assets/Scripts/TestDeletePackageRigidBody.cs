@@ -4,12 +4,14 @@ public class TestDeletePackageRigidBody : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D packageRigidBody;
     private Animator workerAnimator;
+    private GameObject chatBubble;
     private Vector2 topBoxPostion = new Vector2(1.04f, 20.6f);
     private float packageFlySpeed = 50.0f;
 
     private void Awake()
     {
         workerAnimator = GameObject.Find("Worker").GetComponent<Animator>();
+        chatBubble = GameObject.Find("GameBoard/ChatBubble");
     }
 
     // delete the rigidbody2d of this package upon entering a trigger
@@ -29,6 +31,14 @@ public class TestDeletePackageRigidBody : MonoBehaviour
             // move the package to the box
             transform.position = Vector3.MoveTowards(transform.position, topBoxPostion, packageFlySpeed * Time.deltaTime);
         }
+
+        GameObject nextBlock = transform.GetChild(0).gameObject;
+
+        // make the chat bubble the parent of the next block
+        nextBlock.transform.parent = chatBubble.transform;
+
+        // move the next block to the chat bubble
+        nextBlock.transform.localPosition = new Vector2(-0.248f, 0);
 
         // when at the box destroy itself
         Destroy(gameObject);

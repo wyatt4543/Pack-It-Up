@@ -46,11 +46,11 @@ public class TestDeletePackageRigidBody : MonoBehaviour
         // remove the box flaps
         if (nextBlock.name.Contains("BoxBlock"))
         {
-            foreach (GameObject square in nextBlock.transform)
+            foreach (Transform square in nextBlock.transform.GetChild(0))
             {
                 if (square.name == "BoxFlap")
                 {
-                    Destroy(square);
+                    Destroy(square.gameObject);
                 }
             }
         }

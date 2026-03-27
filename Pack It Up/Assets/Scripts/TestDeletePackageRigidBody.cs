@@ -34,6 +34,9 @@ public class TestDeletePackageRigidBody : MonoBehaviour
 
         GameObject nextBlock = transform.GetChild(0).gameObject;
 
+        // double the next block's size
+        nextBlock.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+
         // make the chat bubble the parent of the next block
         nextBlock.transform.parent = chatBubble.transform;
 

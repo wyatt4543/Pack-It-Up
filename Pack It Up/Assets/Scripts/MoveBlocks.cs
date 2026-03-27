@@ -1221,6 +1221,9 @@ public class MoveBlocks : MonoBehaviour
         buttonUI.instance.ToggleButton(0);
         buttonUI.instance.ToggleButton(1);
 
+        // pause the game
+        PauseManager.instance.PauseGame();
+
         // delete this script to disable movement
         Destroy(this);
     }

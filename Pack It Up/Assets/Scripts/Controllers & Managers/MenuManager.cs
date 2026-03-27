@@ -12,6 +12,10 @@ public class MenuManager : MonoBehaviour
     private Slider musicVolume;
     private Button backButton;
 
+    private const string MasterVolumeKey = "MasterVolume";
+    private const string SFXVolumeKey = "SFXVolume";
+    private const string MusicVolumeKey = "MusicVolume";
+
     private void Start()
     {
         pauseMenu = GameObject.Find("PauseMenuCanvas");
@@ -21,17 +25,26 @@ public class MenuManager : MonoBehaviour
         SFXVolume = pauseMenu.transform.Find("SFX Volume").gameObject.GetComponent<Slider>();
         musicVolume = pauseMenu.transform.Find("Music Volume").gameObject.GetComponent<Slider>();
         backButton = pauseMenu.transform.Find("BackButton").gameObject.GetComponent<Button>();
+        
+        // get the saved sound volume values
+        masterVolume.value = PlayerPrefs.GetFloat(MasterVolumeKey, 1f);
+        SFXVolume.value = PlayerPrefs.GetFloat(SFXVolumeKey, 1f);
+        musicVolume.value = PlayerPrefs.GetFloat(MusicVolumeKey, 1f);
+
+        // update the mixer to the saved values
+        soundMixer.SetMasterVolume(masterVolume.value);
+        soundMixer.SetSFXVolume(SFXVolume.value);
+        soundMixer.SetMusicVolume(musicVolume.value);
+
+        // create listeners for when the values change to save the new volume values
         masterVolume.onValueChanged.AddListener(
-            delegate { soundMixer.SetMasterVolume(masterVolume.value); }
+            delegate { soundMixer.SetMasterVolume(OnMasterVolumeChanged(masterVolume.value)); }
         );
         SFXVolume.onValueChanged.AddListener(
-            delegate { soundMixer.SetSFXVolume(SFXVolume.value); }
+            delegate { soundMixer.SetSFXVolume(OnSFXVolumeChanged(SFXVolume.value)); }
         );
         musicVolume.onValueChanged.AddListener(
-            delegate { soundMixer.SetMusicVolume(musicVolume.value); }
-        );
-        backButton.onClick.AddListener(
-            delegate { PauseUnpause(); }
+            delegate { soundMixer.SetMusicVolume(OnMusicVolumeChanged(musicVolume.value)); }
         );
     }
 
@@ -77,5 +90,30 @@ public class MenuManager : MonoBehaviour
     {
         PauseManager.instance.UnpauseGame();
         UpdateSoundMenu();
+    }
+
+    // functions to save the volume changes
+    public float OnMasterVolumeChanged(float value)
+    {
+        soundMixer.SetMasterVolume(value);
+        PlayerPrefs.SetFloat(MasterVolumeKey, value);
+        PlayerPrefs.Save();
+        return value;
+    }
+
+    public float OnSFXVolumeChanged(float value)
+    {
+        soundMixer.SetSFXVolume(value);
+        PlayerPrefs.SetFloat(SFXVolumeKey, value);
+        PlayerPrefs.Save();
+        return value;
+    }
+
+    public float OnMusicVolumeChanged(float value)
+    {
+        soundMixer.SetMusicVolume(value);
+        PlayerPrefs.SetFloat(MusicVolumeKey, value);
+        PlayerPrefs.Save();
+        return value;
     }
 }

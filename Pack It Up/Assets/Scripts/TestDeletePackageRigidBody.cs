@@ -43,6 +43,18 @@ public class TestDeletePackageRigidBody : MonoBehaviour
         // move the next block to the chat bubble
         nextBlock.transform.localPosition = new Vector2(-0.6f, 0);
 
+        // remove the box flaps
+        if (nextBlock.name.Contains("BoxBlock"))
+        {
+            foreach (GameObject square in nextBlock.transform)
+            {
+                if (square.name == "BoxFlap")
+                {
+                    Destroy(square);
+                }
+            }
+        }
+
         // when at the box destroy itself
         Destroy(gameObject);
     }

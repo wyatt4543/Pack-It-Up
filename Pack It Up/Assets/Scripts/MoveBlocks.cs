@@ -1214,8 +1214,11 @@ public class MoveBlocks : MonoBehaviour
         }
         else
         {
-            // hide the orders clipboard
+            // hide the orders
             OrderManager.instance.ordersList.enabled = false;
+            OrderManager.instance.ordersHolder.gameObject.SetActive(false);
+            OrderManager.instance.currentOrderText.enabled = false;
+            OrderManager.instance.totalOrdersText.enabled = false;
         }
 
         // hide the text

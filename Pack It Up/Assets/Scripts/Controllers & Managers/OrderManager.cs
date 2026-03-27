@@ -29,10 +29,10 @@ public class OrderManager : MonoBehaviour
     private bool animationPlaying = false;
 
     // orders objects
-    private TextMeshProUGUI currentOrderText;
-    private TextMeshProUGUI totalOrdersText;
+    public TextMeshProUGUI currentOrderText;
+    public TextMeshProUGUI totalOrdersText;
     public Image ordersList;
-    private RectTransform ordersHolder;
+    public RectTransform ordersHolder;
 
     // scripts
     public MoveBlocks moveBlockScript;

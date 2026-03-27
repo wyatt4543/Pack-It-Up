@@ -41,7 +41,7 @@ public class TestDeletePackageRigidBody : MonoBehaviour
         nextBlock.transform.parent = chatBubble.transform;
 
         // move the next block to the chat bubble
-        nextBlock.transform.localPosition = new Vector2(-0.248f, 0);
+        nextBlock.transform.localPosition = new Vector2(-0.6f, 0);
 
         // when at the box destroy itself
         Destroy(gameObject);

@@ -1212,6 +1212,11 @@ public class MoveBlocks : MonoBehaviour
             // update the score position upon loss
             scoreCounter.GetComponent<RectTransform>().anchoredPosition = new Vector2(-140, 0);
         }
+        else
+        {
+            // hide the orders clipboard
+            OrderManager.instance.ordersList.enabled = false;
+        }
 
         // hide the text
         roundCounter.enabled = false;

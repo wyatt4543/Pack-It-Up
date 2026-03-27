@@ -31,7 +31,7 @@ public class OrderManager : MonoBehaviour
     // orders objects
     private TextMeshProUGUI currentOrderText;
     private TextMeshProUGUI totalOrdersText;
-    private Image ordersList;
+    public Image ordersList;
     private RectTransform ordersHolder;
 
     // scripts

@@ -781,65 +781,72 @@ public class MoveBlocks : MonoBehaviour
     // function for creating packages from completed lines
     private async void CreatePackage()
     {
-        // create a new package
-        GameObject newPackage = Instantiate(package, packageStartPostion, Quaternion.identity);
-
-        // add the new package to the list of packages
-        currentPackages.Add(newPackage);
-
-        // assign its rigid body
-        Rigidbody2D packageRigidBody = newPackage.GetComponent<Rigidbody2D>();
-
-        // wait until the package is on the conveyor belt
-        while (newPackage != null && Vector3.Distance(newPackage.transform.position, new Vector2(newPackage.transform.position.x, landedY)) > 0.1f)
+        try
         {
-            await Task.Yield();
+            // create a new package
+            GameObject newPackage = Instantiate(package, packageStartPostion, Quaternion.identity);
+
+            // add the new package to the list of packages
+            currentPackages.Add(newPackage);
+
+            // assign its rigid body
+            Rigidbody2D packageRigidBody = newPackage.GetComponent<Rigidbody2D>();
+
+            // wait until the package is on the conveyor belt
+            while (newPackage != null && Vector3.Distance(newPackage.transform.position, new Vector2(newPackage.transform.position.x, landedY)) > 0.1f)
+            {
+                await Task.Yield();
+            }
+
+            // destroy the rigid body once the package is close and assign its y to the landed y
+            Destroy(packageRigidBody);
+            newPackage.transform.position = new Vector2(newPackage.transform.position.x, landedY);
+
+            // wait until the package is really close to the destination
+            while (newPackage != null && Vector3.Distance(newPackage.transform.position, packageConveyorEnd) > 0.01f)
+            {
+                // move the package to the end of the conveyor belt
+                newPackage.transform.position = Vector3.MoveTowards(newPackage.transform.position, packageConveyorEnd, packageSpeed * Time.deltaTime);
+
+                // wait until the package is at the to the end of the conveyor belt
+                await Task.Yield();
+            }
+
+            // stop the package at the end of the conveyor belt
+            newPackage.transform.position = packageConveyorEnd;
+
+            // explode the package
+            GameObject TempExplosion = Instantiate(explosionObject, newPackage.transform.position, Quaternion.identity);
+
+            // play the explosion sound effect
+            SFXManager.instance.PlaySFXClip(explosionSound, newPackage.transform, 1f);
+
+            // wait 100 milliseconds
+            await Task.Delay(100);
+
+            // destroy the explosion game object
+            Destroy(TempExplosion);
+
+            // make the package fly towards the truck
+            while (newPackage != null && Vector3.Distance(newPackage.transform.position, packageTruck) > 0.01f)
+            {
+                // move the package to the end of the conveyor belt
+                newPackage.transform.position = Vector3.MoveTowards(newPackage.transform.position, packageTruck, packageExplosionSpeed * Time.deltaTime);
+
+                // wait until the package is at the to the end of the conveyor belt
+                await Task.Yield();
+            }
+
+            // remove the package from the list of current packages
+            currentPackages.Remove(newPackage);
+
+            // destroy the package
+            Destroy(newPackage);
         }
-
-        // destroy the rigid body once the package is close and assign its y to the landed y
-        Destroy(packageRigidBody);
-        newPackage.transform.position = new Vector2(newPackage.transform.position.x, landedY);
-
-        // wait until the package is really close to the destination
-        while (newPackage != null && Vector3.Distance(newPackage.transform.position, packageConveyorEnd) > 0.01f)
+        catch (System.OperationCanceledException)
         {
-            // move the package to the end of the conveyor belt
-            newPackage.transform.position = Vector3.MoveTowards(newPackage.transform.position, packageConveyorEnd, packageSpeed * Time.deltaTime);
-
-            // wait until the package is at the to the end of the conveyor belt
-            await Task.Yield();
+            Debug.Log("Package creation cancelled because MoveBlocks was destroyed.");
         }
-
-        // stop the package at the end of the conveyor belt
-        newPackage.transform.position = packageConveyorEnd;
-
-        // explode the package
-        GameObject TempExplosion = Instantiate(explosionObject, newPackage.transform.position, Quaternion.identity);
-
-        // play the explosion sound effect
-        SFXManager.instance.PlaySFXClip(explosionSound, newPackage.transform, 1f);
-
-        // wait 100 milliseconds
-        await Task.Delay(100);
-
-        // destroy the explosion game object
-        Destroy(TempExplosion);
-
-        // make the package fly towards the truck
-        while (newPackage != null && Vector3.Distance(newPackage.transform.position, packageTruck) > 0.01f)
-        {
-            // move the package to the end of the conveyor belt
-            newPackage.transform.position = Vector3.MoveTowards(newPackage.transform.position, packageTruck, packageExplosionSpeed * Time.deltaTime);
-
-            // wait until the package is at the to the end of the conveyor belt
-            await Task.Yield();
-        }
-
-        // remove the package from the list of current packages
-        currentPackages.Remove(newPackage);
-
-        // destroy the package
-        Destroy(newPackage);
     }
 
     // check the type of block & do its ability

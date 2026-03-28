@@ -1225,9 +1225,6 @@ public class MoveBlocks : MonoBehaviour
         // set game over to true for the pause manager
         PauseManager.instance.isGameOver = true;
 
-        // show the game over object
-        gameOverObject.GetComponent<Renderer>().enabled = true;
-
         // disable the music
         GameObject.Find("MusicManager").SetActive(false);
 
@@ -1242,6 +1239,9 @@ public class MoveBlocks : MonoBehaviour
 
         // unpause the game
         PauseManager.instance.UnpauseGame();
+
+        // show the game over object
+        gameOverObject.GetComponent<Renderer>().enabled = true;
 
         // only if the scene is arcade mode
         if (SceneManager.GetActiveScene().name == "MainGame")

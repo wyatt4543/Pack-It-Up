@@ -12,7 +12,6 @@ public class SpawnBlock : MonoBehaviour
     [SerializeField] private GameObject package;
     public GameObject blockChute;
     private int nextBlockType;
-    private GameObject nextBlock;
     private int blockCount = 0;
 
 
@@ -38,6 +37,8 @@ public class SpawnBlock : MonoBehaviour
 
     // function for creating new blocks
     public void NewBlock(int lineClears = 0, int gameRound = 1, int gameScore = 0, List<GameObject> currentPackages = null, int blockType = -1) {
+        GameObject nextBlock = null;
+
         // assign the default value of currentPackages
         if (currentPackages == null)
         {

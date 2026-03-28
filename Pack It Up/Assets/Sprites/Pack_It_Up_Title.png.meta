@@ -106,7 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pack_It_Up_Title_1
+      name: Pack_It_Up_Title_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Pack_It_Up_Title_0: 2124424624731541885
-      Pack_It_Up_Title_1: 5462333910401041806
+      Pack_It_Up_Title_0: 5462333910401041806
       Pack_It_Up_Title_2: 111678900854696113
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

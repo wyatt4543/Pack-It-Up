@@ -15,6 +15,7 @@ public class MoveBlocks : MonoBehaviour
     private AudioClip gravelSound;
     private AudioClip placeSound;
     private AudioClip lineClearSound;
+    private AudioClip gameOverSound;
 
     // transform variables & script variables & game object variables
     public Transform parentTransform;
@@ -134,6 +135,7 @@ public class MoveBlocks : MonoBehaviour
         gravelSound = Resources.Load<AudioClip>("Sounds/SFX/gravel");
         placeSound = Resources.Load<AudioClip>("Sounds/SFX/place_block");
         lineClearSound = Resources.Load<AudioClip>("Sounds/SFX/line_clear");
+        gameOverSound = Resources.Load<AudioClip>("Sounds/SFX/game_over");
 
         // test for a game over
         if (!ValidMove(0, -1))
@@ -1225,6 +1227,12 @@ public class MoveBlocks : MonoBehaviour
 
         // show the game over object
         gameOverObject.GetComponent<Renderer>().enabled = true;
+
+        // disable the music
+        GameObject.Find("MusicManager").SetActive(false);
+
+        // play the game over sound
+        SFXManager.instance.PlaySFXClip(gameOverSound, transform, 1f);
 
         // only if the scene is arcade mode
         if (SceneManager.GetActiveScene().name == "MainGame")

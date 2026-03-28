@@ -350,6 +350,9 @@ public class MoveBlocks : MonoBehaviour
                 
                 // move the rows down
                 RowDown(i);
+
+                // double check the row
+                i++;
             }
         }
 

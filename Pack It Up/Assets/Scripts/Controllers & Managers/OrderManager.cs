@@ -303,7 +303,8 @@ public class OrderManager : MonoBehaviour
         // set the level completion to true
         PauseManager.instance.levelComplete = true;
 
-        // show the continue button
+        // show the home button & continue button
+        buttonUI.instance.ToggleButton(1);
         buttonUI.instance.ToggleButton(2);
 
         // get the next level number

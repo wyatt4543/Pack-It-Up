@@ -14,6 +14,7 @@ public class MoveBlocks : MonoBehaviour
     private AudioClip waterSound;
     private AudioClip gravelSound;
     private AudioClip placeSound;
+    private AudioClip lineClearSound;
 
     // transform variables & script variables & game object variables
     public Transform parentTransform;
@@ -132,6 +133,7 @@ public class MoveBlocks : MonoBehaviour
         waterSound = Resources.Load<AudioClip>("Sounds/SFX/water");
         gravelSound = Resources.Load<AudioClip>("Sounds/SFX/gravel");
         placeSound = Resources.Load<AudioClip>("Sounds/SFX/place_block");
+        lineClearSound = Resources.Load<AudioClip>("Sounds/SFX/line_clear");
 
         // test for a game over
         if (!ValidMove(0, -1))
@@ -482,6 +484,9 @@ public class MoveBlocks : MonoBehaviour
         // state that the blocks haven't reached the exit box
         bool allReached = false;
 
+        // play the clear line sound effect
+        AudioSource lineClearAudioSource = SFXManager.instance.PlayLoopedSFXClip(lineClearSound, transform, 1f);
+
         while (!allReached)
         {
             // set the varaible keeping track of all of the blocks reaching the exit to true
@@ -530,6 +535,9 @@ public class MoveBlocks : MonoBehaviour
 
         // clear the list
         clearedBlocks.Clear();
+
+        // stop the clear line sound effect
+        Destroy(lineClearAudioSource);
     }
 
 

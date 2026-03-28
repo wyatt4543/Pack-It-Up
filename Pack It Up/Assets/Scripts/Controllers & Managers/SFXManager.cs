@@ -35,6 +35,30 @@ public class SFXManager : MonoBehaviour
         Destroy(audioSource.gameObject, clipLength);
     }
 
+    public AudioSource PlayLoopedSFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
+    {
+        //spawn in gameObject
+        AudioSource audioSource = Instantiate(SFXObject, spawnTransform.position, Quaternion.identity);
+
+        //assign the audioClip
+        audioSource.clip = audioClip;
+
+        //assign volume
+        audioSource.volume = volume;
+
+        //play sound
+        audioSource.Play();
+
+        //get length of SFX clip
+        float clipLength = audioSource.clip.length;
+
+        //loop the SFX clip
+        audioSource.loop = true;
+
+        // give the audio source object
+        return audioSource;
+    }
+
     public void PlayRandomSFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
     {
         //assign a random index

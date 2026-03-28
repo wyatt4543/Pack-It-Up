@@ -13,6 +13,7 @@ public class MoveBlocks : MonoBehaviour
     private AudioClip explosionSound;
     private AudioClip waterSound;
     private AudioClip gravelSound;
+    private AudioClip placeSound;
 
     // transform variables & script variables & game object variables
     public Transform parentTransform;
@@ -130,6 +131,7 @@ public class MoveBlocks : MonoBehaviour
         explosionSound = Resources.Load<AudioClip>("Sounds/SFX/explosion");
         waterSound = Resources.Load<AudioClip>("Sounds/SFX/water");
         gravelSound = Resources.Load<AudioClip>("Sounds/SFX/gravel");
+        placeSound = Resources.Load<AudioClip>("Sounds/SFX/place_block");
 
         // test for a game over
         if (!ValidMove(0, -1))
@@ -226,6 +228,8 @@ public class MoveBlocks : MonoBehaviour
 
     private async Task HandleBlockPlacement()
     {
+        // play the place block sound effect
+        SFXManager.instance.PlaySFXClip(placeSound, transform, 1f);
         // self destruct script on hitting the bottom of the screen & do update stuff
         AddToGrid();
         // function for doing special block actions

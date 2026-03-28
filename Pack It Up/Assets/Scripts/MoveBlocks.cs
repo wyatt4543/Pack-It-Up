@@ -1250,6 +1250,9 @@ public class MoveBlocks : MonoBehaviour
             OrderManager.instance.totalOrdersText.enabled = false;
         }
 
+        // make the score counter say final score
+        scoreCounter.text = "Final Score: " + gameScore;
+
         // hide the text
         roundCounter.enabled = false;
         linesCounter.enabled = false;

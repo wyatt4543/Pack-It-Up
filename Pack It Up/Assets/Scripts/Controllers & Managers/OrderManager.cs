@@ -287,9 +287,6 @@ public class OrderManager : MonoBehaviour
 
         if (currentTotalOrders <= 0)
         {
-            // pause the game
-            PauseManager.instance.PauseGame();
-
             // set the level completion to true
             PauseManager.instance.levelComplete = true;
 
@@ -306,6 +303,9 @@ public class OrderManager : MonoBehaviour
                 PlayerPrefs.SetInt("highestUnlockedLevel", nextLevelNumber);
                 PlayerPrefs.Save();
             }
+
+            // pause the game
+            PauseManager.instance.PauseGame();
 
             // disable the order manager
             gameObject.SetActive(false);

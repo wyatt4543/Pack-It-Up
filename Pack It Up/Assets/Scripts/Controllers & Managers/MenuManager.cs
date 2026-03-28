@@ -10,7 +10,6 @@ public class MenuManager : MonoBehaviour
     private Slider masterVolume;
     private Slider SFXVolume;
     private Slider musicVolume;
-    private Button backButton;
 
     private const string MasterVolumeKey = "MasterVolume";
     private const string SFXVolumeKey = "SFXVolume";
@@ -24,7 +23,6 @@ public class MenuManager : MonoBehaviour
         masterVolume = pauseMenu.transform.Find("Master Volume").gameObject.GetComponent<Slider>();
         SFXVolume = pauseMenu.transform.Find("SFX Volume").gameObject.GetComponent<Slider>();
         musicVolume = pauseMenu.transform.Find("Music Volume").gameObject.GetComponent<Slider>();
-        backButton = pauseMenu.transform.Find("BackButton").gameObject.GetComponent<Button>();
         
         // get the saved sound volume values
         masterVolume.value = PlayerPrefs.GetFloat(MasterVolumeKey, 1f);

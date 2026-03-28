@@ -127,9 +127,13 @@ public class MoveBlocks : MonoBehaviour
         scoreCounter = GameObject.Find("LevelCanvas/ScoreCounter").GetComponent<TextMeshProUGUI>();
         scoreCounter.text = "Score: " + gameScore;
 
-        // hide the new highscore text
-        newHighscoreText = GameObject.Find("LevelCanvas/NewHighscoreText").GetComponent<TextMeshProUGUI>();
-        newHighscoreText.enabled = false;
+        // only if scene is arcade mode
+        if (SceneManager.GetActiveScene().name == "MainGame")
+        {
+            // hide the new highscore text
+            newHighscoreText = GameObject.Find("LevelCanvas/NewHighscoreText").GetComponent<TextMeshProUGUI>();
+            newHighscoreText.enabled = false;
+        }
 
         // Initialize the camera variable
         mainCamera = Camera.main;

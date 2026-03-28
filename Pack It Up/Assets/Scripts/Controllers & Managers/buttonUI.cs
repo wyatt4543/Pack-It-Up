@@ -39,7 +39,7 @@ public class buttonUI : MonoBehaviour
         foreach (Transform levelButton in canvases[1].transform)
         {
             // if the level is not unlocked
-            if (levelButton.gameObject.name[^1] - '0' > highestUnlockedLevel)
+            if (levelButton.gameObject.name[^1] - '0' > highestUnlockedLevel && levelButton.gameObject.name.Contains("Level"))
             {
                 // disable the button for that level
                 levelButton.GetComponent<Button>().interactable = false;

@@ -843,9 +843,9 @@ public class MoveBlocks : MonoBehaviour
             // destroy the package
             Destroy(newPackage);
         }
-        catch (System.OperationCanceledException)
+        catch (Exception)
         {
-            Debug.Log("Package creation cancelled because MoveBlocks was destroyed.");
+            Debug.Log("Stopped the package");
         }
     }
 

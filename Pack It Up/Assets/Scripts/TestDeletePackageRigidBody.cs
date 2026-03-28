@@ -49,6 +49,9 @@ public class TestDeletePackageRigidBody : MonoBehaviour
         // move the next block to the chat bubble
         nextBlock.transform.localPosition = new Vector2(-0.6f, 0);
 
+        // unrotate the next block
+        nextBlock.transform.localRotation = Quaternion.identity;
+
         // remove the box flaps
         if (nextBlock.name.Contains("BoxBlock"))
         {

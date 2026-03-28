@@ -1234,8 +1234,14 @@ public class MoveBlocks : MonoBehaviour
         // play the game over sound
         SFXManager.instance.PlaySFXClip(gameOverSound, transform, 1f);
 
+        // pause the game
+        PauseManager.instance.PauseGame();
+
         // wait for the game over sound to complete
         await Task.Delay(391);
+
+        // unpause the game
+        PauseManager.instance.UnpauseGame();
 
         // only if the scene is arcade mode
         if (SceneManager.GetActiveScene().name == "MainGame")

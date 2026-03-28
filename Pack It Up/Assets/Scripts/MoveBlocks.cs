@@ -601,6 +601,9 @@ public class MoveBlocks : MonoBehaviour
                 int roundedX = Mathf.RoundToInt(children.position.x);
                 int roundedY = Mathf.RoundToInt(children.position.y);
 
+                // make sure the value doesn't get rounded to -1
+                roundedY = Mathf.Max(roundedY, 0);
+
                 //add the block to the grid
                 grid[roundedX, roundedY] = children;
             }

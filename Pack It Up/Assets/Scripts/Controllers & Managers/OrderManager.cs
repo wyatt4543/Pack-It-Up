@@ -15,6 +15,7 @@ public class OrderManager : MonoBehaviour
     private RectTransform currentOrder;
     private int customOrder = -1;
     private bool winFunctionCalled = false;
+    private GameObject continueBackground;
 
     // delivery truck stuff
     [SerializeField] private GameObject deliveryTruck;
@@ -44,6 +45,10 @@ public class OrderManager : MonoBehaviour
         totalOrdersText = GameObject.Find("LevelCanvas/TotalOrders").GetComponent<TextMeshProUGUI>();
         ordersList = GameObject.Find("LevelCanvas/OrdersList").GetComponent<Image>();
         ordersHolder = GameObject.Find("LevelCanvas/Orders").GetComponent<RectTransform>();
+        continueBackground = GameObject.Find("LevelCanvas/ContinueBackground");
+
+        // hide the continue background
+        continueBackground.SetActive(false);
 
         // assign the delivery truck animator
         deliveryTruckAnimator = deliveryTruck.GetComponent<Animator>();
@@ -302,6 +307,9 @@ public class OrderManager : MonoBehaviour
 
         // set the level completion to true
         PauseManager.instance.levelComplete = true;
+
+        // show the continue background
+        continueBackground.SetActive(true);
 
         // show the home button & continue button
         buttonUI.instance.ToggleButton(1);

@@ -138,7 +138,7 @@ public class MoveBlocks : MonoBehaviour
         gameOverSound = Resources.Load<AudioClip>("Sounds/SFX/game_over");
 
         // test for a game over
-        if (!ValidMove(0, -1))
+        if (!ValidMove(0, -1) && !PauseManager.instance.isGameOver)
         {
             EndGame();
         }
@@ -1233,6 +1233,9 @@ public class MoveBlocks : MonoBehaviour
 
         // play the game over sound
         SFXManager.instance.PlaySFXClip(gameOverSound, transform, 1f);
+
+        // wait for the game over sound to complete
+        await Task.Delay(391);
 
         // only if the scene is arcade mode
         if (SceneManager.GetActiveScene().name == "MainGame")

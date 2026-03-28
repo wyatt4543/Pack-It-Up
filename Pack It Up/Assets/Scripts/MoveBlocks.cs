@@ -86,12 +86,6 @@ public class MoveBlocks : MonoBehaviour
     private float rotateDragBlockInput;
     private PlayerInput playerInput;
 
-    private void Awake()
-    {
-        // unpause the game
-        PauseManager.instance.UnpauseGame();
-    }
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

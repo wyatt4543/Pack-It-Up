@@ -12,6 +12,9 @@ public class PauseManager : MonoBehaviour
 
     public void Awake()
     {
+        // unpause the game
+        PauseManager.instance.UnpauseGame();
+
         if (instance == null)
         {
             instance = this;

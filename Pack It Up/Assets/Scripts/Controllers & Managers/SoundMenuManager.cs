@@ -1,7 +1,5 @@
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class SoundMenuManager : MonoBehaviour
 {

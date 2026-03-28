@@ -1269,6 +1269,9 @@ public class MoveBlocks : MonoBehaviour
             // update the final score text position
             scoreCounter.rectTransform.anchoredPosition = new Vector2(0, 260);
 
+            // update the text box width
+            scoreCounter.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 1200);
+
             // update the final score text size
             scoreCounter.fontSize = 72;
 

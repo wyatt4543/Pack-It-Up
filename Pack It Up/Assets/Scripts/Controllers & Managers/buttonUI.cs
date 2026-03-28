@@ -252,6 +252,9 @@ public class buttonUI : MonoBehaviour
         // destroy current packages in the level
         DestroyPackages();
 
+        // actually allow unpauses
+        PauseManager.instance.levelComplete = false;
+
         // unpause the game
         PauseManager.instance.UnpauseGame();
 

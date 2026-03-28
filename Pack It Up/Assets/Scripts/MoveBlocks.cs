@@ -89,6 +89,9 @@ public class MoveBlocks : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // set the buttonUI's current move block script
+        buttonUI.instance.currentMoveBlocksScript = this;
+
         // Initialize player input for various game objects
         playerInput = GetComponent<PlayerInput>();
         PauseManager.instance.playerInput = playerInput;
@@ -138,12 +141,6 @@ public class MoveBlocks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // destroy the move script if the scene is changing
-        if (buttonUI.instance.moveScriptDestroy)
-        {
-            Destroy(this);
-        }
-
         // check if dialogue is active
         if (Dialogue.instance != null)
         {

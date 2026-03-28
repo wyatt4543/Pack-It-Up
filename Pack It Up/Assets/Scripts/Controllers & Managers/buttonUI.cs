@@ -14,7 +14,7 @@ public class buttonUI : MonoBehaviour
     private bool triggerTitleDoorOpen = false;
     private string nextLevel;
 
-    public bool moveScriptDestroy = false;
+    public MoveBlocks currentMoveBlocksScript;
     
     // collect a list of all of the buttons, images, and canvases
     public Button[] buttons;
@@ -327,8 +327,8 @@ public class buttonUI : MonoBehaviour
 
     public void DestroyPackages()
     {
-        // tell the move script to destroy itself
-        moveScriptDestroy = true;
+        // destroy the move blocks script
+        Destroy(currentMoveBlocksScript);
 
         // find all active GameObjects in the scene
         GameObject[] allGameObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);

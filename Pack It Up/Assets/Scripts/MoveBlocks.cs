@@ -229,7 +229,7 @@ public class MoveBlocks : MonoBehaviour
     private async Task HandleBlockPlacement()
     {
         // play the place block sound effect
-        SFXManager.instance.PlaySFXClip(placeSound, transform, 1f);
+        SFXManager.instance.PlayPitchedSFXClip(placeSound, transform, 1f);
         // self destruct script on hitting the bottom of the screen & do update stuff
         AddToGrid();
         // function for doing special block actions

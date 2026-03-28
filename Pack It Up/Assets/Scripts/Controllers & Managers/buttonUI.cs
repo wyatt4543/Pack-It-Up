@@ -40,6 +40,7 @@ public class buttonUI : MonoBehaviour
     {
         // assign the sound effects
         doorOpenSound = Resources.Load<AudioClip>("Sounds/SFX/door_open");
+        doorCloseSound = Resources.Load<AudioClip>("Sounds/SFX/door_close");
 
         // if scene is the main menu
         if (SceneManager.GetActiveScene().name == mainMenu)
@@ -115,6 +116,9 @@ public class buttonUI : MonoBehaviour
         }
         else
         {
+            // play the door close sound effect
+            SFXManager.instance.PlaySFXClip(doorCloseSound, transform, 1f);
+
             // hide everything except the back button in the level selection menu
             ToggleNotBackButton(1);
 
@@ -176,6 +180,9 @@ public class buttonUI : MonoBehaviour
         }
         else
         {
+            // play the door close sound effect
+            SFXManager.instance.PlaySFXClip(doorCloseSound, transform, 1f);
+
             // hide everything except the back button in the settings menu
             ToggleNotBackButton(3);
 
@@ -222,6 +229,9 @@ public class buttonUI : MonoBehaviour
         }
         else
         {
+            // play the door close sound effect
+            SFXManager.instance.PlaySFXClip(doorCloseSound, transform, 1f);
+
             // hide everything except the back button in the credits menu
             ToggleNotBackButton(2);
 

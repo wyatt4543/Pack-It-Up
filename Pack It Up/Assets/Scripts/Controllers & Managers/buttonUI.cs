@@ -32,29 +32,29 @@ public class buttonUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // set the unlocked levels
-        int highestUnlockedLevel = PlayerPrefs.GetInt("highestUnlockedLevel", 1);
-
-        // loop through the levels & disable the not unlocked levels
-        foreach (Transform levelButton in canvases[1].transform)
-        {
-            // if the level is not unlocked
-            if (levelButton.gameObject.name[^1] - '0' > highestUnlockedLevel && levelButton.gameObject.name.Contains("Level"))
-            {
-                // disable the button for that level
-                levelButton.GetComponent<Button>().interactable = false;
-            }
-            // if the level is unlocked
-            else
-            {
-                // make its button interactible
-                levelButton.GetComponent<Button>().interactable = true;
-            }
-        }
-
         // if scene is the main menu
         if (SceneManager.GetActiveScene().name == mainMenu)
         {
+            // set the unlocked levels
+            int highestUnlockedLevel = PlayerPrefs.GetInt("highestUnlockedLevel", 1);
+
+            // loop through the levels & disable the not unlocked levels
+            foreach (Transform levelButton in canvases[1].transform)
+            {
+                // if the level is not unlocked
+                if (levelButton.gameObject.name[^1] - '0' > highestUnlockedLevel && levelButton.gameObject.name.Contains("Level"))
+                {
+                    // disable the button for that level
+                    levelButton.GetComponent<Button>().interactable = false;
+                }
+                // if the level is unlocked
+                else
+                {
+                    // make its button interactible
+                    levelButton.GetComponent<Button>().interactable = true;
+                }
+            }
+
             // hide the currently unused canvases
             ToggleCanvas(1);
             ToggleCanvas(2);

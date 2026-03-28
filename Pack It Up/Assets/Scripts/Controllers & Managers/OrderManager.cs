@@ -14,6 +14,7 @@ public class OrderManager : MonoBehaviour
     private GameObject tempOrder;
     private RectTransform currentOrder;
     private int customOrder = -1;
+    private bool winFunctionCalled = false;
 
     // delivery truck stuff
     [SerializeField] private GameObject deliveryTruck;
@@ -287,28 +288,42 @@ public class OrderManager : MonoBehaviour
 
         if (currentTotalOrders <= 0)
         {
-            // set the level completion to true
-            PauseManager.instance.levelComplete = true;
-
-            // show the continue button
-            buttonUI.instance.ToggleButton(2);
-
-            // get the next level number
-            int nextLevelNumber = SceneManager.GetActiveScene().name[^1] - '0' + 1;
-
-            // check if the next level number is higher than current highest unlocked level
-            if (nextLevelNumber > PlayerPrefs.GetInt("highestUnlockedLevel", 1))
+            if (!winFunctionCalled)
             {
-                // if it is set the highest unlocked level to the next level 
-                PlayerPrefs.SetInt("highestUnlockedLevel", nextLevelNumber);
-                PlayerPrefs.Save();
+                WinFunction();
             }
-
-            // pause the game
-            PauseManager.instance.PauseGame();
-
-            // disable the order manager
-            gameObject.SetActive(false);
         }
+    }
+
+    public async void WinFunction()
+    {
+        // state that the win function has been called
+        winFunctionCalled = true;
+
+        // set the level completion to true
+        PauseManager.instance.levelComplete = true;
+
+        // show the continue button
+        buttonUI.instance.ToggleButton(2);
+
+        // get the next level number
+        int nextLevelNumber = SceneManager.GetActiveScene().name[^1] - '0' + 1;
+
+        // check if the next level number is higher than current highest unlocked level
+        if (nextLevelNumber > PlayerPrefs.GetInt("highestUnlockedLevel", 1))
+        {
+            // if it is set the highest unlocked level to the next level 
+            PlayerPrefs.SetInt("highestUnlockedLevel", nextLevelNumber);
+            PlayerPrefs.Save();
+        }
+
+        // wait until everything has loaded
+        await Task.Yield();
+
+        // pause the game
+        PauseManager.instance.PauseGame();
+
+        // disable the order manager
+        gameObject.SetActive(false);
     }
 }

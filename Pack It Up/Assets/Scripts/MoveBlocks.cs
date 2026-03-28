@@ -1218,7 +1218,7 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // end the game upon loss
-    private void EndGame()
+    private async void EndGame()
     {
         // set game over to true for the pause manager
         PauseManager.instance.isGameOver = true;
@@ -1257,6 +1257,9 @@ public class MoveBlocks : MonoBehaviour
         // show the restart button & home button
         buttonUI.instance.ToggleButton(0);
         buttonUI.instance.ToggleButton(1);
+
+        // wait until everything has loaded
+        await Task.Yield();
 
         // pause the game
         PauseManager.instance.PauseGame();

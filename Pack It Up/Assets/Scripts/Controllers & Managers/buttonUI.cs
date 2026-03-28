@@ -258,6 +258,8 @@ public class buttonUI : MonoBehaviour
     // function for adding the behavior of heading back to the main menu
     public void HomeButton()
     {
+        PauseManager.instance.levelComplete = false;
+
         // destroy current packages in the level
         DestroyPackages();
         PauseManager.instance.UnpauseGame();

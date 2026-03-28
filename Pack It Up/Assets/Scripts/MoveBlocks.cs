@@ -27,6 +27,7 @@ public class MoveBlocks : MonoBehaviour
     private TextMeshProUGUI roundCounter;
     private TextMeshProUGUI linesCounter;
     private TextMeshProUGUI scoreCounter;
+    private TextMeshProUGUI newHighscoreText;
 
     // gameboard variables
     public static int width = 10;
@@ -125,6 +126,10 @@ public class MoveBlocks : MonoBehaviour
         // update the game score display
         scoreCounter = GameObject.Find("LevelCanvas/ScoreCounter").GetComponent<TextMeshProUGUI>();
         scoreCounter.text = "Score: " + gameScore;
+
+        // hide the new highscore text
+        newHighscoreText = GameObject.Find("LevelCanvas/NewHighscoreText").GetComponent<TextMeshProUGUI>();
+        newHighscoreText.gameObject.SetActive(false);
 
         // Initialize the camera variable
         mainCamera = Camera.main;
@@ -1264,6 +1269,9 @@ public class MoveBlocks : MonoBehaviour
             // update the score position upon loss
             scoreCounter.GetComponent<RectTransform>().anchoredPosition = new Vector2(-360, 0);
 
+            // show the new highscore text
+            newHighscoreText.gameObject.SetActive(true);
+
             // if the highscore is a new highscore
             if (Leaderboard.instance.IsHighScore(gameScore))
             {
@@ -1279,6 +1287,9 @@ public class MoveBlocks : MonoBehaviour
                 // unpause the game
                 PauseManager.instance.UnpauseGame();
             }
+
+            // hide the new highscore text
+            newHighscoreText.gameObject.SetActive(false);
 
             // show the leaderboard object
             Leaderboard.instance.gameObject.SetActive(true);

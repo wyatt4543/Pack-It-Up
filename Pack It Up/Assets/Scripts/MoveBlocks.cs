@@ -1244,6 +1244,17 @@ public class MoveBlocks : MonoBehaviour
         // show the game over object
         gameOverObject.GetComponent<Renderer>().enabled = true;
 
+        // make the score counter say final score
+        scoreCounter.text = "Final Score: " + gameScore;
+
+        // hide the text
+        roundCounter.enabled = false;
+        linesCounter.enabled = false;
+
+        // show the restart button & home button
+        buttonUI.instance.ToggleButton(0);
+        buttonUI.instance.ToggleButton(1);
+
         // only if the scene is arcade mode
         if (SceneManager.GetActiveScene().name == "MainGame")
         {
@@ -1251,7 +1262,7 @@ public class MoveBlocks : MonoBehaviour
             if (Leaderboard.instance.IsHighScore(gameScore))
             {
                 // play the fanfare sound
-                SFXManager.instance.PlaySFXClip(gameOverSound, transform, 1f);
+                SFXManager.instance.PlaySFXClip(fanfareSound, transform, 1f);
 
                 // pause the game
                 PauseManager.instance.PauseGame();
@@ -1295,17 +1306,6 @@ public class MoveBlocks : MonoBehaviour
             // update the final score text alignment
             scoreCounter.alignment = TextAlignmentOptions.Center;
         }
-
-        // make the score counter say final score
-        scoreCounter.text = "Final Score: " + gameScore;
-
-        // hide the text
-        roundCounter.enabled = false;
-        linesCounter.enabled = false;
-
-        // show the restart button & home button
-        buttonUI.instance.ToggleButton(0);
-        buttonUI.instance.ToggleButton(1);
 
         // wait until everything has loaded
         await Task.Yield();

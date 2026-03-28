@@ -138,6 +138,12 @@ public class MoveBlocks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // destroy the move script if the scene is changing
+        if (buttonUI.instance.moveScriptDestroy)
+        {
+            Destroy(this);
+        }
+
         // check if dialogue is active
         if (Dialogue.instance != null)
         {

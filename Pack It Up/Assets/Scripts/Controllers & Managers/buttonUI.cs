@@ -13,6 +13,8 @@ public class buttonUI : MonoBehaviour
     [SerializeField] private Animator titleDoorAnimator;
     private bool triggerTitleDoorOpen = false;
     private string nextLevel;
+
+    public bool moveScriptDestroy = false;
     
     // collect a list of all of the buttons, images, and canvases
     public Button[] buttons;
@@ -325,12 +327,15 @@ public class buttonUI : MonoBehaviour
 
     public void DestroyPackages()
     {
-        // Find all active GameObjects in the scene
+        // tell the move script to destroy itself
+        moveScriptDestroy = true;
+
+        // find all active GameObjects in the scene
         GameObject[] allGameObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
 
         foreach (GameObject package in allGameObjects)
         {
-            // Check if the object's name contains the specified partialName
+            // check if the object's name contains the package name
             if (package.name.Contains(packageObjectName))
             {
                 Destroy(package);

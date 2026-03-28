@@ -333,6 +333,14 @@ public class buttonUI : MonoBehaviour
         // destroy the move blocks script
         Destroy(currentMoveBlocksScript);
 
+        // destroy the current next block in the chat bubble
+        Transform ChatBubble = GameObject.Find("GameBoard").transform.Find("ChatBubble");
+
+        if (ChatBubble.childCount > 0)
+        {
+            Destroy(ChatBubble.GetChild(0));
+        }
+
         // find all active GameObjects in the scene
         GameObject[] allGameObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
 

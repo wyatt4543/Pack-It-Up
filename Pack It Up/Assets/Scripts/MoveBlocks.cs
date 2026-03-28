@@ -1239,7 +1239,7 @@ public class MoveBlocks : MonoBehaviour
             scoreCounter.GetComponent<RectTransform>().SetParent(Leaderboard.instance.inputFieldPanel.transform, false);
 
             // update the score position upon loss
-            scoreCounter.GetComponent<RectTransform>().anchoredPosition = new Vector2(-140, 0);
+            scoreCounter.GetComponent<RectTransform>().anchoredPosition = new Vector2(-360, 0);
         }
         else
         {

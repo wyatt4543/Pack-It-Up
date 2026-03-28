@@ -338,7 +338,7 @@ public class buttonUI : MonoBehaviour
 
         if (ChatBubble.childCount > 0)
         {
-            Destroy(ChatBubble.GetChild(0));
+            Destroy(ChatBubble.GetChild(0).gameObject);
         }
 
         // find all active GameObjects in the scene

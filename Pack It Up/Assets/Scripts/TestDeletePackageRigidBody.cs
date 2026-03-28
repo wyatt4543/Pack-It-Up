@@ -38,7 +38,10 @@ public class TestDeletePackageRigidBody : MonoBehaviour
         nextBlock.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 
         // destroy the previous next block
-        Destroy(chatBubble.transform.GetChild(0).gameObject);
+        if (chatBubble.transform.childCount > 0)
+        {
+            Destroy(chatBubble.transform.GetChild(0).gameObject);
+        }
 
         // make the chat bubble the parent of the next block
         nextBlock.transform.parent = chatBubble.transform;

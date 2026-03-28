@@ -296,6 +296,17 @@ public class OrderManager : MonoBehaviour
             // show the continue button
             buttonUI.instance.ToggleButton(2);
 
+            // get the next level number
+            int nextLevelNumber = SceneManager.GetActiveScene().name[^1] - '0' + 1;
+
+            // check if the next level number is higher than current highest unlocked level
+            if (nextLevelNumber > PlayerPrefs.GetInt("highestUnlockedLevel", 1))
+            {
+                // if it is set the highest unlocked level to the next level 
+                PlayerPrefs.SetInt("highestUnlockedLevel", nextLevelNumber);
+                PlayerPrefs.Save();
+            }
+
             // disable the order manager
             gameObject.SetActive(false);
         }

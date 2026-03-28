@@ -32,6 +32,26 @@ public class buttonUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // set the unlocked levels
+        int highestUnlockedLevel = PlayerPrefs.GetInt("highestUnlockedLevel", 1);
+
+        // loop through the levels & disable the not unlocked levels
+        foreach (Button levelButton in canvases[1].transform)
+        {
+            // if the level is not unlocked
+            if (levelButton.gameObject.name[^1] - '0' > highestUnlockedLevel)
+            {
+                // disable the button for that level
+                levelButton.interactable = false;
+            }
+            // if the level is unlocked
+            else
+            {
+                // make its button interactible
+                levelButton.interactable = true;
+            }
+        }
+
         // if scene is the main menu
         if (SceneManager.GetActiveScene().name == mainMenu)
         {
@@ -316,5 +336,11 @@ public class buttonUI : MonoBehaviour
                 Destroy(package);
             }
         }
+    }
+
+    public void ResetProgress()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

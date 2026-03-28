@@ -36,19 +36,19 @@ public class buttonUI : MonoBehaviour
         int highestUnlockedLevel = PlayerPrefs.GetInt("highestUnlockedLevel", 1);
 
         // loop through the levels & disable the not unlocked levels
-        foreach (Button levelButton in canvases[1].transform)
+        foreach (Transform levelButton in canvases[1].transform)
         {
             // if the level is not unlocked
             if (levelButton.gameObject.name[^1] - '0' > highestUnlockedLevel)
             {
                 // disable the button for that level
-                levelButton.interactable = false;
+                levelButton.GetComponent<Button>().interactable = false;
             }
             // if the level is unlocked
             else
             {
                 // make its button interactible
-                levelButton.interactable = true;
+                levelButton.GetComponent<Button>().interactable = true;
             }
         }
 

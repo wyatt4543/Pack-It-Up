@@ -1265,6 +1265,15 @@ public class MoveBlocks : MonoBehaviour
             OrderManager.instance.ordersHolder.gameObject.SetActive(false);
             OrderManager.instance.currentOrderText.enabled = false;
             OrderManager.instance.totalOrdersText.enabled = false;
+
+            // update the final score text position
+            scoreCounter.rectTransform.anchoredPosition = new Vector2(0, 260);
+
+            // update the final score text size
+            scoreCounter.fontSize = 72;
+
+            // update the final score text alignment
+            scoreCounter.alignment = TextAlignmentOptions.Center;
         }
 
         // make the score counter say final score

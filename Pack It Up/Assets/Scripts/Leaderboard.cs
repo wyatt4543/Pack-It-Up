@@ -60,7 +60,7 @@ public class Leaderboard : MonoBehaviour
         }
     }
 
-    private bool IsHighScore(int score)
+    public bool IsHighScore(int score)
     {
         // Check if the score is higher than the 10th (lowest) score on the board
         if (highScoresData.highScores.Count < 10)

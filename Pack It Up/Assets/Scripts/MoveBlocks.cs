@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -16,6 +15,7 @@ public class MoveBlocks : MonoBehaviour
     private AudioClip placeSound;
     private AudioClip lineClearSound;
     private AudioClip gameOverSound;
+    private AudioClip fanfareSound;
 
     // transform variables & script variables & game object variables
     public Transform parentTransform;
@@ -136,6 +136,7 @@ public class MoveBlocks : MonoBehaviour
         placeSound = Resources.Load<AudioClip>("Sounds/SFX/place_block");
         lineClearSound = Resources.Load<AudioClip>("Sounds/SFX/line_clear");
         gameOverSound = Resources.Load<AudioClip>("Sounds/SFX/game_over");
+        fanfareSound = Resources.Load<AudioClip>("Sounds/SFX/fanfare");
 
         // test for a game over
         if (!ValidMove(0, -1) && !PauseManager.instance.isGameOver)
@@ -1246,6 +1247,22 @@ public class MoveBlocks : MonoBehaviour
         // only if the scene is arcade mode
         if (SceneManager.GetActiveScene().name == "MainGame")
         {
+            // if the highscore is a new highscore
+            if (Leaderboard.instance.IsHighScore(gameScore))
+            {
+                // play the fanfare sound
+                SFXManager.instance.PlaySFXClip(gameOverSound, transform, 1f);
+
+                // pause the game
+                PauseManager.instance.PauseGame();
+
+                // wait for the fanfare sound to complete
+                await Task.Delay(1735);
+
+                // unpause the game
+                PauseManager.instance.UnpauseGame();
+            }
+
             // show the leaderboard object
             Leaderboard.instance.gameObject.SetActive(true);
 

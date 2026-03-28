@@ -129,7 +129,7 @@ public class MoveBlocks : MonoBehaviour
 
         // hide the new highscore text
         newHighscoreText = GameObject.Find("LevelCanvas/NewHighscoreText").GetComponent<TextMeshProUGUI>();
-        newHighscoreText.gameObject.SetActive(false);
+        newHighscoreText.enabled = false;
 
         // Initialize the camera variable
         mainCamera = Camera.main;
@@ -1270,7 +1270,7 @@ public class MoveBlocks : MonoBehaviour
             scoreCounter.GetComponent<RectTransform>().anchoredPosition = new Vector2(-360, 0);
 
             // show the new highscore text
-            newHighscoreText.gameObject.SetActive(true);
+            newHighscoreText.enabled = true;
 
             // if the highscore is a new highscore
             if (Leaderboard.instance.IsHighScore(gameScore))
@@ -1289,7 +1289,7 @@ public class MoveBlocks : MonoBehaviour
             }
 
             // hide the new highscore text
-            newHighscoreText.gameObject.SetActive(false);
+            newHighscoreText.enabled = false;
 
             // show the leaderboard object
             Leaderboard.instance.gameObject.SetActive(true);

@@ -1258,6 +1258,12 @@ public class MoveBlocks : MonoBehaviour
         // only if the scene is arcade mode
         if (SceneManager.GetActiveScene().name == "MainGame")
         {
+            // make the score a child of the input field
+            scoreCounter.GetComponent<RectTransform>().SetParent(Leaderboard.instance.inputFieldPanel.transform, false);
+
+            // update the score position upon loss
+            scoreCounter.GetComponent<RectTransform>().anchoredPosition = new Vector2(-360, 0);
+
             // if the highscore is a new highscore
             if (Leaderboard.instance.IsHighScore(gameScore))
             {
@@ -1279,12 +1285,6 @@ public class MoveBlocks : MonoBehaviour
 
             // set the new score if possible
             Leaderboard.instance.SetCurrentScore(gameScore);
-
-            // make the score a child of the input field
-            scoreCounter.GetComponent<RectTransform>().SetParent(Leaderboard.instance.inputFieldPanel.transform, false);
-
-            // update the score position upon loss
-            scoreCounter.GetComponent<RectTransform>().anchoredPosition = new Vector2(-360, 0);
         }
         else
         {

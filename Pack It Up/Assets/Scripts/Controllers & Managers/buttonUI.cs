@@ -14,6 +14,10 @@ public class buttonUI : MonoBehaviour
     private bool triggerTitleDoorOpen = false;
     private string nextLevel;
 
+    //sound effect variables
+    private AudioClip doorOpenSound;
+    private AudioClip doorCloseSound;
+
     public MoveBlocks currentMoveBlocksScript;
     
     // collect a list of all of the buttons, images, and canvases
@@ -34,6 +38,9 @@ public class buttonUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // assign the sound effects
+        doorOpenSound = Resources.Load<AudioClip>("Sounds/SFX/door_open");
+
         // if scene is the main menu
         if (SceneManager.GetActiveScene().name == mainMenu)
         {
@@ -88,6 +95,9 @@ public class buttonUI : MonoBehaviour
         // check if the main menu is open
         if (canvases[0].enabled)
         {
+            // play the door open sound effect
+            SFXManager.instance.PlaySFXClip(doorOpenSound, transform, 1f);
+
             // instantly hide the title
             ToggleImage(0);
 
@@ -146,6 +156,9 @@ public class buttonUI : MonoBehaviour
         // check if the main menu is open
         if (canvases[0].enabled)
         {
+            // play the door open sound effect
+            SFXManager.instance.PlaySFXClip(doorOpenSound, transform, 1f);
+
             // instantly hide the title
             ToggleImage(0);
 
@@ -189,6 +202,9 @@ public class buttonUI : MonoBehaviour
         // check if the main menu is open
         if (canvases[0].enabled)
         {
+            // play the door open sound effect
+            SFXManager.instance.PlaySFXClip(doorOpenSound, transform, 1f);
+
             // instantly hide the title
             ToggleImage(0);
 

@@ -24,7 +24,7 @@ public class MenuManager : MonoBehaviour
         masterVolume = pauseMenu.transform.Find("Master Volume").gameObject.GetComponent<Slider>();
         SFXVolume = pauseMenu.transform.Find("SFX Volume").gameObject.GetComponent<Slider>();
         musicVolume = pauseMenu.transform.Find("Music Volume").gameObject.GetComponent<Slider>();
-        pauseButton = GameObject.Find("LevelCanvas/PauseButton");
+        pauseButton = pauseMenu.transform.Find("PauseButton").gameObject;
         
         // get the saved sound volume values
         masterVolume.value = PlayerPrefs.GetFloat(MasterVolumeKey, 1f);

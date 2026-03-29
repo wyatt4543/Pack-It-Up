@@ -259,6 +259,7 @@ public class buttonUI : MonoBehaviour
     {
         // make it so the game can actually be unpaused
         PauseManager.instance.levelComplete = false;
+        PauseManager.instance.isGameOver = false;
 
         // unpause the game
         PauseManager.instance.UnpauseGame();
@@ -268,6 +269,10 @@ public class buttonUI : MonoBehaviour
 
     // function for adding the behavior of restarting the game
     public void RestartButton() {
+        // make it so the game can actually be unpaused
+        PauseManager.instance.levelComplete = false;
+        PauseManager.instance.isGameOver = false;
+
         // unpause the game
         PauseManager.instance.UnpauseGame();
         // load the current scene on restart
@@ -276,8 +281,9 @@ public class buttonUI : MonoBehaviour
 
     // function for continuing to the next level
     public void ContinueButton() {
-        // actually allow unpauses
+        // make it so the game can actually be unpaused
         PauseManager.instance.levelComplete = false;
+        PauseManager.instance.isGameOver = false;
 
         // unpause the game
         PauseManager.instance.UnpauseGame();

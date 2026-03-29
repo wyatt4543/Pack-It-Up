@@ -263,17 +263,17 @@ public class MoveBlocks : MonoBehaviour
             await CursedBlocks(_cts.Token);
             await CheckForLines(_cts.Token);
             if (_cts.Token.IsCancellationRequested) return;
+
+            // do not create a new block if the scene is changing
+            if (this == null || !gameObject.activeInHierarchy) return;
+            spawnBlockScript.NewBlock(lineClears, gameRound, gameScore, currentPackages);
+            Destroy(gameObject.GetComponent<PlayerInput>());
+            Destroy(this);
         }
         catch (OperationCanceledException)
         {
             Debug.Log("Stopped async functions.");
         }
-
-        // do not create a new block if the scene is changing
-        if (this == null || !gameObject.activeInHierarchy) return;
-        spawnBlockScript.NewBlock(lineClears, gameRound, gameScore, currentPackages);
-        Destroy(gameObject.GetComponent<PlayerInput>());
-        Destroy(this);
     }
 
     // get player inputs

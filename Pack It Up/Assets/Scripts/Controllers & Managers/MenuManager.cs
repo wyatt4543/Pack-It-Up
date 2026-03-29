@@ -71,19 +71,13 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    // open or close the pause menu
-    public void UpdateSoundMenu()
-    {
-        menuOpen = !menuOpen;
-        pauseMenu.SetActive(menuOpen);
-    }
-
     // pause function
     public void Pause()
     {
         pauseButton.SetActive(false);
         PauseManager.instance.PauseGame();
-        UpdateSoundMenu();
+        menuOpen = true;
+        pauseMenu.SetActive(menuOpen);
     }
 
     // unpause function
@@ -91,7 +85,8 @@ public class MenuManager : MonoBehaviour
     {
         pauseButton.SetActive(true);
         PauseManager.instance.UnpauseGame();
-        UpdateSoundMenu();
+        menuOpen = false;
+        pauseMenu.SetActive(menuOpen);
     }
 
     // functions to save the volume changes

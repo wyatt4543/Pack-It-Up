@@ -56,7 +56,7 @@ public class MenuManager : MonoBehaviour
 
     public void PauseUnpause()
     {
-        if (!PauseManager.instance.isGameOver || !PauseManager.instance.levelComplete)
+        if (!PauseManager.instance.isGameOver && !PauseManager.instance.levelComplete)
         {
             if (!PauseManager.instance.IsPaused)
             {

@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     private Slider masterVolume;
     private Slider SFXVolume;
     private Slider musicVolume;
+    private GameObject pauseButton;
 
     private const string MasterVolumeKey = "MasterVolume";
     private const string SFXVolumeKey = "SFXVolume";
@@ -23,6 +24,7 @@ public class MenuManager : MonoBehaviour
         masterVolume = pauseMenu.transform.Find("Master Volume").gameObject.GetComponent<Slider>();
         SFXVolume = pauseMenu.transform.Find("SFX Volume").gameObject.GetComponent<Slider>();
         musicVolume = pauseMenu.transform.Find("Music Volume").gameObject.GetComponent<Slider>();
+        pauseButton = GameObject.Find("LevelCanvas/PauseButton");
         
         // get the saved sound volume values
         masterVolume.value = PlayerPrefs.GetFloat(MasterVolumeKey, 1f);
@@ -54,25 +56,17 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void PauseUnpause(GameObject pauseButton = null)
+    public void PauseUnpause()
     {
         if (!PauseManager.instance.isGameOver && !PauseManager.instance.levelComplete)
         {
             if (!PauseManager.instance.IsPaused)
             {
                 Pause();
-                if (pauseButton != null)
-                {
-                    pauseButton.SetActive(false);
-                }
             }
             else
             {
                 Unpause();
-                if (pauseButton != null)
-                {
-                    pauseButton.SetActive(true);
-                }
             }
         }
     }
@@ -87,6 +81,7 @@ public class MenuManager : MonoBehaviour
     // pause function
     public void Pause()
     {
+        pauseButton.SetActive(false);
         PauseManager.instance.PauseGame();
         UpdateSoundMenu();
     }
@@ -94,6 +89,7 @@ public class MenuManager : MonoBehaviour
     // unpause function
     public void Unpause()
     {
+        pauseButton.SetActive(true);
         PauseManager.instance.UnpauseGame();
         UpdateSoundMenu();
     }

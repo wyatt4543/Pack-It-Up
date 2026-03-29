@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     private Slider masterVolume;
     private Slider SFXVolume;
     private Slider musicVolume;
+    private bool toggleLock = false;
 
     private const string MasterVolumeKey = "MasterVolume";
     private const string SFXVolumeKey = "SFXVolume";
@@ -56,8 +57,13 @@ public class MenuManager : MonoBehaviour
 
     public void PauseUnpause()
     {
+        // stop pause and unpause from being spammed
+        if (toggleLock) return;
+
         if (!PauseManager.instance.isGameOver && !PauseManager.instance.levelComplete)
         {
+            toggleLock = true;
+
             if (!PauseManager.instance.IsPaused)
             {
                 Pause();
@@ -66,7 +72,16 @@ public class MenuManager : MonoBehaviour
             {
                 Unpause();
             }
+
+            // wait 0.2 seconds before allowing a pause
+            Invoke("ReleaseToggleLock", 0.2f);
         }
+    }
+
+    // release the lock on the pause button
+    private void ReleaseToggleLock()
+    {
+        toggleLock = false;
     }
 
     // open or close the pause menu

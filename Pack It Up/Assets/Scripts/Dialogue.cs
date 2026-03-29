@@ -16,6 +16,9 @@ public class Dialogue : MonoBehaviour
 
     public bool DialogueActive { get; private set; }
 
+    // input variable
+    public PlayerInput playerInput;
+
     private void Awake()
     {
         if (instance == null)
@@ -101,10 +104,7 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PauseManager.instance.GotChanged)
-            return;
-
-        if (Mouse.current.leftButton.wasPressedThisFrame && !PauseManager.instance.IsPaused)
+        if (playerInput.actions["ContinueDialog"].WasReleasedThisFrame() && !PauseManager.instance.IsPaused)
         {
             if (textComponent.text == dialogLines[index])
             {

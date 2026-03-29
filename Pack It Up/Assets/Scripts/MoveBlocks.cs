@@ -110,6 +110,7 @@ public class MoveBlocks : MonoBehaviour
         // Initialize player input for various game objects
         playerInput = GetComponent<PlayerInput>();
         PauseManager.instance.playerInput = playerInput;
+        Dialogue.instance.playerInput = playerInput;
 
         // Initialize timers
         defaultFallTimer = Mathf.Pow((0.8f - ((gameRound - 1) * 0.007f)), gameRound - 1);

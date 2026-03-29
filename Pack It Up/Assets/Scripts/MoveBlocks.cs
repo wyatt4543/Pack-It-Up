@@ -899,9 +899,9 @@ public class MoveBlocks : MonoBehaviour
             // destroy the package
             Destroy(newPackage);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            Debug.Log("Stopped the package");
+            Debug.LogError(ex);
         }
     }
 

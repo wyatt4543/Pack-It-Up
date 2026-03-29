@@ -255,31 +255,31 @@ public class buttonUI : MonoBehaviour
     }
 
     // function for adding the behavior of heading back to the main menu
-    public void HomeButton()
+    public async void HomeButton()
     {
         // make it so the game can actually be unpaused
         PauseManager.instance.levelComplete = false;
 
         // destroy current packages in the level
-        DestroyScene();
+        await DestroyScene();
         SceneManager.LoadScene(mainMenu);
     }
 
     // function for adding the behavior of restarting the game
-    public void RestartButton() {
+    public async void RestartButton() {
         // destroy current packages in the level
-        DestroyScene();
+        await DestroyScene();
         // load the current scene on restart
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // function for continuing to the next level
-    public void ContinueButton() {
+    public async void ContinueButton() {
         // actually allow unpauses
         PauseManager.instance.levelComplete = false;
 
         // destroy current packages in the level
-        DestroyScene();
+        await DestroyScene();
 
         // update the nextLevel string
         nextLevel = "Level " + (SceneManager.GetActiveScene().name[^1] - '0' + 1);
@@ -351,7 +351,7 @@ public class buttonUI : MonoBehaviour
         }
     }
 
-    public void DestroyScene()
+    public async Task DestroyScene()
     {
         // unpause the game
         PauseManager.instance.UnpauseGame();
@@ -364,5 +364,8 @@ public class buttonUI : MonoBehaviour
         {
             Destroy(go);
         }
+
+        // wait 1 second
+        await Task.Delay(1000);
     }
 }

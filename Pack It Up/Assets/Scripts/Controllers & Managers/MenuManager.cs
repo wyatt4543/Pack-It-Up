@@ -54,17 +54,25 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void PauseUnpause()
+    public void PauseUnpause(GameObject pauseButton = null)
     {
         if (!PauseManager.instance.isGameOver && !PauseManager.instance.levelComplete)
         {
             if (!PauseManager.instance.IsPaused)
             {
                 Pause();
+                if (pauseButton != null)
+                {
+                    pauseButton.SetActive(false);
+                }
             }
             else
             {
                 Unpause();
+                if (pauseButton != null)
+                {
+                    pauseButton.SetActive(true);
+                }
             }
         }
     }

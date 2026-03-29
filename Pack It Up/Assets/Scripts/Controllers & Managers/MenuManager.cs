@@ -123,7 +123,7 @@ public class MenuManager : MonoBehaviour
     private void TogglePauseMenu() {
         foreach (Transform pauseObject in pauseMenu.transform)
         {
-            if (pauseObject.gameObject != pauseButton)
+            if (pauseObject.gameObject.name != "PauseButton")
             {
                 pauseObject.gameObject.SetActive(!pauseObject.gameObject.activeInHierarchy);
             }

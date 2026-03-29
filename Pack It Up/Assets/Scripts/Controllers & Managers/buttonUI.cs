@@ -255,31 +255,32 @@ public class buttonUI : MonoBehaviour
     }
 
     // function for adding the behavior of heading back to the main menu
-    public async void HomeButton()
+    public void HomeButton()
     {
         // make it so the game can actually be unpaused
         PauseManager.instance.levelComplete = false;
 
-        // destroy current packages in the level
-        await DestroyScene();
+        // unpause the game
+        PauseManager.instance.UnpauseGame();
+
         SceneManager.LoadScene(mainMenu);
     }
 
     // function for adding the behavior of restarting the game
-    public async void RestartButton() {
-        // destroy current packages in the level
-        await DestroyScene();
+    public void RestartButton() {
+        // unpause the game
+        PauseManager.instance.UnpauseGame();
         // load the current scene on restart
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // function for continuing to the next level
-    public async void ContinueButton() {
+    public void ContinueButton() {
         // actually allow unpauses
         PauseManager.instance.levelComplete = false;
 
-        // destroy current packages in the level
-        await DestroyScene();
+        // unpause the game
+        PauseManager.instance.UnpauseGame();
 
         // update the nextLevel string
         nextLevel = "Level " + (SceneManager.GetActiveScene().name[^1] - '0' + 1);
@@ -349,23 +350,5 @@ public class buttonUI : MonoBehaviour
                 children.SetActive(true);
             }
         }
-    }
-
-    public async Task DestroyScene()
-    {
-        // unpause the game
-        PauseManager.instance.UnpauseGame();
-
-        // find all active GameObjects in the scene
-        GameObject[] allGameObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
-
-        // destroy all game objects
-        foreach (GameObject go in allGameObjects)
-        {
-            Destroy(go);
-        }
-
-        // wait until the function is finished
-        await Task.Yield();
     }
 }

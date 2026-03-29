@@ -101,6 +101,9 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseManager.instance.GotChanged)
+            return;
+
         if (Mouse.current.leftButton.wasPressedThisFrame && !PauseManager.instance.IsPaused)
         {
             if (textComponent.text == dialogLines[index])

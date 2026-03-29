@@ -266,7 +266,7 @@ public class MoveBlocks : MonoBehaviour
         }
         catch (OperationCanceledException)
         {
-            // Task was cancelled, do nothing
+            Debug.Log("Stopped async functions.");
         }
 
         // do not create a new block if the scene is changing

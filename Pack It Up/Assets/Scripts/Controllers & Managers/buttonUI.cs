@@ -25,7 +25,6 @@ public class buttonUI : MonoBehaviour
     public Canvas[] canvases;
     public Image[] images;
     [SerializeField] private GameObject[] settingsPages;
-    private string packageObjectName = "Package";
 
     private void Awake()
     {
@@ -262,30 +261,25 @@ public class buttonUI : MonoBehaviour
         PauseManager.instance.levelComplete = false;
 
         // destroy current packages in the level
-        DestroyPackages();
-        PauseManager.instance.UnpauseGame();
+        DestroyScene();
         SceneManager.LoadScene(mainMenu);
     }
 
     // function for adding the behavior of restarting the game
     public void RestartButton() {
         // destroy current packages in the level
-        DestroyPackages();
-        PauseManager.instance.UnpauseGame();
+        DestroyScene();
         // load the current scene on restart
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // function for continuing to the next level
     public void ContinueButton() {
-        // destroy current packages in the level
-        DestroyPackages();
-
         // actually allow unpauses
         PauseManager.instance.levelComplete = false;
 
-        // unpause the game
-        PauseManager.instance.UnpauseGame();
+        // destroy current packages in the level
+        DestroyScene();
 
         // update the nextLevel string
         nextLevel = "Level " + (SceneManager.GetActiveScene().name[^1] - '0' + 1);
@@ -357,29 +351,18 @@ public class buttonUI : MonoBehaviour
         }
     }
 
-    public void DestroyPackages()
+    public void DestroyScene()
     {
-        // destroy the move blocks script
-        Destroy(currentMoveBlocksScript);
-
-        // destroy the current next block in the chat bubble
-        Transform ChatBubble = GameObject.Find("GameBoard").transform.Find("ChatBubble");
-
-        if (ChatBubble.childCount > 0)
-        {
-            Destroy(ChatBubble.GetChild(0).gameObject);
-        }
+        // unpause the game
+        PauseManager.instance.UnpauseGame();
 
         // find all active GameObjects in the scene
         GameObject[] allGameObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
 
-        foreach (GameObject package in allGameObjects)
+        // destroy all game objects
+        foreach (GameObject go in allGameObjects)
         {
-            // check if the object's name contains the package name
-            if (package.name.Contains(packageObjectName))
-            {
-                Destroy(package);
-            }
+            Destroy(go);
         }
     }
 }

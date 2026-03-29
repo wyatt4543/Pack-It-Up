@@ -268,7 +268,9 @@ public class MoveBlocks : MonoBehaviour
         {
             // Task was cancelled, do nothing
         }
-        
+
+        // do not create a new block if the scene is changing
+        if (this == null || !gameObject.activeInHierarchy) return;
         spawnBlockScript.NewBlock(lineClears, gameRound, gameScore, currentPackages);
         Destroy(gameObject.GetComponent<PlayerInput>());
         Destroy(this);
@@ -1156,6 +1158,9 @@ public class MoveBlocks : MonoBehaviour
                     grid[roundedX, roundedY] = null;
                 }
             }
+
+            // do not create a new block if the scene is changing
+            if (this == null || !gameObject.activeInHierarchy) return;
 
             // spawn a new piece
             spawnBlockScript.NewBlock(lineClears, gameRound, gameScore, currentPackages);

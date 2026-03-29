@@ -26,7 +26,7 @@ public class MenuManager : MonoBehaviour
         pauseButton = pauseMenu.transform.Find("PauseButton").gameObject;
 
         // disable everything except the pause button
-        TogglePauseMenu();
+        TogglePauseMenu(false);
 
         // get the saved sound volume values
         masterVolume.value = PlayerPrefs.GetFloat(MasterVolumeKey, 1f);
@@ -76,23 +76,21 @@ public class MenuManager : MonoBehaviour
     // pause function
     public void Pause()
     {
-        // enable everything except the pause button
-        TogglePauseMenu();
         pauseButton.SetActive(false);
         PauseManager.instance.PauseGame();
         menuOpen = true;
-        pauseMenu.SetActive(menuOpen);
+        // enable everything except the pause button
+        TogglePauseMenu(menuOpen);
     }
 
     // unpause function
     public void Unpause()
-    {
-        // disable everything except the pause button
-        TogglePauseMenu();
+    {   
         pauseButton.SetActive(true);
         PauseManager.instance.UnpauseGame();
         menuOpen = false;
-        pauseMenu.SetActive(menuOpen);
+        // disable everything except the pause button
+        TogglePauseMenu(menuOpen);
     }
 
     // functions to save the volume changes
@@ -120,12 +118,12 @@ public class MenuManager : MonoBehaviour
         return value;
     }
 
-    private void TogglePauseMenu() {
+    private void TogglePauseMenu(bool showPauseMenu) {
         foreach (Transform pauseObject in pauseMenu.transform)
         {
             if (pauseObject.gameObject.name != "PauseButton")
             {
-                pauseObject.gameObject.SetActive(!pauseObject.gameObject.activeInHierarchy);
+                pauseObject.gameObject.SetActive(showPauseMenu);
             }
         }
     }

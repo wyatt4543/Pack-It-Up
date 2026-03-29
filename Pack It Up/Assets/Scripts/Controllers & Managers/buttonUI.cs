@@ -365,7 +365,7 @@ public class buttonUI : MonoBehaviour
             Destroy(go);
         }
 
-        // wait 1 second
-        await Task.Delay(1000);
+        // wait until the function is finished
+        await Task.Yield();
     }
 }

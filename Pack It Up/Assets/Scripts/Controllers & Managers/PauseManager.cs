@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 public class PauseManager : MonoBehaviour
 {
     public static PauseManager instance;
-    public PlayerInput playerInput;
+    private PlayerInput playerInput;
+    private GameObject Spawner;
     public bool isGameOver = false;
     public bool levelComplete = false;
 
@@ -16,6 +17,15 @@ public class PauseManager : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    public void Start()
+    {
+        // find the spawner game object
+        GameObject.Find("Spawner");
+
+        // Initialize player input
+        playerInput = Spawner.GetComponent<PlayerInput>();
     }
 
     public void PauseGame()

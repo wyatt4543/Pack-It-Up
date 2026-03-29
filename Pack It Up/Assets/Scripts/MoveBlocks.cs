@@ -89,6 +89,7 @@ public class MoveBlocks : MonoBehaviour
     private Vector2 moveInput;
     private float rotateInput;
     private float rotateDragBlockInput;
+    private GameObject Spawner;
     private PlayerInput playerInput;
 
     // make a variable for stopping async functions from running
@@ -107,10 +108,11 @@ public class MoveBlocks : MonoBehaviour
         // set the buttonUI's current move block script
         buttonUI.instance.currentMoveBlocksScript = this;
 
-        // Initialize player input for various game objects
-        playerInput = GetComponent<PlayerInput>();
-        PauseManager.instance.playerInput = playerInput;
-        Dialogue.instance.playerInput = playerInput;
+        // find the spawner game object
+        GameObject.Find("Spawner");
+
+        // Initialize player input
+        playerInput = Spawner.GetComponent<PlayerInput>();
 
         // Initialize timers
         defaultFallTimer = Mathf.Pow((0.8f - ((gameRound - 1) * 0.007f)), gameRound - 1);
@@ -268,7 +270,6 @@ public class MoveBlocks : MonoBehaviour
             // do not create a new block if the scene is changing
             if (this == null || !gameObject.activeInHierarchy) return;
             spawnBlockScript.NewBlock(lineClears, gameRound, gameScore, currentPackages);
-            Destroy(gameObject.GetComponent<PlayerInput>());
             Destroy(this);
         }
         catch (OperationCanceledException)

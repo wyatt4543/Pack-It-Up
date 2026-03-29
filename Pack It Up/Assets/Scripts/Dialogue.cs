@@ -16,8 +16,9 @@ public class Dialogue : MonoBehaviour
 
     public bool DialogueActive { get; private set; }
 
-    // input variable
-    public PlayerInput playerInput;
+    // input variables
+    private PlayerInput playerInput;
+    private GameObject Spawner;
 
     private void Awake()
     {
@@ -99,6 +100,15 @@ public class Dialogue : MonoBehaviour
 
             RestartDialogue();
         }
+    }
+
+    public void Start()
+    {
+        // find the spawner game object
+        GameObject.Find("Spawner");
+
+        // Initialize player input
+        playerInput = Spawner.GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame

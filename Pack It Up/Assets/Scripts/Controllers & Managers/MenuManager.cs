@@ -19,13 +19,15 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         pauseMenu = GameObject.Find("PauseMenuCanvas");
-        pauseMenu.SetActive(false);
         soundMixer = GameObject.Find("SoundMixerManager").GetComponent<SoundMixerManager>();
         masterVolume = pauseMenu.transform.Find("Master Volume").gameObject.GetComponent<Slider>();
         SFXVolume = pauseMenu.transform.Find("SFX Volume").gameObject.GetComponent<Slider>();
         musicVolume = pauseMenu.transform.Find("Music Volume").gameObject.GetComponent<Slider>();
         pauseButton = pauseMenu.transform.Find("PauseButton").gameObject;
-        
+
+        // disable everything except the pause button
+        TogglePauseMenu();
+
         // get the saved sound volume values
         masterVolume.value = PlayerPrefs.GetFloat(MasterVolumeKey, 1f);
         SFXVolume.value = PlayerPrefs.GetFloat(SFXVolumeKey, 1f);
@@ -74,6 +76,8 @@ public class MenuManager : MonoBehaviour
     // pause function
     public void Pause()
     {
+        // enable everything except the pause button
+        TogglePauseMenu();
         pauseButton.SetActive(false);
         PauseManager.instance.PauseGame();
         menuOpen = true;
@@ -83,6 +87,8 @@ public class MenuManager : MonoBehaviour
     // unpause function
     public void Unpause()
     {
+        // disable everything except the pause button
+        TogglePauseMenu();
         pauseButton.SetActive(true);
         PauseManager.instance.UnpauseGame();
         menuOpen = false;
@@ -112,5 +118,15 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat(MusicVolumeKey, value);
         PlayerPrefs.Save();
         return value;
+    }
+
+    private void TogglePauseMenu() {
+        foreach (Transform pauseObject in pauseMenu.transform)
+        {
+            if (pauseObject.gameObject != pauseButton)
+            {
+                pauseObject.gameObject.SetActive(!pauseObject.gameObject.activeInHierarchy);
+            }
+        }
     }
 }

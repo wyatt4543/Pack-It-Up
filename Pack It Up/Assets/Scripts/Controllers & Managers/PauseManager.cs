@@ -30,14 +30,11 @@ public class PauseManager : MonoBehaviour
 
     public void UnpauseGame()
     {
-        if (!levelComplete)
-        {
-            // unpause time
-            IsPaused = false;
-            Time.timeScale = 1f;
+        // unpause time
+        IsPaused = false;
+        Time.timeScale = 1f;
 
-            // switch the action map
-            playerInput.SwitchCurrentActionMap("Player");
-        }
+        // switch the action map
+        playerInput.SwitchCurrentActionMap("Player");
     }
 }

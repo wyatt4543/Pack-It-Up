@@ -384,7 +384,7 @@ public class MoveBlocks : MonoBehaviour
         if (singlePlaceClears > 0)
         {
             // create a package if there was at least one line clear
-            CreatePackage(token);
+            CreatePackage();
         }
 
         // increase the score by a certain amount based on the number of line clears in one placement
@@ -832,7 +832,7 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // function for creating packages from completed lines
-    private async void CreatePackage(CancellationToken token)
+    private async void CreatePackage()
     {
         try
         {
@@ -849,7 +849,6 @@ public class MoveBlocks : MonoBehaviour
             while (newPackage != null && Vector3.Distance(newPackage.transform.position, new Vector2(newPackage.transform.position.x, landedY)) > 0.1f)
             {
                 await Task.Yield();
-                token.ThrowIfCancellationRequested();
             }
 
             // destroy the rigid body once the package is close and assign its y to the landed y
@@ -864,7 +863,6 @@ public class MoveBlocks : MonoBehaviour
 
                 // wait until the package is at the to the end of the conveyor belt
                 await Task.Yield();
-                token.ThrowIfCancellationRequested();
             }
 
             // stop the package at the end of the conveyor belt
@@ -877,7 +875,7 @@ public class MoveBlocks : MonoBehaviour
             SFXManager.instance.PlaySFXClip(explosionSound, newPackage.transform, 1f);
 
             // wait 100 milliseconds
-            await Task.Delay(100, token);
+            await Task.Delay(100);
 
             // destroy the explosion game object
             Destroy(TempExplosion);
@@ -890,7 +888,6 @@ public class MoveBlocks : MonoBehaviour
 
                 // wait until the package is at the to the end of the conveyor belt
                 await Task.Yield();
-                token.ThrowIfCancellationRequested();
             }
 
             // remove the package from the list of current packages

@@ -1122,6 +1122,34 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1227333777}
+    - target: {fileID: 3008555243964201105, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008555243964201105, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008555243964201105, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8604443368544204138}
+    - target: {fileID: 3008555243964201105, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008555243964201105, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseUnpause
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008555243964201105, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008555243964201105, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3428476728853702932, guid: 27c55ef62ef727946bf79030ca8c5cbe, type: 3}
       propertyPath: m_Name
       value: PauseMenuCanvas

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -90,6 +92,16 @@ public class MoveBlocks : MonoBehaviour
     private float rotateDragBlockInput;
     private PlayerInput playerInput;
 
+    // make a variable for stopping async functions from running
+    private CancellationTokenSource _cts = new CancellationTokenSource();
+
+    // when the game object is destroyed
+    private void OnDestroy()
+    {
+        _cts.Cancel();
+        _cts.Dispose();
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -150,7 +162,7 @@ public class MoveBlocks : MonoBehaviour
         // test for a game over
         if (!ValidMove(0, -1) && !PauseManager.instance.isGameOver)
         {
-            EndGame();
+            EndGame(_cts.Token);
         }
     }
 
@@ -247,8 +259,17 @@ public class MoveBlocks : MonoBehaviour
         // self destruct script on hitting the bottom of the screen & do update stuff
         AddToGrid();
         // function for doing special block actions
-        await CursedBlocks();
-        await CheckForLines();
+        try
+        {
+            await CursedBlocks(_cts.Token);
+            await CheckForLines(_cts.Token);
+            if (_cts.Token.IsCancellationRequested) return;
+        }
+        catch (OperationCanceledException)
+        {
+            // Task was cancelled, do nothing
+        }
+        
         spawnBlockScript.NewBlock(lineClears, gameRound, gameScore, currentPackages);
         Destroy(gameObject.GetComponent<PlayerInput>());
         Destroy(this);
@@ -335,18 +356,20 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // function for doing line clears
-    public async Task CheckForLines()
+    public async Task CheckForLines(CancellationToken token)
     {
         for (int i = height - 1; i >= 0; i--)
         {
+            if (token.IsCancellationRequested) return;
+
             // if line clear
             if (HasLine(i))
             {
                 // delete the line with the line clear
-                await DeleteLine(i);
+                await DeleteLine(i, token);
 
                 // animate the pieces leaving the board
-                await AnimateLine();
+                await AnimateLine(token);
                 
                 // move the rows down
                 RowDown(i);
@@ -360,7 +383,7 @@ public class MoveBlocks : MonoBehaviour
         if (singlePlaceClears > 0)
         {
             // create a package if there was at least one line clear
-            CreatePackage();
+            CreatePackage(token);
         }
 
         // increase the score by a certain amount based on the number of line clears in one placement
@@ -402,7 +425,7 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // function for deleting lines
-    public async Task DeleteLine(int i)
+    public async Task DeleteLine(int i, CancellationToken token)
     {
         // variable for testing for the x position of the half block;
         int halfBlockX;
@@ -487,11 +510,12 @@ public class MoveBlocks : MonoBehaviour
 
         // wait for the delete line function to complete
         await Task.Yield();
+        token.ThrowIfCancellationRequested();
     }
 
 
     // function for animating the blocks leaving the board
-    private async Task AnimateLine()
+    private async Task AnimateLine(CancellationToken token)
     {
         // state that the blocks haven't reached the exit box
         bool allReached = false;
@@ -537,6 +561,7 @@ public class MoveBlocks : MonoBehaviour
 
             // wait until all of the squares are cleared
             await Task.Yield();
+            token.ThrowIfCancellationRequested();
         }
 
         // destroy all of the squares
@@ -806,7 +831,7 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // function for creating packages from completed lines
-    private async void CreatePackage()
+    private async void CreatePackage(CancellationToken token)
     {
         try
         {
@@ -823,6 +848,7 @@ public class MoveBlocks : MonoBehaviour
             while (newPackage != null && Vector3.Distance(newPackage.transform.position, new Vector2(newPackage.transform.position.x, landedY)) > 0.1f)
             {
                 await Task.Yield();
+                token.ThrowIfCancellationRequested();
             }
 
             // destroy the rigid body once the package is close and assign its y to the landed y
@@ -837,6 +863,7 @@ public class MoveBlocks : MonoBehaviour
 
                 // wait until the package is at the to the end of the conveyor belt
                 await Task.Yield();
+                token.ThrowIfCancellationRequested();
             }
 
             // stop the package at the end of the conveyor belt
@@ -849,7 +876,7 @@ public class MoveBlocks : MonoBehaviour
             SFXManager.instance.PlaySFXClip(explosionSound, newPackage.transform, 1f);
 
             // wait 100 milliseconds
-            await Task.Delay(100);
+            await Task.Delay(100, token);
 
             // destroy the explosion game object
             Destroy(TempExplosion);
@@ -862,6 +889,7 @@ public class MoveBlocks : MonoBehaviour
 
                 // wait until the package is at the to the end of the conveyor belt
                 await Task.Yield();
+                token.ThrowIfCancellationRequested();
             }
 
             // remove the package from the list of current packages
@@ -877,7 +905,7 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // check the type of block & do its ability
-    private async Task CursedBlocks()
+    private async Task CursedBlocks(CancellationToken token)
     {
         // functionality for the bomb block
         if (gameObject.name == "BombBlock")
@@ -890,7 +918,7 @@ public class MoveBlocks : MonoBehaviour
             ExplosionAnimation(grid[roundedX, roundedY].gameObject.transform.GetComponent<SpriteRenderer>());
 
             // wait 100 milliseconds
-            await Task.Delay(100);
+            await Task.Delay(100, token);
 
             // hide the bomb
             grid[roundedX, roundedY].gameObject.transform.GetComponent<SpriteRenderer>().enabled = false;
@@ -936,7 +964,7 @@ public class MoveBlocks : MonoBehaviour
                                 }
 
                                 // wait 100 milliseconds
-                                await Task.Delay(100);
+                                await Task.Delay(100, token);
 
                                 // destroy the explosion game object
                                 Destroy(TempExplosion);
@@ -948,7 +976,7 @@ public class MoveBlocks : MonoBehaviour
                                 ExplosionAnimation(grid[checkX, checkY].gameObject.transform.GetComponent<SpriteRenderer>());
 
                                 // wait 100 milliseconds
-                                await Task.Delay(100);
+                                await Task.Delay(100, token);
 
                                 // destroy the game object around the bomb
                                 Destroy(grid[checkX, checkY].gameObject);
@@ -997,7 +1025,7 @@ public class MoveBlocks : MonoBehaviour
                         if (newY != y)
                         {
                             // add a delay for until the next water falls down
-                            await Task.Delay(300);
+                            await Task.Delay(300, token);
 
                             // update the grid
                             grid[j, newY] = grid[j, y];
@@ -1085,7 +1113,7 @@ public class MoveBlocks : MonoBehaviour
                         if (newY != y)
                         {
                             // add a delay for until the next gravel column falls down
-                            await Task.Delay(100);
+                            await Task.Delay(100, token);
 
                             // update the grid
                             grid[j, newY] = grid[j, y];
@@ -1233,7 +1261,7 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // end the game upon loss
-    private async void EndGame()
+    private async void EndGame(CancellationToken token)
     {
         // set game over to true for the pause manager
         PauseManager.instance.isGameOver = true;
@@ -1248,7 +1276,7 @@ public class MoveBlocks : MonoBehaviour
         PauseManager.instance.PauseGame();
 
         // wait for the game over sound to complete
-        await Task.Delay(391);
+        await Task.Delay(391, token);
 
         // unpause the game
         PauseManager.instance.UnpauseGame();
@@ -1289,7 +1317,7 @@ public class MoveBlocks : MonoBehaviour
                 PauseManager.instance.PauseGame();
 
                 // wait for the fanfare sound to complete
-                await Task.Delay(1735);
+                await Task.Delay(1735, token);
 
                 // unpause the game
                 PauseManager.instance.UnpauseGame();
@@ -1327,6 +1355,7 @@ public class MoveBlocks : MonoBehaviour
 
         // wait until everything has loaded
         await Task.Yield();
+        token.ThrowIfCancellationRequested();
 
         // pause the game
         PauseManager.instance.PauseGame();

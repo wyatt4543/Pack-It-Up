@@ -105,7 +105,7 @@ public class Dialogue : MonoBehaviour
     public void Start()
     {
         // find the spawner game object
-        GameObject.Find("Spawner");
+        Spawner = GameObject.Find("Spawner");
 
         // Initialize player input
         playerInput = Spawner.GetComponent<PlayerInput>();

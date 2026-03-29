@@ -109,7 +109,7 @@ public class MoveBlocks : MonoBehaviour
         buttonUI.instance.currentMoveBlocksScript = this;
 
         // find the spawner game object
-        GameObject.Find("Spawner");
+        Spawner = GameObject.Find("Spawner");
 
         // Initialize player input
         playerInput = Spawner.GetComponent<PlayerInput>();

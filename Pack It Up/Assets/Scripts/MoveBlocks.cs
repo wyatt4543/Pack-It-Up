@@ -296,15 +296,11 @@ public class MoveBlocks : MonoBehaviour
     // get player inputs
     public void PlayerMovement(InputAction.CallbackContext context)
     {
-        print("called action:" + context.action.name);
         if (context.action.name == "Move")
         {
             moveInput = context.ReadValue<Vector2>();
             movementX = Mathf.Ceil(moveInput.x);
             movementY = Mathf.Ceil(moveInput.y);
-            print("move input: " + moveInput);
-            print("movementX:" + movementX);
-            print("movementY:" + movementY);
         }
         else if (context.action.name == "Rotate")
         {
@@ -759,11 +755,6 @@ public class MoveBlocks : MonoBehaviour
         {
             foreach (Transform children in currentBlock.transform)
             {
-                print("name:" + children.name);
-                print("x:" + children.position.x);
-                print("y:" + children.position.y);
-                print("xUpdate:" + xUpdate);
-                print("yUpdate:" + yUpdate);
                 // round the x and y positions
                 int roundedX = Mathf.RoundToInt(children.position.x);
                 int roundedY = Mathf.RoundToInt(children.position.y);
@@ -788,7 +779,6 @@ public class MoveBlocks : MonoBehaviour
             }
         }
 
-        print("bad move");
         // allow movement if no collison or getting out of bounds
         return true;
     }

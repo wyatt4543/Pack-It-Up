@@ -93,7 +93,7 @@ public class MoveBlocks : MonoBehaviour
     private Vector2 moveInput;
     private float rotateInput;
     private float rotateDragBlockInput;
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
 
     // make a variable for stopping async functions from running
     private CancellationTokenSource _cts = new CancellationTokenSource();
@@ -115,9 +115,6 @@ public class MoveBlocks : MonoBehaviour
             {
                 instance = this;
             }
-
-            // Initialize player input
-            playerInput = GetComponent<PlayerInput>();
         }
     }
 
@@ -299,11 +296,15 @@ public class MoveBlocks : MonoBehaviour
     // get player inputs
     public void PlayerMovement(InputAction.CallbackContext context)
     {
+        print("called action:" + context.action.name);
         if (context.action.name == "Move")
         {
             moveInput = context.ReadValue<Vector2>();
             movementX = Mathf.Ceil(moveInput.x);
             movementY = Mathf.Ceil(moveInput.y);
+            print("move input: " + moveInput);
+            print("movementX:" + movementX);
+            print("movementY:" + movementY);
         }
         else if (context.action.name == "Rotate")
         {

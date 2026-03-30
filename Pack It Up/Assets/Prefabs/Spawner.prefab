@@ -125,3 +125,5 @@ MonoBehaviour:
   numberDisplaySprites: []
   explosionSprite: {fileID: 0}
   explosionObject: {fileID: 0}
+  currentBlock: {fileID: 0}
+  playerInput: {fileID: 5274565018375146068}

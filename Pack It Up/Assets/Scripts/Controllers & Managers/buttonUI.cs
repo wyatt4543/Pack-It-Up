@@ -17,8 +17,6 @@ public class buttonUI : MonoBehaviour
     //sound effect variables
     private AudioClip doorOpenSound;
     private AudioClip doorCloseSound;
-
-    public MoveBlocks currentMoveBlocksScript;
     
     // collect a list of all of the buttons, images, and canvases
     public Button[] buttons;

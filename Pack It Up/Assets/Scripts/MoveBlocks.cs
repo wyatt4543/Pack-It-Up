@@ -117,7 +117,7 @@ public class MoveBlocks : MonoBehaviour
             }
 
             // Initialize player input
-            playerInput = gameObject.GetComponent<PlayerInput>();
+            playerInput = instance.gameObject.GetComponent<PlayerInput>();
         }
     }
 
@@ -131,9 +131,6 @@ public class MoveBlocks : MonoBehaviour
             instance.rotationPoint = currentBlock.GetComponent<MoveBlocks>().rotationPoint;
             Destroy(gameObject.GetComponent<MoveBlocks>());
         }
-
-        // set the buttonUI's current move block script
-        buttonUI.instance.currentMoveBlocksScript = this;
 
         // Initialize timers
         defaultFallTimer = Mathf.Pow((0.8f - ((gameRound - 1) * 0.007f)), gameRound - 1);

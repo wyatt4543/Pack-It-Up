@@ -126,10 +126,9 @@ public class MoveBlocks : MonoBehaviour
     {
         if (gameObject.name != "Spawner")
         {
-            instance.currentBlock = gameObject;
-            instance.parentTransform = currentBlock.GetComponent<MoveBlocks>().parentTransform;
-            instance.rotationPoint = currentBlock.GetComponent<MoveBlocks>().rotationPoint;
-            Destroy(gameObject.GetComponent<MoveBlocks>());
+            instance.parentTransform = this.parentTransform;
+            instance.rotationPoint = this.rotationPoint;
+            Destroy(this);
         }
 
         // Initialize timers

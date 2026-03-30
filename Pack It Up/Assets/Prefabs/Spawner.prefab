@@ -99,7 +99,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: 600b189d-111a-4b43-a707-1117d2ee820a
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &4936975690605649368
@@ -114,3 +114,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f7a5cc286a1894e9f4ccc0033e9bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputs
+  currentMoveBlockScript: {fileID: 0}
+  playerInput: {fileID: 0}

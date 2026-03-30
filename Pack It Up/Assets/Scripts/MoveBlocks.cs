@@ -195,8 +195,8 @@ public class MoveBlocks : MonoBehaviour
             if (Dialogue.instance.DialogueActive) { return; }
         }
 
-        // wait until the instance is made
-        if (instance == null || instance.currentBlock == null || instance.parentTransform == null || instance.rotationPoint == null ) { return; }
+        // wait until the instance is made and that all the variables are assigned
+        if (instance == null || instance.currentBlock == null || instance.parentTransform == null || instance.rotationPoint == null) { return; }
 
         // movement for the drag block
         if (gameObject.name == "DragBlock" && !PauseManager.instance.IsPaused)

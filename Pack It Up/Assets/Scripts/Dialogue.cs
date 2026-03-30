@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -114,6 +115,12 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // stop the dialog from hogging control over the clicking
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if (playerInput.actions["ContinueDialog"].WasReleasedThisFrame() && !PauseManager.instance.IsPaused)
         {
             if (textComponent.text == dialogLines[index])

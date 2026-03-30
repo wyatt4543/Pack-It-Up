@@ -177,6 +177,12 @@ public class MoveBlocks : MonoBehaviour
         gameOverSound = Resources.Load<AudioClip>("Sounds/SFX/game_over");
         fanfareSound = Resources.Load<AudioClip>("Sounds/SFX/fanfare");
 
+        // don't test for game over on the first block
+        if (currentBlock == null)
+        {
+            return;
+        }
+
         // test for a game over
         if (!ValidMove(0, -1) && !PauseManager.instance.isGameOver)
         {

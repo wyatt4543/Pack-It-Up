@@ -36,8 +36,8 @@ public class MoveBlocks : MonoBehaviour
     private static Transform[,] grid = new Transform[width, height];
 
     // movement variables
-    //public float movementX;
-    //public float movementY;
+    public float movementX;
+    public float movementY;
 
     // rotation variables
     public Vector2 rotationPoint;
@@ -46,6 +46,8 @@ public class MoveBlocks : MonoBehaviour
     // calculation for the speed per round: (0.8-((level-1)*0.007))^(level-1)
     public int lineClears;
     public int gameRound;
+    private float defaultFallTimer;
+    private float fallTimer;
 
     // clear line animation variables
     private List<GameObject> clearedBlocks = new List<GameObject>();
@@ -76,11 +78,18 @@ public class MoveBlocks : MonoBehaviour
     public GameObject explosionObject;
     private bool placingBlock = false;
 
+    // timer variables
+    private float defaultAutoMoveTimer = 0.1f;
+    private float defaultAutoMoveCapTimer = 1.0f / 60.0f;
+    private float autoMoveTimer;
+    private float autoMoveCapTimer;
+    private bool quickDrop = false;
+
     // input variables
-    //public float rotateInput;
-    // public float rotateDragBlockInput;
+    public float rotateInput;
+    public float rotateDragBlockInput;
     private GameObject Spawner;
-    //private PlayerInput playerInput;
+    private PlayerInput playerInput;
 
     // make a variable for stopping async functions from running
     private CancellationTokenSource _cts = new CancellationTokenSource();
@@ -103,6 +112,12 @@ public class MoveBlocks : MonoBehaviour
 
         // Initialize player input
         playerInput = Spawner.GetComponent<PlayerInput>();
+
+        // Initialize timers
+        defaultFallTimer = Mathf.Pow((0.8f - ((gameRound - 1) * 0.007f)), gameRound - 1);
+        fallTimer = defaultFallTimer;
+        autoMoveTimer = defaultAutoMoveTimer;
+        autoMoveCapTimer = defaultAutoMoveCapTimer;
 
         // Initialize spawn block script
         spawnBlockScript = FindFirstObjectByType<SpawnBlock>();
@@ -165,6 +180,27 @@ public class MoveBlocks : MonoBehaviour
         if (gameObject.name == "DragBlock" && !PauseManager.instance.IsPaused)
         {
             DragBlockMove(Mathf.RoundToInt(parentTransform.position.x));
+        }
+
+        // normal move left and right
+        if (playerInput.actions["Move"].WasPressedThisFrame())
+        {
+            Move();
+        }
+
+        // test for auto move
+        if (playerInput.actions["Move"].IsPressed() && !(playerInput.actions["Move"].WasPressedThisFrame()))
+        {
+            // test if enough time has passed for automove
+            if ((autoMoveTimer -= Time.deltaTime) < 0) 
+            {
+                // cap the automovement to 60 movements per second
+                if ((autoMoveCapTimer -= Time.deltaTime) < 0)
+                {
+                    autoMoveCapTimer = defaultAutoMoveCapTimer; // reset timer to 1/60 of a second
+                    Move();
+                }
+            }
         }
 
         // reset auto move detection

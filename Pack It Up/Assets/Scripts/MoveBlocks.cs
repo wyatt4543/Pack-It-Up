@@ -117,7 +117,7 @@ public class MoveBlocks : MonoBehaviour
             }
 
             // Initialize player input
-            playerInput = instance.gameObject.GetComponent<PlayerInput>();
+            playerInput = GetComponent<PlayerInput>();
         }
     }
 
@@ -758,6 +758,11 @@ public class MoveBlocks : MonoBehaviour
         {
             foreach (Transform children in currentBlock.transform)
             {
+                print("name:" + children.name);
+                print("x:" + children.position.x);
+                print("y:" + children.position.y);
+                print("xUpdate:" + xUpdate);
+                print("yUpdate:" + yUpdate);
                 // round the x and y positions
                 int roundedX = Mathf.RoundToInt(children.position.x);
                 int roundedY = Mathf.RoundToInt(children.position.y);
@@ -782,6 +787,7 @@ public class MoveBlocks : MonoBehaviour
             }
         }
 
+        print("bad move");
         // allow movement if no collison or getting out of bounds
         return true;
     }

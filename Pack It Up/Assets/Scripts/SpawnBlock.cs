@@ -117,12 +117,14 @@ public class SpawnBlock : MonoBehaviour
         GameObject newBlock = Instantiate(Blocks[blockType], transform.position, Quaternion.identity);
 
         // set the current block
-        MoveBlocks.instance.currentBlock = newBlock.transform.GetChild(0).gameObject;
+        GameObject currentSquare = newBlock.transform.GetChild(0).gameObject;
+        MoveBlocks currentSquareScript = currentSquare.GetComponent<MoveBlocks>();
+        MoveBlocks.instance.currentBlock = currentSquare;
 
         // set the MoveBlocks variables
-        MoveBlocks.instance.parentTransform = newBlock.GetComponent<MoveBlocks>().parentTransform;
-        MoveBlocks.instance.rotationPoint = newBlock.GetComponent<MoveBlocks>().rotationPoint;
-        Destroy(newBlock.GetComponent<MoveBlocks>());
+        MoveBlocks.instance.parentTransform = currentSquareScript.parentTransform;
+        MoveBlocks.instance.rotationPoint = currentSquareScript.rotationPoint;
+        Destroy(currentSquareScript);
 
         // check for the copied block type & assign it a random value
         if (blockType == 11)

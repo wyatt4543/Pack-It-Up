@@ -119,18 +119,19 @@ public class MoveBlocks : MonoBehaviour
             // Initialize player input
             playerInput = gameObject.GetComponent<PlayerInput>();
         }
-        else
-        {
-            instance.currentBlock = gameObject;
-            instance.parentTransform = currentBlock.GetComponent<MoveBlocks>().parentTransform;
-            instance.rotationPoint = currentBlock.GetComponent<MoveBlocks>().rotationPoint;
-            Destroy(currentBlock.GetComponent<MoveBlocks>());
-        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (gameObject.name != "Spawner")
+        {
+            instance.currentBlock = gameObject;
+            instance.parentTransform = currentBlock.GetComponent<MoveBlocks>().parentTransform;
+            instance.rotationPoint = currentBlock.GetComponent<MoveBlocks>().rotationPoint;
+            Destroy(gameObject.GetComponent<MoveBlocks>());
+        }
+
         // set the buttonUI's current move block script
         buttonUI.instance.currentMoveBlocksScript = this;
 

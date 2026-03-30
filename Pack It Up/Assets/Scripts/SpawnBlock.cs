@@ -126,6 +126,9 @@ public class SpawnBlock : MonoBehaviour
         // get the moveBlocksScript
         MoveBlocks moveBlocksScript = newBlock.GetComponentsInChildren<MoveBlocks>()[0];
 
+        // set the moveBlocksScript for the player input manager
+        PlayerInputs.instance.currentMoveBlockScript = moveBlocksScript;
+
         // assign the move blocks script of for the order manager
         if (OrderManager.instance != null)
         {

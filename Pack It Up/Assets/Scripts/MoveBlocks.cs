@@ -36,8 +36,8 @@ public class MoveBlocks : MonoBehaviour
     private static Transform[,] grid = new Transform[width, height];
 
     // movement variables
-    public float movementX;
-    public float movementY;
+    private float movementX;
+    private float movementY;
 
     // rotation variables
     public Vector2 rotationPoint;
@@ -86,8 +86,9 @@ public class MoveBlocks : MonoBehaviour
     private bool quickDrop = false;
 
     // input variables
-    public float rotateInput;
-    public float rotateDragBlockInput;
+    private Vector2 moveInput;
+    private float rotateInput;
+    private float rotateDragBlockInput;
     private GameObject Spawner;
     private PlayerInput playerInput;
 
@@ -274,6 +275,25 @@ public class MoveBlocks : MonoBehaviour
         catch (OperationCanceledException)
         {
             Debug.Log("Stopped async functions.");
+        }
+    }
+
+    // get player inputs
+    public void PlayerMovement(InputAction.CallbackContext context)
+    {
+        if (context.action.name == "Move")
+        {
+            moveInput = context.ReadValue<Vector2>();
+            movementX = Mathf.Ceil(moveInput.x);
+            movementY = Mathf.Ceil(moveInput.y);
+        }
+        else if (context.action.name == "Rotate")
+        {
+            rotateInput = context.ReadValue<float>();
+        }
+        else if (context.action.name == "RotateDragBlock")
+        {
+            rotateDragBlockInput = context.ReadValue<float>();
         }
     }
 

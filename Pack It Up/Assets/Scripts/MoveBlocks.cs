@@ -625,11 +625,10 @@ public class MoveBlocks : MonoBehaviour
                     }
                 }
             }
+            // wait for the row down function to complete
+            await Task.Yield();
+            token.ThrowIfCancellationRequested();
         }
-
-        // wait for the delete line function to complete
-        await Task.Yield();
-        token.ThrowIfCancellationRequested();
     }
 
     // add the player's block to the grid

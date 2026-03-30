@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PauseManager : MonoBehaviour
@@ -9,7 +11,7 @@ public class PauseManager : MonoBehaviour
     public bool isGameOver = false;
     public bool levelComplete = false;
 
-    public bool IsPaused {  get; private set; }
+    public bool IsPaused { get; private set; }
 
     public void Awake()
     {
@@ -44,7 +46,23 @@ public class PauseManager : MonoBehaviour
         IsPaused = false;
         Time.timeScale = 1f;
 
-        // switch the action map
+        // wait until the end of the frame before switching maps
+        StartCoroutine(DelayedMapSwitch());
+    }
+
+    private IEnumerator DelayedMapSwitch()
+    {
+        // wait for the mouse to not be pressed down
+        yield return new WaitUntil(() => !Mouse.current.leftButton.isPressed);
+
+        // add an extra buffer
+        yield return new WaitForEndOfFrame();
+
         playerInput.SwitchCurrentActionMap("Player");
+
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 }

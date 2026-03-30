@@ -875,6 +875,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5274565018375146068, guid: e1a53a42524261a46acaefa404d4a46f, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5274565018375146068, guid: e1a53a42524261a46acaefa404d4a46f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
+      value: 56288cbf-b6bd-42bb-afb4-449894394e09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5274565018375146068, guid: e1a53a42524261a46acaefa404d4a46f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionId
+      value: d8c5c494-bc18-42fc-bc2f-e988dd24e16d
+      objectReference: {fileID: 0}
+    - target: {fileID: 5274565018375146068, guid: e1a53a42524261a46acaefa404d4a46f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
+      value: 'Player/Point[/Mouse/position,/Pen/position]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5274565018375146068, guid: e1a53a42524261a46acaefa404d4a46f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionName
+      value: 'Player/Click[/Mouse/leftButton,/Pen/tip]'
+      objectReference: {fileID: 0}
     - target: {fileID: 5440023051151989469, guid: e1a53a42524261a46acaefa404d4a46f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4

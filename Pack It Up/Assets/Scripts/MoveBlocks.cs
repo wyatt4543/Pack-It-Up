@@ -119,18 +119,17 @@ public class MoveBlocks : MonoBehaviour
             // Initialize player input
             playerInput = instance.gameObject.GetComponent<PlayerInput>();
         }
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        if (gameObject.name != "Spawner")
+        else
         {
             instance.parentTransform = this.parentTransform;
             instance.rotationPoint = this.rotationPoint;
             Destroy(this);
         }
+    }
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
         // Initialize timers
         defaultFallTimer = Mathf.Pow((0.8f - ((gameRound - 1) * 0.007f)), gameRound - 1);
         fallTimer = defaultFallTimer;

@@ -117,7 +117,7 @@ public class SpawnBlock : MonoBehaviour
         GameObject newBlock = Instantiate(Blocks[blockType], transform.position, Quaternion.identity);
 
         // set the current block
-        MoveBlocks.instance.currentBlock = newBlock;
+        MoveBlocks.instance.currentBlock = newBlock.transform.GetChild(0).gameObject;
 
         // check for the copied block type & assign it a random value
         if (blockType == 11)

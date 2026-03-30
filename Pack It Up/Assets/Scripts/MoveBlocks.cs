@@ -119,12 +119,6 @@ public class MoveBlocks : MonoBehaviour
             // Initialize player input
             playerInput = instance.gameObject.GetComponent<PlayerInput>();
         }
-        else
-        {
-            instance.parentTransform = this.parentTransform;
-            instance.rotationPoint = this.rotationPoint;
-            Destroy(this);
-        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -119,6 +119,11 @@ public class SpawnBlock : MonoBehaviour
         // set the current block
         MoveBlocks.instance.currentBlock = newBlock.transform.GetChild(0).gameObject;
 
+        // set the MoveBlocks variables
+        MoveBlocks.instance.parentTransform = newBlock.GetComponent<MoveBlocks>().parentTransform;
+        MoveBlocks.instance.rotationPoint = newBlock.GetComponent<MoveBlocks>().rotationPoint;
+        Destroy(newBlock.GetComponent<MoveBlocks>());
+
         // check for the copied block type & assign it a random value
         if (blockType == 11)
         {

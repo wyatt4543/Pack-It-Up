@@ -289,7 +289,6 @@ public class MoveBlocks : MonoBehaviour
             // do not create a new block if the scene is changing
             if (this == null || !currentBlock.gameObject.activeInHierarchy) return;
             spawnBlockScript.NewBlock(lineClears, gameRound, gameScore, currentPackages);
-            Destroy(this);
         }
         catch (OperationCanceledException)
         {
@@ -1387,6 +1386,6 @@ public class MoveBlocks : MonoBehaviour
         PauseManager.instance.PauseGame();
 
         // delete this script to disable movement
-        Destroy(this);
+        Destroy(currentBlock);
     }
 }

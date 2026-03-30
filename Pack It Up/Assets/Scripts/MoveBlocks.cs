@@ -41,6 +41,7 @@ public class MoveBlocks : MonoBehaviour
     // movement variables
     private float movementX;
     private float movementY;
+    private bool isClearing = false;
 
     // rotation variables
     public Vector2 rotationPoint;
@@ -179,7 +180,7 @@ public class MoveBlocks : MonoBehaviour
         }
 
         // wait until the instance is made and that all the variables are assigned
-        if (instance == null || instance.currentBlock == null || instance.parentTransform == null || instance.rotationPoint == null) { return; }
+        if (instance == null || instance.currentBlock == null || instance.parentTransform == null || instance.rotationPoint == null || isClearing) { return; }
 
         // movement for the drag block
         if (gameObject.name == "DragBlock" && !PauseManager.instance.IsPaused)
@@ -364,6 +365,9 @@ public class MoveBlocks : MonoBehaviour
     // function for doing line clears
     public async Task CheckForLines(CancellationToken token)
     {
+        // lock input
+        isClearing = true;
+
         for (int i = height - 1; i >= 0; i--)
         {
             if (token.IsCancellationRequested) return;
@@ -415,6 +419,9 @@ public class MoveBlocks : MonoBehaviour
 
         // update the game round according to line clears
         gameRound = (lineClears / 10) + 1;
+
+        // unlock input
+        isClearing = false;
     }
 
     // function for checking for a line clear

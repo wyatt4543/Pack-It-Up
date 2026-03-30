@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -375,7 +376,7 @@ public class MoveBlocks : MonoBehaviour
                 await AnimateLine(token);
                 
                 // move the rows down
-                RowDown(i);
+                await RowDown(i, token);
 
                 // double check the row
                 i++;
@@ -582,7 +583,7 @@ public class MoveBlocks : MonoBehaviour
 
 
     // function for moving the blocks down
-    public void RowDown(int i)
+    public async Task RowDown(int i, CancellationToken token)
     {
         // look at the y's from current line upwards
         for (int y = i; y < height; y++)
@@ -616,6 +617,10 @@ public class MoveBlocks : MonoBehaviour
                 }
             }
         }
+
+        // wait for the delete line function to complete
+        await Task.Yield();
+        token.ThrowIfCancellationRequested();
     }
 
     // add the player's block to the grid

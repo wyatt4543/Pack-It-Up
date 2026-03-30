@@ -167,18 +167,6 @@ public class MoveBlocks : MonoBehaviour
         lineClearSound = Resources.Load<AudioClip>("Sounds/SFX/line_clear");
         gameOverSound = Resources.Load<AudioClip>("Sounds/SFX/game_over");
         fanfareSound = Resources.Load<AudioClip>("Sounds/SFX/fanfare");
-
-        // don't test for game over on the first block
-        if (currentBlock == null)
-        {
-            return;
-        }
-
-        // test for a game over
-        if (!ValidMove(0, -1) && !PauseManager.instance.isGameOver)
-        {
-            EndGame(_cts.Token);
-        }
     }
 
     // Update is called once per frame
@@ -1384,5 +1372,28 @@ public class MoveBlocks : MonoBehaviour
 
         // delete this script to disable movement
         Destroy(currentBlock);
+    }
+
+    public void ResetVariables()
+    {
+        // cursed pieces variables
+        NegativeBlockCalled = false;
+        BoxBlockCalled = false;
+        placingBlock = false;
+
+        // timer variables
+        quickDrop = false;
+
+        // Initialize timers
+        defaultFallTimer = Mathf.Pow((0.8f - ((gameRound - 1) * 0.007f)), gameRound - 1);
+        fallTimer = defaultFallTimer;
+        autoMoveTimer = defaultAutoMoveTimer;
+        autoMoveCapTimer = defaultAutoMoveCapTimer;
+
+        // test for a game over
+        if (!ValidMove(0, -1) && !PauseManager.instance.isGameOver)
+        {
+            EndGame(_cts.Token);
+        }
     }
 }

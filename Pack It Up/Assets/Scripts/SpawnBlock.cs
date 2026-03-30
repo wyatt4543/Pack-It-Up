@@ -126,6 +126,8 @@ public class SpawnBlock : MonoBehaviour
         MoveBlocks.instance.rotationPoint = currentSquareScript.rotationPoint;
         Destroy(currentSquareScript);
 
+        MoveBlocks.instance.ResetVariables();
+
         // check for the copied block type & assign it a random value
         if (blockType == 11)
         {

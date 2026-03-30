@@ -14,7 +14,6 @@ public class SpawnBlock : MonoBehaviour
     private int nextBlockType;
     private int blockCount = 0;
 
-
     private void Awake()
     {
         transform.position = new Vector2(0, 18);

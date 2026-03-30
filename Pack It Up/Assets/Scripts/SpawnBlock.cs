@@ -116,43 +116,43 @@ public class SpawnBlock : MonoBehaviour
         // create a random new block in the spawner postion
         GameObject newBlock = Instantiate(Blocks[blockType], transform.position, Quaternion.identity);
 
+        // set the current block
+        MoveBlocks.instance.currentBlock = newBlock;
+
         // check for the copied block type & assign it a random value
         if (blockType == 11)
         {
             newBlock.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = numberDisplaySprites[Random.Range(0, numberDisplaySprites.Length)];
         }
 
-        // get the moveBlocksScript
-        MoveBlocks moveBlocksScript = newBlock.GetComponentsInChildren<MoveBlocks>()[0];
-
         // assign the move blocks script of for the order manager
         if (OrderManager.instance != null)
         {
-            OrderManager.instance.moveBlockScript = moveBlocksScript;
+            OrderManager.instance.moveBlockScript = MoveBlocks.instance;
         }
 
         // set the number of line clears
-        moveBlocksScript.lineClears = lineClears;
+        MoveBlocks.instance.lineClears = lineClears;
 
         // set the game round
-        moveBlocksScript.gameRound = gameRound;
+        MoveBlocks.instance.gameRound = gameRound;
 
         // set the game score
-        moveBlocksScript.gameScore = gameScore;
+        MoveBlocks.instance.gameScore = gameScore;
 
         // set the current packages
-        moveBlocksScript.currentPackages = currentPackages;
+        MoveBlocks.instance.currentPackages = currentPackages;
 
         // set the number display sprites
-        moveBlocksScript.numberDisplaySprites = numberDisplaySprites;
+        MoveBlocks.instance.numberDisplaySprites = numberDisplaySprites;
 
         // set the explosion sprite
-        moveBlocksScript.explosionSprite = explosionSprite;
+        MoveBlocks.instance.explosionSprite = explosionSprite;
 
         // set the explosion object
-        moveBlocksScript.explosionObject = explosionObject;
+        MoveBlocks.instance.explosionObject = explosionObject;
 
         // set the package game object
-        moveBlocksScript.package = package;
+        MoveBlocks.instance.package = package;
     }
 }

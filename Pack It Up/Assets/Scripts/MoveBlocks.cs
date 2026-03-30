@@ -9,6 +9,9 @@ using UnityEngine.SceneManagement;
 
 public class MoveBlocks : MonoBehaviour
 {
+    // make this script static
+    public static MoveBlocks instance;
+
     // sound effect variables
     private AudioClip explosionSound;
     private AudioClip waterSound;
@@ -86,10 +89,10 @@ public class MoveBlocks : MonoBehaviour
     private bool quickDrop = false;
 
     // input variables
+    public GameObject currentBlock;
     private Vector2 moveInput;
     private float rotateInput;
     private float rotateDragBlockInput;
-    private GameObject Spawner;
     private PlayerInput playerInput;
 
     // make a variable for stopping async functions from running
@@ -102,17 +105,34 @@ public class MoveBlocks : MonoBehaviour
         _cts.Dispose();
     }
 
+    // set this script to the moveblocks instance
+    private void Awake()
+    {
+        // find the spawner game object
+        if (gameObject.name == "Spawner")
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+
+            // Initialize player input
+            playerInput = gameObject.GetComponent<PlayerInput>();
+        }
+        else
+        {
+            instance.currentBlock = gameObject;
+            instance.parentTransform = currentBlock.GetComponent<MoveBlocks>().parentTransform;
+            instance.rotationPoint = currentBlock.GetComponent<MoveBlocks>().rotationPoint;
+            Destroy(currentBlock.GetComponent<MoveBlocks>());
+        }
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // set the buttonUI's current move block script
         buttonUI.instance.currentMoveBlocksScript = this;
-
-        // find the spawner game object
-        Spawner = GameObject.Find("Spawner");
-
-        // Initialize player input
-        playerInput = Spawner.GetComponent<PlayerInput>();
 
         // Initialize timers
         defaultFallTimer = Mathf.Pow((0.8f - ((gameRound - 1) * 0.007f)), gameRound - 1);
@@ -257,7 +277,7 @@ public class MoveBlocks : MonoBehaviour
     private async Task HandleBlockPlacement()
     {
         // play the place block sound effect
-        SFXManager.instance.PlayPitchedSFXClip(placeSound, transform, 1f);
+        SFXManager.instance.PlayPitchedSFXClip(placeSound, currentBlock.transform, 1f);
         // self destruct script on hitting the bottom of the screen & do update stuff
         AddToGrid();
         // function for doing special block actions
@@ -268,7 +288,7 @@ public class MoveBlocks : MonoBehaviour
             if (_cts.Token.IsCancellationRequested) return;
 
             // do not create a new block if the scene is changing
-            if (this == null || !gameObject.activeInHierarchy) return;
+            if (this == null || !currentBlock.gameObject.activeInHierarchy) return;
             spawnBlockScript.NewBlock(lineClears, gameRound, gameScore, currentPackages);
             Destroy(this);
         }
@@ -300,7 +320,7 @@ public class MoveBlocks : MonoBehaviour
     // move the block based on player inputs
     public void Move()
     {
-        if (!(gameObject.name == "DragBlock"))
+        if (!(currentBlock.gameObject.name == "DragBlock"))
         {
             // move the block left, right, or down
             if (ValidMove((int)movementX, (int)movementY) && !(BoxBlockCalled))
@@ -323,19 +343,19 @@ public class MoveBlocks : MonoBehaviour
         // if up key pressed
         if (currentRotationInput == 1)
         {
-            transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
+            currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
             if (!ValidRotation())
             {
-                transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
+                currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
             }
         }
         // if z key pressed
         else
         {
-            transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
+            currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
             if (!ValidRotation())
             {
-                transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
+                currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
             }
         }
     }
@@ -524,7 +544,7 @@ public class MoveBlocks : MonoBehaviour
         bool allReached = false;
 
         // play the clear line sound effect
-        AudioSource lineClearAudioSource = SFXManager.instance.PlayLoopedSFXClip(lineClearSound, transform, 1f);
+        AudioSource lineClearAudioSource = SFXManager.instance.PlayLoopedSFXClip(lineClearSound, currentBlock.transform, 1f);
 
         while (!allReached)
         {
@@ -625,7 +645,7 @@ public class MoveBlocks : MonoBehaviour
     // add the player's block to the grid
     public void AddToGrid()
     {
-        foreach (Transform children in transform)
+        foreach (Transform children in currentBlock.transform)
         {
             if (children.name != "BoxFlap")
             {
@@ -645,10 +665,10 @@ public class MoveBlocks : MonoBehaviour
     // check if the player's movements were valid
     public bool ValidMove(int xUpdate, int yUpdate = 0) {
         // functionality for the Negative Block
-        if (gameObject.name == "JNegativeBlock")
+        if (currentBlock.gameObject.name == "JNegativeBlock")
         {
             int overlapCount = 0;
-            foreach (Transform children in transform)
+            foreach (Transform children in currentBlock.transform)
             {
                 // round the x and y positions
                 int roundedX = Mathf.RoundToInt(children.position.x);
@@ -680,16 +700,16 @@ public class MoveBlocks : MonoBehaviour
             }
 
             // if all of the pieces of the negative block overlap with a normal piece
-            if (overlapCount == gameObject.transform.childCount)
+            if (overlapCount == currentBlock.gameObject.transform.childCount)
             {
                 // remove the pieces the negative piece overlaps with
                 NegativeBlockDestruction();
             }
         }
         // functionality for the Box Block
-        else if (gameObject.name == "BoxBlock")
+        else if (currentBlock.gameObject.name == "BoxBlock")
         {
-            foreach (Transform children in transform)
+            foreach (Transform children in currentBlock.transform)
             {
                 if (children.name != "BoxFlap")
                 {
@@ -738,7 +758,7 @@ public class MoveBlocks : MonoBehaviour
         }
         else
         {
-            foreach (Transform children in transform)
+            foreach (Transform children in currentBlock.transform)
             {
                 // round the x and y positions
                 int roundedX = Mathf.RoundToInt(children.position.x);
@@ -772,10 +792,10 @@ public class MoveBlocks : MonoBehaviour
     public bool ValidRotation()
     {
         // functionality for the Negative Block
-        if (gameObject.name == "JNegativeBlock")
+        if (currentBlock.gameObject.name == "JNegativeBlock")
         {
             int overlapCount = 0;
-            foreach (Transform children in transform)
+            foreach (Transform children in currentBlock.transform)
             {
                 // round the x and y positions
                 int roundedX = Mathf.RoundToInt(children.position.x);
@@ -803,7 +823,7 @@ public class MoveBlocks : MonoBehaviour
             }
 
             // if all of the pieces of the negative block overlap with a normal piece
-            if (overlapCount == gameObject.transform.childCount)
+            if (overlapCount == currentBlock.gameObject.transform.childCount)
             {
                 // remove the pieces the negative piece overlaps with
                 NegativeBlockDestruction();
@@ -811,7 +831,7 @@ public class MoveBlocks : MonoBehaviour
         }
         else
         { 
-            foreach (Transform children in transform)
+            foreach (Transform children in currentBlock.transform)
             {
                 // round the x and y positions
                 int roundedX = Mathf.RoundToInt(children.position.x);
@@ -912,7 +932,7 @@ public class MoveBlocks : MonoBehaviour
     private async Task CursedBlocks(CancellationToken token)
     {
         // functionality for the bomb block
-        if (gameObject.name == "BombBlock")
+        if (currentBlock.gameObject.name == "BombBlock")
         {
             // round the current x and y positions
             int roundedX = Mathf.RoundToInt(parentTransform.position.x);
@@ -1000,11 +1020,11 @@ public class MoveBlocks : MonoBehaviour
             grid[roundedX, roundedY] = null;
 
             // destroy the bomb block
-            Destroy(transform.parent.gameObject);
+            Destroy(currentBlock.transform.parent.gameObject);
         }
 
         // functionality for the water block
-        if (gameObject.name == "JWaterBlock")
+        if (currentBlock.gameObject.name == "JWaterBlock")
         {
             // look at the y's from the bottom line upwards
             for (int y = 0; y < height; y++)
@@ -1047,16 +1067,16 @@ public class MoveBlocks : MonoBehaviour
         }
 
         // functionality for the gravel block
-        if (gameObject.name == "GravelBlock")
+        if (currentBlock.gameObject.name == "GravelBlock")
         {
             // create variables for the maximum x and y of the gravel block
-            int minX = Mathf.RoundToInt(transform.GetChild(0).position.x);
-            int minY = Mathf.RoundToInt(transform.GetChild(0).position.y);
+            int minX = Mathf.RoundToInt(currentBlock.transform.GetChild(0).position.x);
+            int minY = Mathf.RoundToInt(currentBlock.transform.GetChild(0).position.y);
             int maxX = 0;
             int maxY = 0;
 
             // look for the maximum and minimum x and y of the block
-            foreach (Transform children in transform)
+            foreach (Transform children in currentBlock.transform)
             {
                 if (Mathf.RoundToInt(children.position.x) < minX)
                 {
@@ -1145,7 +1165,7 @@ public class MoveBlocks : MonoBehaviour
             NegativeBlockCalled = true;
             
             // loop through each child to destroy all of the correct blocks
-            foreach (Transform children in transform)
+            foreach (Transform children in currentBlock.transform)
             {
                 // round the current child's x and y positions
                 int roundedX = Mathf.RoundToInt(children.transform.position.x);
@@ -1163,13 +1183,13 @@ public class MoveBlocks : MonoBehaviour
             }
 
             // do not create a new block if the scene is changing
-            if (this == null || !gameObject.activeInHierarchy) return;
+            if (this == null || !currentBlock.gameObject.activeInHierarchy) return;
 
             // spawn a new piece
             spawnBlockScript.NewBlock(lineClears, gameRound, gameScore, currentPackages);
 
             // destroy the negative block
-            Destroy(transform.parent.gameObject);
+            Destroy(currentBlock.transform.parent.gameObject);
         }
     }
 
@@ -1210,7 +1230,7 @@ public class MoveBlocks : MonoBehaviour
             BoxBlockCalled = true;
 
             // loop through each child to destroy all of the correct blocks
-            foreach (Transform children in transform)
+            foreach (Transform children in currentBlock.transform)
             {
                 if (children.name != "BoxFlap")
                 {
@@ -1277,7 +1297,7 @@ public class MoveBlocks : MonoBehaviour
         GameObject.Find("MusicManager").SetActive(false);
 
         // play the game over sound
-        SFXManager.instance.PlaySFXClip(gameOverSound, transform, 1f);
+        SFXManager.instance.PlaySFXClip(gameOverSound, currentBlock.transform, 1f);
 
         // pause the game
         PauseManager.instance.PauseGame();
@@ -1318,7 +1338,7 @@ public class MoveBlocks : MonoBehaviour
             if (Leaderboard.instance.IsHighScore(gameScore))
             {
                 // play the fanfare sound
-                SFXManager.instance.PlaySFXClip(fanfareSound, transform, 1f);
+                SFXManager.instance.PlaySFXClip(fanfareSound, currentBlock.transform, 1f);
 
                 // pause the game
                 PauseManager.instance.PauseGame();

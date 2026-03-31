@@ -275,17 +275,16 @@ public class MoveBlocks : MonoBehaviour
             // add the block to the grid
             AddToGrid();
         }
-        else
-        {
-            // call the negative block destruction and return to not do other logic
-            NegativeBlockDestruction();
-            return;
-        }
 
         try
         {
             // function for doing special block actions
             await CursedBlocks(_cts.Token);
+            // do not continue if negative block is called
+            if (NegativeBlockCalled)
+            {
+                return;
+            }
 
             // funtion for checking for line clears
             await CheckForLines(_cts.Token);
@@ -1170,6 +1169,7 @@ public class MoveBlocks : MonoBehaviour
 
             //stop the placement function from being called again
             placingBlock = true;
+            isClearing = true;
 
             // loop through each child to destroy all of the correct blocks
             foreach (Transform children in currentBlock.transform)
@@ -1398,6 +1398,7 @@ public class MoveBlocks : MonoBehaviour
     public void ResetVariables()
     {
         // cursed pieces variables
+        isClearing = false;
         NegativeBlockCalled = false;
         BoxBlockCalled = false;
         placingBlock = false;

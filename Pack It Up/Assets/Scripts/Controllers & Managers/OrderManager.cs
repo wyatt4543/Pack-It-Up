@@ -256,7 +256,7 @@ public class OrderManager : MonoBehaviour
             currentOrderText.text = "X" + currentOrders;
 
             // update the total orders text
-            totalOrdersText.text = "Completed Orders: " + currentTotalOrders + "/" + totalOrders;
+            totalOrdersText.text = "Completed Orders: " + (totalOrders - currentTotalOrders) + "/" + totalOrders;
 
             // create the current order
             if (customOrder == -1)

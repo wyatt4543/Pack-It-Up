@@ -1396,6 +1396,18 @@ public class MoveBlocks : MonoBehaviour
         autoMoveTimer = defaultAutoMoveTimer;
         autoMoveCapTimer = defaultAutoMoveCapTimer;
 
+        // update the game round display
+        roundCounter = GameObject.Find("LevelCanvas/RoundCounter").GetComponent<TextMeshProUGUI>();
+        roundCounter.text = "Round: " + gameRound;
+
+        // update the game lines display
+        linesCounter = GameObject.Find("LevelCanvas/LinesCounter").GetComponent<TextMeshProUGUI>();
+        linesCounter.text = "Lines: " + lineClears;
+
+        // update the game score display
+        scoreCounter = GameObject.Find("LevelCanvas/ScoreCounter").GetComponent<TextMeshProUGUI>();
+        scoreCounter.text = "Score: " + gameScore;
+
         // test for a game over
         if (!ValidMove(0, -1) && !PauseManager.instance.isGameOver)
         {

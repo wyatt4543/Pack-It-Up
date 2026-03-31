@@ -614,7 +614,7 @@ public class MoveBlocks : MonoBehaviour
     public async Task RowDown(int i, CancellationToken token)
     {
         // look at the y's from the line above current y upwards
-        for (int y = i + i; y < height; y++)
+        for (int y = i + 1; y < height; y++)
         {
             // loop through each x
             for (int j = 0; j < width; j++)

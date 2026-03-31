@@ -260,19 +260,23 @@ public class MoveBlocks : MonoBehaviour
 
     private async Task HandleBlockPlacement()
     {
+        // immediately lock input
+        isClearing = true;
+
         // play the place block sound effect
         SFXManager.instance.PlayPitchedSFXClip(placeSound, transform, 1f);
-        
-        // add the block to the grid
-        AddToGrid();
+
+        // add the block to the grid if it is not negative or null
+        if (currentBlock != null && currentBlock.gameObject.name != "JNegativeBlock")
+        {
+            // add the block to the grid
+            AddToGrid();
+        }
 
         try
         {
             // function for doing special block actions
             await CursedBlocks(_cts.Token);
-
-            // state that the line is clearing
-            isClearing = true;
 
             // funtion for checking for line clears
             await CheckForLines(_cts.Token);

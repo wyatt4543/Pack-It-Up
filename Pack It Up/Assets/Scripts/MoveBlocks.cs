@@ -413,15 +413,15 @@ public class MoveBlocks : MonoBehaviour
             // if line clear
             if (HasLine(i))
             {
-                print("doing delete line");
+                print("doing delete line" + i);
                 // delete the line with the line clear
                 await DeleteLine(i, token);
 
-                print("doing animate line");
+                print("doing animate line" + i);
                 // animate the pieces leaving the board
                 await AnimateLine(token);
 
-                print("doing row down");
+                print("doing row down" + i);
                 // move the rows down
                 await RowDown(i, token);
 

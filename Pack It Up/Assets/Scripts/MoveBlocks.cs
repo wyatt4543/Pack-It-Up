@@ -277,9 +277,11 @@ public class MoveBlocks : MonoBehaviour
         {
             // function for doing special block actions
             await CursedBlocks(_cts.Token);
+            print("finished cursed blocks");
 
             // funtion for checking for line clears
             await CheckForLines(_cts.Token);
+            print("finished check lines");
 
             // state that the line isn't clearing
             isClearing = false;
@@ -289,6 +291,7 @@ public class MoveBlocks : MonoBehaviour
             // do not create a new block if the scene is changing
             if (this == null || !gameObject.activeInHierarchy) return;
             spawnBlockScript.NewBlock();
+            print("spawned new block");
         }
         catch (OperationCanceledException)
         {
@@ -350,18 +353,23 @@ public class MoveBlocks : MonoBehaviour
 
     private void Rotate(float currentRotationInput)
     {
+        // check rotation for the negative block
+        if (currentBlock == null)
+        {
+            if (!isClearing && !placingBlock)
+            {
+                print("rotated");
+                _ = HandleBlockPlacement();
+            }
+            return;
+        }
+
         // if up key pressed
         if (currentRotationInput == 1)
         {
             currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
             if (!ValidRotation())
             {
-                // check rotation for the negative block
-                if ((currentBlock == null || currentBlock.gameObject == null) && !isClearing)
-                {
-                    _ = HandleBlockPlacement();
-                    return;
-                }
                 currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
             }
         }
@@ -371,12 +379,6 @@ public class MoveBlocks : MonoBehaviour
             currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
             if (!ValidRotation())
             {
-                // check rotation for the negative block
-                if ((currentBlock == null || currentBlock.gameObject == null) && !isClearing)
-                {
-                    _ = HandleBlockPlacement();
-                    return;
-                }
                 currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
             }
         }
@@ -947,6 +949,9 @@ public class MoveBlocks : MonoBehaviour
     // check the type of block & do its ability
     private async Task CursedBlocks(CancellationToken token)
     {
+        // ignore this function if the current block is null
+        if (currentBlock == null) return;
+
         // functionality for the bomb block
         if (currentBlock.gameObject.name == "BombBlock")
         {

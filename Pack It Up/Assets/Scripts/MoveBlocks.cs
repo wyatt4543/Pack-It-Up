@@ -449,8 +449,6 @@ public class MoveBlocks : MonoBehaviour
 
         // update the game round according to line clears
         gameRound = (lineClears / 10) + 1;
-
-        print("set new line clears");
     }
 
     // function for checking for a line clear

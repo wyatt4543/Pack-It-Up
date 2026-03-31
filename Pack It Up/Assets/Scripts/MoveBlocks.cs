@@ -558,6 +558,10 @@ public class MoveBlocks : MonoBehaviour
             }
 
             print("deleted X: " + j + "deleted Y:" + i);
+
+            // wait for the delete line function to complete
+            await Task.Yield();
+            token.ThrowIfCancellationRequested();
         }
         
         // update the line clears variable
@@ -565,10 +569,6 @@ public class MoveBlocks : MonoBehaviour
 
         // update the variable keeping track of the line clears made by one block
         singlePlaceClears++;
-
-        // wait for the delete line function to complete
-        await Task.Yield();
-        token.ThrowIfCancellationRequested();
     }
 
 
@@ -581,16 +581,23 @@ public class MoveBlocks : MonoBehaviour
         // play the clear line sound effect
         AudioSource lineClearAudioSource = SFXManager.instance.PlayLoopedSFXClip(lineClearSound, currentBlock.transform, 1f);
 
+        print("started animation");
+
         while (!allReached)
         {
+            print("allReached: " + allReached);
             // set the varaible keeping track of all of the blocks reaching the exit to true
             allReached = true;
+            print("set allReached: " + allReached);
 
             for (int i = 0; i < clearedBlocks.Count; i++)
             {
                 GameObject currentSquare = clearedBlocks[i];
+                print("current square: " + currentSquare);
                 // if there is still a square to move continue
                 if (currentSquare == null) continue;
+                
+                print("moving current square");
 
                 // move the square towards the end
                 currentSquare.transform.position = Vector3.MoveTowards(currentSquare.transform.position, squareDestination, squareSpeed * Time.deltaTime);
@@ -599,6 +606,7 @@ public class MoveBlocks : MonoBehaviour
                 {
                     // set to false if one square is still moving
                     allReached = false;
+                    print("set allReached: " + allReached);
                 }
             }
 

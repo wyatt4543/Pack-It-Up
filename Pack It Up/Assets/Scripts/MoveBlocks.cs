@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -273,16 +271,19 @@ public class MoveBlocks : MonoBehaviour
             // function for doing special block actions
             await CursedBlocks(_cts.Token);
 
+            // state that the line is clearing
             isClearing = true;
+
             // funtion for checking for line clears
             await CheckForLines(_cts.Token);
-            print("left function");
+
+            // state that the line isn't clearing
             isClearing = false;
+
             if (_cts.Token.IsCancellationRequested) return;
 
             // do not create a new block if the scene is changing
             if (this == null || !currentBlock.gameObject.activeInHierarchy) return;
-            print("create new block");
             spawnBlockScript.NewBlock();
         }
         catch (OperationCanceledException)
@@ -398,37 +399,25 @@ public class MoveBlocks : MonoBehaviour
     // function for doing line clears
     public async Task CheckForLines(CancellationToken token)
     {
-        Assembly assembly = Assembly.GetAssembly(typeof(SceneView));
-        Type type = assembly.GetType("UnityEditor.LogEntries");
-        MethodInfo method = type.GetMethod("Clear");
-        method.Invoke(new object(), null);
-
         for (int i = height - 1; i >= 0; i--)
         {
             if (token.IsCancellationRequested) return;
 
-            print("checking line: " + i);
-
             // if line clear
             if (HasLine(i))
             {
-                print("doing delete line" + i);
                 // delete the line with the line clear
                 List<GameObject> blocksCleared = await DeleteLine(i, token);
 
-                print("doing animate line" + i);
                 // animate the pieces leaving the board
                 await AnimateLine(blocksCleared, token);
 
-                print("doing row down" + i);
                 // move the rows down
                 await RowDown(i, token);
 
                 i++;
             }
         }
-
-        print("went through all rows");
 
         // check if the line clears are greater than 0
         if (singlePlaceClears > 0)
@@ -558,8 +547,6 @@ public class MoveBlocks : MonoBehaviour
                 grid[j, i] = null;
             }
 
-            print("deleted X: " + j + "deleted Y:" + i);
-
             // wait for the delete line function to complete
             await Task.Yield();
             token.ThrowIfCancellationRequested();
@@ -579,37 +566,22 @@ public class MoveBlocks : MonoBehaviour
     // function for animating the blocks leaving the board
     private async Task AnimateLine(List<GameObject> clearedBlocks, CancellationToken token)
     {
-        print("animate line is happening");
-
         // get the total amount of blocks
         int totalBlocks = clearedBlocks.Count;
         
         // set the blocks that have reached the end to 0
         int blocksReached = 0;
 
-        print("total amount of blocks: " + totalBlocks);
-        print("blocks that have reached the goal: " + blocksReached);
-
         // play the clear line sound effect
         AudioSource lineClearAudioSource = SFXManager.instance.PlayLoopedSFXClip(lineClearSound, transform, 1f);
-
-        print("get line clear audio: " + lineClearAudioSource);
-
-        print("started animation");
 
         while (blocksReached < totalBlocks)
         {
             // reset the total of blocks reached
-            print("blocks that have reached the goal: " + blocksReached);
             blocksReached = 0;
-            print("reached reset to: " + blocksReached);
 
             foreach (GameObject currentSquare in clearedBlocks)
             {
-                print("current square: " + currentSquare);
-                
-                print("moving current square");
-
                 // move the square towards the end
                 currentSquare.transform.position = Vector3.MoveTowards(currentSquare.transform.position, squareDestination, squareSpeed * Time.deltaTime);
 
@@ -623,8 +595,6 @@ public class MoveBlocks : MonoBehaviour
             await Task.Yield();
             token.ThrowIfCancellationRequested();
         }
-
-        print("all blocks reached the end");
 
         // destroy all of the squares
         foreach (var square in clearedBlocks)
@@ -649,8 +619,6 @@ public class MoveBlocks : MonoBehaviour
             // loop through each x
             for (int j = 0; j < width; j++)
             {
-                print("checked moved X: " + j + "checked move Y: " + y);
-
                 // if tile is filled with a square
                 if (grid[j,y] != null)
                 {
@@ -673,8 +641,6 @@ public class MoveBlocks : MonoBehaviour
 
                         //move the square down
                         grid[j, newY].transform.position = new Vector3(j, newY, 0);
-
-                        print("moved down x,y: (" + j + ", " + y +  ")");
                     }
                 }
             }

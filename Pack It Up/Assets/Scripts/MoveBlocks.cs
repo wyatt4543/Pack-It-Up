@@ -312,6 +312,12 @@ public class MoveBlocks : MonoBehaviour
             {
                 parentTransform.position = new Vector2(parentTransform.position.x + movementX, parentTransform.position.y + movementY);
             }
+            // once it hits the bottom of the screen place the block
+            else if (movementY < 0 && !placingBlock)
+            {
+                placingBlock = true;
+                _ = HandleBlockPlacement();
+            }
         }
         else
         {
@@ -319,6 +325,12 @@ public class MoveBlocks : MonoBehaviour
             if (ValidMove(0, (int)movementY))
             {
                 parentTransform.position = new Vector2(parentTransform.position.x, parentTransform.position.y + movementY);
+            }
+            // once it hits the bottom of the screen place the block
+            else if (movementY < 0 && !placingBlock)
+            {
+                placingBlock = true;
+                _ = HandleBlockPlacement();
             }
         }
     }

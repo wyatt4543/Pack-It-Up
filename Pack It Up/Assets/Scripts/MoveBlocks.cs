@@ -343,6 +343,12 @@ public class MoveBlocks : MonoBehaviour
             currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
             if (!ValidRotation())
             {
+                // check rotation for the negative block
+                if (currentBlock == null || currentBlock.gameObject == null)
+                {
+                    _ = HandleBlockPlacement();
+                    return;
+                }
                 currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
             }
         }
@@ -352,6 +358,12 @@ public class MoveBlocks : MonoBehaviour
             currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
             if (!ValidRotation())
             {
+                // check rotation for the negative block
+                if (currentBlock == null || currentBlock.gameObject == null)
+                {
+                    _ = HandleBlockPlacement();
+                    return;
+                }
                 currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
             }
         }

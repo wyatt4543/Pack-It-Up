@@ -267,7 +267,7 @@ public class MoveBlocks : MonoBehaviour
         SFXManager.instance.PlayPitchedSFXClip(placeSound, transform, 1f);
 
         // add the block to the grid if it is not negative or null
-        if (currentBlock != null && currentBlock.gameObject.name != "JNegativeBlock")
+        if (currentBlock != null && currentBlock.gameObject.name != "JNegativeBlock" && currentBlock.gameObject.name != "BombBlock")
         {
             // add the block to the grid
             AddToGrid();

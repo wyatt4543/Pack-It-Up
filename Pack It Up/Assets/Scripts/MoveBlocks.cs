@@ -56,7 +56,7 @@ public class MoveBlocks : MonoBehaviour
     private float fallTimer;
 
     // clear line animation variables
-    private List<GameObject> clearedBlocks = new List<GameObject>();
+    //private List<GameObject> clearedBlocks = new List<GameObject>();
     private GameObject clearedBlock;
     private float squareSpeed = 10.0f;
     private Vector2 squareDestination = new Vector2(8.2f, -1.1f);
@@ -281,7 +281,7 @@ public class MoveBlocks : MonoBehaviour
             // do not create a new block if the scene is changing
             if (this == null || !currentBlock.gameObject.activeInHierarchy) return;
             print("create new block");
-            spawnBlockScript.NewBlock(lineClears, gameRound, gameScore);
+            spawnBlockScript.NewBlock();
         }
         catch (OperationCanceledException)
         {

@@ -35,7 +35,7 @@ public class SpawnBlock : MonoBehaviour
     }
 
     // function for creating new blocks
-    public void NewBlock(int lineClears = 0, int gameRound = 1, int gameScore = 0, int blockType = -1) {
+    public void NewBlock(int blockType = -1) {
         GameObject nextBlock = null;
         
         // increase the block count
@@ -133,15 +133,6 @@ public class SpawnBlock : MonoBehaviour
         {
             OrderManager.instance.moveBlockScript = MoveBlocks.instance;
         }
-
-        // set the number of line clears
-        MoveBlocks.instance.lineClears = lineClears;
-
-        // set the game round
-        MoveBlocks.instance.gameRound = gameRound;
-
-        // set the game score
-        MoveBlocks.instance.gameScore = gameScore;
 
         // set the number display sprites
         MoveBlocks.instance.numberDisplaySprites = numberDisplaySprites;

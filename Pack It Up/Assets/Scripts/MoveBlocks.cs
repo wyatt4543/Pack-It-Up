@@ -1144,7 +1144,7 @@ public class MoveBlocks : MonoBehaviour
         }
     }
 
-    // function for destorying blocks that the negative block overlaps with
+    // function for destroying blocks that the negative block overlaps with
     private void NegativeBlockDestruction()
     {
         // check if this function has been called

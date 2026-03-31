@@ -693,6 +693,7 @@ public class MoveBlocks : MonoBehaviour
                 if (updatedY < 0)
                 {
                     NegativeBlockDestruction();
+                    return false;
                 }
 
                 // check if all blocks are touching another piece
@@ -708,6 +709,7 @@ public class MoveBlocks : MonoBehaviour
             {
                 // remove the pieces the negative piece overlaps with
                 NegativeBlockDestruction();
+                return false;
             }
         }
         // functionality for the Box Block
@@ -816,6 +818,7 @@ public class MoveBlocks : MonoBehaviour
                 if (roundedY < 0)
                 {
                     NegativeBlockDestruction();
+                    return false;
                 }
 
                 // check if all blocks are touching another piece
@@ -831,6 +834,7 @@ public class MoveBlocks : MonoBehaviour
             {
                 // remove the pieces the negative piece overlaps with
                 NegativeBlockDestruction();
+                return false;
             }
         }
         else

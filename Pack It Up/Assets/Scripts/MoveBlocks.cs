@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -275,14 +276,23 @@ public class MoveBlocks : MonoBehaviour
             // add the block to the grid
             AddToGrid();
         }
+        else
+        {
+            while (currentBlock != null)
+            {
+                // wait for the negative block to place
+                await Task.Yield();
+                _cts.Token.ThrowIfCancellationRequested();
+            }
+        }
 
         try
         {
-            // function for doing special block actions
-            await CursedBlocks(_cts.Token);
-
             if (currentBlock != null)
             {
+                // function for doing special block actions
+                await CursedBlocks(_cts.Token);
+
                 // funtion for checking for line clears
                 await CheckForLines(_cts.Token);
             }
@@ -1161,13 +1171,13 @@ public class MoveBlocks : MonoBehaviour
     {
         // check if this function has been called
         if (NegativeBlockCalled == false && placingBlock == false)
-        {   
-            // stop this from spawning multiple blocks
-            NegativeBlockCalled = true;
-
+        {
             //stop the placement function from being called again
             placingBlock = true;
             isClearing = true;
+
+            // stop this from spawning multiple blocks
+            NegativeBlockCalled = true;
 
             // loop through each child to destroy all of the correct blocks
             foreach (Transform children in currentBlock.transform)
@@ -1186,6 +1196,8 @@ public class MoveBlocks : MonoBehaviour
                     grid[roundedX, roundedY] = null;
                 }
             }
+
+            print("finished");
 
             // destroy the negative block
             Destroy(currentBlock.transform.parent.gameObject);

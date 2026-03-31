@@ -260,7 +260,7 @@ public class MoveBlocks : MonoBehaviour
 
     private async Task HandleBlockPlacement()
     {
-        if (currentBlock == null && currentBlock.gameObject.name == "JNegativeBlock") { return; }
+        if (currentBlock != null && currentBlock.gameObject.name != "JNegativeBlock") { return; }
 
         // immediately lock input
         isClearing = true;

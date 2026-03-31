@@ -404,7 +404,7 @@ public class MoveBlocks : MonoBehaviour
         MethodInfo method = type.GetMethod("Clear");
         method.Invoke(new object(), null);
 
-        for (int i = 0; i < height; i++)
+        for (int i = height - 1; i >= 0; i--)
         {
             if (token.IsCancellationRequested) return;
 
@@ -426,7 +426,7 @@ public class MoveBlocks : MonoBehaviour
                 await RowDown(i, token);
 
                 // double check the row
-                i--;
+                i++;
 
                 // wait for all of the animation and row down logic to finish
                 await Task.Yield();

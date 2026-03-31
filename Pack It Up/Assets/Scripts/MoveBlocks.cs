@@ -407,17 +407,22 @@ public class MoveBlocks : MonoBehaviour
             if (HasLine(i))
             {
                 // delete the line with the line clear
+                print("delete lines");
                 List<GameObject> blocksCleared = await DeleteLine(i, token);
 
+                print("animate lines");
                 // animate the pieces leaving the board
                 await AnimateLine(blocksCleared, token);
 
+                print("row down time");
                 // move the rows down
                 await RowDown(i, token);
 
                 i++;
             }
         }
+
+        print("finish check lines");
 
         // check if the line clears are greater than 0
         if (singlePlaceClears > 0)
@@ -585,7 +590,7 @@ public class MoveBlocks : MonoBehaviour
                 // move the square towards the end
                 currentSquare.transform.position = Vector3.MoveTowards(currentSquare.transform.position, squareDestination, squareSpeed * Time.deltaTime);
 
-                if (Vector2.Distance(currentSquare.transform.position, squareDestination) < 0.1f)
+                if (Vector2.Distance(currentSquare.transform.position, squareDestination) > 0.1f)
                 {
                     clearedRows = false;
                 }

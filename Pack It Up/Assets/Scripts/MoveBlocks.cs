@@ -260,27 +260,14 @@ public class MoveBlocks : MonoBehaviour
 
     private async Task HandleBlockPlacement()
     {
-        // if the block has already been destroyed do not continue
-        if (currentBlock == null) return;
-
         // immediately lock input
         isClearing = true;
 
         // play the place block sound effect
         SFXManager.instance.PlayPitchedSFXClip(placeSound, transform, 1f);
 
-        // check for negative block to stop anything from being added
-        if (currentBlock.gameObject.name != "JNegativeBlock" && currentBlock == null)
-        {
-            // add the block to the grid
-            AddToGrid();
-        }
-        else
-        {
-            // call the negative block destruction and return to not do other logic
-            NegativeBlockDestruction();
-            return;
-        }
+        // add the block to the grid
+        AddToGrid();
 
         try
         {

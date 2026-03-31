@@ -592,28 +592,29 @@ public class MoveBlocks : MonoBehaviour
                 // if there is still a square to move continue
                 if (currentSquare == null) continue;
 
+                // calculate distance from the destination
+                float distanceX = Mathf.Abs(currentSquare.transform.position.x - squareDestination.x);
+                float distanceY = Mathf.Abs(currentSquare.transform.position.y - squareDestination.y);
+
                 // move the square towards the end
-                if (Vector3.Distance(currentSquare.transform.position, new Vector2(squareDestination.x, currentSquare.transform.position.y)) > 0.01f)
+                if (distanceX > 0.01f)
                 {
                     // set to false if one square is still moving
                     allReached = false;
 
                     currentSquare.transform.position = Vector3.MoveTowards(currentSquare.transform.position, new Vector2(squareDestination.x, currentSquare.transform.position.y), squareSpeed * Time.deltaTime);
                 }
+                // move the square down
+                else if (distanceY > 0.01f)
+                {
+                    // set to false if one square is still moving
+                    allReached = false;
+
+                    currentSquare.transform.position = Vector3.MoveTowards(currentSquare.transform.position, squareDestination, squareSpeed * Time.deltaTime);
+                }
                 else
                 {
-                    // move the square down
-                    if (Vector3.Distance(currentSquare.transform.position, squareDestination) > 0.01f)
-                    {
-                        // set to false if one square is still moving
-                        allReached = false;
-
-                        currentSquare.transform.position = Vector3.MoveTowards(currentSquare.transform.position, squareDestination, squareSpeed * Time.deltaTime);
-                    }
-                    else
-                    {
-                        currentSquare.transform.position = squareDestination;
-                    }
+                    currentSquare.transform.position = squareDestination;
                 }
             }
 

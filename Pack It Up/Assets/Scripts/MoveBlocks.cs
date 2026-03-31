@@ -591,7 +591,7 @@ public class MoveBlocks : MonoBehaviour
         print("blocks that have reached the goal: " + blocksReached);
 
         // play the clear line sound effect
-        AudioSource lineClearAudioSource = SFXManager.instance.PlayLoopedSFXClip(lineClearSound, currentBlock.transform, 1f);
+        AudioSource lineClearAudioSource = SFXManager.instance.PlayLoopedSFXClip(lineClearSound, transform, 1f);
 
         print("get line clear audio: " + lineClearAudioSource);
 

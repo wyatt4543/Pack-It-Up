@@ -404,7 +404,7 @@ public class MoveBlocks : MonoBehaviour
         MethodInfo method = type.GetMethod("Clear");
         method.Invoke(new object(), null);
 
-        for (int i = height - 1; i >= 0; i--)
+        for (int i = 0; i < height;)
         {
             if (token.IsCancellationRequested) return;
 
@@ -424,9 +424,11 @@ public class MoveBlocks : MonoBehaviour
                 print("doing row down" + i);
                 // move the rows down
                 await RowDown(i, token);
-
-                // double check the row
-                //i++;
+            }
+            else
+            {
+                // move up if the row was not cleared
+                i++;
             }
         }
 
@@ -517,6 +519,9 @@ public class MoveBlocks : MonoBehaviour
 
         for (int j = startX; j < testWidth; j++)
         {
+            // do not check an empty grid space
+            if (grid[j, i] == null) continue;
+
             // testing for a square with a number on it
             if (grid[j, i].gameObject.transform.childCount > 0)
             {
@@ -575,11 +580,17 @@ public class MoveBlocks : MonoBehaviour
     // function for animating the blocks leaving the board
     private async Task AnimateLine(CancellationToken token)
     {
+        print("animate line is happening");
+
         // state that the blocks haven't reached the exit box
         bool allReached = false;
 
+        print("set first allReached: " + allReached);
+
         // play the clear line sound effect
         AudioSource lineClearAudioSource = SFXManager.instance.PlayLoopedSFXClip(lineClearSound, currentBlock.transform, 1f);
+
+        print("get line clear audio: " + lineClearAudioSource);
 
         print("started animation");
 

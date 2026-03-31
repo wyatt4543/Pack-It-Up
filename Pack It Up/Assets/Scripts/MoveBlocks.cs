@@ -247,7 +247,7 @@ public class MoveBlocks : MonoBehaviour
                 parentTransform.Translate(Vector2.down);
             }
             // once it hits the bottom of the screen place the block
-            else if (!placingBlock)
+            else if (!placingBlock && !isClearing)
             {
                 placingBlock = true;
                 _ = HandleBlockPlacement();
@@ -319,7 +319,7 @@ public class MoveBlocks : MonoBehaviour
                 parentTransform.position = new Vector2(parentTransform.position.x + movementX, parentTransform.position.y + movementY);
             }
             // once it hits the bottom of the screen place the block
-            else if (movementY < 0 && !placingBlock)
+            else if (movementY < 0 && !placingBlock && !isClearing)
             {
                 placingBlock = true;
                 _ = HandleBlockPlacement();
@@ -333,7 +333,7 @@ public class MoveBlocks : MonoBehaviour
                 parentTransform.position = new Vector2(parentTransform.position.x, parentTransform.position.y + movementY);
             }
             // once it hits the bottom of the screen place the block
-            else if (movementY < 0 && !placingBlock)
+            else if (movementY < 0 && !placingBlock && !isClearing)
             {
                 placingBlock = true;
                 _ = HandleBlockPlacement();
@@ -350,7 +350,7 @@ public class MoveBlocks : MonoBehaviour
             if (!ValidRotation())
             {
                 // check rotation for the negative block
-                if (currentBlock == null || currentBlock.gameObject == null)
+                if ((currentBlock == null || currentBlock.gameObject == null) && !isClearing)
                 {
                     _ = HandleBlockPlacement();
                     return;
@@ -365,7 +365,7 @@ public class MoveBlocks : MonoBehaviour
             if (!ValidRotation())
             {
                 // check rotation for the negative block
-                if (currentBlock == null || currentBlock.gameObject == null)
+                if ((currentBlock == null || currentBlock.gameObject == null) && !isClearing)
                 {
                     _ = HandleBlockPlacement();
                     return;

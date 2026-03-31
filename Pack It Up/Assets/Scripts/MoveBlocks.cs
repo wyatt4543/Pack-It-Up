@@ -274,8 +274,11 @@ public class MoveBlocks : MonoBehaviour
             // function for doing special block actions
             await CursedBlocks(_cts.Token);
 
+            isClearing = true;
             // funtion for checking for line clears
             await CheckForLines(_cts.Token);
+            print("left function");
+            isClearing = false;
             if (_cts.Token.IsCancellationRequested) return;
 
             // do not create a new block if the scene is changing
@@ -396,9 +399,6 @@ public class MoveBlocks : MonoBehaviour
     // function for doing line clears
     public async Task CheckForLines(CancellationToken token)
     {
-        // lock input
-        isClearing = true;
-
         Assembly assembly = Assembly.GetAssembly(typeof(SceneView));
         Type type = assembly.GetType("UnityEditor.LogEntries");
         MethodInfo method = type.GetMethod("Clear");
@@ -461,9 +461,6 @@ public class MoveBlocks : MonoBehaviour
 
         // update the game round according to line clears
         gameRound = (lineClears / 10) + 1;
-
-        // unlock input
-        isClearing = false;
     }
 
     // function for checking for a line clear

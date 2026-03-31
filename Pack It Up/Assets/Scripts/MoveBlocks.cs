@@ -1292,8 +1292,6 @@ public class MoveBlocks : MonoBehaviour
     // end the game upon loss
     private async void EndGame(CancellationToken token)
     {
-        print(SceneManager.GetActiveScene().name);
-
         // set game over to true for the pause manager
         PauseManager.instance.isGameOver = true;
 

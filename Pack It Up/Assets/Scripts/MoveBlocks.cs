@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -392,6 +394,11 @@ public class MoveBlocks : MonoBehaviour
     {
         // lock input
         isClearing = true;
+
+        Assembly assembly = Assembly.GetAssembly(typeof(SceneView));
+        Type type = assembly.GetType("UnityEditor.LogEntries");
+        MethodInfo method = type.GetMethod("Clear");
+        method.Invoke(new object(), null);
 
         for (int i = height - 1; i >= 0; i--)
         {

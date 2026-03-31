@@ -58,7 +58,7 @@ public class MoveBlocks : MonoBehaviour
     // clear line animation variables
     private GameObject clearedBlock;
     private float squareSpeed = 10.0f;
-    private Vector2 squareDestination = new Vector2(8.2f, -1.1f);
+    private Vector3 squareDestination = new Vector3(8.2f, -1.1f, 0f);
 
     // variables for completed packages
     public GameObject package;
@@ -604,15 +604,9 @@ public class MoveBlocks : MonoBehaviour
             blocksReached = 0;
             print("reached reset to: " + blocksReached);
 
-            for (int i = 0; i < totalBlocks; i++)
+            foreach (GameObject currentSquare in clearedBlocks)
             {
-                GameObject currentSquare = clearedBlocks[i];
-                if (currentSquare == null)
-                {
-                    print("null square");
-                    continue;
-                }
-                    print("current square: " + currentSquare);
+                print("current square: " + currentSquare);
                 
                 print("moving current square");
 

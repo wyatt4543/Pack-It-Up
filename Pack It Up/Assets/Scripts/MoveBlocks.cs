@@ -261,7 +261,7 @@ public class MoveBlocks : MonoBehaviour
     private async Task HandleBlockPlacement()
     {
         // play the place block sound effect
-        SFXManager.instance.PlayPitchedSFXClip(placeSound, currentBlock.transform, 1f);
+        SFXManager.instance.PlayPitchedSFXClip(placeSound, transform, 1f);
         
         // add the block to the grid
         AddToGrid();
@@ -1303,7 +1303,7 @@ public class MoveBlocks : MonoBehaviour
         GameObject.Find("MusicManager").SetActive(false);
 
         // play the game over sound
-        SFXManager.instance.PlaySFXClip(gameOverSound, currentBlock.transform, 1f);
+        SFXManager.instance.PlaySFXClip(gameOverSound, transform, 1f);
 
         // pause the game
         PauseManager.instance.PauseGame();
@@ -1344,7 +1344,7 @@ public class MoveBlocks : MonoBehaviour
                 newHighscoreText.enabled = true;
 
                 // play the fanfare sound
-                SFXManager.instance.PlaySFXClip(fanfareSound, currentBlock.transform, 1f);
+                SFXManager.instance.PlaySFXClip(fanfareSound, transform, 1f);
 
                 // pause the game
                 PauseManager.instance.PauseGame();

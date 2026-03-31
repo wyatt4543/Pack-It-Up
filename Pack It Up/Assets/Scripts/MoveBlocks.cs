@@ -1186,12 +1186,6 @@ public class MoveBlocks : MonoBehaviour
                 }
             }
 
-            // do not create a new block if the scene is changing
-            if (this == null || !currentBlock.gameObject.activeInHierarchy) return;
-
-            // spawn a new piece
-            spawnBlockScript.NewBlock(lineClears, gameRound, gameScore, currentPackages);
-
             // destroy the negative block
             Destroy(currentBlock.transform.parent.gameObject);
         }

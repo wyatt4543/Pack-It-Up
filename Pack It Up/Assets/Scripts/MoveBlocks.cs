@@ -427,7 +427,15 @@ public class MoveBlocks : MonoBehaviour
 
                 // double check the row
                 i--;
+
+                // wait for all of the animation and row down logic to finish
+                await Task.Yield();
+                token.ThrowIfCancellationRequested();
             }
+
+            // wait for all of the lines to be checked
+            await Task.Yield();
+            token.ThrowIfCancellationRequested();
         }
 
         print("went through all rows");

@@ -265,12 +265,16 @@ public class MoveBlocks : MonoBehaviour
     {
         // play the place block sound effect
         SFXManager.instance.PlayPitchedSFXClip(placeSound, currentBlock.transform, 1f);
-        // self destruct script on hitting the bottom of the screen & do update stuff
+        
+        // add the block to the grid
         AddToGrid();
-        // function for doing special block actions
+
         try
         {
+            // function for doing special block actions
             await CursedBlocks(_cts.Token);
+
+            // funtion for checking for line clears
             await CheckForLines(_cts.Token);
             if (_cts.Token.IsCancellationRequested) return;
 

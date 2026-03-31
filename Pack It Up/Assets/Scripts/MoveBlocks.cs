@@ -994,6 +994,15 @@ public class MoveBlocks : MonoBehaviour
                                 // play the explosion animation
                                 ExplosionAnimation(grid[checkX, checkY].gameObject.transform.GetComponent<SpriteRenderer>());
 
+                                if (grid[checkX, checkY].parent.gameObject.name == "JWaterBlock")
+                                {
+                                    // delete the animator of the water square
+                                    Destroy(grid[checkX, checkY].GetComponent<Animator>());
+                                    
+                                    // update the block texture to be the explosion
+                                    grid[checkX, checkY].gameObject.transform.GetComponent<SpriteRenderer>().sprite = explosionSprite;
+                                }
+
                                 // wait 100 milliseconds
                                 await Task.Delay(100, token);
 

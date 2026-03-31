@@ -372,15 +372,20 @@ public class MoveBlocks : MonoBehaviour
         {
             if (token.IsCancellationRequested) return;
 
+            print("checking line: " + i);
+
             // if line clear
             if (HasLine(i))
             {
+                print("doing delete line");
                 // delete the line with the line clear
                 await DeleteLine(i, token);
 
+                print("doing animate line");
                 // animate the pieces leaving the board
                 await AnimateLine(token);
-                
+
+                print("doing row down");
                 // move the rows down
                 await RowDown(i, token);
 
@@ -515,6 +520,8 @@ public class MoveBlocks : MonoBehaviour
                 // update the grid
                 grid[j, i] = null;
             }
+
+            print("deleted X: " + j + "deleted Y:" + i);
         }
         
         // update the line clears variable
@@ -579,6 +586,8 @@ public class MoveBlocks : MonoBehaviour
             token.ThrowIfCancellationRequested();
         }
 
+        print("all blocks reached the end");
+
         // destroy all of the squares
         foreach (var square in clearedBlocks)
         {
@@ -602,6 +611,8 @@ public class MoveBlocks : MonoBehaviour
             // loop through each x
             for (int j = 0; j < width; j++)
             {
+                print("checked moved X: " + j + "checked move Y: " + y);
+
                 // if tile is filled with a square
                 if (grid[j,y] != null)
                 {
@@ -624,6 +635,8 @@ public class MoveBlocks : MonoBehaviour
 
                         //move the square down
                         grid[j, newY].transform.position = new Vector3(j, newY, 0);
+
+                        print("moved down x,y: (" + j + ", " + y +  ")");
                     }
                 }
             }

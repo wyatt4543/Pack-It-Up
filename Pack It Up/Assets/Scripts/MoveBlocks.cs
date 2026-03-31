@@ -356,12 +356,6 @@ public class MoveBlocks : MonoBehaviour
             currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
             if (!ValidRotation())
             {
-                // check rotation for the negative block
-                if ((currentBlock == null || currentBlock.gameObject == null) && !isClearing)
-                {
-                    _ = HandleBlockPlacement();
-                    return;
-                }
                 currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
             }
         }
@@ -371,12 +365,6 @@ public class MoveBlocks : MonoBehaviour
             currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
             if (!ValidRotation())
             {
-                // check rotation for the negative block
-                if ((currentBlock == null || currentBlock.gameObject == null) && !isClearing)
-                {
-                    _ = HandleBlockPlacement();
-                    return;
-                }
                 currentBlock.transform.RotateAround(currentBlock.transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
             }
         }
@@ -822,13 +810,6 @@ public class MoveBlocks : MonoBehaviour
                     return false;
                 }
 
-                // activate the negative block if it is at the bottom of the screen
-                if (roundedY < 0)
-                {
-                    NegativeBlockDestruction();
-                    return false;
-                }
-
                 // check if all blocks are touching another piece
                 if (grid[roundedX, roundedY] != null)
                 {
@@ -838,10 +819,8 @@ public class MoveBlocks : MonoBehaviour
             }
 
             // if all of the pieces of the negative block overlap with a normal piece
-            if (overlapCount == currentBlock.gameObject.transform.childCount)
+            if (overlapCount > 0)
             {
-                // remove the pieces the negative piece overlaps with
-                NegativeBlockDestruction();
                 return false;
             }
         }

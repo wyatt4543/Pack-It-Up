@@ -585,10 +585,14 @@ public class MoveBlocks : MonoBehaviour
     {
         print("animate line is happening");
 
-        // state that the blocks haven't reached the exit box
-        bool allReached = false;
+        // get the total amount of blocks
+        int totalBlocks = clearedBlocks.Count;
+        
+        // set the blocks that have reached the end to 0
+        int blocksReached = 0;
 
-        print("set first allReached: " + allReached);
+        print("total amount of blocks: " + totalBlocks);
+        print("blocks that have reached the goal: " + blocksReached);
 
         // play the clear line sound effect
         AudioSource lineClearAudioSource = SFXManager.instance.PlayLoopedSFXClip(lineClearSound, currentBlock.transform, 1f);
@@ -597,30 +601,31 @@ public class MoveBlocks : MonoBehaviour
 
         print("started animation");
 
-        while (!allReached)
+        while (blocksReached < totalBlocks)
         {
-            print("allReached: " + allReached);
-            // set the varaible keeping track of all of the blocks reaching the exit to true
-            allReached = true;
-            print("set allReached: " + allReached);
+            // reset the total of blocks reached
+            print("blocks that have reached the goal: " + blocksReached);
+            blocksReached = 0;
+            print("reached reset to: " + blocksReached);
 
-            for (int i = 0; i < clearedBlocks.Count; i++)
+            for (int i = 0; i < totalBlocks; i++)
             {
                 GameObject currentSquare = clearedBlocks[i];
-                print("current square: " + currentSquare);
-                // if there is still a square to move continue
-                if (currentSquare == null) continue;
+                if (currentSquare == null)
+                {
+                    print("null square");
+                    continue;
+                }
+                    print("current square: " + currentSquare);
                 
                 print("moving current square");
 
                 // move the square towards the end
                 currentSquare.transform.position = Vector3.MoveTowards(currentSquare.transform.position, squareDestination, squareSpeed * Time.deltaTime);
 
-                if (Vector2.Distance(currentSquare.transform.position, squareDestination) > 0.01f)
+                if (Vector2.Distance(currentSquare.transform.position, squareDestination) < 0.1f)
                 {
-                    // set to false if one square is still moving
-                    allReached = false;
-                    print("set allReached: " + allReached);
+                    blocksReached++;
                 }
             }
 

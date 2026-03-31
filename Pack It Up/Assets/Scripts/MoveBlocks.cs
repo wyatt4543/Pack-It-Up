@@ -56,7 +56,6 @@ public class MoveBlocks : MonoBehaviour
     private float fallTimer;
 
     // clear line animation variables
-    //private List<GameObject> clearedBlocks = new List<GameObject>();
     private GameObject clearedBlock;
     private float squareSpeed = 10.0f;
     private Vector2 squareDestination = new Vector2(8.2f, -1.1f);

@@ -260,28 +260,24 @@ public class MoveBlocks : MonoBehaviour
 
     private async Task HandleBlockPlacement()
     {
+        if (currentBlock != null && currentBlock.gameObject.name != "JNegativeBlock") { return; }
+
         // immediately lock input
         isClearing = true;
 
         // play the place block sound effect
         SFXManager.instance.PlayPitchedSFXClip(placeSound, transform, 1f);
 
-        // add the block to the grid if it is not negative or null
-        if (currentBlock != null && currentBlock.gameObject.name != "JNegativeBlock")
-        {
-            // add the block to the grid
-            AddToGrid();
-        }
+        // add the block to the grid
+        AddToGrid();
 
         try
         {
             // function for doing special block actions
             await CursedBlocks(_cts.Token);
-            print("finished cursed blocks");
 
             // funtion for checking for line clears
             await CheckForLines(_cts.Token);
-            print("finished check lines");
 
             // state that the line isn't clearing
             isClearing = false;
@@ -291,7 +287,6 @@ public class MoveBlocks : MonoBehaviour
             // do not create a new block if the scene is changing
             if (this == null || !gameObject.activeInHierarchy) return;
             spawnBlockScript.NewBlock();
-            print("spawned new block");
         }
         catch (OperationCanceledException)
         {
@@ -328,12 +323,6 @@ public class MoveBlocks : MonoBehaviour
             {
                 parentTransform.position = new Vector2(parentTransform.position.x + movementX, parentTransform.position.y + movementY);
             }
-            // once it hits the bottom of the screen place the block
-            else if (movementY < 0 && !placingBlock && !isClearing)
-            {
-                placingBlock = true;
-                _ = HandleBlockPlacement();
-            }
         }
         else
         {
@@ -342,28 +331,11 @@ public class MoveBlocks : MonoBehaviour
             {
                 parentTransform.position = new Vector2(parentTransform.position.x, parentTransform.position.y + movementY);
             }
-            // once it hits the bottom of the screen place the block
-            else if (movementY < 0 && !placingBlock && !isClearing)
-            {
-                placingBlock = true;
-                _ = HandleBlockPlacement();
-            }
         }
     }
 
     private void Rotate(float currentRotationInput)
     {
-        // check rotation for the negative block
-        if (currentBlock == null)
-        {
-            if (!isClearing && !placingBlock)
-            {
-                print("rotated");
-                _ = HandleBlockPlacement();
-            }
-            return;
-        }
-
         // if up key pressed
         if (currentRotationInput == 1)
         {
@@ -1184,7 +1156,10 @@ public class MoveBlocks : MonoBehaviour
         {   
             // stop this from spawning multiple blocks
             NegativeBlockCalled = true;
-            
+
+            //stop the placement function from being called again
+            placingBlock = true;
+
             // loop through each child to destroy all of the correct blocks
             foreach (Transform children in currentBlock.transform)
             {
@@ -1205,6 +1180,9 @@ public class MoveBlocks : MonoBehaviour
 
             // destroy the negative block
             Destroy(currentBlock.transform.parent.gameObject);
+
+            // spawn the new block
+            spawnBlockScript.NewBlock();
         }
     }
 

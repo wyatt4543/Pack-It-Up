@@ -1294,6 +1294,8 @@ public class MoveBlocks : MonoBehaviour
     // end the game upon loss
     private async void EndGame(CancellationToken token)
     {
+        print(SceneManager.GetActiveScene().name);
+
         // set game over to true for the pause manager
         PauseManager.instance.isGameOver = true;
 
@@ -1335,12 +1337,12 @@ public class MoveBlocks : MonoBehaviour
             // update the score position upon loss
             scoreCounter.GetComponent<RectTransform>().anchoredPosition = new Vector2(-360, 0);
 
-            // show the new highscore text
-            newHighscoreText.enabled = true;
-
             // if the highscore is a new highscore
             if (Leaderboard.instance.IsHighScore(gameScore))
             {
+                // show the new highscore text
+                newHighscoreText.enabled = true;
+
                 // play the fanfare sound
                 SFXManager.instance.PlaySFXClip(fanfareSound, currentBlock.transform, 1f);
 

@@ -183,7 +183,7 @@ public class MoveBlocks : MonoBehaviour
         if (instance == null || instance.currentBlock == null || instance.parentTransform == null || instance.rotationPoint == null || isClearing) { return; }
 
         // movement for the drag block
-        if (gameObject.name == "DragBlock" && !PauseManager.instance.IsPaused)
+        if (currentBlock.gameObject.name == "DragBlock" && !PauseManager.instance.IsPaused)
         {
             DragBlockMove(Mathf.RoundToInt(parentTransform.position.x));
         }
@@ -218,7 +218,7 @@ public class MoveBlocks : MonoBehaviour
         if (playerInput.actions["Rotate"].WasPressedThisFrame())
         {
             // disable normal rotation for the box block & drag block
-            if (!(gameObject.name == "BoxBlock") && !(gameObject.name == "DragBlock"))
+            if (!(currentBlock.gameObject.name == "BoxBlock") && !(currentBlock.gameObject.name == "DragBlock"))
             {
                 Rotate(rotateInput);
             }
@@ -228,7 +228,7 @@ public class MoveBlocks : MonoBehaviour
         if (playerInput.actions["RotateDragBlock"].WasPressedThisFrame())
         {
             // only do rotation for the drag block
-            if (gameObject.name == "DragBlock")
+            if (currentBlock.gameObject.name == "DragBlock")
             {
                 Rotate(rotateDragBlockInput);
             }

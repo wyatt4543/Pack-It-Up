@@ -217,7 +217,7 @@ MonoBehaviour:
   package: {fileID: 0}
   currentPackages: []
   gameScore: 0
-  numberDisplayPrefab: {fileID: 0}
+  numberDisplayPrefab: {fileID: 4424447009255818281, guid: 9e539fccf148da44eb74c28a3499e77a, type: 3}
   numberDisplaySprites: []
   explosionSprite: {fileID: 0}
   explosionObject: {fileID: 0}

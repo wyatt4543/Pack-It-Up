@@ -400,7 +400,7 @@ public class MoveBlocks : MonoBehaviour
         MethodInfo method = type.GetMethod("Clear");
         method.Invoke(new object(), null);
 
-        for (int i = height - 1; i >= 0; i--)
+        for (int i = height - 1; i >= 0; i++)
         {
             if (token.IsCancellationRequested) return;
 
@@ -422,7 +422,7 @@ public class MoveBlocks : MonoBehaviour
                 await RowDown(i, token);
 
                 // double check the row
-                i++;
+                i--;
             }
         }
 

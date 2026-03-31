@@ -261,6 +261,8 @@ public class MoveBlocks : MonoBehaviour
 
     private async Task HandleBlockPlacement()
     {
+        if (currentBlock.name == "JNegativeBlock" || currentBlock == null) { return; }
+
         // immediately lock input
         isClearing = true;
 

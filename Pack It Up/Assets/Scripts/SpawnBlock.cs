@@ -47,6 +47,7 @@ public class SpawnBlock : MonoBehaviour
                 {
                     // destroy the negative block
                     Destroy(MoveBlocks.instance.currentBlock.transform.parent.gameObject);
+                    MoveBlocks.instance.currentBlock = null;
                 }
                 else
                 {

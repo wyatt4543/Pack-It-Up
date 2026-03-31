@@ -274,6 +274,7 @@ public class MoveBlocks : MonoBehaviour
 
             // do not create a new block if the scene is changing
             if (this == null || !currentBlock.gameObject.activeInHierarchy) return;
+            print("create new block");
             spawnBlockScript.NewBlock(lineClears, gameRound, gameScore, currentPackages);
         }
         catch (OperationCanceledException)

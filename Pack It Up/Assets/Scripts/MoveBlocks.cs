@@ -582,6 +582,13 @@ public class MoveBlocks : MonoBehaviour
 
             foreach (GameObject currentSquare in clearedBlocks)
             {
+                // skip if there are no longer any current squares
+                if (currentSquare == null)
+                {
+                    blocksReached++;
+                    continue;
+                }
+
                 // move the square towards the end
                 currentSquare.transform.position = Vector3.MoveTowards(currentSquare.transform.position, squareDestination, squareSpeed * Time.deltaTime);
 

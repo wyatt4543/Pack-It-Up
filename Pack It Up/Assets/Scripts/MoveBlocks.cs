@@ -260,8 +260,6 @@ public class MoveBlocks : MonoBehaviour
 
     private async Task HandleBlockPlacement()
     {
-        if (currentBlock == null && currentBlock.gameObject.name == "JNegativeBlock") { return; }
-
         // immediately lock input
         isClearing = true;
 
@@ -285,7 +283,7 @@ public class MoveBlocks : MonoBehaviour
             if (_cts.Token.IsCancellationRequested) return;
 
             // do not create a new block if the scene is changing
-            if (this == null || !gameObject.activeInHierarchy) return;
+            if (this == null || !gameObject.activeInHierarchy || currentBlock == null || currentBlock.gameObject.name == "JNegativeBlock") return;
             spawnBlockScript.NewBlock();
         }
         catch (OperationCanceledException)

@@ -262,7 +262,7 @@ public class MoveBlocks : MonoBehaviour
     private async Task HandleBlockPlacement()
     {
         // if the block has already been destroyed do not continue
-        if (currentBlock == null) return;
+        if (currentBlock == null || currentBlock.gameObject.name != "JNegativeBlock") return;
 
         // immediately lock input
         isClearing = true;
@@ -270,32 +270,16 @@ public class MoveBlocks : MonoBehaviour
         // play the place block sound effect
         SFXManager.instance.PlayPitchedSFXClip(placeSound, transform, 1f);
 
-        // check for negative block to stop anything from being added
-        if (currentBlock.gameObject.name != "JNegativeBlock")
-        {
-            // add the block to the grid
-            AddToGrid();
-        }
-        else
-        {
-            while (currentBlock != null)
-            {
-                // wait for the negative block to place
-                await Task.Yield();
-                _cts.Token.ThrowIfCancellationRequested();
-            }
-        }
+        // add the block to the grid
+        AddToGrid();
 
         try
         {
-            if (currentBlock != null)
-            {
-                // function for doing special block actions
-                await CursedBlocks(_cts.Token);
+            // function for doing special block actions
+            await CursedBlocks(_cts.Token);
 
-                // funtion for checking for line clears
-                await CheckForLines(_cts.Token);
-            }
+            // funtion for checking for line clears
+            await CheckForLines(_cts.Token);
 
             // state that the line isn't clearing
             isClearing = false;
@@ -1201,6 +1185,9 @@ public class MoveBlocks : MonoBehaviour
 
             // destroy the negative block
             Destroy(currentBlock.transform.parent.gameObject);
+
+            // spawn a new block
+            spawnBlockScript.NewBlock();
         }
     }
 

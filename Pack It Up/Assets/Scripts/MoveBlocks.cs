@@ -389,6 +389,8 @@ public class MoveBlocks : MonoBehaviour
             }
         }
 
+        print("went through all rows");
+
         // check if the line clears are greater than 0
         if (singlePlaceClears > 0)
         {

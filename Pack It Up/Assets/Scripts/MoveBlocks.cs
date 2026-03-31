@@ -415,11 +415,11 @@ public class MoveBlocks : MonoBehaviour
             {
                 print("doing delete line" + i);
                 // delete the line with the line clear
-                await DeleteLine(i, token);
+                List<GameObject> blocksCleared = await DeleteLine(i, token);
 
                 print("doing animate line" + i);
                 // animate the pieces leaving the board
-                await AnimateLine(token);
+                await AnimateLine(blocksCleared, token);
 
                 print("doing row down" + i);
                 // move the rows down
@@ -480,8 +480,11 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // function for deleting lines
-    public async Task DeleteLine(int i, CancellationToken token)
+    public async Task<List<GameObject>> DeleteLine(int i, CancellationToken token)
     {
+        // create the list of clearedBlocks
+        List<GameObject> clearedBlocks = new List<GameObject>();
+
         // variable for testing for the x position of the half block;
         int halfBlockX;
         bool halfBlockExists = false;
@@ -571,11 +574,14 @@ public class MoveBlocks : MonoBehaviour
 
         // update the variable keeping track of the line clears made by one block
         singlePlaceClears++;
+
+        // returned the clearedBlocks
+        return clearedBlocks;
     }
 
 
     // function for animating the blocks leaving the board
-    private async Task AnimateLine(CancellationToken token)
+    private async Task AnimateLine(List<GameObject> clearedBlocks, CancellationToken token)
     {
         print("animate line is happening");
 

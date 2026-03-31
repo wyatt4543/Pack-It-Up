@@ -597,8 +597,8 @@ public class MoveBlocks : MonoBehaviour
         // clear the list
         clearedBlocks.Clear();
 
-        // stop the clear line sound effect
-        Destroy(lineClearAudioSource);
+        // stop the clear line sound effect by deleting it's game object
+        Destroy(lineClearAudioSource.gameObject);
     }
 
 

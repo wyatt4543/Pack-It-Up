@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3286760459280480114}
   - component: {fileID: 8426115026021312241}
-  - component: {fileID: 8779529406811163252}
   m_Layer: 0
   m_Name: JNegativeBlock
   m_TagString: Untagged
@@ -50,28 +49,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveBlocks
   parentTransform: {fileID: 1732443006077457203}
+  roundCounter: {fileID: 0}
+  linesCounter: {fileID: 0}
+  scoreCounter: {fileID: 0}
+  isClearing: 0
   rotationPoint: {x: 1, y: 0}
   lineClears: 0
   gameRound: 0
+  defaultFallTimer: 0
+  fallTimer: 0
   package: {fileID: 0}
   currentPackages: []
   gameScore: 0
+  NegativeBlockCalled: 0
+  BoxBlockCalled: 0
   numberDisplayPrefab: {fileID: 0}
   numberDisplaySprites: []
   explosionSprite: {fileID: 0}
   explosionObject: {fileID: 0}
---- !u!114 &8779529406811163252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573874719806533582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d187eb1e6d5b4694fb23fffb8b6a5755, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DeletionTest
+  placingBlock: 0
+  defaultAutoMoveTimer: 0.1
+  defaultAutoMoveCapTimer: 0.016666668
+  autoMoveTimer: 0
+  autoMoveCapTimer: 0
+  quickDrop: 0
+  currentBlock: {fileID: 0}
+  playerInput: {fileID: 0}
 --- !u!1 &988282771911747836
 GameObject:
   m_ObjectHideFlags: 0

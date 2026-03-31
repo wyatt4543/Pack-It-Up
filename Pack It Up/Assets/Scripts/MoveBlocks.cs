@@ -244,7 +244,7 @@ public class MoveBlocks : MonoBehaviour
                 parentTransform.Translate(Vector2.down);
             }
             // once it hits the bottom of the screen place the block
-            else if (!placingBlock && !isClearing && !NegativeBlockCalled)
+            else if (!placingBlock && !isClearing)
             {
                 placingBlock = true;
                 _ = HandleBlockPlacement();
@@ -270,7 +270,7 @@ public class MoveBlocks : MonoBehaviour
         SFXManager.instance.PlayPitchedSFXClip(placeSound, transform, 1f);
 
         // check for negative block to stop anything from being added
-        if (currentBlock.gameObject.name != "JNegativeBlock")
+        if (currentBlock.gameObject.name != "JNegativeBlock" && currentBlock == null)
         {
             // add the block to the grid
             AddToGrid();
@@ -1163,7 +1163,7 @@ public class MoveBlocks : MonoBehaviour
     private void NegativeBlockDestruction()
     {
         // check if this function has been called
-        if (NegativeBlockCalled == false && placingBlock == false)
+        if (NegativeBlockCalled == false)
         {   
             // stop this from spawning multiple blocks
             NegativeBlockCalled = true;

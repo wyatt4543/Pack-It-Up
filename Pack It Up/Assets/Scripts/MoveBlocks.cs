@@ -28,9 +28,9 @@ public class MoveBlocks : MonoBehaviour
     private Camera mainCamera;
 
     // text object variables
-    private TextMeshProUGUI roundCounter;
-    private TextMeshProUGUI linesCounter;
-    private TextMeshProUGUI scoreCounter;
+    public TextMeshProUGUI roundCounter;
+    public TextMeshProUGUI linesCounter;
+    public TextMeshProUGUI scoreCounter;
     private TextMeshProUGUI newHighscoreText;
 
     // gameboard variables
@@ -41,7 +41,7 @@ public class MoveBlocks : MonoBehaviour
     // movement variables
     private float movementX;
     private float movementY;
-    private bool isClearing = false;
+    public bool isClearing = false;
 
     // rotation variables
     public Vector2 rotationPoint;
@@ -50,8 +50,8 @@ public class MoveBlocks : MonoBehaviour
     // calculation for the speed per round: (0.8-((level-1)*0.007))^(level-1)
     public int lineClears;
     public int gameRound;
-    private float defaultFallTimer;
-    private float fallTimer;
+    public float defaultFallTimer;
+    public float fallTimer;
 
     // clear line animation variables
     private GameObject clearedBlock;
@@ -73,20 +73,20 @@ public class MoveBlocks : MonoBehaviour
     private int singlePlaceClears = 0;
 
     // cursed pieces variables
-    private bool NegativeBlockCalled = false;
-    private bool BoxBlockCalled = false;
+    public bool NegativeBlockCalled = false;
+    public bool BoxBlockCalled = false;
     public GameObject numberDisplayPrefab;
     public Sprite[] numberDisplaySprites;
     public Sprite explosionSprite;
     public GameObject explosionObject;
-    private bool placingBlock = false;
+    public bool placingBlock = false;
 
     // timer variables
-    private float defaultAutoMoveTimer = 0.1f;
-    private float defaultAutoMoveCapTimer = 1.0f / 60.0f;
-    private float autoMoveTimer;
-    private float autoMoveCapTimer;
-    private bool quickDrop = false;
+    public float defaultAutoMoveTimer = 0.1f;
+    public float defaultAutoMoveCapTimer = 1.0f / 60.0f;
+    public float autoMoveTimer;
+    public float autoMoveCapTimer;
+    public bool quickDrop = false;
 
     // input variables
     public GameObject currentBlock;
@@ -280,14 +280,12 @@ public class MoveBlocks : MonoBehaviour
         {
             // function for doing special block actions
             await CursedBlocks(_cts.Token);
-            // do not continue if negative block is called
-            if (NegativeBlockCalled)
-            {
-                return;
-            }
 
-            // funtion for checking for line clears
-            await CheckForLines(_cts.Token);
+            if (currentBlock != null)
+            {
+                // funtion for checking for line clears
+                await CheckForLines(_cts.Token);
+            }
 
             // state that the line isn't clearing
             isClearing = false;
@@ -295,7 +293,7 @@ public class MoveBlocks : MonoBehaviour
             if (_cts.Token.IsCancellationRequested) return;
 
             // do not create a new block if the scene is changing
-            if (this == null || !gameObject.activeInHierarchy || currentBlock == null || currentBlock.gameObject.name == "JNegativeBlock") return;
+            if (this == null || !gameObject.activeInHierarchy) return;
             spawnBlockScript.NewBlock();
         }
         catch (OperationCanceledException)
@@ -1191,9 +1189,6 @@ public class MoveBlocks : MonoBehaviour
 
             // destroy the negative block
             Destroy(currentBlock.transform.parent.gameObject);
-
-            // spawn the new block
-            spawnBlockScript.NewBlock();
         }
     }
 
@@ -1292,7 +1287,7 @@ public class MoveBlocks : MonoBehaviour
     }
 
     // end the game upon loss
-    private async void EndGame(CancellationToken token)
+    public async Task EndGame()
     {
         // set game over to true for the pause manager
         PauseManager.instance.isGameOver = true;
@@ -1307,7 +1302,7 @@ public class MoveBlocks : MonoBehaviour
         PauseManager.instance.PauseGame();
 
         // wait for the game over sound to complete
-        await Task.Delay(391, token);
+        await Task.Delay(391);
 
         // unpause the game
         PauseManager.instance.UnpauseGame();
@@ -1348,7 +1343,7 @@ public class MoveBlocks : MonoBehaviour
                 PauseManager.instance.PauseGame();
 
                 // wait for the fanfare sound to complete
-                await Task.Delay(1735, token);
+                await Task.Delay(1735);
 
                 // unpause the game
                 PauseManager.instance.UnpauseGame();
@@ -1386,48 +1381,11 @@ public class MoveBlocks : MonoBehaviour
 
         // wait until everything has loaded
         await Task.Yield();
-        token.ThrowIfCancellationRequested();
 
         // pause the game
         PauseManager.instance.PauseGame();
 
         // delete this script to disable movement
         Destroy(this);
-    }
-
-    public void ResetVariables()
-    {
-        // cursed pieces variables
-        isClearing = false;
-        NegativeBlockCalled = false;
-        BoxBlockCalled = false;
-        placingBlock = false;
-
-        // timer variables
-        quickDrop = false;
-
-        // Initialize timers
-        defaultFallTimer = Mathf.Pow((0.8f - ((gameRound - 1) * 0.007f)), gameRound - 1);
-        fallTimer = defaultFallTimer;
-        autoMoveTimer = defaultAutoMoveTimer;
-        autoMoveCapTimer = defaultAutoMoveCapTimer;
-
-        // update the game round display
-        roundCounter = GameObject.Find("LevelCanvas/RoundCounter").GetComponent<TextMeshProUGUI>();
-        roundCounter.text = "Round: " + gameRound;
-
-        // update the game lines display
-        linesCounter = GameObject.Find("LevelCanvas/LinesCounter").GetComponent<TextMeshProUGUI>();
-        linesCounter.text = "Lines: " + lineClears;
-
-        // update the game score display
-        scoreCounter = GameObject.Find("LevelCanvas/ScoreCounter").GetComponent<TextMeshProUGUI>();
-        scoreCounter.text = "Score: " + gameScore;
-
-        // test for a game over
-        if (!ValidMove(0, -1) && !PauseManager.instance.isGameOver)
-        {
-            EndGame(_cts.Token);
-        }
     }
 }

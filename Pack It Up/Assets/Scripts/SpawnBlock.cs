@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -35,7 +37,7 @@ public class SpawnBlock : MonoBehaviour
     }
 
     // function for creating new blocks
-    public void NewBlock(int blockType = -1) {
+    public async void NewBlock(int blockType = -1) {
         GameObject nextBlock = null;
         
         // increase the block count
@@ -120,7 +122,8 @@ public class SpawnBlock : MonoBehaviour
         MoveBlocks.instance.rotationPoint = currentSquareScript.rotationPoint;
         Destroy(currentSquareScript);
 
-        MoveBlocks.instance.ResetVariables();
+        // reset variables
+        await ResetVariables();
 
         // check for the copied block type & assign it a random value
         if (blockType == 11)
@@ -145,5 +148,42 @@ public class SpawnBlock : MonoBehaviour
 
         // set the package game object
         MoveBlocks.instance.package = package;
+    }
+
+    public async Task ResetVariables()
+    {
+        // cursed pieces variables
+        MoveBlocks.instance.isClearing = false;
+        MoveBlocks.instance.NegativeBlockCalled = false;
+        MoveBlocks.instance.BoxBlockCalled = false;
+        MoveBlocks.instance.placingBlock = false;
+
+        // timer variables
+        MoveBlocks.instance.quickDrop = false;
+
+        // Initialize timers
+        MoveBlocks.instance.defaultFallTimer = Mathf.Pow((0.8f - ((MoveBlocks.instance.gameRound - 1) * 0.007f)), MoveBlocks.instance.gameRound - 1);
+        MoveBlocks.instance.fallTimer = MoveBlocks.instance.defaultFallTimer;
+        MoveBlocks.instance.autoMoveTimer = MoveBlocks.instance.defaultAutoMoveTimer;
+        MoveBlocks.instance.autoMoveCapTimer = MoveBlocks.instance.defaultAutoMoveCapTimer;
+
+        // update the game round display
+        MoveBlocks.instance.roundCounter.text = "Round: " + MoveBlocks.instance.gameRound;
+
+        // update the game lines display
+        MoveBlocks.instance.linesCounter.text = "Lines: " + MoveBlocks.instance.lineClears;
+
+        // update the game score display
+        MoveBlocks.instance.scoreCounter.text = "Score: " + MoveBlocks.instance.gameScore;
+
+        // test for a game over
+        if (!MoveBlocks.instance.ValidMove(0, -1) && !PauseManager.instance.isGameOver)
+        {
+            await MoveBlocks.instance.EndGame();
+            return;
+        }
+
+        // wait until everything has reset
+        await Task.Yield();
     }
 }

@@ -1596,7 +1596,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3769742310626124242, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1516956607}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2816872841930793221, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 481250436}
   m_SourcePrefab: {fileID: 100100000, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
 --- !u!224 &423447676 stripped
 RectTransform:
@@ -1732,7 +1735,7 @@ PrefabInstance:
       objectReference: {fileID: 1516956606}
     - target: {fileID: 7951845262698097201, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
-      value: D
+      value: Right
       objectReference: {fileID: 0}
     - target: {fileID: 8339059702889220483, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
@@ -1881,6 +1884,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 472469029}
   m_CullTransparentMesh: 1
+--- !u!1 &481250433 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2816872841930793221, guid: fa7ebfee0f0220d409df4687f912513b, type: 3}
+  m_PrefabInstance: {fileID: 423447675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &481250436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481250433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6c2da2db9374dada6761b5e35121c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem.RebindingUI::UnityEngine.InputSystem.Samples.RebindUI.RebindSaveLoad
+  actions: {fileID: -944628639613478452, guid: 36d1915fa3bed7d43a07a32af9dd061d, type: 3}
+  playerPreferenceKey: PlayerRebinds
+  loadOnEnable: 1
+  saveOnDisable: 1
 --- !u!1 &483204341
 GameObject:
   m_ObjectHideFlags: 0
@@ -5938,7 +5962,7 @@ PrefabInstance:
       objectReference: {fileID: 1516956606}
     - target: {fileID: 7951845262698097201, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
-      value: W
+      value: Up
       objectReference: {fileID: 0}
     - target: {fileID: 8339059702889220483, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
@@ -7088,7 +7112,7 @@ PrefabInstance:
       objectReference: {fileID: 1516956606}
     - target: {fileID: 7951845262698097201, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
-      value: S
+      value: Down
       objectReference: {fileID: 0}
     - target: {fileID: 8339059702889220483, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
@@ -9139,13 +9163,14 @@ PrefabInstance:
       objectReference: {fileID: 1516956606}
     - target: {fileID: 7951845262698097201, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
-      value: A
+      value: Left
       objectReference: {fileID: 0}
     - target: {fileID: 8339059702889220483, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
       propertyPath: m_text
       value: Move Left
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 188312301700553186, guid: 8673f12482b33164391ecd5ceb873818, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

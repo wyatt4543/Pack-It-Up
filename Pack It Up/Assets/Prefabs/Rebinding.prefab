@@ -558,7 +558,6 @@ GameObject:
   - component: {fileID: 6722288530619395923}
   - component: {fileID: 5233013583183809973}
   - component: {fileID: 6727399291751251980}
-  - component: {fileID: 188312301700553186}
   m_Layer: 5
   m_Name: Rebinding
   m_TagString: Untagged
@@ -714,19 +713,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &188312301700553186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3969996972687949781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6c2da2db9374dada6761b5e35121c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem.RebindingUI::UnityEngine.InputSystem.Samples.RebindUI.RebindSaveLoad
-  actions: {fileID: -944628639613478452, guid: 36d1915fa3bed7d43a07a32af9dd061d, type: 3}
-  playerPreferenceKey: PlayerRebinds
-  loadOnEnable: 1
-  saveOnDisable: 1

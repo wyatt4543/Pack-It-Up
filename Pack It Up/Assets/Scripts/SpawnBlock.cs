@@ -35,14 +35,8 @@ public class SpawnBlock : MonoBehaviour
     }
 
     // function for creating new blocks
-    public void NewBlock(int lineClears = 0, int gameRound = 1, int gameScore = 0, List<GameObject> currentPackages = null, int blockType = -1) {
+    public void NewBlock(int lineClears = 0, int gameRound = 1, int gameScore = 0, int blockType = -1) {
         GameObject nextBlock = null;
-
-        // assign the default value of currentPackages
-        if (currentPackages == null)
-        {
-            currentPackages = new List<GameObject>();
-        }
         
         // increase the block count
         blockCount++;
@@ -148,9 +142,6 @@ public class SpawnBlock : MonoBehaviour
 
         // set the game score
         MoveBlocks.instance.gameScore = gameScore;
-
-        // set the current packages
-        MoveBlocks.instance.currentPackages = currentPackages;
 
         // set the number display sprites
         MoveBlocks.instance.numberDisplaySprites = numberDisplaySprites;

@@ -1377,7 +1377,7 @@ public class MoveBlocks : MonoBehaviour
         PauseManager.instance.PauseGame();
 
         // delete this script to disable movement
-        Destroy(currentBlock);
+        Destroy(this);
     }
 
     public void ResetVariables()

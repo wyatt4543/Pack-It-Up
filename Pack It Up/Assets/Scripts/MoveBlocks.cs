@@ -261,9 +261,6 @@ public class MoveBlocks : MonoBehaviour
 
     private async Task HandleBlockPlacement()
     {
-        // if the block has already been destroyed do not continue
-        if (currentBlock.gameObject.name == "JNegativeBlock") return;
-
         // immediately lock input
         isClearing = true;
 
@@ -287,8 +284,8 @@ public class MoveBlocks : MonoBehaviour
             if (_cts.Token.IsCancellationRequested) return;
 
             // do not create a new block if the scene is changing
-            if (this == null || !gameObject.activeInHierarchy || currentBlock.gameObject.name == "JNegativeBlock") return;
-            spawnBlockScript.NewBlock();
+            if (this == null || !gameObject.activeInHierarchy) return;
+            spawnBlockScript.NewBlock(true);
         }
         catch (OperationCanceledException)
         {
@@ -1181,13 +1178,8 @@ public class MoveBlocks : MonoBehaviour
                 }
             }
 
-            print("finished");
-
-            // destroy the negative block
-            Destroy(currentBlock.transform.parent.gameObject);
-
             // spawn a new block
-            spawnBlockScript.NewBlock();
+            spawnBlockScript.NewBlock(false);
         }
     }
 

@@ -37,7 +37,22 @@ public class SpawnBlock : MonoBehaviour
     }
 
     // function for creating new blocks
-    public async void NewBlock(int blockType = -1) {
+    public async void NewBlock(bool fromHandleBlockPlacement = false, int blockType = -1) {
+        
+        // make sure handle block placement does not place a second block
+        if (MoveBlocks.instance.currentBlock.gameObject.name == "JNegativeBlock")
+        {
+            if (!fromHandleBlockPlacement)
+            {
+                // destroy the negative block
+                Destroy(MoveBlocks.instance.currentBlock.transform.parent.gameObject);
+            }
+            else
+            {
+                return;
+            }
+        }
+
         GameObject nextBlock = null;
         
         // increase the block count

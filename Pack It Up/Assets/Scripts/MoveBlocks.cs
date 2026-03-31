@@ -407,22 +407,17 @@ public class MoveBlocks : MonoBehaviour
             if (HasLine(i))
             {
                 // delete the line with the line clear
-                print("delete lines");
                 List<GameObject> blocksCleared = await DeleteLine(i, token);
 
-                print("animate lines");
                 // animate the pieces leaving the board
                 await AnimateLine(blocksCleared, token);
 
-                print("row down time");
                 // move the rows down
                 await RowDown(i, token);
 
                 i++;
             }
         }
-
-        print("finish check lines");
 
         // check if the line clears are greater than 0
         if (singlePlaceClears > 0)
@@ -454,6 +449,8 @@ public class MoveBlocks : MonoBehaviour
 
         // update the game round according to line clears
         gameRound = (lineClears / 10) + 1;
+
+        print("set new line clears");
     }
 
     // function for checking for a line clear

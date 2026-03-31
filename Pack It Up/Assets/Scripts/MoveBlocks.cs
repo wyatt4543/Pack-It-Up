@@ -261,7 +261,7 @@ public class MoveBlocks : MonoBehaviour
     private async Task HandleBlockPlacement()
     {
         // if the block has already been destroyed do not continue
-        if (currentBlock == null) return;
+        if (currentBlock == null || isClearing) return;
 
         // immediately lock input
         isClearing = true;
@@ -283,6 +283,8 @@ public class MoveBlocks : MonoBehaviour
             // do not continue if negative block is called
             if (NegativeBlockCalled)
             {
+                print("negative block called");
+                NegativeBlockCalled = false;
                 return;
             }
 
@@ -296,7 +298,8 @@ public class MoveBlocks : MonoBehaviour
 
             // do not create a new block if the scene is changing
             if (this == null || !gameObject.activeInHierarchy || currentBlock == null || currentBlock.gameObject.name == "JNegativeBlock") return;
-            spawnBlockScript.NewBlock();
+            print("normal new block creation called");
+            await spawnBlockScript.NewBlock();
         }
         catch (OperationCanceledException)
         {
@@ -684,6 +687,7 @@ public class MoveBlocks : MonoBehaviour
                 // activate the negative block if it is at the bottom of the screen
                 if (updatedY < 0)
                 {
+                    print("bottom screen new block call movement");
                     NegativeBlockDestruction();
                     return false;
                 }
@@ -700,6 +704,7 @@ public class MoveBlocks : MonoBehaviour
             if (overlapCount == currentBlock.gameObject.transform.childCount)
             {
                 // remove the pieces the negative piece overlaps with
+                print("overlap new block call movement");
                 NegativeBlockDestruction();
                 return false;
             }
@@ -809,6 +814,7 @@ public class MoveBlocks : MonoBehaviour
                 // activate the negative block if it is at the bottom of the screen
                 if (roundedY < 0)
                 {
+                    print("bottom screen new block call rotation");
                     NegativeBlockDestruction();
                     return false;
                 }
@@ -824,6 +830,7 @@ public class MoveBlocks : MonoBehaviour
             // if all of the pieces of the negative block overlap with a normal piece
             if (overlapCount == currentBlock.gameObject.transform.childCount)
             {
+                print("overlap new block call rotation");
                 // remove the pieces the negative piece overlaps with
                 NegativeBlockDestruction();
                 return false;
@@ -1193,7 +1200,7 @@ public class MoveBlocks : MonoBehaviour
             Destroy(currentBlock.transform.parent.gameObject);
 
             // spawn the new block
-            spawnBlockScript.NewBlock();
+            _ = spawnBlockScript.NewBlock();
         }
     }
 
@@ -1399,7 +1406,6 @@ public class MoveBlocks : MonoBehaviour
     {
         // cursed pieces variables
         isClearing = false;
-        NegativeBlockCalled = false;
         BoxBlockCalled = false;
         placingBlock = false;
 

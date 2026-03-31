@@ -566,35 +566,28 @@ public class MoveBlocks : MonoBehaviour
     // function for animating the blocks leaving the board
     private async Task AnimateLine(List<GameObject> clearedBlocks, CancellationToken token)
     {
-        // get the total amount of blocks
-        int totalBlocks = clearedBlocks.Count;
-        
         // set the blocks that have reached the end to 0
-        int blocksReached = 0;
+        bool clearedRows = false;
 
         // play the clear line sound effect
         AudioSource lineClearAudioSource = SFXManager.instance.PlayLoopedSFXClip(lineClearSound, transform, 1f);
 
-        while (blocksReached < totalBlocks)
+        while (!clearedRows)
         {
             // reset the total of blocks reached
-            blocksReached = 0;
+            clearedRows = true;
 
             foreach (GameObject currentSquare in clearedBlocks)
             {
                 // skip if there are no longer any current squares
-                if (currentSquare == null)
-                {
-                    blocksReached++;
-                    continue;
-                }
+                if (currentSquare == null) { continue; }
 
                 // move the square towards the end
                 currentSquare.transform.position = Vector3.MoveTowards(currentSquare.transform.position, squareDestination, squareSpeed * Time.deltaTime);
 
                 if (Vector2.Distance(currentSquare.transform.position, squareDestination) < 0.1f)
                 {
-                    blocksReached++;
+                    clearedRows = false;
                 }
             }
 

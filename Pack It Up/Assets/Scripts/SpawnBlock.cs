@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,11 +31,11 @@ public class SpawnBlock : MonoBehaviour
         nextBlockType = Random.Range(0, Blocks.Length);
 
         // spawn a new block at the beginning of the game
-        _ = NewBlock();
+        NewBlock();
     }
 
     // function for creating new blocks
-    public async Task NewBlock(int blockType = -1) {
+    public void NewBlock(int blockType = -1) {
         GameObject nextBlock = null;
         
         // increase the block count
@@ -147,7 +145,5 @@ public class SpawnBlock : MonoBehaviour
 
         // set the package game object
         MoveBlocks.instance.package = package;
-
-        await Task.Yield();
     }
 }
